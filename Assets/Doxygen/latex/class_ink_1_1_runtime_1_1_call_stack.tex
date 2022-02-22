@@ -1,0 +1,92 @@
+\hypertarget{class_ink_1_1_runtime_1_1_call_stack}{}\doxysection{Ink.\+Runtime.\+Call\+Stack Class Reference}
+\label{class_ink_1_1_runtime_1_1_call_stack}\index{Ink.Runtime.CallStack@{Ink.Runtime.CallStack}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_call_stack_1_1_element}{Element}}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_call_stack_1_1_thread}{Thread}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_call_stack_afe53bf4ed7062899826d1a49e0514c65}\label{class_ink_1_1_runtime_1_1_call_stack_afe53bf4ed7062899826d1a49e0514c65}} 
+{\bfseries Call\+Stack} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}} story\+Context)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_call_stack_ad6abaa3277394fb63787b3398be234e7}\label{class_ink_1_1_runtime_1_1_call_stack_ad6abaa3277394fb63787b3398be234e7}} 
+{\bfseries Call\+Stack} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_call_stack}{Call\+Stack}} to\+Copy)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_call_stack_af80147400a65949054c65bd6c81fd2a9}\label{class_ink_1_1_runtime_1_1_call_stack_af80147400a65949054c65bd6c81fd2a9}} 
+void {\bfseries Reset} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_call_stack_afed841e8daf961782deac11cdb2d878f}\label{class_ink_1_1_runtime_1_1_call_stack_afed841e8daf961782deac11cdb2d878f}} 
+void {\bfseries Set\+Json\+Token} (Dictionary$<$ string, object $>$ j\+Object, \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}} story\+Context)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_call_stack_abd42e08e1760cc24e6a0fd638454918c}\label{class_ink_1_1_runtime_1_1_call_stack_abd42e08e1760cc24e6a0fd638454918c}} 
+void {\bfseries Write\+Json} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_simple_json_1_1_writer}{Simple\+Json.\+Writer}} w)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_call_stack_a65c4d007d115a6072fc0034194fd582d}\label{class_ink_1_1_runtime_1_1_call_stack_a65c4d007d115a6072fc0034194fd582d}} 
+void {\bfseries Push\+Thread} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_call_stack_aa2958be90773ac0f02773c54417fe28e}\label{class_ink_1_1_runtime_1_1_call_stack_aa2958be90773ac0f02773c54417fe28e}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_call_stack_1_1_thread}{Thread}} {\bfseries Fork\+Thread} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_call_stack_a38f6547d42e6b4f80b1df9b1fb052d1c}\label{class_ink_1_1_runtime_1_1_call_stack_a38f6547d42e6b4f80b1df9b1fb052d1c}} 
+void {\bfseries Pop\+Thread} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_call_stack_af5445ed8a9fb95f05fcb7475421af973}\label{class_ink_1_1_runtime_1_1_call_stack_af5445ed8a9fb95f05fcb7475421af973}} 
+void {\bfseries Push} (Push\+Pop\+Type type, int external\+Evaluation\+Stack\+Height=0, int output\+Stream\+Length\+With\+Pushed=0)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_call_stack_ac4e05476c56429ca3be3bb6d63cc43ae}\label{class_ink_1_1_runtime_1_1_call_stack_ac4e05476c56429ca3be3bb6d63cc43ae}} 
+bool {\bfseries Can\+Pop} (Push\+Pop\+Type? type=null)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_call_stack_a440ecdafd8c8db2809204931e2e1880e}\label{class_ink_1_1_runtime_1_1_call_stack_a440ecdafd8c8db2809204931e2e1880e}} 
+void {\bfseries Pop} (Push\+Pop\+Type? type=null)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_call_stack_aa3d1e9c7ecb8fafa1e083787a7c04127}\label{class_ink_1_1_runtime_1_1_call_stack_aa3d1e9c7ecb8fafa1e083787a7c04127}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Runtime.\+Object}} {\bfseries Get\+Temporary\+Variable\+With\+Name} (string name, int context\+Index=-\/1)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_call_stack_a39df358243cbe65d1bd590f6ec37c6d9}\label{class_ink_1_1_runtime_1_1_call_stack_a39df358243cbe65d1bd590f6ec37c6d9}} 
+void {\bfseries Set\+Temporary\+Variable} (string name, \mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Runtime.\+Object}} value, bool declare\+New, int context\+Index=-\/1)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_call_stack_a2c69ddee2c47aaf13690c61a8944610b}\label{class_ink_1_1_runtime_1_1_call_stack_a2c69ddee2c47aaf13690c61a8944610b}} 
+int {\bfseries Context\+For\+Variable\+Named} (string name)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_call_stack_a00618d45e4909bd139c7d4249229a24f}\label{class_ink_1_1_runtime_1_1_call_stack_a00618d45e4909bd139c7d4249229a24f}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_call_stack_1_1_thread}{Thread}} {\bfseries Thread\+With\+Index} (int index)
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_call_stack_ac77e5c28452d13e2034e5b485a75dc46}\label{class_ink_1_1_runtime_1_1_call_stack_ac77e5c28452d13e2034e5b485a75dc46}} 
+List$<$ \mbox{\hyperlink{class_ink_1_1_runtime_1_1_call_stack_1_1_element}{Element}} $>$ {\bfseries elements}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_call_stack_a0e5aed0fc8b69bea90a1dcf66ce01f74}\label{class_ink_1_1_runtime_1_1_call_stack_a0e5aed0fc8b69bea90a1dcf66ce01f74}} 
+int {\bfseries depth}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_call_stack_a7cb37b922a5d74b4072a68bc5df6314d}\label{class_ink_1_1_runtime_1_1_call_stack_a7cb37b922a5d74b4072a68bc5df6314d}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_call_stack_1_1_element}{Element}} {\bfseries current\+Element}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_call_stack_aa7a9a849cc9cfc9d40f577fc52ecc65b}\label{class_ink_1_1_runtime_1_1_call_stack_aa7a9a849cc9cfc9d40f577fc52ecc65b}} 
+int {\bfseries current\+Element\+Index}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_call_stack_a6ac81a9871408184b3e5a45fcade69c9}\label{class_ink_1_1_runtime_1_1_call_stack_a6ac81a9871408184b3e5a45fcade69c9}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_call_stack_1_1_thread}{Thread}} {\bfseries current\+Thread}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_call_stack_a92fb64890b484b0b91ec0007689d62c6}\label{class_ink_1_1_runtime_1_1_call_stack_a92fb64890b484b0b91ec0007689d62c6}} 
+bool {\bfseries can\+Pop}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_call_stack_a890477753b722b5d83b53067caa37709}\label{class_ink_1_1_runtime_1_1_call_stack_a890477753b722b5d83b53067caa37709}} 
+bool {\bfseries can\+Pop\+Thread}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_call_stack_a41eec97ed61ccdcb235d686e83e1cee3}\label{class_ink_1_1_runtime_1_1_call_stack_a41eec97ed61ccdcb235d686e83e1cee3}} 
+bool {\bfseries element\+Is\+Evaluate\+From\+Game}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_call_stack_a1fab528b85bdb9692c2b793afe3ae70e}\label{class_ink_1_1_runtime_1_1_call_stack_a1fab528b85bdb9692c2b793afe3ae70e}} 
+string? {\bfseries call\+Stack\+Trace}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Ink\+Libs/\+Ink\+Runtime/Call\+Stack.\+cs\end{DoxyCompactItemize}

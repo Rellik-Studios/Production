@@ -1,0 +1,154 @@
+\hypertarget{class_ink_1_1_parsed_1_1_object}{}\doxysection{Ink.\+Parsed.\+Object Class Reference}
+\label{class_ink_1_1_parsed_1_1_object}\index{Ink.Parsed.Object@{Ink.Parsed.Object}}
+Inheritance diagram for Ink.\+Parsed.\+Object\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=12.000000cm]{class_ink_1_1_parsed_1_1_object}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_object_a12bfed3dd3dc080cb22f57f813bc9c3e}\label{class_ink_1_1_parsed_1_1_object_a12bfed3dd3dc080cb22f57f813bc9c3e}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_path}{Parsed.\+Path}} {\bfseries Path\+Relative\+To} (\mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Parsed.\+Object}} other\+Obj)
+\item 
+T \mbox{\hyperlink{class_ink_1_1_parsed_1_1_object_a0b92ab41de44c2d935c2e77f6dc2ae44}{Add\+Content$<$ T $>$}} (T sub\+Content)
+\item 
+void \mbox{\hyperlink{class_ink_1_1_parsed_1_1_object_a0144b64795e7efe181d34815111cf485}{Add\+Content$<$ T $>$}} (\mbox{\hyperlink{class_ink_1_1_parsed_1_1_list}{List}}$<$ T $>$ list\+Content)
+\item 
+T \mbox{\hyperlink{class_ink_1_1_parsed_1_1_object_ac2976f91e5a0d4a908bbf98d2894726c}{Insert\+Content$<$ T $>$}} (int index, T sub\+Content)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_object_a097887acbde126e847a79c3dafe9aeca}\label{class_ink_1_1_parsed_1_1_object_a097887acbde126e847a79c3dafe9aeca}} 
+delegate bool {\bfseries Find\+Query\+Func$<$ T $>$} (T obj)
+\item 
+T \mbox{\hyperlink{class_ink_1_1_parsed_1_1_object_aca5b9011e85058a00b873f90b18670bc}{Find$<$ T $>$}} (Find\+Query\+Func$<$ T $>$ query\+Func=null)
+\item 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_list}{List}}$<$ T $>$ \mbox{\hyperlink{class_ink_1_1_parsed_1_1_object_aa27a0a2f357bbf1744456e500673a9d1}{Find\+All$<$ T $>$}} (Find\+Query\+Func$<$ T $>$ query\+Func=null)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_object_a35e20666157dfd0d23c3146b69e6d5b0}\label{class_ink_1_1_parsed_1_1_object_a35e20666157dfd0d23c3146b69e6d5b0}} 
+abstract \mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Runtime.\+Object}} {\bfseries Generate\+Runtime\+Object} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_object_ade9c335259ef0198069c22a6001dc7be}\label{class_ink_1_1_parsed_1_1_object_ade9c335259ef0198069c22a6001dc7be}} 
+virtual void {\bfseries Resolve\+References} (\mbox{\hyperlink{class_ink_1_1_parsed_1_1_story}{Story}} context)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_object_a11116d295fdfe6b0cd98dab964b75d99}\label{class_ink_1_1_parsed_1_1_object_a11116d295fdfe6b0cd98dab964b75d99}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_flow_base}{Flow\+Base}} {\bfseries Closest\+Flow\+Base} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_object_a9641ca34ce04d15d75e1140c0a14080b}\label{class_ink_1_1_parsed_1_1_object_a9641ca34ce04d15d75e1140c0a14080b}} 
+virtual void {\bfseries Error} (string message, \mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Parsed.\+Object}} source=null, bool is\+Warning=false)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_object_a1b566a4487318a098ca94db6aed7e1d7}\label{class_ink_1_1_parsed_1_1_object_a1b566a4487318a098ca94db6aed7e1d7}} 
+void {\bfseries Warning} (string message, \mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Parsed.\+Object}} source=null)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_object_a34650fdb3cacc881f82aae0454bda83a}\label{class_ink_1_1_parsed_1_1_object_a34650fdb3cacc881f82aae0454bda83a}} 
+override bool {\bfseries Equals} (object obj)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_object_a8783f15ab5016e853bcd6476317f8af6}\label{class_ink_1_1_parsed_1_1_object_a8783f15ab5016e853bcd6476317f8af6}} 
+override int {\bfseries Get\+Hash\+Code} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_object_a7308b0e6ccc445a73b7fddd33c9f6fb9}\label{class_ink_1_1_parsed_1_1_object_a7308b0e6ccc445a73b7fddd33c9f6fb9}} 
+static implicit {\bfseries operator bool} (\mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Object}} obj)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_object_af85e25e59f66ddda7e543c31840f3fa5}\label{class_ink_1_1_parsed_1_1_object_af85e25e59f66ddda7e543c31840f3fa5}} 
+static bool {\bfseries operator==} (\mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Object}} a, \mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Object}} b)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_object_a01fed0c83a7dcc18835175c359b68e4c}\label{class_ink_1_1_parsed_1_1_object_a01fed0c83a7dcc18835175c359b68e4c}} 
+static bool {\bfseries operator!=} (\mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Object}} a, \mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Object}} b)
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_object_a989833f9fe1ed65ce6a2753c77d169de}\label{class_ink_1_1_parsed_1_1_object_a989833f9fe1ed65ce6a2753c77d169de}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_debug_metadata}{Runtime.\+Debug\+Metadata}} {\bfseries debug\+Metadata}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_object_a057e2dbd0a0dfcd204296be0a5c3461a}\label{class_ink_1_1_parsed_1_1_object_a057e2dbd0a0dfcd204296be0a5c3461a}} 
+bool {\bfseries has\+Own\+Debug\+Metadata}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_object_abda3f5f65b7ce852a74c7c502a7b9e7e}\label{class_ink_1_1_parsed_1_1_object_abda3f5f65b7ce852a74c7c502a7b9e7e}} 
+virtual string {\bfseries type\+Name}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_object_aa00cefc2c58add41e0fcfd218f657cb2}\label{class_ink_1_1_parsed_1_1_object_aa00cefc2c58add41e0fcfd218f657cb2}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Parsed.\+Object}} {\bfseries parent}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_object_aed3b36660c9bfb5b2a08573fb8f358a1}\label{class_ink_1_1_parsed_1_1_object_aed3b36660c9bfb5b2a08573fb8f358a1}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_list}{List}}$<$ \mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Parsed.\+Object}} $>$ {\bfseries content}\hspace{0.3cm}{\ttfamily  \mbox{[}getprotected set\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_object_a29792cdd4ff1cf408710196792f5a098}\label{class_ink_1_1_parsed_1_1_object_a29792cdd4ff1cf408710196792f5a098}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_story}{Parsed.\+Story}} {\bfseries story}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_object_ab59b8c7243959e3bb79fd15d75ff04fd}\label{class_ink_1_1_parsed_1_1_object_ab59b8c7243959e3bb79fd15d75ff04fd}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Runtime.\+Object}} {\bfseries runtime\+Object}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_object_ab2200bc28350f225093699af5479c9c3}\label{class_ink_1_1_parsed_1_1_object_ab2200bc28350f225093699af5479c9c3}} 
+virtual \mbox{\hyperlink{class_ink_1_1_runtime_1_1_path}{Runtime.\+Path}} {\bfseries runtime\+Path}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_object_a06deb3a1e2f2a806d41dfb3dbc095073}\label{class_ink_1_1_parsed_1_1_object_a06deb3a1e2f2a806d41dfb3dbc095073}} 
+virtual \mbox{\hyperlink{class_ink_1_1_runtime_1_1_container}{Runtime.\+Container}} {\bfseries container\+For\+Counting}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_object_a202070c3314e2aa3594fcb8a7b916d7c}\label{class_ink_1_1_parsed_1_1_object_a202070c3314e2aa3594fcb8a7b916d7c}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_list}{List}}$<$ \mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Parsed.\+Object}} $>$ {\bfseries ancestry}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_object_abb134839f39f51d2e57df44aa1f321e2}\label{class_ink_1_1_parsed_1_1_object_abb134839f39f51d2e57df44aa1f321e2}} 
+string {\bfseries description\+Of\+Scope}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_object_a0144b64795e7efe181d34815111cf485}\label{class_ink_1_1_parsed_1_1_object_a0144b64795e7efe181d34815111cf485}} 
+\index{Ink.Parsed.Object@{Ink.Parsed.Object}!AddContent$<$ T $>$@{AddContent$<$ T $>$}}
+\index{AddContent$<$ T $>$@{AddContent$<$ T $>$}!Ink.Parsed.Object@{Ink.Parsed.Object}}
+\doxysubsubsection{\texorpdfstring{AddContent$<$ T $>$()}{AddContent< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Ink.\+Parsed.\+Object.\+Add\+Content$<$ T $>$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ink_1_1_parsed_1_1_list}{List}}$<$ T $>$}]{list\+Content }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Parsed.\+Object}]\end{description}
+\end{Desc}
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_object_a0b92ab41de44c2d935c2e77f6dc2ae44}\label{class_ink_1_1_parsed_1_1_object_a0b92ab41de44c2d935c2e77f6dc2ae44}} 
+\index{Ink.Parsed.Object@{Ink.Parsed.Object}!AddContent$<$ T $>$@{AddContent$<$ T $>$}}
+\index{AddContent$<$ T $>$@{AddContent$<$ T $>$}!Ink.Parsed.Object@{Ink.Parsed.Object}}
+\doxysubsubsection{\texorpdfstring{AddContent$<$ T $>$()}{AddContent< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily T Ink.\+Parsed.\+Object.\+Add\+Content$<$ T $>$ (\begin{DoxyParamCaption}\item[{T}]{sub\+Content }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Parsed.\+Object}]\end{description}
+\end{Desc}
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_object_aca5b9011e85058a00b873f90b18670bc}\label{class_ink_1_1_parsed_1_1_object_aca5b9011e85058a00b873f90b18670bc}} 
+\index{Ink.Parsed.Object@{Ink.Parsed.Object}!Find$<$ T $>$@{Find$<$ T $>$}}
+\index{Find$<$ T $>$@{Find$<$ T $>$}!Ink.Parsed.Object@{Ink.Parsed.Object}}
+\doxysubsubsection{\texorpdfstring{Find$<$ T $>$()}{Find< T >()}}
+{\footnotesize\ttfamily T Ink.\+Parsed.\+Object.\+Find$<$ T $>$ (\begin{DoxyParamCaption}\item[{Find\+Query\+Func$<$ T $>$}]{query\+Func = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em class}]\end{description}
+\end{Desc}
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_object_aa27a0a2f357bbf1744456e500673a9d1}\label{class_ink_1_1_parsed_1_1_object_aa27a0a2f357bbf1744456e500673a9d1}} 
+\index{Ink.Parsed.Object@{Ink.Parsed.Object}!FindAll$<$ T $>$@{FindAll$<$ T $>$}}
+\index{FindAll$<$ T $>$@{FindAll$<$ T $>$}!Ink.Parsed.Object@{Ink.Parsed.Object}}
+\doxysubsubsection{\texorpdfstring{FindAll$<$ T $>$()}{FindAll< T >()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ink_1_1_parsed_1_1_list}{List}}$<$ T $>$ Ink.\+Parsed.\+Object.\+Find\+All$<$ T $>$ (\begin{DoxyParamCaption}\item[{Find\+Query\+Func$<$ T $>$}]{query\+Func = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em class}]\end{description}
+\end{Desc}
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_object_ac2976f91e5a0d4a908bbf98d2894726c}\label{class_ink_1_1_parsed_1_1_object_ac2976f91e5a0d4a908bbf98d2894726c}} 
+\index{Ink.Parsed.Object@{Ink.Parsed.Object}!InsertContent$<$ T $>$@{InsertContent$<$ T $>$}}
+\index{InsertContent$<$ T $>$@{InsertContent$<$ T $>$}!Ink.Parsed.Object@{Ink.Parsed.Object}}
+\doxysubsubsection{\texorpdfstring{InsertContent$<$ T $>$()}{InsertContent< T >()}}
+{\footnotesize\ttfamily T Ink.\+Parsed.\+Object.\+Insert\+Content$<$ T $>$ (\begin{DoxyParamCaption}\item[{int}]{index,  }\item[{T}]{sub\+Content }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Parsed.\+Object}]\end{description}
+\end{Desc}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Ink\+Libs/\+Ink\+Compiler/\+Parsed\+Hierarchy/Object.\+cs\end{DoxyCompactItemize}

@@ -1,0 +1,68 @@
+\hypertarget{class_ink_1_1_runtime_1_1_profiler}{}\doxysection{Ink.\+Runtime.\+Profiler Class Reference}
+\label{class_ink_1_1_runtime_1_1_profiler}\index{Ink.Runtime.Profiler@{Ink.Runtime.Profiler}}
+
+
+Simple ink profiler that logs every instruction in the story and counts frequency and timing. To use\+:  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_profiler_a4e4ad87680d5f6031387a4a43f0695ea}\label{class_ink_1_1_runtime_1_1_profiler_a4e4ad87680d5f6031387a4a43f0695ea}} 
+string {\bfseries Report} ()
+\begin{DoxyCompactList}\small\item\em Generate a printable report based on the data recording during profiling. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_profiler_a31dbb41198d908df19159955e0cae282}\label{class_ink_1_1_runtime_1_1_profiler_a31dbb41198d908df19159955e0cae282}} 
+void {\bfseries Pre\+Continue} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_profiler_a6ca4babe8dd581b00a187b73e6c9fca1}\label{class_ink_1_1_runtime_1_1_profiler_a6ca4babe8dd581b00a187b73e6c9fca1}} 
+void {\bfseries Post\+Continue} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_profiler_acd77e11ae4b2b60f0f33a31337ca1051}\label{class_ink_1_1_runtime_1_1_profiler_acd77e11ae4b2b60f0f33a31337ca1051}} 
+void {\bfseries Pre\+Step} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_profiler_a50de20d32cdd0ea787db417f351d14a5}\label{class_ink_1_1_runtime_1_1_profiler_a50de20d32cdd0ea787db417f351d14a5}} 
+void {\bfseries Step} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_call_stack}{Call\+Stack}} callstack)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_profiler_a61562c76ecce1ac27e76479e06296935}\label{class_ink_1_1_runtime_1_1_profiler_a61562c76ecce1ac27e76479e06296935}} 
+void {\bfseries Post\+Step} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_profiler_aa801423761c111551878b06e51ceb698}\label{class_ink_1_1_runtime_1_1_profiler_aa801423761c111551878b06e51ceb698}} 
+string {\bfseries Step\+Length\+Report} ()
+\begin{DoxyCompactList}\small\item\em Generate a printable report specifying the average and maximum times spent stepping over different internal ink instruction types. This report type is primarily used to profile the ink engine itself rather than your own specific ink. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_profiler_a1bcf64f8450279f6141c40d44900ce22}\label{class_ink_1_1_runtime_1_1_profiler_a1bcf64f8450279f6141c40d44900ce22}} 
+string {\bfseries Megalog} ()
+\begin{DoxyCompactList}\small\item\em Create a large log of all the internal instructions that were evaluated while profiling was active. Log is in a tab-\/separated format, for easy loading into a spreadsheet application. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_profiler_ac328d282c361d01fcc46a7172e6811f4}\label{class_ink_1_1_runtime_1_1_profiler_ac328d282c361d01fcc46a7172e6811f4}} 
+void {\bfseries Pre\+Snapshot} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_profiler_a97141176debe49f6fc785104593ea368}\label{class_ink_1_1_runtime_1_1_profiler_a97141176debe49f6fc785104593ea368}} 
+void {\bfseries Post\+Snapshot} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_profiler_a25c3e4fa7d785e4cc9799f466fe77ca7}\label{class_ink_1_1_runtime_1_1_profiler_a25c3e4fa7d785e4cc9799f466fe77ca7}} 
+static string {\bfseries Format\+Millisecs} (double num)
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_profiler_a31d9eb55fbced26c52d552200e8abf6e}\label{class_ink_1_1_runtime_1_1_profiler_a31d9eb55fbced26c52d552200e8abf6e}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_profile_node}{Profile\+Node}} {\bfseries root\+Node}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The root node in the hierarchical tree of recorded ink timings. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Simple ink profiler that logs every instruction in the story and counts frequency and timing. To use\+: 
+
+var profiler = story.\+Start\+Profiling(),
+
+(play your story for a bit)
+
+var report\+Str = profiler.\+Report();
+
+story.\+End\+Profiling();
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Ink\+Libs/\+Ink\+Runtime/Profiler.\+cs\end{DoxyCompactItemize}

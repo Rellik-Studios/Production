@@ -1,0 +1,112 @@
+\hypertarget{class_ink_1_1_parsed_1_1_story}{}\doxysection{Ink.\+Parsed.\+Story Class Reference}
+\label{class_ink_1_1_parsed_1_1_story}\index{Ink.Parsed.Story@{Ink.Parsed.Story}}
+Inheritance diagram for Ink.\+Parsed.\+Story\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_ink_1_1_parsed_1_1_story}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_story_af97821a2f1d5649e7a0d093b1e2d8eb7}\label{class_ink_1_1_parsed_1_1_story_af97821a2f1d5649e7a0d093b1e2d8eb7}} 
+enum {\bfseries Symbol\+Type} \+: uint \{ \newline
+{\bfseries Knot}
+, {\bfseries List}
+, {\bfseries List\+Item}
+, {\bfseries Var}
+, \newline
+{\bfseries Sub\+Flow\+And\+Weave}
+, {\bfseries Arg}
+, {\bfseries Temp}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_story_ab821fb41222bcbc9e4f4fc62426ccbbe}\label{class_ink_1_1_parsed_1_1_story_ab821fb41222bcbc9e4f4fc62426ccbbe}} 
+{\bfseries Story} (\mbox{\hyperlink{class_ink_1_1_parsed_1_1_list}{List}}$<$ \mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Parsed.\+Object}} $>$ toplevel\+Objects, bool is\+Include=false)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_story_a53b426ffde415f47771959c91e93b551}\label{class_ink_1_1_parsed_1_1_story_a53b426ffde415f47771959c91e93b551}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Runtime.\+Story}} {\bfseries Export\+Runtime} (\mbox{\hyperlink{namespace_ink_a81ccaafe32f36d4c3fb65b9d63a4935e}{Error\+Handler}} error\+Handler=null)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_story_aae132079afe8f88b7d8e08d50cc823aa}\label{class_ink_1_1_parsed_1_1_story_aae132079afe8f88b7d8e08d50cc823aa}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_list_definition}{List\+Definition}} {\bfseries Resolve\+List} (string list\+Name)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_story_a9ae0fe88832eb1b1ecb9c42e728bc8ae}\label{class_ink_1_1_parsed_1_1_story_a9ae0fe88832eb1b1ecb9c42e728bc8ae}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_list_element_definition}{List\+Element\+Definition}} {\bfseries Resolve\+List\+Item} (string list\+Name, string item\+Name, \mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Parsed.\+Object}} source=null)
+\item 
+override void \mbox{\hyperlink{class_ink_1_1_parsed_1_1_story_a57760fc7756638e44797d8b3352f447e}{Error}} (string message, \mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Parsed.\+Object}} source, bool is\+Warning)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_story_a7c1481df71c20b4dfbc9fdfe9ec67daf}\label{class_ink_1_1_parsed_1_1_story_a7c1481df71c20b4dfbc9fdfe9ec67daf}} 
+void {\bfseries Reset\+Error} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_story_a3e8ed1b99e603b8d348ed5d5167603ef}\label{class_ink_1_1_parsed_1_1_story_a3e8ed1b99e603b8d348ed5d5167603ef}} 
+bool {\bfseries Is\+External} (string named\+Func\+Target)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_story_ad53ba9a3fdfb46aa9e774e19c8c6a0fd}\label{class_ink_1_1_parsed_1_1_story_ad53ba9a3fdfb46aa9e774e19c8c6a0fd}} 
+void {\bfseries Add\+External} (\mbox{\hyperlink{class_ink_1_1_parsed_1_1_external_declaration}{External\+Declaration}} decl)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_story_aa571732263c2399618181bbfa179efb8}\label{class_ink_1_1_parsed_1_1_story_aa571732263c2399618181bbfa179efb8}} 
+void {\bfseries Dont\+Flatten\+Container} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_container}{Runtime.\+Container}} container)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_story_a7cd9ce66280661107d3deff3e020442e}\label{class_ink_1_1_parsed_1_1_story_a7cd9ce66280661107d3deff3e020442e}} 
+void {\bfseries Check\+For\+Naming\+Collisions} (\mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Parsed.\+Object}} obj, \mbox{\hyperlink{class_ink_1_1_parsed_1_1_identifier}{Identifier}} identifier, Symbol\+Type symbol\+Type, string type\+Name\+Override=null)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_story_a76fdf2ba4c0528c9898168af40952e02}\label{class_ink_1_1_parsed_1_1_story_a76fdf2ba4c0528c9898168af40952e02}} 
+static bool {\bfseries Is\+Reserved\+Keyword} (string name)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_story_a444a8205df5c47a97474bae4ed2143fa}\label{class_ink_1_1_parsed_1_1_story_a444a8205df5c47a97474bae4ed2143fa}} 
+Dictionary$<$ string, \mbox{\hyperlink{class_ink_1_1_parsed_1_1_expression}{Expression}} $>$ {\bfseries constants}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_story_a52a6af2b572f9b85b0c38018728f2224}\label{class_ink_1_1_parsed_1_1_story_a52a6af2b572f9b85b0c38018728f2224}} 
+Dictionary$<$ string, \mbox{\hyperlink{class_ink_1_1_parsed_1_1_external_declaration}{External\+Declaration}} $>$ {\bfseries externals}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_story_ad842df70b22861b817c97b070033ae23}\label{class_ink_1_1_parsed_1_1_story_ad842df70b22861b817c97b070033ae23}} 
+bool {\bfseries count\+All\+Visits} = false
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \mbox{\hyperlink{class_ink_1_1_parsed_1_1_story_a15d206d7dca29483b3d7e157ee0ab771}{Pre\+Process\+Top\+Level\+Objects}} (\mbox{\hyperlink{class_ink_1_1_parsed_1_1_list}{List}}$<$ \mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Parsed.\+Object}} $>$ top\+Level\+Content)
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_story_ae8e0cf280e49d20f1a9d4decbe06390a}\label{class_ink_1_1_parsed_1_1_story_ae8e0cf280e49d20f1a9d4decbe06390a}} 
+override Flow\+Level {\bfseries flow\+Level}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_story_a57760fc7756638e44797d8b3352f447e}\label{class_ink_1_1_parsed_1_1_story_a57760fc7756638e44797d8b3352f447e}} 
+\index{Ink.Parsed.Story@{Ink.Parsed.Story}!Error@{Error}}
+\index{Error@{Error}!Ink.Parsed.Story@{Ink.Parsed.Story}}
+\doxysubsubsection{\texorpdfstring{Error()}{Error()}}
+{\footnotesize\ttfamily override void Ink.\+Parsed.\+Story.\+Error (\begin{DoxyParamCaption}\item[{string}]{message,  }\item[{\mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Parsed.\+Object}}}]{source,  }\item[{bool}]{is\+Warning }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Ink.\+Parsed.\+Object}}.
+
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_story_a15d206d7dca29483b3d7e157ee0ab771}\label{class_ink_1_1_parsed_1_1_story_a15d206d7dca29483b3d7e157ee0ab771}} 
+\index{Ink.Parsed.Story@{Ink.Parsed.Story}!PreProcessTopLevelObjects@{PreProcessTopLevelObjects}}
+\index{PreProcessTopLevelObjects@{PreProcessTopLevelObjects}!Ink.Parsed.Story@{Ink.Parsed.Story}}
+\doxysubsubsection{\texorpdfstring{PreProcessTopLevelObjects()}{PreProcessTopLevelObjects()}}
+{\footnotesize\ttfamily override void Ink.\+Parsed.\+Story.\+Pre\+Process\+Top\+Level\+Objects (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ink_1_1_parsed_1_1_list}{List}}$<$ \mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Parsed.\+Object}} $>$}]{top\+Level\+Content }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_ink_1_1_parsed_1_1_flow_base}{Ink.\+Parsed.\+Flow\+Base}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Ink\+Libs/\+Ink\+Compiler/\+Parsed\+Hierarchy/Story.\+cs\end{DoxyCompactItemize}

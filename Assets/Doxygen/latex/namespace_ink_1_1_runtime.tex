@@ -1,0 +1,108 @@
+\hypertarget{namespace_ink_1_1_runtime}{}\doxysection{Ink.\+Runtime Namespace Reference}
+\label{namespace_ink_1_1_runtime}\index{Ink.Runtime@{Ink.Runtime}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_bool_value}{Bool\+Value}}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_call_stack}{Call\+Stack}}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_choice}{Choice}}
+\begin{DoxyCompactList}\small\item\em A generated \mbox{\hyperlink{class_ink_1_1_runtime_1_1_choice}{Choice}} from the story. A single \mbox{\hyperlink{class_ink_1_1_runtime_1_1_choice_point}{Choice\+Point}} in the \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}} could potentially generate different Choices dynamically dependent on state, so they\textquotesingle{}re separated. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_choice_point}{Choice\+Point}}
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{class_ink_1_1_runtime_1_1_choice_point}{Choice\+Point}} represents the point within the \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}} where a \mbox{\hyperlink{class_ink_1_1_runtime_1_1_choice}{Choice}} instance gets generated. The distinction is made because the text of the \mbox{\hyperlink{class_ink_1_1_runtime_1_1_choice}{Choice}} can be dynamically generated. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_container}{Container}}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_control_command}{Control\+Command}}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_debug_metadata}{Debug\+Metadata}}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_divert}{Divert}}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_divert_target_value}{Divert\+Target\+Value}}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_float_value}{Float\+Value}}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_flow}{Flow}}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_glue}{Glue}}
+\item 
+interface \mbox{\hyperlink{interface_ink_1_1_runtime_1_1_i_named_content}{INamed\+Content}}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_ink_list}{Ink\+List}}
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{class_ink_1_1_runtime_1_1_ink_list}{Ink\+List}} is the underlying type that\textquotesingle{}s used to store an instance of a list in ink. It\textquotesingle{}s not used for the {\itshape definition} of the list, but for a list value that\textquotesingle{}s stored in a variable. Somewhat confusingly, it\textquotesingle{}s backed by a C\# Dictionary, and has nothing to do with a C\# List! \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_ink_1_1_runtime_1_1_ink_list_item}{Ink\+List\+Item}}
+\begin{DoxyCompactList}\small\item\em The underlying type for a list item in ink. It stores the original list definition name as well as the item name, but without the value of the item. When the value is stored, it\textquotesingle{}s stored in a Key\+Value\+Pair of \mbox{\hyperlink{struct_ink_1_1_runtime_1_1_ink_list_item}{Ink\+List\+Item}} and int. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_int_value}{Int\+Value}}
+\item 
+class {\bfseries Json}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_list_definition}{List\+Definition}}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_list_definitions_origin}{List\+Definitions\+Origin}}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_list_value}{List\+Value}}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_native_function_call}{Native\+Function\+Call}}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Object}}
+\begin{DoxyCompactList}\small\item\em Base class for all ink runtime content. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_path}{Path}}
+\item 
+struct \mbox{\hyperlink{struct_ink_1_1_runtime_1_1_pointer}{Pointer}}
+\begin{DoxyCompactList}\small\item\em Internal structure used to point to a particular / current point in the story. Where \mbox{\hyperlink{class_ink_1_1_runtime_1_1_path}{Path}} is a set of components that make content fully addressable, this is a reference to the current container, and the index of the current piece of content within that container. This scheme makes it as fast and efficient as possible to increment the pointer (move the story forwards) in a way that\textquotesingle{}s as native to the internal engine as possible. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_profile_node}{Profile\+Node}}
+\begin{DoxyCompactList}\small\item\em Node used in the hierarchical tree of timings used by the \mbox{\hyperlink{class_ink_1_1_runtime_1_1_profiler}{Profiler}}. Each node corresponds to a single line viewable in a UI-\/based representation. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_profiler}{Profiler}}
+\begin{DoxyCompactList}\small\item\em Simple ink profiler that logs every instruction in the story and counts frequency and timing. To use\+: \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_ink_1_1_runtime_1_1_search_result}{Search\+Result}}
+\item 
+class {\bfseries Simple\+Json}
+\begin{DoxyCompactList}\small\item\em Simple custom JSON serialisation implementation that takes JSON-\/able System.\+Collections that are produced by the ink engine and converts to and from JSON text. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_state_patch}{State\+Patch}}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}}
+\begin{DoxyCompactList}\small\item\em A \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}} is the core class that represents a complete \mbox{\hyperlink{namespace_ink}{Ink}} narrative, and manages the evaluation and state of it. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_exception}{Story\+Exception}}
+\begin{DoxyCompactList}\small\item\em Exception that represents an error when running a \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}} at runtime. An exception being thrown of this type is typically when there\textquotesingle{}s a bug in your ink, rather than in the ink engine itself! \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_state}{Story\+State}}
+\begin{DoxyCompactList}\small\item\em All story state information is included in the \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_state}{Story\+State}} class, including global variables, read counts, the pointer to the current point in the story, the call stack (for tunnels, functions, etc), and a few other smaller bits and pieces. You can save the current state using the json serialisation functions To\+Json and Load\+Json. \end{DoxyCompactList}\item 
+class {\bfseries String\+Ext}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_string_value}{String\+Value}}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_tag}{Tag}}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_value}{Value}}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_variable_assignment}{Variable\+Assignment}}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_variable_pointer_value}{Variable\+Pointer\+Value}}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_variable_reference}{Variable\+Reference}}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_variables_state}{Variables\+State}}
+\begin{DoxyCompactList}\small\item\em Encompasses all the global variables in an ink \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}}, and allows binding of a Variable\+Changed event so that that game code can be notified whenever the global variables change. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_ink_1_1_runtime_1_1_void}{Void}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespace_ink_1_1_runtime_a94d3e7d5af7ae2b6c2d0a8be776617dd}\label{namespace_ink_1_1_runtime_a94d3e7d5af7ae2b6c2d0a8be776617dd}} 
+enum {\bfseries Push\+Pop\+Type} \{ {\bfseries Tunnel}
+, {\bfseries Function}
+, {\bfseries Function\+Evaluation\+From\+Game}
+ \}
+\item 
+\mbox{\Hypertarget{namespace_ink_1_1_runtime_a642e48817cbe87779c5d53f097a7794f}\label{namespace_ink_1_1_runtime_a642e48817cbe87779c5d53f097a7794f}} 
+enum {\bfseries Value\+Type} \{ \newline
+{\bfseries Bool} = -\/1
+, {\bfseries Int}
+, {\bfseries Float}
+, {\bfseries List}
+, \newline
+{\bfseries String}
+, {\bfseries Divert\+Target}
+, {\bfseries Variable\+Pointer}
+ \}
+\end{DoxyCompactItemize}

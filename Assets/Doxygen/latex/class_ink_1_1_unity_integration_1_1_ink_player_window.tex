@@ -1,0 +1,161 @@
+\hypertarget{class_ink_1_1_unity_integration_1_1_ink_player_window}{}\doxysection{Ink.\+Unity\+Integration.\+Ink\+Player\+Window Class Reference}
+\label{class_ink_1_1_unity_integration_1_1_ink_player_window}\index{Ink.UnityIntegration.InkPlayerWindow@{Ink.UnityIntegration.InkPlayerWindow}}
+
+
+\mbox{\hyperlink{namespace_ink}{Ink}} player window. Tests stories in an editor window. Stories may be attached at runtime. \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_player_window_a748e60a59562b095087bb7db02e873d1}{Ink\+Player\+Window.\+Draw\+Story\+Property\+Field}} may be used for this.  
+
+
+Inheritance diagram for Ink.\+Unity\+Integration.\+Ink\+Player\+Window\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ink_1_1_unity_integration_1_1_ink_player_window}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_player_window_1_1_base_story_panel_state}{Base\+Story\+Panel\+State}}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_player_window_1_1_display_options}{Display\+Options}}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_player_window_1_1_divert_panel_state}{Divert\+Panel\+State}}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_player_window_1_1_function_panel_state}{Function\+Panel\+State}}
+\item 
+struct \mbox{\hyperlink{struct_ink_1_1_unity_integration_1_1_ink_player_window_1_1_ink_player_params}{Ink\+Player\+Params}}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_player_window_1_1_ink_player_window_state}{Ink\+Player\+Window\+State}}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_player_window_1_1_named_content_panel_state}{Named\+Content\+Panel\+State}}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_player_window_1_1_observed_variables_panel_state}{Observed\+Variables\+Panel\+State}}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_player_window_1_1_player_options}{Player\+Options}}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_player_window_1_1_story_panel_state}{Story\+Panel\+State}}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_player_window_1_1_variables_panel_state}{Variables\+Panel\+State}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_player_window_aaf20831f91c95aeec66f708ff92f526e}\label{class_ink_1_1_unity_integration_1_1_ink_player_window_aaf20831f91c95aeec66f708ff92f526e}} 
+enum {\bfseries Auto\+Scroll\+Mode} \{ {\bfseries NONE}
+, {\bfseries Snap}
+, {\bfseries Smooth}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_player_window_ad0c04fb48ee42d6aa24b637198a92f30}\label{class_ink_1_1_unity_integration_1_1_ink_player_window_ad0c04fb48ee42d6aa24b637198a92f30}} 
+delegate void {\bfseries Context\+Menu\+Delegate} (Generic\+Menu context\+Menu, \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_debugging_1_1_ink_history_content_item}{Ink\+History\+Content\+Item}} content)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_player_window_a748e60a59562b095087bb7db02e873d1}{Draw\+Story\+Property\+Field}} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}} story, GUIContent label)
+\begin{DoxyCompactList}\small\item\em Draws a property field for a story using GUILayout, allowing you to attach stories to the player window for debugging. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_player_window_a5b0795b4e1266e3937a254e8b5e30429}\label{class_ink_1_1_unity_integration_1_1_ink_player_window_a5b0795b4e1266e3937a254e8b5e30429}} 
+static void {\bfseries Draw\+Story\+Property\+Field} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}} story, \mbox{\hyperlink{struct_ink_1_1_unity_integration_1_1_ink_player_window_1_1_ink_player_params}{Ink\+Player\+Params}} player\+Params, GUIContent label)
+\item 
+static void \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_player_window_a3381679da573f65cced8bd54bac180f9}{Draw\+Story\+Property\+Field}} (Rect position, \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}} story, GUIContent label)
+\begin{DoxyCompactList}\small\item\em Draws a property field for a story using GUI, allowing you to attach stories to the player window for debugging. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_player_window_a2142001ee38b629113d8700430ce43c2}\label{class_ink_1_1_unity_integration_1_1_ink_player_window_a2142001ee38b629113d8700430ce43c2}} 
+static \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_player_window}{Ink\+Player\+Window}} {\bfseries Get\+Window} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_player_window_af4fe79255346278496566446aeda819f}\label{class_ink_1_1_unity_integration_1_1_ink_player_window_af4fe79255346278496566446aeda819f}} 
+static \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_player_window}{Ink\+Player\+Window}} {\bfseries Get\+Window} (bool focus)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_player_window_a3017f2a8a31c55b5ab6db79547fb5ec2}\label{class_ink_1_1_unity_integration_1_1_ink_player_window_a3017f2a8a31c55b5ab6db79547fb5ec2}} 
+static void {\bfseries Attach} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}} story)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_player_window_a98a83c4aecb71e5fca0c87c78192c5cb}\label{class_ink_1_1_unity_integration_1_1_ink_player_window_a98a83c4aecb71e5fca0c87c78192c5cb}} 
+static void {\bfseries Attach} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}} story, \mbox{\hyperlink{struct_ink_1_1_unity_integration_1_1_ink_player_window_1_1_ink_player_params}{Ink\+Player\+Params}} ink\+Player\+Params)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_player_window_a102d53a57df68bad95bc9d68ebe94c82}\label{class_ink_1_1_unity_integration_1_1_ink_player_window_a102d53a57df68bad95bc9d68ebe94c82}} 
+static void {\bfseries Detach} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_player_window_a509185332fcecf9452938f415735627f}\label{class_ink_1_1_unity_integration_1_1_ink_player_window_a509185332fcecf9452938f415735627f}} 
+static void {\bfseries Load\+And\+Play} (Text\+Asset story\+JSONText\+Asset)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_player_window_a8ea66652fda6575cde73b98c74fad23c}\label{class_ink_1_1_unity_integration_1_1_ink_player_window_a8ea66652fda6575cde73b98c74fad23c}} 
+static void {\bfseries Load\+And\+Play} (string story\+JSON)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_player_window_ae14ee2231514be86b66e0f4d6b89c439}\label{class_ink_1_1_unity_integration_1_1_ink_player_window_ae14ee2231514be86b66e0f4d6b89c439}} 
+static \mbox{\hyperlink{struct_ink_1_1_unity_integration_1_1_ink_player_window_1_1_ink_player_params}{Ink\+Player\+Params}} {\bfseries player\+Params}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_player_window_adf0833c793bbbf2147f3f6a3f1cc2e50}\label{class_ink_1_1_unity_integration_1_1_ink_player_window_adf0833c793bbbf2147f3f6a3f1cc2e50}} 
+static \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_player_window_1_1_player_options}{Player\+Options}} {\bfseries player\+Options} = new \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_player_window_1_1_player_options}{Player\+Options}}()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_player_window_a1f7720bd84df03f8ca8a34f4f6d3377c}\label{class_ink_1_1_unity_integration_1_1_ink_player_window_a1f7720bd84df03f8ca8a34f4f6d3377c}} 
+static List$<$ Context\+Menu\+Delegate $>$ {\bfseries context\+Menu\+Delegates} = new List$<$Context\+Menu\+Delegate$>$()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_player_window_a895ac153ab0a338a8b0e3a0902bcabfb}\label{class_ink_1_1_unity_integration_1_1_ink_player_window_a895ac153ab0a338a8b0e3a0902bcabfb}} 
+static Date\+Time {\bfseries date\+Time\+Now}
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_player_window_a997272b6e598986792c45afcabf30a26}\label{class_ink_1_1_unity_integration_1_1_ink_player_window_a997272b6e598986792c45afcabf30a26}} 
+static bool {\bfseries is\+Open}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_player_window_a8f99ed7f6ebf9ac33f11ebb4a2981564}\label{class_ink_1_1_unity_integration_1_1_ink_player_window_a8f99ed7f6ebf9ac33f11ebb4a2981564}} 
+static bool {\bfseries attached}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_player_window_a521c311c3d37fa53020304996e4e35fb}\label{class_ink_1_1_unity_integration_1_1_ink_player_window_a521c311c3d37fa53020304996e4e35fb}} 
+static \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}} {\bfseries story}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_player_window_a68f0b54727106014550cc1b54694b7c3}\label{class_ink_1_1_unity_integration_1_1_ink_player_window_a68f0b54727106014550cc1b54694b7c3}} 
+static Text\+Asset {\bfseries story\+State\+Text\+Asset}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{namespace_ink}{Ink}} player window. Tests stories in an editor window. Stories may be attached at runtime. \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_player_window_a748e60a59562b095087bb7db02e873d1}{Ink\+Player\+Window.\+Draw\+Story\+Property\+Field}} may be used for this. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_player_window_a3381679da573f65cced8bd54bac180f9}\label{class_ink_1_1_unity_integration_1_1_ink_player_window_a3381679da573f65cced8bd54bac180f9}} 
+\index{Ink.UnityIntegration.InkPlayerWindow@{Ink.UnityIntegration.InkPlayerWindow}!DrawStoryPropertyField@{DrawStoryPropertyField}}
+\index{DrawStoryPropertyField@{DrawStoryPropertyField}!Ink.UnityIntegration.InkPlayerWindow@{Ink.UnityIntegration.InkPlayerWindow}}
+\doxysubsubsection{\texorpdfstring{DrawStoryPropertyField()}{DrawStoryPropertyField()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily static void Ink.\+Unity\+Integration.\+Ink\+Player\+Window.\+Draw\+Story\+Property\+Field (\begin{DoxyParamCaption}\item[{Rect}]{position,  }\item[{\mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}}}]{story,  }\item[{GUIContent}]{label }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Draws a property field for a story using GUI, allowing you to attach stories to the player window for debugging. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & Position.\\
+\hline
+{\em story} & Story.\\
+\hline
+{\em label} & Label.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_player_window_a748e60a59562b095087bb7db02e873d1}\label{class_ink_1_1_unity_integration_1_1_ink_player_window_a748e60a59562b095087bb7db02e873d1}} 
+\index{Ink.UnityIntegration.InkPlayerWindow@{Ink.UnityIntegration.InkPlayerWindow}!DrawStoryPropertyField@{DrawStoryPropertyField}}
+\index{DrawStoryPropertyField@{DrawStoryPropertyField}!Ink.UnityIntegration.InkPlayerWindow@{Ink.UnityIntegration.InkPlayerWindow}}
+\doxysubsubsection{\texorpdfstring{DrawStoryPropertyField()}{DrawStoryPropertyField()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily static void Ink.\+Unity\+Integration.\+Ink\+Player\+Window.\+Draw\+Story\+Property\+Field (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}}}]{story,  }\item[{GUIContent}]{label }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Draws a property field for a story using GUILayout, allowing you to attach stories to the player window for debugging. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em story} & Story.\\
+\hline
+{\em label} & Label.\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Editor/\+Tools/\+Player Window/Ink\+Player\+Window.\+cs\end{DoxyCompactItemize}

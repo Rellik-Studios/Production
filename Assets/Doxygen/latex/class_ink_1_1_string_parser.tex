@@ -1,0 +1,207 @@
+\hypertarget{class_ink_1_1_string_parser}{}\doxysection{Ink.\+String\+Parser Class Reference}
+\label{class_ink_1_1_string_parser}\index{Ink.StringParser@{Ink.StringParser}}
+Inheritance diagram for Ink.\+String\+Parser\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ink_1_1_string_parser}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_string_parser_1_1_parse_success_struct}{Parse\+Success\+Struct}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_a3311d8f9c8d4c5a0b42b21dd4f81efc5}\label{class_ink_1_1_string_parser_a3311d8f9c8d4c5a0b42b21dd4f81efc5}} 
+delegate object {\bfseries Parse\+Rule} ()
+\item 
+delegate T \mbox{\hyperlink{class_ink_1_1_string_parser_a8e383ca9e2058aaed72b3057c70ee303}{Specific\+Parse\+Rule$<$ T $>$}} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_ad15ee9ba3f278dd012e9eb7d28c9855e}\label{class_ink_1_1_string_parser_ad15ee9ba3f278dd012e9eb7d28c9855e}} 
+delegate void {\bfseries Error\+Handler} (string message, int index, int line\+Index, bool is\+Warning)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_a02278bc53b11e4ea92d1980207b56302}\label{class_ink_1_1_string_parser_a02278bc53b11e4ea92d1980207b56302}} 
+{\bfseries String\+Parser} (string str)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_aabf174d598c408efaea1be8390fd99fa}\label{class_ink_1_1_string_parser_aabf174d598c408efaea1be8390fd99fa}} 
+string {\bfseries Line\+Remainder} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_a73372331c5e6d897c2121ce6b2eebeff}\label{class_ink_1_1_string_parser_a73372331c5e6d897c2121ce6b2eebeff}} 
+void {\bfseries Set\+Flag} (uint flag, bool true\+Or\+False)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_a6af2b2fd4db9c42251c6f1998c5f5b89}\label{class_ink_1_1_string_parser_a6af2b2fd4db9c42251c6f1998c5f5b89}} 
+bool {\bfseries Get\+Flag} (uint flag)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_a2fb2f9a647b6f946ae08521837ea4b0b}\label{class_ink_1_1_string_parser_a2fb2f9a647b6f946ae08521837ea4b0b}} 
+object {\bfseries Parse\+Object} (Parse\+Rule rule)
+\item 
+T \mbox{\hyperlink{class_ink_1_1_string_parser_a6ba07e9512580da90a4adc72f698fdde}{Parse$<$ T $>$}} (Specific\+Parse\+Rule$<$ T $>$ rule)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_afecad1d3c2f25f658786be72fcfc6e06}\label{class_ink_1_1_string_parser_afecad1d3c2f25f658786be72fcfc6e06}} 
+object {\bfseries One\+Of} (params Parse\+Rule\mbox{[}$\,$\mbox{]} array)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_acf1374ff40dcca72a0b37e22278e3073}\label{class_ink_1_1_string_parser_acf1374ff40dcca72a0b37e22278e3073}} 
+List$<$ object $>$ {\bfseries One\+Or\+More} (Parse\+Rule rule)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_ad9ce4b24bf9d3998c4ddb8d37ad79959}\label{class_ink_1_1_string_parser_ad9ce4b24bf9d3998c4ddb8d37ad79959}} 
+Parse\+Rule {\bfseries Optional} (Parse\+Rule rule)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_a2cad3299f16a01ad9b2f7ba895b4427c}\label{class_ink_1_1_string_parser_a2cad3299f16a01ad9b2f7ba895b4427c}} 
+Parse\+Rule {\bfseries Exclude} (Parse\+Rule rule)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_a661b8ca1a47d91a18f67637cc6ee941c}\label{class_ink_1_1_string_parser_a661b8ca1a47d91a18f67637cc6ee941c}} 
+Parse\+Rule {\bfseries Optional\+Exclude} (Parse\+Rule rule)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_a62fa790c5cca167f1e1a17bb43c0678e}\label{class_ink_1_1_string_parser_a62fa790c5cca167f1e1a17bb43c0678e}} 
+List$<$ T $>$ {\bfseries Interleave$<$ T $>$} (Parse\+Rule ruleA, Parse\+Rule ruleB, Parse\+Rule until\+Terminator=null, bool flatten=true)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_ac0ec657333c88c9a26be2e392b5d91a3}\label{class_ink_1_1_string_parser_ac0ec657333c88c9a26be2e392b5d91a3}} 
+string {\bfseries Parse\+String} (string str)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_af102d15912b5a56c8ea28b5fe2017ff3}\label{class_ink_1_1_string_parser_af102d15912b5a56c8ea28b5fe2017ff3}} 
+char {\bfseries Parse\+Single\+Character} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_aec1beb99d82d4c49626195024f6f13a6}\label{class_ink_1_1_string_parser_aec1beb99d82d4c49626195024f6f13a6}} 
+string {\bfseries Parse\+Until\+Characters\+From\+String} (string str, int max\+Count=-\/1)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_a4019eb14fa7721cb169e09f780ebe7e7}\label{class_ink_1_1_string_parser_a4019eb14fa7721cb169e09f780ebe7e7}} 
+string {\bfseries Parse\+Until\+Characters\+From\+Char\+Set} (\mbox{\hyperlink{class_ink_1_1_character_set}{Character\+Set}} char\+Set, int max\+Count=-\/1)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_ad7a5e7ffaa6ff9d223fd76c3db62bad8}\label{class_ink_1_1_string_parser_ad7a5e7ffaa6ff9d223fd76c3db62bad8}} 
+string {\bfseries Parse\+Characters\+From\+String} (string str, int max\+Count=-\/1)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_a9153ebea8e65ef7a3262aff1db12bef5}\label{class_ink_1_1_string_parser_a9153ebea8e65ef7a3262aff1db12bef5}} 
+string {\bfseries Parse\+Characters\+From\+String} (string str, bool should\+Include\+Str\+Chars, int max\+Count=-\/1)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_aa540eeff2e43505a48cacb98b3035944}\label{class_ink_1_1_string_parser_aa540eeff2e43505a48cacb98b3035944}} 
+string {\bfseries Parse\+Characters\+From\+Char\+Set} (\mbox{\hyperlink{class_ink_1_1_character_set}{Character\+Set}} char\+Set, bool should\+Include\+Chars=true, int max\+Count=-\/1)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_aef32438a0d14e5bf12102a5b201bc833}\label{class_ink_1_1_string_parser_aef32438a0d14e5bf12102a5b201bc833}} 
+object {\bfseries Peek} (Parse\+Rule rule)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_ae122a3ac78273c114d66cfda959ca9e0}\label{class_ink_1_1_string_parser_ae122a3ac78273c114d66cfda959ca9e0}} 
+string {\bfseries Parse\+Until} (Parse\+Rule stop\+Rule, \mbox{\hyperlink{class_ink_1_1_character_set}{Character\+Set}} pause\+Characters=null, \mbox{\hyperlink{class_ink_1_1_character_set}{Character\+Set}} end\+Characters=null)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_a219bad496b00ac387795a81b5239f87b}\label{class_ink_1_1_string_parser_a219bad496b00ac387795a81b5239f87b}} 
+int? {\bfseries Parse\+Int} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_a57946bfc564a15e51281fa200716b79a}\label{class_ink_1_1_string_parser_a57946bfc564a15e51281fa200716b79a}} 
+float? {\bfseries Parse\+Float} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_af6d9a5131693d34dcfe96199bd8f832f}\label{class_ink_1_1_string_parser_af6d9a5131693d34dcfe96199bd8f832f}} 
+static \mbox{\hyperlink{class_ink_1_1_string_parser_1_1_parse_success_struct}{Parse\+Success\+Struct}} {\bfseries Parse\+Success} = new \mbox{\hyperlink{class_ink_1_1_string_parser_1_1_parse_success_struct}{Parse\+Success\+Struct}}()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_aed343c4440ead227a164b6f9885ab867}\label{class_ink_1_1_string_parser_aed343c4440ead227a164b6f9885ab867}} 
+static \mbox{\hyperlink{class_ink_1_1_character_set}{Character\+Set}} {\bfseries numbers\+Character\+Set} = new \mbox{\hyperlink{class_ink_1_1_character_set}{Character\+Set}}(\char`\"{}0123456789\char`\"{})
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_afa8f8d20a2c9e79cbbd86f0d0eb08c3e}\label{class_ink_1_1_string_parser_afa8f8d20a2c9e79cbbd86f0d0eb08c3e}} 
+virtual string {\bfseries Pre\+Process\+Input\+String} (string str)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_a0a3fd9cbd9cd5efb5dd60d3489ed486d}\label{class_ink_1_1_string_parser_a0a3fd9cbd9cd5efb5dd60d3489ed486d}} 
+int {\bfseries Begin\+Rule} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_a85b4869eedf9e0f16e07f71a6b31974d}\label{class_ink_1_1_string_parser_a85b4869eedf9e0f16e07f71a6b31974d}} 
+object {\bfseries Fail\+Rule} (int expected\+Rule\+Id)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_ab064f402c1879da55c9052fe002b0cd6}\label{class_ink_1_1_string_parser_ab064f402c1879da55c9052fe002b0cd6}} 
+void {\bfseries Cancel\+Rule} (int expected\+Rule\+Id)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_a49fb532f54a25e39f99a52ac45c42085}\label{class_ink_1_1_string_parser_a49fb532f54a25e39f99a52ac45c42085}} 
+object {\bfseries Succeed\+Rule} (int expected\+Rule\+Id, object result=null)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_aaa47516d5519a9ecf291e2deee07c996}\label{class_ink_1_1_string_parser_aaa47516d5519a9ecf291e2deee07c996}} 
+virtual void {\bfseries Rule\+Did\+Succeed} (object result, \mbox{\hyperlink{class_ink_1_1_string_parser_state_1_1_element}{String\+Parser\+State.\+Element}} start\+State, \mbox{\hyperlink{class_ink_1_1_string_parser_state_1_1_element}{String\+Parser\+State.\+Element}} end\+State)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_adb1f5e2dcd62c1cf026967f5dc5d56c7}\label{class_ink_1_1_string_parser_adb1f5e2dcd62c1cf026967f5dc5d56c7}} 
+object {\bfseries Expect} (Parse\+Rule rule, string message=null, Parse\+Rule recovery\+Rule=null)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_a5efacc07928adb9c9ef1b6f11b843039}\label{class_ink_1_1_string_parser_a5efacc07928adb9c9ef1b6f11b843039}} 
+void {\bfseries Error} (string message, bool is\+Warning=false)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_a19885d07370f02a08f409b40942afce5}\label{class_ink_1_1_string_parser_a19885d07370f02a08f409b40942afce5}} 
+void {\bfseries Error\+With\+Parsed\+Object} (string message, \mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Parsed.\+Object}} result, bool is\+Warning=false)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_ac5e059414dd747be5ee31c6368f60ff9}\label{class_ink_1_1_string_parser_ac5e059414dd747be5ee31c6368f60ff9}} 
+void {\bfseries Error\+On\+Line} (string message, int line\+Number, bool is\+Warning)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_a24a17acf08f614b44cc161db18b1def5}\label{class_ink_1_1_string_parser_a24a17acf08f614b44cc161db18b1def5}} 
+void {\bfseries Warning} (string message)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_afc5e276b82ae05f54d8ef1d04a946b71}\label{class_ink_1_1_string_parser_afc5e276b82ae05f54d8ef1d04a946b71}} 
+Parse\+Rule {\bfseries String} (string str)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_ae590aa10089563b43ad066be66b71145}\label{class_ink_1_1_string_parser_ae590aa10089563b43ad066be66b71145}} 
+string {\bfseries Parse\+Newline} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_a753ad6dda92cf03371fcc95aee549536}\label{class_ink_1_1_string_parser_a753ad6dda92cf03371fcc95aee549536}} 
+Error\+Handler {\bfseries error\+Handler}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_a2515230ffbc61bc3d7b55ae9bed5a4f6}\label{class_ink_1_1_string_parser_a2515230ffbc61bc3d7b55ae9bed5a4f6}} 
+char {\bfseries current\+Character}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_aac1709f1792bc98b12a88da8bb511b21}\label{class_ink_1_1_string_parser_aac1709f1792bc98b12a88da8bb511b21}} 
+\mbox{\hyperlink{class_ink_1_1_string_parser_state}{String\+Parser\+State}} {\bfseries state}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_a1182c7018c37ea86f3b32e45f00b962a}\label{class_ink_1_1_string_parser_a1182c7018c37ea86f3b32e45f00b962a}} 
+bool {\bfseries had\+Error}\hspace{0.3cm}{\ttfamily  \mbox{[}getprotected set\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_a42e9a797d89deb389b03b34bb473ce82}\label{class_ink_1_1_string_parser_a42e9a797d89deb389b03b34bb473ce82}} 
+bool {\bfseries end\+Of\+Input}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_adafd6b6367b56bdd9028a4b6a578dd3b}\label{class_ink_1_1_string_parser_adafd6b6367b56bdd9028a4b6a578dd3b}} 
+string {\bfseries remaining\+String}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_a3b9838dfdeac93597bebebeb56e32b24}\label{class_ink_1_1_string_parser_a3b9838dfdeac93597bebebeb56e32b24}} 
+int {\bfseries remaining\+Length}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_a5825d3f087c9b3b34b9f8c97246cf4a8}\label{class_ink_1_1_string_parser_a5825d3f087c9b3b34b9f8c97246cf4a8}} 
+string {\bfseries input\+String}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_a9b3c643e397fc7505148a8f393aef572}\label{class_ink_1_1_string_parser_a9b3c643e397fc7505148a8f393aef572}} 
+int {\bfseries line\+Index}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_a755fb3b70b4fd881ca05e6bd0fbbe2cf}\label{class_ink_1_1_string_parser_a755fb3b70b4fd881ca05e6bd0fbbe2cf}} 
+int {\bfseries character\+In\+Line\+Index}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_string_parser_a6ffe346dacc26088ea39215966e8a854}\label{class_ink_1_1_string_parser_a6ffe346dacc26088ea39215966e8a854}} 
+int {\bfseries index}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_ink_1_1_string_parser_a6ba07e9512580da90a4adc72f698fdde}\label{class_ink_1_1_string_parser_a6ba07e9512580da90a4adc72f698fdde}} 
+\index{Ink.StringParser@{Ink.StringParser}!Parse$<$ T $>$@{Parse$<$ T $>$}}
+\index{Parse$<$ T $>$@{Parse$<$ T $>$}!Ink.StringParser@{Ink.StringParser}}
+\doxysubsubsection{\texorpdfstring{Parse$<$ T $>$()}{Parse< T >()}}
+{\footnotesize\ttfamily T Ink.\+String\+Parser.\+Parse$<$ T $>$ (\begin{DoxyParamCaption}\item[{Specific\+Parse\+Rule$<$ T $>$}]{rule }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em class}]\end{description}
+\end{Desc}
+\mbox{\Hypertarget{class_ink_1_1_string_parser_a8e383ca9e2058aaed72b3057c70ee303}\label{class_ink_1_1_string_parser_a8e383ca9e2058aaed72b3057c70ee303}} 
+\index{Ink.StringParser@{Ink.StringParser}!SpecificParseRule$<$ T $>$@{SpecificParseRule$<$ T $>$}}
+\index{SpecificParseRule$<$ T $>$@{SpecificParseRule$<$ T $>$}!Ink.StringParser@{Ink.StringParser}}
+\doxysubsubsection{\texorpdfstring{SpecificParseRule$<$ T $>$()}{SpecificParseRule< T >()}}
+{\footnotesize\ttfamily delegate T Ink.\+String\+Parser.\+Specific\+Parse\+Rule$<$ T $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em class}]\end{description}
+\end{Desc}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Ink\+Libs/\+Ink\+Compiler/\+String\+Parser/String\+Parser.\+cs\end{DoxyCompactItemize}

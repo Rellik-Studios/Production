@@ -1,0 +1,668 @@
+\hypertarget{class_ink_1_1_runtime_1_1_story}{}\doxysection{Ink.\+Runtime.\+Story Class Reference}
+\label{class_ink_1_1_runtime_1_1_story}\index{Ink.Runtime.Story@{Ink.Runtime.Story}}
+
+
+A \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}} is the core class that represents a complete \mbox{\hyperlink{namespace_ink}{Ink}} narrative, and manages the evaluation and state of it.  
+
+
+Inheritance diagram for Ink.\+Runtime.\+Story\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ink_1_1_runtime_1_1_story}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_ab284ea9005b226eeacb11f2eabb174d6}\label{class_ink_1_1_runtime_1_1_story_ab284ea9005b226eeacb11f2eabb174d6}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_profiler}{Profiler}} {\bfseries Start\+Profiling} ()
+\begin{DoxyCompactList}\small\item\em Start recording ink profiling information during calls to Continue on \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}}. Return a \mbox{\hyperlink{class_ink_1_1_runtime_1_1_profiler}{Profiler}} instance that you can request a report from when you\textquotesingle{}re finished. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_abde8f6bf30f3472a8106091b7483df12}\label{class_ink_1_1_runtime_1_1_story_abde8f6bf30f3472a8106091b7483df12}} 
+void {\bfseries End\+Profiling} ()
+\begin{DoxyCompactList}\small\item\em Stop recording ink profiling information during calls to Continue on \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}}. To generate a report from the profiler, call \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_ae8fd791cffb5da69d6396d4f1e49bcf4}\label{class_ink_1_1_runtime_1_1_story_ae8fd791cffb5da69d6396d4f1e49bcf4}} 
+{\bfseries Story} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_container}{Container}} content\+Container, List$<$ \mbox{\hyperlink{class_ink_1_1_runtime_1_1_list_definition}{Runtime.\+List\+Definition}} $>$ lists=null)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_ab8aef5f93e3d5f21480b4c656a2da434}\label{class_ink_1_1_runtime_1_1_story_ab8aef5f93e3d5f21480b4c656a2da434}} 
+{\bfseries Story} (string json\+String)
+\begin{DoxyCompactList}\small\item\em Construct a \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}} object using a JSON string compiled through inklecate. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a76fd576b190d2a84c196ad3cb432136c}\label{class_ink_1_1_runtime_1_1_story_a76fd576b190d2a84c196ad3cb432136c}} 
+string {\bfseries To\+Json} ()
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}} itself in JSON representation. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a4bc74db07bbb7e766ee66b3b426ae136}\label{class_ink_1_1_runtime_1_1_story_a4bc74db07bbb7e766ee66b3b426ae136}} 
+void {\bfseries To\+Json} (Stream stream)
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}} itself in JSON representation. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_afd754b288f207b292ca0c2782ef967e4}\label{class_ink_1_1_runtime_1_1_story_afd754b288f207b292ca0c2782ef967e4}} 
+void {\bfseries Reset\+State} ()
+\begin{DoxyCompactList}\small\item\em Reset the \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}} back to its initial state as it was when it was first constructed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a984cc9e883163812a2684f3bc6319e61}\label{class_ink_1_1_runtime_1_1_story_a984cc9e883163812a2684f3bc6319e61}} 
+void {\bfseries Reset\+Callstack} ()
+\begin{DoxyCompactList}\small\item\em Unwinds the callstack. Useful to reset the \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}}\textquotesingle{}s evaluation without actually changing any meaningful state, for example if you want to exit a section of story prematurely and tell it to go elsewhere with a call to Choose\+Path\+String(...). Doing so without calling \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a984cc9e883163812a2684f3bc6319e61}{Reset\+Callstack()}} could cause unexpected issues if, for example, the \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}} was in a tunnel already. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a4b6a6a38b00bb7520a0ba86fe1ab692f}\label{class_ink_1_1_runtime_1_1_story_a4b6a6a38b00bb7520a0ba86fe1ab692f}} 
+void {\bfseries Switch\+Flow} (string flow\+Name)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_ade9cac829cd2098bb3c032feb499fee8}\label{class_ink_1_1_runtime_1_1_story_ade9cac829cd2098bb3c032feb499fee8}} 
+void {\bfseries Remove\+Flow} (string flow\+Name)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a63e32d8d9c3f29e4d15bcd2e492e9000}\label{class_ink_1_1_runtime_1_1_story_a63e32d8d9c3f29e4d15bcd2e492e9000}} 
+void {\bfseries Switch\+To\+Default\+Flow} ()
+\item 
+string \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a92d12892609d28c1b21f6cd809a4c643}{Continue}} ()
+\begin{DoxyCompactList}\small\item\em Continue the story for one line of content, if possible. If you\textquotesingle{}re not sure if there\textquotesingle{}s more content available, for example if you want to check whether you\textquotesingle{}re at a choice point or at the end of the story, you should call {\ttfamily can\+Continue} before calling this function. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a1d21a6bc6f59443c6b5da66915aa532a}\label{class_ink_1_1_runtime_1_1_story_a1d21a6bc6f59443c6b5da66915aa532a}} 
+void {\bfseries Continue\+Async} (float millisecs\+Limit\+Async)
+\begin{DoxyCompactList}\small\item\em An \char`\"{}asnychronous\char`\"{} version of Continue that only partially evaluates the ink, with a budget of a certain time limit. It will exit ink evaluation early if the evaluation isn\textquotesingle{}t complete within the time limit, with the async\+Continue\+Complete property being false. This is useful if ink evaluation takes a long time, and you want to distribute it over multiple game frames for smoother animation. If you pass a limit of zero, then it will fully evaluate the ink in the same way as calling Continue (and in fact, this exactly what Continue does internally). \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a282a4475e9f865472cb7007d788584de}{Continue\+Maximally}} ()
+\begin{DoxyCompactList}\small\item\em Continue the story until the next choice point or until it runs out of content. This is as opposed to the \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a92d12892609d28c1b21f6cd809a4c643}{Continue()}} method which only evaluates one line of output at a time. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_aac2056ed5bac2e50de4b52e462e03d82}\label{class_ink_1_1_runtime_1_1_story_aac2056ed5bac2e50de4b52e462e03d82}} 
+\mbox{\hyperlink{struct_ink_1_1_runtime_1_1_search_result}{Search\+Result}} {\bfseries Content\+At\+Path} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_path}{Path}} path)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_af2c50b050feca3cc4a71ac4ffd734179}\label{class_ink_1_1_runtime_1_1_story_af2c50b050feca3cc4a71ac4ffd734179}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_container}{Runtime.\+Container}} {\bfseries Knot\+Container\+With\+Name} (string name)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a922dd912b8c6d650a01b38541e786430}\label{class_ink_1_1_runtime_1_1_story_a922dd912b8c6d650a01b38541e786430}} 
+\mbox{\hyperlink{struct_ink_1_1_runtime_1_1_pointer}{Pointer}} {\bfseries Pointer\+At\+Path} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_path}{Path}} path)
+\item 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_state}{Story\+State}} \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a114c71bba4f8abb1b07178f9eed42835}{Copy\+State\+For\+Background\+Thread\+Save}} ()
+\begin{DoxyCompactList}\small\item\em Advanced usage! If you have a large story, and saving state to JSON takes too long for your framerate, you can temporarily freeze a copy of the state for saving on a separate thread. Internally, the engine maintains a \char`\"{}diff patch\char`\"{}. When you\textquotesingle{}ve finished saving your state, call \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a6c2ccd9ec650e62820202de77e3e3781}{Background\+Save\+Complete()}} and that diff patch will be applied, allowing the story to continue in its usual mode. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a6c2ccd9ec650e62820202de77e3e3781}\label{class_ink_1_1_runtime_1_1_story_a6c2ccd9ec650e62820202de77e3e3781}} 
+void {\bfseries Background\+Save\+Complete} ()
+\begin{DoxyCompactList}\small\item\em See Copy\+State\+For\+Background\+Thread\+Save. This method releases the \char`\"{}frozen\char`\"{} save state, applying its patch that it was using internally. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_aa89df7f1440aaaa155fda32b56a99c58}{Choose\+Path\+String}} (string path, bool reset\+Callstack=true, params object\mbox{[}$\,$\mbox{]} arguments)
+\begin{DoxyCompactList}\small\item\em Change the current position of the story to the given path. From here you can call \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a92d12892609d28c1b21f6cd809a4c643}{Continue()}} to evaluate the next line. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_acbd2daf4d36b07d4154dd48be71ff04b}\label{class_ink_1_1_runtime_1_1_story_acbd2daf4d36b07d4154dd48be71ff04b}} 
+void {\bfseries Choose\+Path} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_path}{Path}} p, bool incrementing\+Turn\+Index=true)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a6239621f4ab29c480e74573a2f529f2b}\label{class_ink_1_1_runtime_1_1_story_a6239621f4ab29c480e74573a2f529f2b}} 
+void {\bfseries Choose\+Choice\+Index} (int choice\+Idx)
+\begin{DoxyCompactList}\small\item\em Chooses the \mbox{\hyperlink{class_ink_1_1_runtime_1_1_choice}{Choice}} from the current\+Choices list with the given index. Internally, this sets the current content path to that pointed to by the \mbox{\hyperlink{class_ink_1_1_runtime_1_1_choice}{Choice}}, ready to continue story evaluation. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_abed1fe6a0c488678021950f3ba4125fe}{Has\+Function}} (string function\+Name)
+\begin{DoxyCompactList}\small\item\em Checks if a function exists. \end{DoxyCompactList}\item 
+object \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a0ce1426cd4ddbaa02057e5379a415312}{Evaluate\+Function}} (string function\+Name, params object\mbox{[}$\,$\mbox{]} arguments)
+\begin{DoxyCompactList}\small\item\em Evaluates a function defined in ink. \end{DoxyCompactList}\item 
+object \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a3a7ef83568f579a22c2062621024ee05}{Evaluate\+Function}} (string function\+Name, out string text\+Output, params object\mbox{[}$\,$\mbox{]} arguments)
+\begin{DoxyCompactList}\small\item\em Evaluates a function defined in ink, and gathers the possibly multi-\/line text as generated by the function. This text output is any text written as normal content within the function, as opposed to the return value, as returned with {\ttfamily $\sim$ return}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a9c404c8a5b79e656afd2175e90d28001}\label{class_ink_1_1_runtime_1_1_story_a9c404c8a5b79e656afd2175e90d28001}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Runtime.\+Object}} {\bfseries Evaluate\+Expression} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_container}{Runtime.\+Container}} expr\+Container)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a683279a4c544a8975bf750e912dc038e}\label{class_ink_1_1_runtime_1_1_story_a683279a4c544a8975bf750e912dc038e}} 
+void {\bfseries Call\+External\+Function} (string func\+Name, int number\+Of\+Arguments)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_ad4f67f07e481de1d7fb51dc14e149b9a}\label{class_ink_1_1_runtime_1_1_story_ad4f67f07e481de1d7fb51dc14e149b9a}} 
+delegate object {\bfseries External\+Function} (object\mbox{[}$\,$\mbox{]} args)
+\begin{DoxyCompactList}\small\item\em General purpose delegate definition for bound EXTERNAL function definitions from ink. Note that this version isn\textquotesingle{}t necessary if you have a function with three arguments or less -\/ see the overloads of Bind\+External\+Function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_ad49bddacbc1062aeaa8e749c65786123}{Bind\+External\+Function\+General}} (string func\+Name, \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_ad4f67f07e481de1d7fb51dc14e149b9a}{External\+Function}} func, bool lookahead\+Safe=true)
+\begin{DoxyCompactList}\small\item\em Most general form of function binding that returns an object and takes an array of object parameters. The only way to bind a function with more than 3 arguments. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a8686951abde71bc8e19d29af89d0d9ff}{Bind\+External\+Function}} (string func\+Name, Func$<$ object $>$ func, bool lookahead\+Safe=false)
+\begin{DoxyCompactList}\small\item\em Bind a C\# function to an ink EXTERNAL function declaration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a746a9919984610af157763b0b4dbd844}{Bind\+External\+Function}} (string func\+Name, Action act, bool lookahead\+Safe=false)
+\begin{DoxyCompactList}\small\item\em Bind a C\# Action to an ink EXTERNAL function declaration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a8690544a0d7b73083558e70957a98899}{Bind\+External\+Function$<$ T $>$}} (string func\+Name, Func$<$ T, object $>$ func, bool lookahead\+Safe=false)
+\begin{DoxyCompactList}\small\item\em Bind a C\# function to an ink EXTERNAL function declaration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a546a1a3232e4389473e18b2950b2448f}{Bind\+External\+Function$<$ T $>$}} (string func\+Name, Action$<$ T $>$ act, bool lookahead\+Safe=false)
+\begin{DoxyCompactList}\small\item\em Bind a C\# action to an ink EXTERNAL function declaration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a36579cdec3aa17335a56fbfc89e2977f}{Bind\+External\+Function$<$ T1, T2 $>$}} (string func\+Name, Func$<$ T1, T2, object $>$ func, bool lookahead\+Safe=false)
+\begin{DoxyCompactList}\small\item\em Bind a C\# function to an ink EXTERNAL function declaration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_ad321b1a3737d0162e2b5225440c57077}{Bind\+External\+Function$<$ T1, T2 $>$}} (string func\+Name, Action$<$ T1, T2 $>$ act, bool lookahead\+Safe=false)
+\begin{DoxyCompactList}\small\item\em Bind a C\# action to an ink EXTERNAL function declaration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_aa25c4af77a2b5db3e7d37a0db5e34dd6}{Bind\+External\+Function$<$ T1, T2, T3 $>$}} (string func\+Name, Func$<$ T1, T2, T3, object $>$ func, bool lookahead\+Safe=false)
+\begin{DoxyCompactList}\small\item\em Bind a C\# function to an ink EXTERNAL function declaration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_afe73d00bee563c187b450279f97681e3}{Bind\+External\+Function$<$ T1, T2, T3 $>$}} (string func\+Name, Action$<$ T1, T2, T3 $>$ act, bool lookahead\+Safe=false)
+\begin{DoxyCompactList}\small\item\em Bind a C\# action to an ink EXTERNAL function declaration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_aaef4dc0e4d6c7ce933a505c28a34a573}{Bind\+External\+Function$<$ T1, T2, T3, T4 $>$}} (string func\+Name, Func$<$ T1, T2, T3, T4, object $>$ func, bool lookahead\+Safe=false)
+\begin{DoxyCompactList}\small\item\em Bind a C\# function to an ink EXTERNAL function declaration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_aa351d1cca4616a174fcc17c30b106a98}{Bind\+External\+Function$<$ T1, T2, T3, T4 $>$}} (string func\+Name, Action$<$ T1, T2, T3, T4 $>$ act, bool lookahead\+Safe=false)
+\begin{DoxyCompactList}\small\item\em Bind a C\# action to an ink EXTERNAL function declaration. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a6ed2a5671a0805f8865bf1d10c3f8530}\label{class_ink_1_1_runtime_1_1_story_a6ed2a5671a0805f8865bf1d10c3f8530}} 
+void {\bfseries Unbind\+External\+Function} (string func\+Name)
+\begin{DoxyCompactList}\small\item\em Remove a binding for a named EXTERNAL ink function. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a4fe43c04dc3a0eafa634da91b53d6414}\label{class_ink_1_1_runtime_1_1_story_a4fe43c04dc3a0eafa634da91b53d6414}} 
+void {\bfseries Validate\+External\+Bindings} ()
+\begin{DoxyCompactList}\small\item\em Check that all EXTERNAL ink functions have a valid bound C\# function. Note that this is automatically called on the first call to \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a92d12892609d28c1b21f6cd809a4c643}{Continue()}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_acc5f9b4eda92872ac9b2db1a318bde06}\label{class_ink_1_1_runtime_1_1_story_acc5f9b4eda92872ac9b2db1a318bde06}} 
+delegate void {\bfseries Variable\+Observer} (string variable\+Name, object new\+Value)
+\begin{DoxyCompactList}\small\item\em Delegate definition for variable observation -\/ see Observe\+Variable. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a490e10a45dcc5bfa2bd24137f4f9f56b}{Observe\+Variable}} (string variable\+Name, \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_acc5f9b4eda92872ac9b2db1a318bde06}{Variable\+Observer}} observer)
+\begin{DoxyCompactList}\small\item\em When the named global variable changes it\textquotesingle{}s value, the observer will be called to notify it of the change. Note that if the value changes multiple times within the ink, the observer will only be called once, at the end of the ink\textquotesingle{}s evaluation. If, during the evaluation, it changes and then changes back again to its original value, it will still be called. Note that the observer will also be fired if the value of the variable is changed externally to the ink, by directly setting a value in story.\+variables\+State. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a28dde94e70397d18e99a1d6ab2890a54}{Observe\+Variables}} (IList$<$ string $>$ variable\+Names, \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_acc5f9b4eda92872ac9b2db1a318bde06}{Variable\+Observer}} observer)
+\begin{DoxyCompactList}\small\item\em Convenience function to allow multiple variables to be observed with the same observer delegate function. See the singular Observe\+Variable for details. The observer will get one call for every variable that has changed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_aeecaaa0c499022bfce0d5c8a236319fb}{Remove\+Variable\+Observer}} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_acc5f9b4eda92872ac9b2db1a318bde06}{Variable\+Observer}} observer=null, string specific\+Variable\+Name=null)
+\begin{DoxyCompactList}\small\item\em Removes the variable observer, to stop getting variable change notifications. If you pass a specific variable name, it will stop observing that particular one. If you pass null (or leave it blank, since it\textquotesingle{}s optional), then the observer will be removed from all variables that it\textquotesingle{}s subscribed to. If you pass in a specific variable name and null for the the observer, all observers for that variable will be removed. \end{DoxyCompactList}\item 
+List$<$ string $>$ \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a27cdf199b4b5cc0206e0fd2a768f273d}{Tags\+For\+Content\+At\+Path}} (string path)
+\begin{DoxyCompactList}\small\item\em Gets any tags associated with a particular knot or knot.\+stitch. These are defined as hash tags defined at the very top of a knot or stitch. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a6765ab1c9b433c43b06696cad0138a7a}\label{class_ink_1_1_runtime_1_1_story_a6765ab1c9b433c43b06696cad0138a7a}} 
+virtual string {\bfseries Build\+String\+Of\+Hierarchy} ()
+\begin{DoxyCompactList}\small\item\em Useful when debugging a (very short) story, to visualise the state of the story. Add this call as a watch and open the extended text. A left-\/arrow mark will denote the current point of the story. It\textquotesingle{}s only recommended that this is used on very short debug stories, since it can end up generate a large quantity of text otherwise. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a54fbf2bb884a87a1c3ab7f0e86e1ce8f}\label{class_ink_1_1_runtime_1_1_story_a54fbf2bb884a87a1c3ab7f0e86e1ce8f}} 
+void {\bfseries Error} (string message, bool use\+End\+Line\+Number=false)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a7a63ef485647f6e2186c07c5d9e536b5}\label{class_ink_1_1_runtime_1_1_story_a7a63ef485647f6e2186c07c5d9e536b5}} 
+void {\bfseries Warning} (string message)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_af6fcab0d7792577172b6edbacc3a39ee}\label{class_ink_1_1_runtime_1_1_story_af6fcab0d7792577172b6edbacc3a39ee}} 
+const int {\bfseries ink\+Version\+Current} = 20
+\begin{DoxyCompactList}\small\item\em The current version of the ink story file format. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a87ddaf21c102098bf0c15e6e51334dcd}\label{class_ink_1_1_runtime_1_1_story_a87ddaf21c102098bf0c15e6e51334dcd}} 
+List$<$ \mbox{\hyperlink{class_ink_1_1_runtime_1_1_choice}{Choice}} $>$ {\bfseries current\+Choices}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The list of \mbox{\hyperlink{class_ink_1_1_runtime_1_1_choice}{Choice}} objects available at the current point in the \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}}. This list will be populated as the \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}} is stepped through with the \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a92d12892609d28c1b21f6cd809a4c643}{Continue()}} method. Once can\+Continue becomes false, this list will be populated, and is usually (but not always) on the final \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a92d12892609d28c1b21f6cd809a4c643}{Continue()}} step. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a91746b38116cdec54cff24526ac4c182}\label{class_ink_1_1_runtime_1_1_story_a91746b38116cdec54cff24526ac4c182}} 
+string {\bfseries current\+Text}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The latest line of text to be generated from a \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a92d12892609d28c1b21f6cd809a4c643}{Continue()}} call. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a183ece5ec7a05b1d12b0f45f8b8bb7a0}\label{class_ink_1_1_runtime_1_1_story_a183ece5ec7a05b1d12b0f45f8b8bb7a0}} 
+List$<$ string $>$ {\bfseries current\+Tags}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets a list of tags as defined with \textquotesingle{}\#\textquotesingle{} in source that were seen during the latest \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a92d12892609d28c1b21f6cd809a4c643}{Continue()}} call. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_af1aa3efff0833fa2a139511306cc4bf3}\label{class_ink_1_1_runtime_1_1_story_af1aa3efff0833fa2a139511306cc4bf3}} 
+List$<$ string $>$ {\bfseries current\+Errors}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Any errors generated during evaluation of the \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a8fce00fcb4ef812c8108db337f50ca8c}\label{class_ink_1_1_runtime_1_1_story_a8fce00fcb4ef812c8108db337f50ca8c}} 
+List$<$ string $>$ {\bfseries current\+Warnings}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Any warnings generated during evaluation of the \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a6fbe31b78a54596d02d00fd5a4120b43}\label{class_ink_1_1_runtime_1_1_story_a6fbe31b78a54596d02d00fd5a4120b43}} 
+string {\bfseries current\+Flow\+Name}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The current flow name if using multi-\/flow funtionality -\/ see Switch\+Flow \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a6ef91acc60934ad560f83e3c0492edf5}\label{class_ink_1_1_runtime_1_1_story_a6ef91acc60934ad560f83e3c0492edf5}} 
+bool {\bfseries has\+Error}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether the current\+Errors list contains any errors. THIS MAY BE REMOVED -\/ you should be setting an error handler directly using \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a0fe486b988b81980febece13765ea9f4}{Story.\+on\+Error}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a09109d6d63d7746d16eefc9ab652dcd1}\label{class_ink_1_1_runtime_1_1_story_a09109d6d63d7746d16eefc9ab652dcd1}} 
+bool {\bfseries has\+Warning}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether the current\+Warnings list contains any warnings. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_ac94a7ec48be8a51dafc5beb7d0a2f3c1}\label{class_ink_1_1_runtime_1_1_story_ac94a7ec48be8a51dafc5beb7d0a2f3c1}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_variables_state}{Variables\+State}} {\bfseries variables\+State}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{class_ink_1_1_runtime_1_1_variables_state}{Variables\+State}} object contains all the global variables in the story. However, note that there\textquotesingle{}s more to the state of a \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}} than just the global variables. This is a convenience accessor to the full state object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a8cca210cb6d72094f12da29893da919f}\label{class_ink_1_1_runtime_1_1_story_a8cca210cb6d72094f12da29893da919f}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_list_definitions_origin}{List\+Definitions\+Origin}} {\bfseries list\+Definitions}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_state}{Story\+State}} \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a350fe133888ab67904497fc9232a3245}{state}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The entire current state of the story including (but not limited to)\+: \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a3d4acd723502b12e07d4ad45e9858f20}{can\+Continue}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Check whether more content is available if you were to call {\ttfamily \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a92d12892609d28c1b21f6cd809a4c643}{Continue()}}} -\/ i.\+e. are we mid story rather than at a choice point or at the end. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a38d277f8d373fed869a9cca5c2b61b72}\label{class_ink_1_1_runtime_1_1_story_a38d277f8d373fed869a9cca5c2b61b72}} 
+bool {\bfseries async\+Continue\+Complete}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em If Continue\+Async was called (with milliseconds limit \texorpdfstring{$>$}{>} 0) then this property will return false if the ink evaluation isn\textquotesingle{}t yet finished, and you need to call it again in order for the Continue to fully complete. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a05ccab5cef065d273a0d3fa80f5e8bff}\label{class_ink_1_1_runtime_1_1_story_a05ccab5cef065d273a0d3fa80f5e8bff}} 
+bool {\bfseries allow\+External\+Function\+Fallbacks}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\begin{DoxyCompactList}\small\item\em An ink file can provide a fallback functions for when when an EXTERNAL has been left unbound by the client, and the fallback function will be called instead. Useful when testing a story in playmode, when it\textquotesingle{}s not possible to write a client-\/side C\# external function, but you don\textquotesingle{}t want it to fail to run. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_ab466fa3d85d55553e5f2bc48c802e8ba}\label{class_ink_1_1_runtime_1_1_story_ab466fa3d85d55553e5f2bc48c802e8ba}} 
+List$<$ string $>$ {\bfseries global\+Tags}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Get any global tags associated with the story. These are defined as hash tags defined at the very top of the story. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_afc69aa2dbceb96b3331630d3145fe3b3}\label{class_ink_1_1_runtime_1_1_story_afc69aa2dbceb96b3331630d3145fe3b3}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_container}{Container}} {\bfseries main\+Content\+Container}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Events}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a0fe486b988b81980febece13765ea9f4}\label{class_ink_1_1_runtime_1_1_story_a0fe486b988b81980febece13765ea9f4}} 
+\mbox{\hyperlink{namespace_ink_a81ccaafe32f36d4c3fb65b9d63a4935e}{Ink.\+Error\+Handler}} {\bfseries on\+Error}
+\begin{DoxyCompactList}\small\item\em Error handler for all runtime errors in ink -\/ i.\+e. problems with the source ink itself that are only discovered when playing the story. It\textquotesingle{}s strongly recommended that you assign an error handler to your story instance to avoid getting exceptions for ink errors. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a2401fd915951ab0ae59fcee366d183a7}\label{class_ink_1_1_runtime_1_1_story_a2401fd915951ab0ae59fcee366d183a7}} 
+Action {\bfseries on\+Did\+Continue}
+\begin{DoxyCompactList}\small\item\em Callback for when Continue\+Internal is complete \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_aefc3bde07f3dbcaf6d8137a2be483bc3}\label{class_ink_1_1_runtime_1_1_story_aefc3bde07f3dbcaf6d8137a2be483bc3}} 
+Action$<$ \mbox{\hyperlink{class_ink_1_1_runtime_1_1_choice}{Choice}} $>$ {\bfseries on\+Make\+Choice}
+\begin{DoxyCompactList}\small\item\em Callback for when a choice is about to be executed \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a89869fb4e6d6bc4892b3fe773ac40fe8}\label{class_ink_1_1_runtime_1_1_story_a89869fb4e6d6bc4892b3fe773ac40fe8}} 
+Action$<$ string, object\mbox{[}$\,$\mbox{]}$>$ {\bfseries on\+Evaluate\+Function}
+\begin{DoxyCompactList}\small\item\em Callback for when a function is about to be evaluated \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_ad15bca8e38738c020118cafed096e800}\label{class_ink_1_1_runtime_1_1_story_ad15bca8e38738c020118cafed096e800}} 
+Action$<$ string, object\mbox{[}$\,$\mbox{]}, string, object $>$ {\bfseries on\+Complete\+Evaluate\+Function}
+\begin{DoxyCompactList}\small\item\em Callback for when a function has been evaluated This is necessary because evaluating a function can cause continuing \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a157efbb04c8e630a843e1f14519be091}\label{class_ink_1_1_runtime_1_1_story_a157efbb04c8e630a843e1f14519be091}} 
+Action$<$ string, object\mbox{[}$\,$\mbox{]}$>$ {\bfseries on\+Choose\+Path\+String}
+\begin{DoxyCompactList}\small\item\em Callback for when a path string is chosen \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+A \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}} is the core class that represents a complete \mbox{\hyperlink{namespace_ink}{Ink}} narrative, and manages the evaluation and state of it. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a746a9919984610af157763b0b4dbd844}\label{class_ink_1_1_runtime_1_1_story_a746a9919984610af157763b0b4dbd844}} 
+\index{Ink.Runtime.Story@{Ink.Runtime.Story}!BindExternalFunction@{BindExternalFunction}}
+\index{BindExternalFunction@{BindExternalFunction}!Ink.Runtime.Story@{Ink.Runtime.Story}}
+\doxysubsubsection{\texorpdfstring{BindExternalFunction()}{BindExternalFunction()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Ink.\+Runtime.\+Story.\+Bind\+External\+Function (\begin{DoxyParamCaption}\item[{string}]{func\+Name,  }\item[{Action}]{act,  }\item[{bool}]{lookahead\+Safe = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Bind a C\# Action to an ink EXTERNAL function declaration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em func\+Name} & EXTERNAL ink function name to bind to.\\
+\hline
+{\em act} & The C\# action to bind.\\
+\hline
+{\em lookahead\+Safe} & The ink engine often evaluates further than you might expect beyond the current line just in case it sees glue that will cause the two lines to become one. In this case it\textquotesingle{}s possible that a function can appear to be called twice instead of just once, and earlier than you expect. If it\textquotesingle{}s safe for your function to be called in this way (since the result and side effect of the function will not change), then you can pass \textquotesingle{}true\textquotesingle{}. Usually, you want to pass \textquotesingle{}false\textquotesingle{}, especially if you want some action to be performed in game code when this function is called.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a8686951abde71bc8e19d29af89d0d9ff}\label{class_ink_1_1_runtime_1_1_story_a8686951abde71bc8e19d29af89d0d9ff}} 
+\index{Ink.Runtime.Story@{Ink.Runtime.Story}!BindExternalFunction@{BindExternalFunction}}
+\index{BindExternalFunction@{BindExternalFunction}!Ink.Runtime.Story@{Ink.Runtime.Story}}
+\doxysubsubsection{\texorpdfstring{BindExternalFunction()}{BindExternalFunction()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Ink.\+Runtime.\+Story.\+Bind\+External\+Function (\begin{DoxyParamCaption}\item[{string}]{func\+Name,  }\item[{Func$<$ object $>$}]{func,  }\item[{bool}]{lookahead\+Safe = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Bind a C\# function to an ink EXTERNAL function declaration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em func\+Name} & EXTERNAL ink function name to bind to.\\
+\hline
+{\em func} & The C\# function to bind.\\
+\hline
+{\em lookahead\+Safe} & The ink engine often evaluates further than you might expect beyond the current line just in case it sees glue that will cause the two lines to become one. In this case it\textquotesingle{}s possible that a function can appear to be called twice instead of just once, and earlier than you expect. If it\textquotesingle{}s safe for your function to be called in this way (since the result and side effect of the function will not change), then you can pass \textquotesingle{}true\textquotesingle{}. Usually, you want to pass \textquotesingle{}false\textquotesingle{}, especially if you want some action to be performed in game code when this function is called.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a546a1a3232e4389473e18b2950b2448f}\label{class_ink_1_1_runtime_1_1_story_a546a1a3232e4389473e18b2950b2448f}} 
+\index{Ink.Runtime.Story@{Ink.Runtime.Story}!BindExternalFunction$<$ T $>$@{BindExternalFunction$<$ T $>$}}
+\index{BindExternalFunction$<$ T $>$@{BindExternalFunction$<$ T $>$}!Ink.Runtime.Story@{Ink.Runtime.Story}}
+\doxysubsubsection{\texorpdfstring{BindExternalFunction$<$ T $>$()}{BindExternalFunction< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a8686951abde71bc8e19d29af89d0d9ff}{Ink.\+Runtime.\+Story.\+Bind\+External\+Function}}$<$ T $>$ (\begin{DoxyParamCaption}\item[{string}]{func\+Name,  }\item[{Action$<$ T $>$}]{act,  }\item[{bool}]{lookahead\+Safe = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Bind a C\# action to an ink EXTERNAL function declaration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em func\+Name} & EXTERNAL ink function name to bind to.\\
+\hline
+{\em act} & The C\# action to bind.\\
+\hline
+{\em lookahead\+Safe} & The ink engine often evaluates further than you might expect beyond the current line just in case it sees glue that will cause the two lines to become one. In this case it\textquotesingle{}s possible that a function can appear to be called twice instead of just once, and earlier than you expect. If it\textquotesingle{}s safe for your function to be called in this way (since the result and side effect of the function will not change), then you can pass \textquotesingle{}true\textquotesingle{}. Usually, you want to pass \textquotesingle{}false\textquotesingle{}, especially if you want some action to be performed in game code when this function is called.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a8690544a0d7b73083558e70957a98899}\label{class_ink_1_1_runtime_1_1_story_a8690544a0d7b73083558e70957a98899}} 
+\index{Ink.Runtime.Story@{Ink.Runtime.Story}!BindExternalFunction$<$ T $>$@{BindExternalFunction$<$ T $>$}}
+\index{BindExternalFunction$<$ T $>$@{BindExternalFunction$<$ T $>$}!Ink.Runtime.Story@{Ink.Runtime.Story}}
+\doxysubsubsection{\texorpdfstring{BindExternalFunction$<$ T $>$()}{BindExternalFunction< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a8686951abde71bc8e19d29af89d0d9ff}{Ink.\+Runtime.\+Story.\+Bind\+External\+Function}}$<$ T $>$ (\begin{DoxyParamCaption}\item[{string}]{func\+Name,  }\item[{Func$<$ T, object $>$}]{func,  }\item[{bool}]{lookahead\+Safe = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Bind a C\# function to an ink EXTERNAL function declaration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em func\+Name} & EXTERNAL ink function name to bind to.\\
+\hline
+{\em func} & The C\# function to bind.\\
+\hline
+{\em lookahead\+Safe} & The ink engine often evaluates further than you might expect beyond the current line just in case it sees glue that will cause the two lines to become one. In this case it\textquotesingle{}s possible that a function can appear to be called twice instead of just once, and earlier than you expect. If it\textquotesingle{}s safe for your function to be called in this way (since the result and side effect of the function will not change), then you can pass \textquotesingle{}true\textquotesingle{}. Usually, you want to pass \textquotesingle{}false\textquotesingle{}, especially if you want some action to be performed in game code when this function is called.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_ad321b1a3737d0162e2b5225440c57077}\label{class_ink_1_1_runtime_1_1_story_ad321b1a3737d0162e2b5225440c57077}} 
+\index{Ink.Runtime.Story@{Ink.Runtime.Story}!BindExternalFunction$<$ T1, T2 $>$@{BindExternalFunction$<$ T1, T2 $>$}}
+\index{BindExternalFunction$<$ T1, T2 $>$@{BindExternalFunction$<$ T1, T2 $>$}!Ink.Runtime.Story@{Ink.Runtime.Story}}
+\doxysubsubsection{\texorpdfstring{BindExternalFunction$<$ T1, T2 $>$()}{BindExternalFunction< T1, T2 >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a8686951abde71bc8e19d29af89d0d9ff}{Ink.\+Runtime.\+Story.\+Bind\+External\+Function}}$<$ T1, T2 $>$ (\begin{DoxyParamCaption}\item[{string}]{func\+Name,  }\item[{Action$<$ T1, T2 $>$}]{act,  }\item[{bool}]{lookahead\+Safe = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Bind a C\# action to an ink EXTERNAL function declaration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em func\+Name} & EXTERNAL ink function name to bind to.\\
+\hline
+{\em act} & The C\# action to bind.\\
+\hline
+{\em lookahead\+Safe} & The ink engine often evaluates further than you might expect beyond the current line just in case it sees glue that will cause the two lines to become one. In this case it\textquotesingle{}s possible that a function can appear to be called twice instead of just once, and earlier than you expect. If it\textquotesingle{}s safe for your function to be called in this way (since the result and side effect of the function will not change), then you can pass \textquotesingle{}true\textquotesingle{}. Usually, you want to pass \textquotesingle{}false\textquotesingle{}, especially if you want some action to be performed in game code when this function is called.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a36579cdec3aa17335a56fbfc89e2977f}\label{class_ink_1_1_runtime_1_1_story_a36579cdec3aa17335a56fbfc89e2977f}} 
+\index{Ink.Runtime.Story@{Ink.Runtime.Story}!BindExternalFunction$<$ T1, T2 $>$@{BindExternalFunction$<$ T1, T2 $>$}}
+\index{BindExternalFunction$<$ T1, T2 $>$@{BindExternalFunction$<$ T1, T2 $>$}!Ink.Runtime.Story@{Ink.Runtime.Story}}
+\doxysubsubsection{\texorpdfstring{BindExternalFunction$<$ T1, T2 $>$()}{BindExternalFunction< T1, T2 >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a8686951abde71bc8e19d29af89d0d9ff}{Ink.\+Runtime.\+Story.\+Bind\+External\+Function}}$<$ T1, T2 $>$ (\begin{DoxyParamCaption}\item[{string}]{func\+Name,  }\item[{Func$<$ T1, T2, object $>$}]{func,  }\item[{bool}]{lookahead\+Safe = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Bind a C\# function to an ink EXTERNAL function declaration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em func\+Name} & EXTERNAL ink function name to bind to.\\
+\hline
+{\em func} & The C\# function to bind.\\
+\hline
+{\em lookahead\+Safe} & The ink engine often evaluates further than you might expect beyond the current line just in case it sees glue that will cause the two lines to become one. In this case it\textquotesingle{}s possible that a function can appear to be called twice instead of just once, and earlier than you expect. If it\textquotesingle{}s safe for your function to be called in this way (since the result and side effect of the function will not change), then you can pass \textquotesingle{}true\textquotesingle{}. Usually, you want to pass \textquotesingle{}false\textquotesingle{}, especially if you want some action to be performed in game code when this function is called.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_afe73d00bee563c187b450279f97681e3}\label{class_ink_1_1_runtime_1_1_story_afe73d00bee563c187b450279f97681e3}} 
+\index{Ink.Runtime.Story@{Ink.Runtime.Story}!BindExternalFunction$<$ T1, T2, T3 $>$@{BindExternalFunction$<$ T1, T2, T3 $>$}}
+\index{BindExternalFunction$<$ T1, T2, T3 $>$@{BindExternalFunction$<$ T1, T2, T3 $>$}!Ink.Runtime.Story@{Ink.Runtime.Story}}
+\doxysubsubsection{\texorpdfstring{BindExternalFunction$<$ T1, T2, T3 $>$()}{BindExternalFunction< T1, T2, T3 >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a8686951abde71bc8e19d29af89d0d9ff}{Ink.\+Runtime.\+Story.\+Bind\+External\+Function}}$<$ T1, T2, T3 $>$ (\begin{DoxyParamCaption}\item[{string}]{func\+Name,  }\item[{Action$<$ T1, T2, T3 $>$}]{act,  }\item[{bool}]{lookahead\+Safe = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Bind a C\# action to an ink EXTERNAL function declaration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em func\+Name} & EXTERNAL ink function name to bind to.\\
+\hline
+{\em act} & The C\# action to bind.\\
+\hline
+{\em lookahead\+Safe} & The ink engine often evaluates further than you might expect beyond the current line just in case it sees glue that will cause the two lines to become one. In this case it\textquotesingle{}s possible that a function can appear to be called twice instead of just once, and earlier than you expect. If it\textquotesingle{}s safe for your function to be called in this way (since the result and side effect of the function will not change), then you can pass \textquotesingle{}true\textquotesingle{}. Usually, you want to pass \textquotesingle{}false\textquotesingle{}, especially if you want some action to be performed in game code when this function is called.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_aa25c4af77a2b5db3e7d37a0db5e34dd6}\label{class_ink_1_1_runtime_1_1_story_aa25c4af77a2b5db3e7d37a0db5e34dd6}} 
+\index{Ink.Runtime.Story@{Ink.Runtime.Story}!BindExternalFunction$<$ T1, T2, T3 $>$@{BindExternalFunction$<$ T1, T2, T3 $>$}}
+\index{BindExternalFunction$<$ T1, T2, T3 $>$@{BindExternalFunction$<$ T1, T2, T3 $>$}!Ink.Runtime.Story@{Ink.Runtime.Story}}
+\doxysubsubsection{\texorpdfstring{BindExternalFunction$<$ T1, T2, T3 $>$()}{BindExternalFunction< T1, T2, T3 >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a8686951abde71bc8e19d29af89d0d9ff}{Ink.\+Runtime.\+Story.\+Bind\+External\+Function}}$<$ T1, T2, T3 $>$ (\begin{DoxyParamCaption}\item[{string}]{func\+Name,  }\item[{Func$<$ T1, T2, T3, object $>$}]{func,  }\item[{bool}]{lookahead\+Safe = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Bind a C\# function to an ink EXTERNAL function declaration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em func\+Name} & EXTERNAL ink function name to bind to.\\
+\hline
+{\em func} & The C\# function to bind.\\
+\hline
+{\em lookahead\+Safe} & The ink engine often evaluates further than you might expect beyond the current line just in case it sees glue that will cause the two lines to become one. In this case it\textquotesingle{}s possible that a function can appear to be called twice instead of just once, and earlier than you expect. If it\textquotesingle{}s safe for your function to be called in this way (since the result and side effect of the function will not change), then you can pass \textquotesingle{}true\textquotesingle{}. Usually, you want to pass \textquotesingle{}false\textquotesingle{}, especially if you want some action to be performed in game code when this function is called.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_aa351d1cca4616a174fcc17c30b106a98}\label{class_ink_1_1_runtime_1_1_story_aa351d1cca4616a174fcc17c30b106a98}} 
+\index{Ink.Runtime.Story@{Ink.Runtime.Story}!BindExternalFunction$<$ T1, T2, T3, T4 $>$@{BindExternalFunction$<$ T1, T2, T3, T4 $>$}}
+\index{BindExternalFunction$<$ T1, T2, T3, T4 $>$@{BindExternalFunction$<$ T1, T2, T3, T4 $>$}!Ink.Runtime.Story@{Ink.Runtime.Story}}
+\doxysubsubsection{\texorpdfstring{BindExternalFunction$<$ T1, T2, T3, T4 $>$()}{BindExternalFunction< T1, T2, T3, T4 >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a8686951abde71bc8e19d29af89d0d9ff}{Ink.\+Runtime.\+Story.\+Bind\+External\+Function}}$<$ T1, T2, T3, T4 $>$ (\begin{DoxyParamCaption}\item[{string}]{func\+Name,  }\item[{Action$<$ T1, T2, T3, T4 $>$}]{act,  }\item[{bool}]{lookahead\+Safe = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Bind a C\# action to an ink EXTERNAL function declaration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em func\+Name} & EXTERNAL ink function name to bind to.\\
+\hline
+{\em act} & The C\# action to bind.\\
+\hline
+{\em lookahead\+Safe} & The ink engine often evaluates further than you might expect beyond the current line just in case it sees glue that will cause the two lines to become one. In this case it\textquotesingle{}s possible that a function can appear to be called twice instead of just once, and earlier than you expect. If it\textquotesingle{}s safe for your function to be called in this way (since the result and side effect of the function will not change), then you can pass \textquotesingle{}true\textquotesingle{}. Usually, you want to pass \textquotesingle{}false\textquotesingle{}, especially if you want some action to be performed in game code when this function is called.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_aaef4dc0e4d6c7ce933a505c28a34a573}\label{class_ink_1_1_runtime_1_1_story_aaef4dc0e4d6c7ce933a505c28a34a573}} 
+\index{Ink.Runtime.Story@{Ink.Runtime.Story}!BindExternalFunction$<$ T1, T2, T3, T4 $>$@{BindExternalFunction$<$ T1, T2, T3, T4 $>$}}
+\index{BindExternalFunction$<$ T1, T2, T3, T4 $>$@{BindExternalFunction$<$ T1, T2, T3, T4 $>$}!Ink.Runtime.Story@{Ink.Runtime.Story}}
+\doxysubsubsection{\texorpdfstring{BindExternalFunction$<$ T1, T2, T3, T4 $>$()}{BindExternalFunction< T1, T2, T3, T4 >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a8686951abde71bc8e19d29af89d0d9ff}{Ink.\+Runtime.\+Story.\+Bind\+External\+Function}}$<$ T1, T2, T3, T4 $>$ (\begin{DoxyParamCaption}\item[{string}]{func\+Name,  }\item[{Func$<$ T1, T2, T3, T4, object $>$}]{func,  }\item[{bool}]{lookahead\+Safe = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Bind a C\# function to an ink EXTERNAL function declaration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em func\+Name} & EXTERNAL ink function name to bind to.\\
+\hline
+{\em func} & The C\# function to bind.\\
+\hline
+{\em lookahead\+Safe} & The ink engine often evaluates further than you might expect beyond the current line just in case it sees glue that will cause the two lines to become one. In this case it\textquotesingle{}s possible that a function can appear to be called twice instead of just once, and earlier than you expect. If it\textquotesingle{}s safe for your function to be called in this way (since the result and side effect of the function will not change), then you can pass \textquotesingle{}true\textquotesingle{}. Usually, you want to pass \textquotesingle{}false\textquotesingle{}, especially if you want some action to be performed in game code when this function is called.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_ad49bddacbc1062aeaa8e749c65786123}\label{class_ink_1_1_runtime_1_1_story_ad49bddacbc1062aeaa8e749c65786123}} 
+\index{Ink.Runtime.Story@{Ink.Runtime.Story}!BindExternalFunctionGeneral@{BindExternalFunctionGeneral}}
+\index{BindExternalFunctionGeneral@{BindExternalFunctionGeneral}!Ink.Runtime.Story@{Ink.Runtime.Story}}
+\doxysubsubsection{\texorpdfstring{BindExternalFunctionGeneral()}{BindExternalFunctionGeneral()}}
+{\footnotesize\ttfamily void Ink.\+Runtime.\+Story.\+Bind\+External\+Function\+General (\begin{DoxyParamCaption}\item[{string}]{func\+Name,  }\item[{\mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_ad4f67f07e481de1d7fb51dc14e149b9a}{External\+Function}}}]{func,  }\item[{bool}]{lookahead\+Safe = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Most general form of function binding that returns an object and takes an array of object parameters. The only way to bind a function with more than 3 arguments. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em func\+Name} & EXTERNAL ink function name to bind to.\\
+\hline
+{\em func} & The C\# function to bind.\\
+\hline
+{\em lookahead\+Safe} & The ink engine often evaluates further than you might expect beyond the current line just in case it sees glue that will cause the two lines to become one. In this case it\textquotesingle{}s possible that a function can appear to be called twice instead of just once, and earlier than you expect. If it\textquotesingle{}s safe for your function to be called in this way (since the result and side effect of the function will not change), then you can pass \textquotesingle{}true\textquotesingle{}. Usually, you want to pass \textquotesingle{}false\textquotesingle{}, especially if you want some action to be performed in game code when this function is called.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_aa89df7f1440aaaa155fda32b56a99c58}\label{class_ink_1_1_runtime_1_1_story_aa89df7f1440aaaa155fda32b56a99c58}} 
+\index{Ink.Runtime.Story@{Ink.Runtime.Story}!ChoosePathString@{ChoosePathString}}
+\index{ChoosePathString@{ChoosePathString}!Ink.Runtime.Story@{Ink.Runtime.Story}}
+\doxysubsubsection{\texorpdfstring{ChoosePathString()}{ChoosePathString()}}
+{\footnotesize\ttfamily void Ink.\+Runtime.\+Story.\+Choose\+Path\+String (\begin{DoxyParamCaption}\item[{string}]{path,  }\item[{bool}]{reset\+Callstack = {\ttfamily true},  }\item[{params object\mbox{[}$\,$\mbox{]}}]{arguments }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Change the current position of the story to the given path. From here you can call \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a92d12892609d28c1b21f6cd809a4c643}{Continue()}} to evaluate the next line. 
+
+The path string is a dot-\/separated path as used internally by the engine. These examples should work\+:
+
+my\+Knot my\+Knot.\+my\+Stitch
+
+Note however that this won\textquotesingle{}t necessarily work\+:
+
+my\+Knot.\+my\+Stitch.\+my\+Labelled\+Choice
+
+...because of the way that content is nested within a weave structure.
+
+By default this will reset the callstack beforehand, which means that any tunnels, threads or functions you were in at the time of calling will be discarded. This is different from the behaviour of Choose\+Choice\+Index, which will always keep the callstack, since the choices are known to come from the correct state, and known their source thread.
+
+You have the option of passing false to the reset\+Callstack parameter if you don\textquotesingle{}t want this behaviour, and will leave any active threads, tunnels or function calls in-\/tact.
+
+This is potentially dangerous! If you\textquotesingle{}re in the middle of a tunnel, it\textquotesingle{}ll redirect only the inner-\/most tunnel, meaning that when you tunnel-\/return using \textquotesingle{}-\/\texorpdfstring{$>$}{>}-\/\texorpdfstring{$>$}{>}\textquotesingle{}, it\textquotesingle{}ll return to where you were before. This may be what you want though. However, if you\textquotesingle{}re in the middle of a function, Choose\+Path\+String will throw an exception.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & A dot-\/separted path string, as specified above.\\
+\hline
+{\em reset\+Callstack} & Whether to reset the callstack first (see summary description).\\
+\hline
+{\em arguments} & Optional set of arguments to pass, if path is to a knot that takes them.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a92d12892609d28c1b21f6cd809a4c643}\label{class_ink_1_1_runtime_1_1_story_a92d12892609d28c1b21f6cd809a4c643}} 
+\index{Ink.Runtime.Story@{Ink.Runtime.Story}!Continue@{Continue}}
+\index{Continue@{Continue}!Ink.Runtime.Story@{Ink.Runtime.Story}}
+\doxysubsubsection{\texorpdfstring{Continue()}{Continue()}}
+{\footnotesize\ttfamily string Ink.\+Runtime.\+Story.\+Continue (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Continue the story for one line of content, if possible. If you\textquotesingle{}re not sure if there\textquotesingle{}s more content available, for example if you want to check whether you\textquotesingle{}re at a choice point or at the end of the story, you should call {\ttfamily can\+Continue} before calling this function. 
+
+\begin{DoxyReturn}{Returns}
+The line of text content.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a282a4475e9f865472cb7007d788584de}\label{class_ink_1_1_runtime_1_1_story_a282a4475e9f865472cb7007d788584de}} 
+\index{Ink.Runtime.Story@{Ink.Runtime.Story}!ContinueMaximally@{ContinueMaximally}}
+\index{ContinueMaximally@{ContinueMaximally}!Ink.Runtime.Story@{Ink.Runtime.Story}}
+\doxysubsubsection{\texorpdfstring{ContinueMaximally()}{ContinueMaximally()}}
+{\footnotesize\ttfamily string Ink.\+Runtime.\+Story.\+Continue\+Maximally (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Continue the story until the next choice point or until it runs out of content. This is as opposed to the \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a92d12892609d28c1b21f6cd809a4c643}{Continue()}} method which only evaluates one line of output at a time. 
+
+\begin{DoxyReturn}{Returns}
+The resulting text evaluated by the ink engine, concatenated together.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a114c71bba4f8abb1b07178f9eed42835}\label{class_ink_1_1_runtime_1_1_story_a114c71bba4f8abb1b07178f9eed42835}} 
+\index{Ink.Runtime.Story@{Ink.Runtime.Story}!CopyStateForBackgroundThreadSave@{CopyStateForBackgroundThreadSave}}
+\index{CopyStateForBackgroundThreadSave@{CopyStateForBackgroundThreadSave}!Ink.Runtime.Story@{Ink.Runtime.Story}}
+\doxysubsubsection{\texorpdfstring{CopyStateForBackgroundThreadSave()}{CopyStateForBackgroundThreadSave()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_state}{Story\+State}} Ink.\+Runtime.\+Story.\+Copy\+State\+For\+Background\+Thread\+Save (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Advanced usage! If you have a large story, and saving state to JSON takes too long for your framerate, you can temporarily freeze a copy of the state for saving on a separate thread. Internally, the engine maintains a \char`\"{}diff patch\char`\"{}. When you\textquotesingle{}ve finished saving your state, call \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a6c2ccd9ec650e62820202de77e3e3781}{Background\+Save\+Complete()}} and that diff patch will be applied, allowing the story to continue in its usual mode. 
+
+\begin{DoxyReturn}{Returns}
+The state for background thread save.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a3a7ef83568f579a22c2062621024ee05}\label{class_ink_1_1_runtime_1_1_story_a3a7ef83568f579a22c2062621024ee05}} 
+\index{Ink.Runtime.Story@{Ink.Runtime.Story}!EvaluateFunction@{EvaluateFunction}}
+\index{EvaluateFunction@{EvaluateFunction}!Ink.Runtime.Story@{Ink.Runtime.Story}}
+\doxysubsubsection{\texorpdfstring{EvaluateFunction()}{EvaluateFunction()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily object Ink.\+Runtime.\+Story.\+Evaluate\+Function (\begin{DoxyParamCaption}\item[{string}]{function\+Name,  }\item[{out string}]{text\+Output,  }\item[{params object\mbox{[}$\,$\mbox{]}}]{arguments }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Evaluates a function defined in ink, and gathers the possibly multi-\/line text as generated by the function. This text output is any text written as normal content within the function, as opposed to the return value, as returned with {\ttfamily $\sim$ return}. 
+
+\begin{DoxyReturn}{Returns}
+The return value as returned from the ink function with {\ttfamily $\sim$ return my\+Value}, or null if nothing is returned.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em function\+Name} & The name of the function as declared in ink.\\
+\hline
+{\em text\+Output} & The text content produced by the function via normal ink, if any.\\
+\hline
+{\em arguments} & The arguments that the ink function takes, if any. Note that we don\textquotesingle{}t (can\textquotesingle{}t) do any validation on the number of arguments right now, so make sure you get it right!\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a0ce1426cd4ddbaa02057e5379a415312}\label{class_ink_1_1_runtime_1_1_story_a0ce1426cd4ddbaa02057e5379a415312}} 
+\index{Ink.Runtime.Story@{Ink.Runtime.Story}!EvaluateFunction@{EvaluateFunction}}
+\index{EvaluateFunction@{EvaluateFunction}!Ink.Runtime.Story@{Ink.Runtime.Story}}
+\doxysubsubsection{\texorpdfstring{EvaluateFunction()}{EvaluateFunction()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily object Ink.\+Runtime.\+Story.\+Evaluate\+Function (\begin{DoxyParamCaption}\item[{string}]{function\+Name,  }\item[{params object\mbox{[}$\,$\mbox{]}}]{arguments }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Evaluates a function defined in ink. 
+
+\begin{DoxyReturn}{Returns}
+The return value as returned from the ink function with {\ttfamily $\sim$ return my\+Value}, or null if nothing is returned.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em function\+Name} & The name of the function as declared in ink.\\
+\hline
+{\em arguments} & The arguments that the ink function takes, if any. Note that we don\textquotesingle{}t (can\textquotesingle{}t) do any validation on the number of arguments right now, so make sure you get it right!\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_abed1fe6a0c488678021950f3ba4125fe}\label{class_ink_1_1_runtime_1_1_story_abed1fe6a0c488678021950f3ba4125fe}} 
+\index{Ink.Runtime.Story@{Ink.Runtime.Story}!HasFunction@{HasFunction}}
+\index{HasFunction@{HasFunction}!Ink.Runtime.Story@{Ink.Runtime.Story}}
+\doxysubsubsection{\texorpdfstring{HasFunction()}{HasFunction()}}
+{\footnotesize\ttfamily bool Ink.\+Runtime.\+Story.\+Has\+Function (\begin{DoxyParamCaption}\item[{string}]{function\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Checks if a function exists. 
+
+\begin{DoxyReturn}{Returns}
+True if the function exists, else false.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em function\+Name} & The name of the function as declared in ink.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a490e10a45dcc5bfa2bd24137f4f9f56b}\label{class_ink_1_1_runtime_1_1_story_a490e10a45dcc5bfa2bd24137f4f9f56b}} 
+\index{Ink.Runtime.Story@{Ink.Runtime.Story}!ObserveVariable@{ObserveVariable}}
+\index{ObserveVariable@{ObserveVariable}!Ink.Runtime.Story@{Ink.Runtime.Story}}
+\doxysubsubsection{\texorpdfstring{ObserveVariable()}{ObserveVariable()}}
+{\footnotesize\ttfamily void Ink.\+Runtime.\+Story.\+Observe\+Variable (\begin{DoxyParamCaption}\item[{string}]{variable\+Name,  }\item[{\mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_acc5f9b4eda92872ac9b2db1a318bde06}{Variable\+Observer}}}]{observer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+When the named global variable changes it\textquotesingle{}s value, the observer will be called to notify it of the change. Note that if the value changes multiple times within the ink, the observer will only be called once, at the end of the ink\textquotesingle{}s evaluation. If, during the evaluation, it changes and then changes back again to its original value, it will still be called. Note that the observer will also be fired if the value of the variable is changed externally to the ink, by directly setting a value in story.\+variables\+State. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em variable\+Name} & The name of the global variable to observe.\\
+\hline
+{\em observer} & A delegate function to call when the variable changes.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a28dde94e70397d18e99a1d6ab2890a54}\label{class_ink_1_1_runtime_1_1_story_a28dde94e70397d18e99a1d6ab2890a54}} 
+\index{Ink.Runtime.Story@{Ink.Runtime.Story}!ObserveVariables@{ObserveVariables}}
+\index{ObserveVariables@{ObserveVariables}!Ink.Runtime.Story@{Ink.Runtime.Story}}
+\doxysubsubsection{\texorpdfstring{ObserveVariables()}{ObserveVariables()}}
+{\footnotesize\ttfamily void Ink.\+Runtime.\+Story.\+Observe\+Variables (\begin{DoxyParamCaption}\item[{IList$<$ string $>$}]{variable\+Names,  }\item[{\mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_acc5f9b4eda92872ac9b2db1a318bde06}{Variable\+Observer}}}]{observer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Convenience function to allow multiple variables to be observed with the same observer delegate function. See the singular Observe\+Variable for details. The observer will get one call for every variable that has changed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em variable\+Names} & The set of variables to observe.\\
+\hline
+{\em observer} & The delegate function to call when any of the named variables change.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_aeecaaa0c499022bfce0d5c8a236319fb}\label{class_ink_1_1_runtime_1_1_story_aeecaaa0c499022bfce0d5c8a236319fb}} 
+\index{Ink.Runtime.Story@{Ink.Runtime.Story}!RemoveVariableObserver@{RemoveVariableObserver}}
+\index{RemoveVariableObserver@{RemoveVariableObserver}!Ink.Runtime.Story@{Ink.Runtime.Story}}
+\doxysubsubsection{\texorpdfstring{RemoveVariableObserver()}{RemoveVariableObserver()}}
+{\footnotesize\ttfamily void Ink.\+Runtime.\+Story.\+Remove\+Variable\+Observer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_acc5f9b4eda92872ac9b2db1a318bde06}{Variable\+Observer}}}]{observer = {\ttfamily null},  }\item[{string}]{specific\+Variable\+Name = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Removes the variable observer, to stop getting variable change notifications. If you pass a specific variable name, it will stop observing that particular one. If you pass null (or leave it blank, since it\textquotesingle{}s optional), then the observer will be removed from all variables that it\textquotesingle{}s subscribed to. If you pass in a specific variable name and null for the the observer, all observers for that variable will be removed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em observer} & (Optional) The observer to stop observing.\\
+\hline
+{\em specific\+Variable\+Name} & (Optional) Specific variable name to stop observing.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a27cdf199b4b5cc0206e0fd2a768f273d}\label{class_ink_1_1_runtime_1_1_story_a27cdf199b4b5cc0206e0fd2a768f273d}} 
+\index{Ink.Runtime.Story@{Ink.Runtime.Story}!TagsForContentAtPath@{TagsForContentAtPath}}
+\index{TagsForContentAtPath@{TagsForContentAtPath}!Ink.Runtime.Story@{Ink.Runtime.Story}}
+\doxysubsubsection{\texorpdfstring{TagsForContentAtPath()}{TagsForContentAtPath()}}
+{\footnotesize\ttfamily List$<$ string $>$ Ink.\+Runtime.\+Story.\+Tags\+For\+Content\+At\+Path (\begin{DoxyParamCaption}\item[{string}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets any tags associated with a particular knot or knot.\+stitch. These are defined as hash tags defined at the very top of a knot or stitch. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & The path of the knot or stitch, in the form \char`\"{}knot\char`\"{} or \char`\"{}knot.\+stitch\char`\"{}.\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a3d4acd723502b12e07d4ad45e9858f20}\label{class_ink_1_1_runtime_1_1_story_a3d4acd723502b12e07d4ad45e9858f20}} 
+\index{Ink.Runtime.Story@{Ink.Runtime.Story}!canContinue@{canContinue}}
+\index{canContinue@{canContinue}!Ink.Runtime.Story@{Ink.Runtime.Story}}
+\doxysubsubsection{\texorpdfstring{canContinue}{canContinue}}
+{\footnotesize\ttfamily bool Ink.\+Runtime.\+Story.\+can\+Continue\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Check whether more content is available if you were to call {\ttfamily \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a92d12892609d28c1b21f6cd809a4c643}{Continue()}}} -\/ i.\+e. are we mid story rather than at a choice point or at the end. 
+
+{\ttfamily true} if it\textquotesingle{}s possible to call {\ttfamily \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_a92d12892609d28c1b21f6cd809a4c643}{Continue()}}}.\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_a350fe133888ab67904497fc9232a3245}\label{class_ink_1_1_runtime_1_1_story_a350fe133888ab67904497fc9232a3245}} 
+\index{Ink.Runtime.Story@{Ink.Runtime.Story}!state@{state}}
+\index{state@{state}!Ink.Runtime.Story@{Ink.Runtime.Story}}
+\doxysubsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_state}{Story\+State}} Ink.\+Runtime.\+Story.\+state\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The entire current state of the story including (but not limited to)\+: 
+
+
+\begin{DoxyItemize}
+\item Global variables
+\item Temporary variables
+\item Read/visit and turn counts
+\item The callstack and evaluation stacks
+\item The current threads
+\end{DoxyItemize}
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Ink\+Libs/\+Ink\+Runtime/Story.\+cs\end{DoxyCompactItemize}

@@ -1,0 +1,155 @@
+\hypertarget{class_ink_1_1_unity_integration_1_1_ink_library}{}\doxysection{Ink.\+Unity\+Integration.\+Ink\+Library Class Reference}
+\label{class_ink_1_1_unity_integration_1_1_ink_library}\index{Ink.UnityIntegration.InkLibrary@{Ink.UnityIntegration.InkLibrary}}
+Inheritance diagram for Ink.\+Unity\+Integration.\+Ink\+Library\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ink_1_1_unity_integration_1_1_ink_library}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_library_1_1_asset_saver}{Asset\+Saver}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_library_a7829d4d2e9c7b65bc1053afbb3ca1374}\label{class_ink_1_1_unity_integration_1_1_ink_library_a7829d4d2e9c7b65bc1053afbb3ca1374}} 
+void {\bfseries Save} (bool save\+As\+Text)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_library_ae59570c8cad78848bac941cf95cbdbbe}\label{class_ink_1_1_unity_integration_1_1_ink_library_ae59570c8cad78848bac941cf95cbdbbe}} 
+static void {\bfseries Load\+Or\+Create\+Instance} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_library_a4372a44dd4b5123efc50a700e8038432}\label{class_ink_1_1_unity_integration_1_1_ink_library_a4372a44dd4b5123efc50a700e8038432}} 
+static bool {\bfseries Validate} ()
+\begin{DoxyCompactList}\small\item\em Checks if the library is corrupt and rebuilds if necessary. Returns true if the library was valid \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_library_a1e8cb05b8eb7531ad58e895c9768f413}\label{class_ink_1_1_unity_integration_1_1_ink_library_a1e8cb05b8eb7531ad58e895c9768f413}} 
+static bool {\bfseries Clean} ()
+\begin{DoxyCompactList}\small\item\em Removes and null references in the library \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_library_a971a7f54dadc56ca258235dc8262e697}\label{class_ink_1_1_unity_integration_1_1_ink_library_a971a7f54dadc56ca258235dc8262e697}} 
+static void {\bfseries Add} (\mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_file}{Ink\+File}} ink\+File)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_library_a75e62019284a66194977e17c6749a8e7}\label{class_ink_1_1_unity_integration_1_1_ink_library_a75e62019284a66194977e17c6749a8e7}} 
+static void {\bfseries Remove\+At} (int index)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_library_a326b903a388924c1593b4818e093cfac}\label{class_ink_1_1_unity_integration_1_1_ink_library_a326b903a388924c1593b4818e093cfac}} 
+static void {\bfseries Rebuild} ()
+\begin{DoxyCompactList}\small\item\em Updates the ink library. Executed whenever an ink file is changed by Ink\+To\+JSONPost\+Processor Can be called manually, but incurs a performance cost. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_library_a68ba2c25253e1ec37f13285a60455ec7}\label{class_ink_1_1_unity_integration_1_1_ink_library_a68ba2c25253e1ec37f13285a60455ec7}} 
+static void {\bfseries Create\+Or\+Read\+Updated\+Ink\+Files} (List$<$ string $>$ imported\+Ink\+Assets)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_library_a49ab730d37288213634f609efaf04d19}\label{class_ink_1_1_unity_integration_1_1_ink_library_a49ab730d37288213634f609efaf04d19}} 
+static IEnumerable$<$ \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_file}{Ink\+File}} $>$ {\bfseries Get\+Master\+Ink\+Files} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_library_aff62d17f05a1af8cf5305ade40b77ceb}\label{class_ink_1_1_unity_integration_1_1_ink_library_aff62d17f05a1af8cf5305ade40b77ceb}} 
+static IEnumerable$<$ \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_file}{Ink\+File}} $>$ {\bfseries Get\+Files\+Requiring\+Recompile} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_library_a7099071700982f376565ba069f9e5b63}\label{class_ink_1_1_unity_integration_1_1_ink_library_a7099071700982f376565ba069f9e5b63}} 
+static IEnumerable$<$ \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_file}{Ink\+File}} $>$ {\bfseries Files\+Compiled\+By\+Recompile\+All} ()
+\item 
+static \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_file}{Ink\+File}} \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_library_ae6c57f8e7ba777c540b93a20ec87c2d2}{Get\+Ink\+File\+With\+File}} (Default\+Asset file, bool add\+If\+Missing=false)
+\begin{DoxyCompactList}\small\item\em Gets the ink file from the .ink file reference. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_file}{Ink\+File}} \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_library_a8fda14d34fb7b4dde200e85cbb8b1edf}{Get\+Ink\+File\+With\+Path}} (string path)
+\begin{DoxyCompactList}\small\item\em Gets the ink file with path relative to Assets folder, for example\+: \char`\"{}\+Assets/\+Ink/my\+Story.\+ink\char`\"{}. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_file}{Ink\+File}} \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_library_a953058534571c8213fe2d76413479004}{Get\+Ink\+File\+With\+Absolute\+Path}} (string absolute\+Path)
+\begin{DoxyCompactList}\small\item\em Gets the ink file with absolute path. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_library_afce6535065a1f348a94f31bd1454ef89}\label{class_ink_1_1_unity_integration_1_1_ink_library_afce6535065a1f348a94f31bd1454ef89}} 
+static void {\bfseries Rebuild\+Ink\+File\+Connections} ()
+\begin{DoxyCompactList}\small\item\em Rebuilds which files are master files and the connections between the files. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_library_a933e39a214e0a91cbf29b9f34a55fef3}\label{class_ink_1_1_unity_integration_1_1_ink_library_a933e39a214e0a91cbf29b9f34a55fef3}} 
+List$<$ \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_file}{Ink\+File}} $>$ {\bfseries ink\+Library} = new List$<$\mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_file}{Ink\+File}}$>$()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_library_a021b0ee9da9499027cb4c18968ce7033}\label{class_ink_1_1_unity_integration_1_1_ink_library_a021b0ee9da9499027cb4c18968ce7033}} 
+static System.\+Version {\bfseries ink\+Version\+Current} = new System.\+Version(1,0,0)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_library_a489866c3494e390c2c7e95c5096d887a}\label{class_ink_1_1_unity_integration_1_1_ink_library_a489866c3494e390c2c7e95c5096d887a}} 
+static System.\+Version {\bfseries unity\+Integration\+Version\+Current} = new System.\+Version(1,0,0)
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_library_a3b998728b4de01e2b7f3a096118c2f23}\label{class_ink_1_1_unity_integration_1_1_ink_library_a3b998728b4de01e2b7f3a096118c2f23}} 
+static bool {\bfseries created}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_library_a75b3b79a6eff1d7c98f6ecfaeb2a8f67}\label{class_ink_1_1_unity_integration_1_1_ink_library_a75b3b79a6eff1d7c98f6ecfaeb2a8f67}} 
+static \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_library}{Ink\+Library}} {\bfseries instance}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_library_af9e6d6b754fa82a5c5824ff2ab301a4b}\label{class_ink_1_1_unity_integration_1_1_ink_library_af9e6d6b754fa82a5c5824ff2ab301a4b}} 
+int {\bfseries Count}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_library_a58c3723eec0edba85baa7e44c2e4d36c}\label{class_ink_1_1_unity_integration_1_1_ink_library_a58c3723eec0edba85baa7e44c2e4d36c}} 
+\mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_file}{Ink\+File}} {\bfseries this\mbox{[}int key\mbox{]}}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_library_a953058534571c8213fe2d76413479004}\label{class_ink_1_1_unity_integration_1_1_ink_library_a953058534571c8213fe2d76413479004}} 
+\index{Ink.UnityIntegration.InkLibrary@{Ink.UnityIntegration.InkLibrary}!GetInkFileWithAbsolutePath@{GetInkFileWithAbsolutePath}}
+\index{GetInkFileWithAbsolutePath@{GetInkFileWithAbsolutePath}!Ink.UnityIntegration.InkLibrary@{Ink.UnityIntegration.InkLibrary}}
+\doxysubsubsection{\texorpdfstring{GetInkFileWithAbsolutePath()}{GetInkFileWithAbsolutePath()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_file}{Ink\+File}} Ink.\+Unity\+Integration.\+Ink\+Library.\+Get\+Ink\+File\+With\+Absolute\+Path (\begin{DoxyParamCaption}\item[{string}]{absolute\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Gets the ink file with absolute path. 
+
+\begin{DoxyReturn}{Returns}
+The ink file with path.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Path.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_library_ae6c57f8e7ba777c540b93a20ec87c2d2}\label{class_ink_1_1_unity_integration_1_1_ink_library_ae6c57f8e7ba777c540b93a20ec87c2d2}} 
+\index{Ink.UnityIntegration.InkLibrary@{Ink.UnityIntegration.InkLibrary}!GetInkFileWithFile@{GetInkFileWithFile}}
+\index{GetInkFileWithFile@{GetInkFileWithFile}!Ink.UnityIntegration.InkLibrary@{Ink.UnityIntegration.InkLibrary}}
+\doxysubsubsection{\texorpdfstring{GetInkFileWithFile()}{GetInkFileWithFile()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_file}{Ink\+File}} Ink.\+Unity\+Integration.\+Ink\+Library.\+Get\+Ink\+File\+With\+File (\begin{DoxyParamCaption}\item[{Default\+Asset}]{file,  }\item[{bool}]{add\+If\+Missing = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Gets the ink file from the .ink file reference. 
+
+\begin{DoxyReturn}{Returns}
+The ink file with path.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em file} & File asset.\\
+\hline
+{\em add\+If\+Missing} & Adds the file if missing from ink\+Library.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_library_a8fda14d34fb7b4dde200e85cbb8b1edf}\label{class_ink_1_1_unity_integration_1_1_ink_library_a8fda14d34fb7b4dde200e85cbb8b1edf}} 
+\index{Ink.UnityIntegration.InkLibrary@{Ink.UnityIntegration.InkLibrary}!GetInkFileWithPath@{GetInkFileWithPath}}
+\index{GetInkFileWithPath@{GetInkFileWithPath}!Ink.UnityIntegration.InkLibrary@{Ink.UnityIntegration.InkLibrary}}
+\doxysubsubsection{\texorpdfstring{GetInkFileWithPath()}{GetInkFileWithPath()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_file}{Ink\+File}} Ink.\+Unity\+Integration.\+Ink\+Library.\+Get\+Ink\+File\+With\+Path (\begin{DoxyParamCaption}\item[{string}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Gets the ink file with path relative to Assets folder, for example\+: \char`\"{}\+Assets/\+Ink/my\+Story.\+ink\char`\"{}. 
+
+\begin{DoxyReturn}{Returns}
+The ink file with path.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Path.\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Editor/\+Core/\+Ink Library/Ink\+Library.\+cs\end{DoxyCompactItemize}

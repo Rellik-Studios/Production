@@ -1,0 +1,176 @@
+\hypertarget{class_ink_1_1_runtime_1_1_ink_list}{}\doxysection{Ink.\+Runtime.\+Ink\+List Class Reference}
+\label{class_ink_1_1_runtime_1_1_ink_list}\index{Ink.Runtime.InkList@{Ink.Runtime.InkList}}
+
+
+The \mbox{\hyperlink{class_ink_1_1_runtime_1_1_ink_list}{Ink\+List}} is the underlying type that\textquotesingle{}s used to store an instance of a list in ink. It\textquotesingle{}s not used for the {\itshape definition} of the list, but for a list value that\textquotesingle{}s stored in a variable. Somewhat confusingly, it\textquotesingle{}s backed by a C\# Dictionary, and has nothing to do with a C\# List!  
+
+
+Inheritance diagram for Ink.\+Runtime.\+Ink\+List\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ink_1_1_runtime_1_1_ink_list}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_ink_list_a454dc254fc0841e8555c231e1d06bc2e}\label{class_ink_1_1_runtime_1_1_ink_list_a454dc254fc0841e8555c231e1d06bc2e}} 
+{\bfseries Ink\+List} ()
+\begin{DoxyCompactList}\small\item\em Create a new empty ink list. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_ink_list_a0363451a53dc2326fda95d7c96786423}\label{class_ink_1_1_runtime_1_1_ink_list_a0363451a53dc2326fda95d7c96786423}} 
+{\bfseries Ink\+List} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_ink_list}{Ink\+List}} other\+List)
+\begin{DoxyCompactList}\small\item\em Create a new ink list that contains the same contents as another list. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_ink_list_a82a147e51156c2bd6b76f33716db743d}\label{class_ink_1_1_runtime_1_1_ink_list_a82a147e51156c2bd6b76f33716db743d}} 
+{\bfseries Ink\+List} (string single\+Origin\+List\+Name, \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}} origin\+Story)
+\begin{DoxyCompactList}\small\item\em Create a new empty ink list that\textquotesingle{}s intended to hold items from a particular origin list definition. The origin \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}} is needed in order to be able to look up that definition. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_ink_list_abd365634af89eef4e6d142043066e6d3}\label{class_ink_1_1_runtime_1_1_ink_list_abd365634af89eef4e6d142043066e6d3}} 
+{\bfseries Ink\+List} (Key\+Value\+Pair$<$ \mbox{\hyperlink{struct_ink_1_1_runtime_1_1_ink_list_item}{Ink\+List\+Item}}, int $>$ single\+Element)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_ink_list_a4e55484b6911e4b165db835673423f23}\label{class_ink_1_1_runtime_1_1_ink_list_a4e55484b6911e4b165db835673423f23}} 
+void {\bfseries Add\+Item} (\mbox{\hyperlink{struct_ink_1_1_runtime_1_1_ink_list_item}{Ink\+List\+Item}} item)
+\begin{DoxyCompactList}\small\item\em Adds the given item to the ink list. Note that the item must come from a list definition that is already \char`\"{}known\char`\"{} to this list, so that the item\textquotesingle{}s value can be looked up. By \char`\"{}known\char`\"{}, we mean that it already has items in it from that source, or it did at one point -\/ it can\textquotesingle{}t be a completely fresh empty list, or a list that only contains items from a different list definition. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_ink_list_a2f055a6d3928c3c1b034fd950f4f1ea9}\label{class_ink_1_1_runtime_1_1_ink_list_a2f055a6d3928c3c1b034fd950f4f1ea9}} 
+void {\bfseries Add\+Item} (string item\+Name)
+\begin{DoxyCompactList}\small\item\em Adds the given item to the ink list, attempting to find the origin list definition that it belongs to. The item must therefore come from a list definition that is already \char`\"{}known\char`\"{} to this list, so that the item\textquotesingle{}s value can be looked up. By \char`\"{}known\char`\"{}, we mean that it already has items in it from that source, or it did at one point -\/ it can\textquotesingle{}t be a completely fresh empty list, or a list that only contains items from a different list definition. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_ink_list_ac6f587e6e5773fc81d0c52c2408476a5}\label{class_ink_1_1_runtime_1_1_ink_list_ac6f587e6e5773fc81d0c52c2408476a5}} 
+bool {\bfseries Contains\+Item\+Named} (string item\+Name)
+\begin{DoxyCompactList}\small\item\em Returns true if this ink list contains an item with the given short name (ignoring the original list where it was defined). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_ink_list_a317f1f6985644d2fa5a45c53725aa7b7}\label{class_ink_1_1_runtime_1_1_ink_list_a317f1f6985644d2fa5a45c53725aa7b7}} 
+void {\bfseries Set\+Initial\+Origin\+Name} (string initial\+Origin\+Name)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_ink_list_ae874ac03fed6d0c6430ff081353e7dbf}\label{class_ink_1_1_runtime_1_1_ink_list_ae874ac03fed6d0c6430ff081353e7dbf}} 
+void {\bfseries Set\+Initial\+Origin\+Names} (List$<$ string $>$ initial\+Origin\+Names)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_ink_list_a83f9f7a695e52047abb05cfc8a95dcc4}\label{class_ink_1_1_runtime_1_1_ink_list_a83f9f7a695e52047abb05cfc8a95dcc4}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_ink_list}{Ink\+List}} {\bfseries Union} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_ink_list}{Ink\+List}} other\+List)
+\begin{DoxyCompactList}\small\item\em Returns a new list that is the combination of the current list and one that\textquotesingle{}s passed in. Equivalent to calling (list1 + list2) in ink. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_ink_list_a27697a110f390f7bdd4b7f0451f10bcd}\label{class_ink_1_1_runtime_1_1_ink_list_a27697a110f390f7bdd4b7f0451f10bcd}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_ink_list}{Ink\+List}} {\bfseries Intersect} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_ink_list}{Ink\+List}} other\+List)
+\begin{DoxyCompactList}\small\item\em Returns a new list that is the intersection of the current list with another list that\textquotesingle{}s passed in -\/ i.\+e. a list of the items that are shared between the two other lists. Equivalent to calling (list1 $^\wedge$ list2) in ink. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_ink_list}{Ink\+List}} \mbox{\hyperlink{class_ink_1_1_runtime_1_1_ink_list_aff9812c7e428ce9ed0e5b3a0a5073586}{Without}} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_ink_list}{Ink\+List}} list\+To\+Remove)
+\begin{DoxyCompactList}\small\item\em Returns a new list that\textquotesingle{}s the same as the current one, except with the given items removed that are in the passed in list. Equivalent to calling (list1 -\/ list2) in ink. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_ink_1_1_runtime_1_1_ink_list_afa0804ff9a6946cd6f9b1794514debe0}{Contains}} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_ink_list}{Ink\+List}} other\+List)
+\begin{DoxyCompactList}\small\item\em Returns true if the current list contains all the items that are in the list that is passed in. Equivalent to calling (list1 ? list2) in ink. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_ink_list_afe7d8a2419666acf36f7ca01c7299f8a}\label{class_ink_1_1_runtime_1_1_ink_list_afe7d8a2419666acf36f7ca01c7299f8a}} 
+bool {\bfseries Greater\+Than} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_ink_list}{Ink\+List}} other\+List)
+\begin{DoxyCompactList}\small\item\em Returns true if all the item values in the current list are greater than all the item values in the passed in list. Equivalent to calling (list1 \texorpdfstring{$>$}{>} list2) in ink. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_ink_list_a1fa6dbd0f2aa192a96a4a666164f3442}\label{class_ink_1_1_runtime_1_1_ink_list_a1fa6dbd0f2aa192a96a4a666164f3442}} 
+bool {\bfseries Greater\+Than\+Or\+Equals} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_ink_list}{Ink\+List}} other\+List)
+\begin{DoxyCompactList}\small\item\em Returns true if the item values in the current list overlap or are all greater than the item values in the passed in list. None of the item values in the current list must fall below the item values in the passed in list. Equivalent to (list1 \texorpdfstring{$>$}{>}= list2) in ink, or LIST\+\_\+\+MIN(list1) \texorpdfstring{$>$}{>}= LIST\+\_\+\+MIN(list2) \&\& LIST\+\_\+\+MAX(list1) \texorpdfstring{$>$}{>}= LIST\+\_\+\+MAX(list2). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_ink_list_aa5855987326ab45e9a74db5a1ac0d5f6}\label{class_ink_1_1_runtime_1_1_ink_list_aa5855987326ab45e9a74db5a1ac0d5f6}} 
+bool {\bfseries Less\+Than} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_ink_list}{Ink\+List}} other\+List)
+\begin{DoxyCompactList}\small\item\em Returns true if all the item values in the current list are less than all the item values in the passed in list. Equivalent to calling (list1 \texorpdfstring{$<$}{<} list2) in ink. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_ink_list_a240f058566d77126c8ebfd2fcd2126de}\label{class_ink_1_1_runtime_1_1_ink_list_a240f058566d77126c8ebfd2fcd2126de}} 
+bool {\bfseries Less\+Than\+Or\+Equals} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_ink_list}{Ink\+List}} other\+List)
+\begin{DoxyCompactList}\small\item\em Returns true if the item values in the current list overlap or are all less than the item values in the passed in list. None of the item values in the current list must go above the item values in the passed in list. Equivalent to (list1 \texorpdfstring{$<$}{<}= list2) in ink, or LIST\+\_\+\+MAX(list1) \texorpdfstring{$<$}{<}= LIST\+\_\+\+MAX(list2) \&\& LIST\+\_\+\+MIN(list1) \texorpdfstring{$<$}{<}= LIST\+\_\+\+MIN(list2). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_ink_list_abfc5a2852802640118338c76d3d53035}\label{class_ink_1_1_runtime_1_1_ink_list_abfc5a2852802640118338c76d3d53035}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_ink_list}{Ink\+List}} {\bfseries Max\+As\+List} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_ink_list_aea885dabac7edde0fddf71d046d73f23}\label{class_ink_1_1_runtime_1_1_ink_list_aea885dabac7edde0fddf71d046d73f23}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_ink_list}{Ink\+List}} {\bfseries Min\+As\+List} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_ink_list_abf843a64f86709e87e0c0525184177e1}\label{class_ink_1_1_runtime_1_1_ink_list_abf843a64f86709e87e0c0525184177e1}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_ink_list}{Ink\+List}} {\bfseries List\+With\+Sub\+Range} (object min\+Bound, object max\+Bound)
+\begin{DoxyCompactList}\small\item\em Returns a sublist with the elements given the minimum and maxmimum bounds. The bounds can either be ints which are indices into the entire (sorted) list, or they can be Ink\+Lists themselves. These are intended to be single-\/item lists so you can specify the upper and lower bounds. If you pass in multi-\/item lists, it\textquotesingle{}ll use the minimum and maximum items in those lists respectively. WARNING\+: Calling this method requires a full sort of all the elements in the list. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_ink_list_a3862da82fd144f6597b348789e600322}\label{class_ink_1_1_runtime_1_1_ink_list_a3862da82fd144f6597b348789e600322}} 
+override bool {\bfseries Equals} (object other)
+\begin{DoxyCompactList}\small\item\em Returns true if the passed object is also an ink list that contains the same items as the current list, false otherwise. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_ink_list_acb8962c4eccc1e3c47978a85f31ca923}\label{class_ink_1_1_runtime_1_1_ink_list_acb8962c4eccc1e3c47978a85f31ca923}} 
+override int {\bfseries Get\+Hash\+Code} ()
+\begin{DoxyCompactList}\small\item\em Return the hashcode for this object, used for comparisons and inserting into dictionaries. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_ink_list_aeaf24c61ccf7600504352a513b871563}\label{class_ink_1_1_runtime_1_1_ink_list_aeaf24c61ccf7600504352a513b871563}} 
+override string {\bfseries To\+String} ()
+\begin{DoxyCompactList}\small\item\em Returns a string in the form \char`\"{}a, b, c\char`\"{} with the names of the items in the list, without the origin list definition names. Equivalent to writing \{list\} in ink. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_ink_1_1_runtime_1_1_ink_list}{Ink\+List}} \mbox{\hyperlink{class_ink_1_1_runtime_1_1_ink_list_af86c0bca8555a998e45709a5c5d33cd2}{From\+String}} (string my\+List\+Item, \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}} origin\+Story)
+\begin{DoxyCompactList}\small\item\em Converts a string to an ink list and returns for use in the story. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_ink_list_a152d0f4cced5b3813553657932f9b808}\label{class_ink_1_1_runtime_1_1_ink_list_a152d0f4cced5b3813553657932f9b808}} 
+List$<$ \mbox{\hyperlink{class_ink_1_1_runtime_1_1_list_definition}{List\+Definition}} $>$ {\bfseries origins}
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_ink_list_a35e9bee27c4e0f73526bebe17016ab96}\label{class_ink_1_1_runtime_1_1_ink_list_a35e9bee27c4e0f73526bebe17016ab96}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_list_definition}{List\+Definition}} {\bfseries origin\+Of\+Max\+Item}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_ink_list_a7e1079d9fd05841eaf3f1dd118941880}\label{class_ink_1_1_runtime_1_1_ink_list_a7e1079d9fd05841eaf3f1dd118941880}} 
+List$<$ string $>$ {\bfseries origin\+Names}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_ink_list_ae8b790a7ab46e0cef3bf9fff595fe0c5}\label{class_ink_1_1_runtime_1_1_ink_list_ae8b790a7ab46e0cef3bf9fff595fe0c5}} 
+Key\+Value\+Pair$<$ \mbox{\hyperlink{struct_ink_1_1_runtime_1_1_ink_list_item}{Ink\+List\+Item}}, int $>$ {\bfseries max\+Item}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Get the maximum item in the list, equivalent to calling LIST\+\_\+\+MAX(list) in ink. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_ink_list_a2b8e042a78b9023838247ee7c70a41df}\label{class_ink_1_1_runtime_1_1_ink_list_a2b8e042a78b9023838247ee7c70a41df}} 
+Key\+Value\+Pair$<$ \mbox{\hyperlink{struct_ink_1_1_runtime_1_1_ink_list_item}{Ink\+List\+Item}}, int $>$ {\bfseries min\+Item}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Get the minimum item in the list, equivalent to calling LIST\+\_\+\+MIN(list) in ink. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_ink_list_aeaa934094d0eca286248fbfc25007b26}\label{class_ink_1_1_runtime_1_1_ink_list_aeaa934094d0eca286248fbfc25007b26}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_ink_list}{Ink\+List}} {\bfseries inverse}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The inverse of the list, equivalent to calling LIST\+\_\+\+INVERSE(list) in ink \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_ink_list_a53b2a7c5ee4d9178b42c580d83ca4ad8}\label{class_ink_1_1_runtime_1_1_ink_list_a53b2a7c5ee4d9178b42c580d83ca4ad8}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_ink_list}{Ink\+List}} {\bfseries all}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The list of all items from the original list definition, equivalent to calling LIST\+\_\+\+ALL(list) in ink. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{class_ink_1_1_runtime_1_1_ink_list}{Ink\+List}} is the underlying type that\textquotesingle{}s used to store an instance of a list in ink. It\textquotesingle{}s not used for the {\itshape definition} of the list, but for a list value that\textquotesingle{}s stored in a variable. Somewhat confusingly, it\textquotesingle{}s backed by a C\# Dictionary, and has nothing to do with a C\# List! 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_ink_list_afa0804ff9a6946cd6f9b1794514debe0}\label{class_ink_1_1_runtime_1_1_ink_list_afa0804ff9a6946cd6f9b1794514debe0}} 
+\index{Ink.Runtime.InkList@{Ink.Runtime.InkList}!Contains@{Contains}}
+\index{Contains@{Contains}!Ink.Runtime.InkList@{Ink.Runtime.InkList}}
+\doxysubsubsection{\texorpdfstring{Contains()}{Contains()}}
+{\footnotesize\ttfamily bool Ink.\+Runtime.\+Ink\+List.\+Contains (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ink_1_1_runtime_1_1_ink_list}{Ink\+List}}}]{other\+List }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns true if the current list contains all the items that are in the list that is passed in. Equivalent to calling (list1 ? list2) in ink. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other\+List} & Other list.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_ink_list_af86c0bca8555a998e45709a5c5d33cd2}\label{class_ink_1_1_runtime_1_1_ink_list_af86c0bca8555a998e45709a5c5d33cd2}} 
+\index{Ink.Runtime.InkList@{Ink.Runtime.InkList}!FromString@{FromString}}
+\index{FromString@{FromString}!Ink.Runtime.InkList@{Ink.Runtime.InkList}}
+\doxysubsubsection{\texorpdfstring{FromString()}{FromString()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_ink_1_1_runtime_1_1_ink_list}{Ink\+List}} Ink.\+Runtime.\+Ink\+List.\+From\+String (\begin{DoxyParamCaption}\item[{string}]{my\+List\+Item,  }\item[{\mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}}}]{origin\+Story }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Converts a string to an ink list and returns for use in the story. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_ink_list}{Ink\+List}} created from string list item
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em item\+Key} & Item key.\\
+\hline
+{\em origin\+Story} & Origin story.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_ink_list_aff9812c7e428ce9ed0e5b3a0a5073586}\label{class_ink_1_1_runtime_1_1_ink_list_aff9812c7e428ce9ed0e5b3a0a5073586}} 
+\index{Ink.Runtime.InkList@{Ink.Runtime.InkList}!Without@{Without}}
+\index{Without@{Without}!Ink.Runtime.InkList@{Ink.Runtime.InkList}}
+\doxysubsubsection{\texorpdfstring{Without()}{Without()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ink_1_1_runtime_1_1_ink_list}{Ink\+List}} Ink.\+Runtime.\+Ink\+List.\+Without (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ink_1_1_runtime_1_1_ink_list}{Ink\+List}}}]{list\+To\+Remove }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns a new list that\textquotesingle{}s the same as the current one, except with the given items removed that are in the passed in list. Equivalent to calling (list1 -\/ list2) in ink. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list\+To\+Remove} & List to remove.\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Ink\+Libs/\+Ink\+Runtime/Ink\+List.\+cs\end{DoxyCompactItemize}

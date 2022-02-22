@@ -1,0 +1,54 @@
+\hypertarget{struct_ink_1_1_runtime_1_1_ink_list_item}{}\doxysection{Ink.\+Runtime.\+Ink\+List\+Item Struct Reference}
+\label{struct_ink_1_1_runtime_1_1_ink_list_item}\index{Ink.Runtime.InkListItem@{Ink.Runtime.InkListItem}}
+
+
+The underlying type for a list item in ink. It stores the original list definition name as well as the item name, but without the value of the item. When the value is stored, it\textquotesingle{}s stored in a Key\+Value\+Pair of \mbox{\hyperlink{struct_ink_1_1_runtime_1_1_ink_list_item}{Ink\+List\+Item}} and int.  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_ink_1_1_runtime_1_1_ink_list_item_a70e64883da0521665168e83abce358a1}\label{struct_ink_1_1_runtime_1_1_ink_list_item_a70e64883da0521665168e83abce358a1}} 
+{\bfseries Ink\+List\+Item} (string \mbox{\hyperlink{struct_ink_1_1_runtime_1_1_ink_list_item_aeaa6ccd0c461161b4547e0e9edfe8b04}{origin\+Name}}, string \mbox{\hyperlink{struct_ink_1_1_runtime_1_1_ink_list_item_a5b4d0944288d1b57efa5941b68eba024}{item\+Name}})
+\begin{DoxyCompactList}\small\item\em Create an item with the given original list definition name, and the name of this item. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_ink_1_1_runtime_1_1_ink_list_item_a6352345a2d7922a166d442b7c0a82154}\label{struct_ink_1_1_runtime_1_1_ink_list_item_a6352345a2d7922a166d442b7c0a82154}} 
+{\bfseries Ink\+List\+Item} (string \mbox{\hyperlink{struct_ink_1_1_runtime_1_1_ink_list_item_a738b508cce5cf3e441c3a59d5f6082f6}{full\+Name}})
+\begin{DoxyCompactList}\small\item\em Create an item from a dot-\/separted string of the form \char`\"{}list\+Definition\+Name.\+list\+Item\+Name\char`\"{}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_ink_1_1_runtime_1_1_ink_list_item_af03811fec34ec84204b6cabbde27d5cf}\label{struct_ink_1_1_runtime_1_1_ink_list_item_af03811fec34ec84204b6cabbde27d5cf}} 
+override string {\bfseries To\+String} ()
+\begin{DoxyCompactList}\small\item\em Get the full dot-\/separated name of the item, in the form \char`\"{}list\+Definition\+Name.\+item\+Name\char`\"{}. Calls full\+Name internally. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_ink_1_1_runtime_1_1_ink_list_item_a5ef0229610218e5a79ce1863ad11a185}\label{struct_ink_1_1_runtime_1_1_ink_list_item_a5ef0229610218e5a79ce1863ad11a185}} 
+override bool {\bfseries Equals} (object obj)
+\begin{DoxyCompactList}\small\item\em Is this item the same as another item? \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_ink_1_1_runtime_1_1_ink_list_item_a2d941b31779df8529f32d91e22e5243d}\label{struct_ink_1_1_runtime_1_1_ink_list_item_a2d941b31779df8529f32d91e22e5243d}} 
+override int {\bfseries Get\+Hash\+Code} ()
+\begin{DoxyCompactList}\small\item\em Get the hashcode for an item. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_ink_1_1_runtime_1_1_ink_list_item_aeaa6ccd0c461161b4547e0e9edfe8b04}\label{struct_ink_1_1_runtime_1_1_ink_list_item_aeaa6ccd0c461161b4547e0e9edfe8b04}} 
+readonly string {\bfseries origin\+Name}
+\begin{DoxyCompactList}\small\item\em The name of the list where the item was originally defined. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_ink_1_1_runtime_1_1_ink_list_item_a5b4d0944288d1b57efa5941b68eba024}\label{struct_ink_1_1_runtime_1_1_ink_list_item_a5b4d0944288d1b57efa5941b68eba024}} 
+readonly string {\bfseries item\+Name}
+\begin{DoxyCompactList}\small\item\em The main name of the item as defined in ink. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_ink_1_1_runtime_1_1_ink_list_item_a524f94cd6370f67d51e2094e8ceafb8f}\label{struct_ink_1_1_runtime_1_1_ink_list_item_a524f94cd6370f67d51e2094e8ceafb8f}} 
+static \mbox{\hyperlink{struct_ink_1_1_runtime_1_1_ink_list_item}{Ink\+List\+Item}} {\bfseries Null}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{struct_ink_1_1_runtime_1_1_ink_list_item_a017359a1614e5b12c181b7b810125192}\label{struct_ink_1_1_runtime_1_1_ink_list_item_a017359a1614e5b12c181b7b810125192}} 
+bool {\bfseries is\+Null}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{struct_ink_1_1_runtime_1_1_ink_list_item_a738b508cce5cf3e441c3a59d5f6082f6}\label{struct_ink_1_1_runtime_1_1_ink_list_item_a738b508cce5cf3e441c3a59d5f6082f6}} 
+string??? {\bfseries full\+Name}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Get the full dot-\/separated name of the item, in the form \char`\"{}list\+Definition\+Name.\+item\+Name\char`\"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The underlying type for a list item in ink. It stores the original list definition name as well as the item name, but without the value of the item. When the value is stored, it\textquotesingle{}s stored in a Key\+Value\+Pair of \mbox{\hyperlink{struct_ink_1_1_runtime_1_1_ink_list_item}{Ink\+List\+Item}} and int. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Ink\+Libs/\+Ink\+Runtime/Ink\+List.\+cs\end{DoxyCompactItemize}

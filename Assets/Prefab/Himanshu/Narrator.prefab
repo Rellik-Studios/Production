@@ -1,0 +1,130 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &655182173056029649
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 655182173056029651}
+  - component: {fileID: 655182173056029648}
+  - component: {fileID: 655182173056029650}
+  m_Layer: 0
+  m_Name: Narrator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &655182173056029651
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655182173056029649}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1921.3917, y: 1081.06, z: -0.3802737}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &655182173056029648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655182173056029649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 020b1b09f46e82343a42bed85f8cd1c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &655182173056029650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655182173056029649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91f353d4291d4d05bb7d107d32eff93e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_textBox: {fileID: 0}
+  m_idleRoom:
+  - Don't you have anything better to do.
+  - 'I see they refer to you as @userName '
+  - Your account name is @userName right?
+  - "@userName, how are you today? It\u2019s a lovely @timeCategory isn\u2019t it?"
+  - "Actually, it\u2019s @time, @activity "
+  - This is the {worst|best} @day, I've had in weeks
+  m_ballRoom:
+  - 
+  - 'Lovely ballroom#
+
+    @userName,Have you ever danced with anyone?'
+  - Music trancends time.
+  - You know, I would say the speed of sound is actually pretty slow.
+  m_cafeteria:
+  - 
+  - "School saps so much of one\u2019s time on Earth."
+  - I remember your first day of school, do you?
+  - "Doesn\u2019t this remind you of school days?"
+  m_maze:
+  - 
+  - "Isn\u2019t human existence similar to a maze? A confusing journey to the end."
+  - "Now you have to complete a maze! Just like a lab rat. Let\u2019s test your intelligence!"
+  m_bathroom:
+  - 
+  - "So many mirrors. How much of the self lies in one\u2019s appearance?"
+  - Many people lead their lives like Narcissus.
+  m_mirrorShatter:
+  - 
+  - Have fun with the next 7 years!
+  - "I\u2019d shatter too if you looked at me."
+  - Can you not handle seeing yourself?
+  - How sad, the mirror shattered from the sight of you.
+  m_hospital1950:
+  - 
+  - An apple a day keeps the doctor away!
+  - Remember to take your happy pills.
+  - May I interest you in an all-in-one miracle cure?
+  m_hospital1870:
+  - 
+  - The chainsaw was invented to be a medical instrument. Did you know that @userName?
+  - "Ah, yes, the 19th century\u2026 when heroin was prescribed to kids."
+  - "Doctors back then would recommend a \u201Cchange of air\u201D for your flu."
+  m_hospitalFuturistic:
+  - 
+  - "Even with the advancements in technology, there\u2019s still a need for hospitals.\r#\nSome
+    things don\u2019t change.\n"
+  - "There\u2019ll always be a new disease ready to challenge humanity.\nHave you
+    considered how frail you are?\n"
+  - "Technology slowly but surely takes over every part of human life.#\nEveryone
+    soon will be unable to tear their eyes away from the screen\u2026#\njust like
+    you, at this very moment."
+  - "I would tell you what happens in the future, but I don\u2019t wanna spoil it
+    ;)#\nOr cause unwanted butterfly effects.\n"
+  - "If you fear A.I. taking over in the future, you would be absolutely correct.#\nI
+    suppose even I\u2019m an A.I. of sorts, in this form.\n"
+  m_hospitalPresent:
+  - 
+  - "2020 was a true test for humanity\u2019s progress"
+  - "There\u2019s still a lot about the human body that humanity does not know."
+  m_hub1:
+  - "Oh good someone\u2019s here!#\nYou\u2019re gonna need to help me. Your only
+    other option is quitting, I suppose.#\nLong story short, I need you to fix that
+    clock over there.\r#\nGo through any of those doors, we can talk more inside."
+  m_hub2:
+  - "Don\u2019t you wish this could be easier?#\nDon\u2019t you wish you could just
+    go back in time?#\nWell, since I\u2019m feeling generous today\u2026 you can!#\nJust
+    press [REWIND TIME BUTTON]. You\u2019ll go back a few seconds, but your location
+    in the space won\u2019t change.#\nYou\u2019re welcome. I never want to hear you
+    say I\u2019m not a benevolent ruler.#"
+  m_finish1: []

@@ -1,0 +1,64 @@
+\hypertarget{class_ink_1_1_runtime_1_1_choice}{}\doxysection{Ink.\+Runtime.\+Choice Class Reference}
+\label{class_ink_1_1_runtime_1_1_choice}\index{Ink.Runtime.Choice@{Ink.Runtime.Choice}}
+
+
+A generated \mbox{\hyperlink{class_ink_1_1_runtime_1_1_choice}{Choice}} from the story. A single \mbox{\hyperlink{class_ink_1_1_runtime_1_1_choice_point}{Choice\+Point}} in the \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}} could potentially generate different Choices dynamically dependent on state, so they\textquotesingle{}re separated.  
+
+
+Inheritance diagram for Ink.\+Runtime.\+Choice\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ink_1_1_runtime_1_1_choice}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{class_ink_1_1_runtime_1_1_choice_ae3548e516dd5cf7ed97dc91ebb883b35}{source\+Path}}
+\begin{DoxyCompactList}\small\item\em Get the path to the original choice point -\/ where was this choice defined in the story? \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_choice_ac7400f898f1b74f2af19dab2e4c2d365}\label{class_ink_1_1_runtime_1_1_choice_ac7400f898f1b74f2af19dab2e4c2d365}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_path}{Path}} {\bfseries target\+Path}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_choice_abdbc0cbeeea891faccfd1c4f5ebd36f9}\label{class_ink_1_1_runtime_1_1_choice_abdbc0cbeeea891faccfd1c4f5ebd36f9}} 
+int {\bfseries original\+Thread\+Index}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_choice_a2e16c169c25deb032653d61299b60706}\label{class_ink_1_1_runtime_1_1_choice_a2e16c169c25deb032653d61299b60706}} 
+bool {\bfseries is\+Invisible\+Default}
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_choice_aeef542b4aad33ca65c601bdb3a433546}\label{class_ink_1_1_runtime_1_1_choice_aeef542b4aad33ca65c601bdb3a433546}} 
+string {\bfseries text}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The main text to presented to the player for this \mbox{\hyperlink{class_ink_1_1_runtime_1_1_choice}{Choice}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_choice_a8f575812585f7a6d5c34d8f26ba81a70}\label{class_ink_1_1_runtime_1_1_choice_a8f575812585f7a6d5c34d8f26ba81a70}} 
+string {\bfseries path\+String\+On\+Choice}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The target path that the \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}} should be diverted to if this \mbox{\hyperlink{class_ink_1_1_runtime_1_1_choice}{Choice}} is chosen. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_choice_af165fd70cf7df606bd57595b13d04084}\label{class_ink_1_1_runtime_1_1_choice_af165fd70cf7df606bd57595b13d04084}} 
+int {\bfseries index}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The original index into current\+Choices list on the \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}} when this \mbox{\hyperlink{class_ink_1_1_runtime_1_1_choice}{Choice}} was generated, for convenience. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_choice_a677179935be2f4a978e29ad6cc11ccd1}\label{class_ink_1_1_runtime_1_1_choice_a677179935be2f4a978e29ad6cc11ccd1}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_call_stack_1_1_thread}{Call\+Stack.\+Thread}} {\bfseries thread\+At\+Generation}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+A generated \mbox{\hyperlink{class_ink_1_1_runtime_1_1_choice}{Choice}} from the story. A single \mbox{\hyperlink{class_ink_1_1_runtime_1_1_choice_point}{Choice\+Point}} in the \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}} could potentially generate different Choices dynamically dependent on state, so they\textquotesingle{}re separated. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_choice_ae3548e516dd5cf7ed97dc91ebb883b35}\label{class_ink_1_1_runtime_1_1_choice_ae3548e516dd5cf7ed97dc91ebb883b35}} 
+\index{Ink.Runtime.Choice@{Ink.Runtime.Choice}!sourcePath@{sourcePath}}
+\index{sourcePath@{sourcePath}!Ink.Runtime.Choice@{Ink.Runtime.Choice}}
+\doxysubsubsection{\texorpdfstring{sourcePath}{sourcePath}}
+{\footnotesize\ttfamily string Ink.\+Runtime.\+Choice.\+source\+Path}
+
+
+
+Get the path to the original choice point -\/ where was this choice defined in the story? 
+
+A dot separated path into the story data.
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Ink\+Libs/\+Ink\+Runtime/Choice.\+cs\end{DoxyCompactItemize}

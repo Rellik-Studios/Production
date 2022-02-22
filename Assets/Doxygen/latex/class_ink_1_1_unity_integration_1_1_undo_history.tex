@@ -1,0 +1,79 @@
+\hypertarget{class_ink_1_1_unity_integration_1_1_undo_history}{}\doxysection{Ink.\+Unity\+Integration.\+Undo\+History\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\label{class_ink_1_1_unity_integration_1_1_undo_history}\index{Ink.UnityIntegration.UndoHistory$<$ T $>$@{Ink.UnityIntegration.UndoHistory$<$ T $>$}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_undo_history_a9d1779643ef1d84dd106c3d19bcdc922}\label{class_ink_1_1_unity_integration_1_1_undo_history_a9d1779643ef1d84dd106c3d19bcdc922}} 
+delegate void {\bfseries On\+Undo\+Event} (T history\+Item)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_undo_history_a72df046a04077aa556f9e1775a96b5ac}\label{class_ink_1_1_unity_integration_1_1_undo_history_a72df046a04077aa556f9e1775a96b5ac}} 
+delegate void {\bfseries On\+Redo\+Event} (T history\+Item)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_undo_history_a5e439155aea93ee5c6edde77d1616d62}\label{class_ink_1_1_unity_integration_1_1_undo_history_a5e439155aea93ee5c6edde77d1616d62}} 
+delegate void {\bfseries On\+Change\+History\+Index\+Event} (T history\+Item)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_undo_history_aa7873adc9ae43dc3e127410c32209a06}\label{class_ink_1_1_unity_integration_1_1_undo_history_aa7873adc9ae43dc3e127410c32209a06}} 
+delegate void {\bfseries On\+Change\+Undo\+History\+Event} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_undo_history_ad65232f2b110641de59cd13012884538}\label{class_ink_1_1_unity_integration_1_1_undo_history_ad65232f2b110641de59cd13012884538}} 
+{\bfseries Undo\+History} (int max\+History\+Items)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_undo_history_ae9374bf7b23cb845fd91cc100361bc5c}\label{class_ink_1_1_unity_integration_1_1_undo_history_ae9374bf7b23cb845fd91cc100361bc5c}} 
+virtual void {\bfseries Add\+To\+Undo\+History} (T state)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_undo_history_a2050d99347480d10874301368b437c9f}\label{class_ink_1_1_unity_integration_1_1_undo_history_a2050d99347480d10874301368b437c9f}} 
+virtual void {\bfseries Clear} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_undo_history_a87f04ccb9e062124aa89ce8e0e314c85}\label{class_ink_1_1_unity_integration_1_1_undo_history_a87f04ccb9e062124aa89ce8e0e314c85}} 
+virtual T {\bfseries Undo} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_undo_history_a1b09b07f69d8d7661fd120d5d5976b59}\label{class_ink_1_1_unity_integration_1_1_undo_history_a1b09b07f69d8d7661fd120d5d5976b59}} 
+virtual T {\bfseries Redo} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_undo_history_ad12c950a9f58bc5c63808b27d76de5a6}\label{class_ink_1_1_unity_integration_1_1_undo_history_ad12c950a9f58bc5c63808b27d76de5a6}} 
+List$<$ T $>$ {\bfseries undo\+History}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_undo_history_a4f5acac05ba2e4d2a8753cc349c91752}\label{class_ink_1_1_unity_integration_1_1_undo_history_a4f5acac05ba2e4d2a8753cc349c91752}} 
+int {\bfseries max\+History\+Items} = 100
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_undo_history_ab00920bb31b096648b6c1da525fad273}\label{class_ink_1_1_unity_integration_1_1_undo_history_ab00920bb31b096648b6c1da525fad273}} 
+virtual void {\bfseries Apply\+History\+Item} (T history\+Item)
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_undo_history_a400aa8633ad1510e70deb96bb2d7f127}\label{class_ink_1_1_unity_integration_1_1_undo_history_a400aa8633ad1510e70deb96bb2d7f127}} 
+int {\bfseries undo\+History\+Index}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_undo_history_ac79f00f250c60676b042a7e6df16a103}\label{class_ink_1_1_unity_integration_1_1_undo_history_ac79f00f250c60676b042a7e6df16a103}} 
+bool {\bfseries can\+Undo}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_undo_history_a997fae5847a68659dc22393074c30772}\label{class_ink_1_1_unity_integration_1_1_undo_history_a997fae5847a68659dc22393074c30772}} 
+bool {\bfseries can\+Redo}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Events}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_undo_history_ab4544388c5ba8e257c97cf1442e8c270}\label{class_ink_1_1_unity_integration_1_1_undo_history_ab4544388c5ba8e257c97cf1442e8c270}} 
+On\+Undo\+Event {\bfseries On\+Undo}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_undo_history_a65a3f32708f99441e96a528f948ab268}\label{class_ink_1_1_unity_integration_1_1_undo_history_a65a3f32708f99441e96a528f948ab268}} 
+On\+Redo\+Event {\bfseries On\+Redo}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_undo_history_adce6111c5198c9672a7e74eada170df6}\label{class_ink_1_1_unity_integration_1_1_undo_history_adce6111c5198c9672a7e74eada170df6}} 
+On\+Change\+History\+Index\+Event {\bfseries On\+Change\+History\+Index}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_undo_history_a9e793ba23ee2402918510bc1c1b8d0cf}\label{class_ink_1_1_unity_integration_1_1_undo_history_a9e793ba23ee2402918510bc1c1b8d0cf}} 
+On\+Change\+Undo\+History\+Event {\bfseries On\+Change\+Undo\+History}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Editor/\+Tools/\+Player Window/Ink\+Player\+Window.\+cs\end{DoxyCompactItemize}

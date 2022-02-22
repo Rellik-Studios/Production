@@ -1,0 +1,55 @@
+\hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_1_1_compilation_stack_item}{}\doxysection{Ink.\+Unity\+Integration.\+Ink\+Compiler.\+Compilation\+Stack\+Item Class Reference}
+\label{class_ink_1_1_unity_integration_1_1_ink_compiler_1_1_compilation_stack_item}\index{Ink.UnityIntegration.InkCompiler.CompilationStackItem@{Ink.UnityIntegration.InkCompiler.CompilationStackItem}}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_1_1_compilation_stack_item_af18237e2ddef22d93519c97a52ab0129}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_1_1_compilation_stack_item_af18237e2ddef22d93519c97a52ab0129}} 
+enum {\bfseries State} \{ {\bfseries Queued}
+, {\bfseries Compiling}
+, {\bfseries Complete}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_1_1_compilation_stack_item_a6ff08c2246c25609c1b1c6496936d227}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_1_1_compilation_stack_item_a6ff08c2246c25609c1b1c6496936d227}} 
+State {\bfseries state} = State.\+Queued
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_1_1_compilation_stack_item_a3050a916fcf79e3d95170193968b6e99}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_1_1_compilation_stack_item_a3050a916fcf79e3d95170193968b6e99}} 
+bool {\bfseries immediate}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_1_1_compilation_stack_item_aea27f426445e7f3e7bf691796ea0f9ce}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_1_1_compilation_stack_item_aea27f426445e7f3e7bf691796ea0f9ce}} 
+\mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_file}{Ink\+File}} {\bfseries ink\+File}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_1_1_compilation_stack_item_a1eea9d3edb2de472a861b55fde6ce852}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_1_1_compilation_stack_item_a1eea9d3edb2de472a861b55fde6ce852}} 
+string {\bfseries compiled\+Json}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_1_1_compilation_stack_item_aa516a65b7acb597cc916b61ea93132d1}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_1_1_compilation_stack_item_aa516a65b7acb597cc916b61ea93132d1}} 
+string {\bfseries ink\+Absolute\+File\+Path}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_1_1_compilation_stack_item_af4f5bdaa2f0345ad0f0722549cb12da5}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_1_1_compilation_stack_item_af4f5bdaa2f0345ad0f0722549cb12da5}} 
+string {\bfseries json\+Absolute\+File\+Path}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_1_1_compilation_stack_item_a16f3a3314f24f796fba1351289b9b5c2}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_1_1_compilation_stack_item_a16f3a3314f24f796fba1351289b9b5c2}} 
+List$<$ \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_compiler_log}{Ink\+Compiler\+Log}} $>$ {\bfseries log\+Output} = new List$<$\mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_compiler_log}{Ink\+Compiler\+Log}}$>$()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_1_1_compilation_stack_item_a3e027d506c8d83dc1c063a3f0144e071}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_1_1_compilation_stack_item_a3e027d506c8d83dc1c063a3f0144e071}} 
+List$<$ string $>$ {\bfseries unhandled\+Error\+Output} = new List$<$string$>$()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_1_1_compilation_stack_item_a204291332b41d9dd1679d9a8d0e65158}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_1_1_compilation_stack_item_a204291332b41d9dd1679d9a8d0e65158}} 
+Date\+Time {\bfseries start\+Time}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_1_1_compilation_stack_item_ae6b87e22c23e429262bf5b6f20d91cc8}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_1_1_compilation_stack_item_ae6b87e22c23e429262bf5b6f20d91cc8}} 
+Date\+Time {\bfseries end\+Time}
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_1_1_compilation_stack_item_a87d32c6d86cbbd44f7266bdc24f820f1}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_1_1_compilation_stack_item_a87d32c6d86cbbd44f7266bdc24f820f1}} 
+float {\bfseries time\+Taken}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Editor/\+Core/\+Compiler/Ink\+Compiler.\+cs\end{DoxyCompactItemize}

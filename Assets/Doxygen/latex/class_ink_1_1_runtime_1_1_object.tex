@@ -1,0 +1,107 @@
+\hypertarget{class_ink_1_1_runtime_1_1_object}{}\doxysection{Ink.\+Runtime.\+Object Class Reference}
+\label{class_ink_1_1_runtime_1_1_object}\index{Ink.Runtime.Object@{Ink.Runtime.Object}}
+
+
+Base class for all ink runtime content.  
+
+
+Inheritance diagram for Ink.\+Runtime.\+Object\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=12.000000cm]{class_ink_1_1_runtime_1_1_object}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_object_ac751a4dde654f90b3b3ddd9d38488704}\label{class_ink_1_1_runtime_1_1_object_ac751a4dde654f90b3b3ddd9d38488704}} 
+int? {\bfseries Debug\+Line\+Number\+Of\+Path} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_path}{Path}} path)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_object_a13d6537600a4dd9e2a6348880b1e5a55}\label{class_ink_1_1_runtime_1_1_object_a13d6537600a4dd9e2a6348880b1e5a55}} 
+\mbox{\hyperlink{struct_ink_1_1_runtime_1_1_search_result}{Search\+Result}} {\bfseries Resolve\+Path} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_path}{Path}} path)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_object_a77cbf5fca6dab87cc02fe85824bf7555}\label{class_ink_1_1_runtime_1_1_object_a77cbf5fca6dab87cc02fe85824bf7555}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_path}{Path}} {\bfseries Convert\+Path\+To\+Relative} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_path}{Path}} global\+Path)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_object_aa9db3859d806498fb7d699625852b36b}\label{class_ink_1_1_runtime_1_1_object_aa9db3859d806498fb7d699625852b36b}} 
+string {\bfseries Compact\+Path\+String} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_path}{Path}} other\+Path)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_object_a4845883d6978326190ed1e62fefadb78}\label{class_ink_1_1_runtime_1_1_object_a4845883d6978326190ed1e62fefadb78}} 
+virtual \mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Object}} {\bfseries Copy} ()
+\item 
+void \mbox{\hyperlink{class_ink_1_1_runtime_1_1_object_a4ec3561b573ae1596899f99acf11b358}{Set\+Child$<$ T $>$}} (ref T obj, T value)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_object_a147f83292a94167b87aa351edfb59005}\label{class_ink_1_1_runtime_1_1_object_a147f83292a94167b87aa351edfb59005}} 
+override bool {\bfseries Equals} (object obj)
+\begin{DoxyCompactList}\small\item\em Required for implicit bool comparison. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_object_aa8153ef25d034dbb0487879681943a41}\label{class_ink_1_1_runtime_1_1_object_aa8153ef25d034dbb0487879681943a41}} 
+override int {\bfseries Get\+Hash\+Code} ()
+\begin{DoxyCompactList}\small\item\em Required for implicit bool comparison. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static implicit \mbox{\hyperlink{class_ink_1_1_runtime_1_1_object_a5828fc0b53a89deacd88225a55232c67}{operator bool}} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Object}} obj)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_object_a05ce3e8d887ee9856db18fa128fe6a63}\label{class_ink_1_1_runtime_1_1_object_a05ce3e8d887ee9856db18fa128fe6a63}} 
+static bool {\bfseries operator==} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Object}} a, \mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Object}} b)
+\begin{DoxyCompactList}\small\item\em Required for implicit bool comparison. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_object_ac42a301c7e69232b7f533c697c3598fe}\label{class_ink_1_1_runtime_1_1_object_ac42a301c7e69232b7f533c697c3598fe}} 
+static bool {\bfseries operator!=} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Object}} a, \mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Object}} b)
+\begin{DoxyCompactList}\small\item\em Required for implicit bool comparison. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Runtime.\+Object}} \mbox{\hyperlink{class_ink_1_1_runtime_1_1_object_a82866340a9c84da05f685915ea5a50a2}{parent}}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Runtime.\+Objects can be included in the main \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}} as a hierarchy. Usually parents are \mbox{\hyperlink{class_ink_1_1_runtime_1_1_container}{Container}} objects. (TODO\+: Always?) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_object_ada7604c5572da3cf779b295e32436244}\label{class_ink_1_1_runtime_1_1_object_ada7604c5572da3cf779b295e32436244}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_debug_metadata}{Runtime.\+Debug\+Metadata}} {\bfseries debug\+Metadata}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_object_aaf8f12d929e6ff87767f4c5b60a5916a}\label{class_ink_1_1_runtime_1_1_object_aaf8f12d929e6ff87767f4c5b60a5916a}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_debug_metadata}{Runtime.\+Debug\+Metadata}} {\bfseries own\+Debug\+Metadata}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_object_aaf8d243eb78ab99383f342bad5811422}\label{class_ink_1_1_runtime_1_1_object_aaf8d243eb78ab99383f342bad5811422}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_path}{Path}} {\bfseries path}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_object_a3bbe119b1e952a683eb2c10a9ff84144}\label{class_ink_1_1_runtime_1_1_object_a3bbe119b1e952a683eb2c10a9ff84144}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_container}{Container}} {\bfseries root\+Content\+Container}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base class for all ink runtime content. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_object_a5828fc0b53a89deacd88225a55232c67}\label{class_ink_1_1_runtime_1_1_object_a5828fc0b53a89deacd88225a55232c67}} 
+\index{Ink.Runtime.Object@{Ink.Runtime.Object}!operator bool@{operator bool}}
+\index{operator bool@{operator bool}!Ink.Runtime.Object@{Ink.Runtime.Object}}
+\doxysubsubsection{\texorpdfstring{operator bool()}{operator bool()}}
+{\footnotesize\ttfamily static implicit Ink.\+Runtime.\+Object.\+operator bool (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Object}}}]{obj }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Allow implicit conversion to bool so you don\textquotesingle{}t have to do\+: if( my\+Obj != null ) ... \mbox{\Hypertarget{class_ink_1_1_runtime_1_1_object_a4ec3561b573ae1596899f99acf11b358}\label{class_ink_1_1_runtime_1_1_object_a4ec3561b573ae1596899f99acf11b358}} 
+\index{Ink.Runtime.Object@{Ink.Runtime.Object}!SetChild$<$ T $>$@{SetChild$<$ T $>$}}
+\index{SetChild$<$ T $>$@{SetChild$<$ T $>$}!Ink.Runtime.Object@{Ink.Runtime.Object}}
+\doxysubsubsection{\texorpdfstring{SetChild$<$ T $>$()}{SetChild< T >()}}
+{\footnotesize\ttfamily void Ink.\+Runtime.\+Object.\+Set\+Child$<$ T $>$ (\begin{DoxyParamCaption}\item[{ref T}]{obj,  }\item[{T}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Runtime.\+Object}]\end{description}
+\end{Desc}
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_object_a82866340a9c84da05f685915ea5a50a2}\label{class_ink_1_1_runtime_1_1_object_a82866340a9c84da05f685915ea5a50a2}} 
+\index{Ink.Runtime.Object@{Ink.Runtime.Object}!parent@{parent}}
+\index{parent@{parent}!Ink.Runtime.Object@{Ink.Runtime.Object}}
+\doxysubsubsection{\texorpdfstring{parent}{parent}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Runtime.\+Object}} Ink.\+Runtime.\+Object.\+parent\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Runtime.\+Objects can be included in the main \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}} as a hierarchy. Usually parents are \mbox{\hyperlink{class_ink_1_1_runtime_1_1_container}{Container}} objects. (TODO\+: Always?) 
+
+The parent.
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Ink\+Libs/\+Ink\+Runtime/Object.\+cs\end{DoxyCompactItemize}

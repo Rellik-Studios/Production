@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Distortion_MAT
+  m_Shader: {fileID: -6465566751694194690, guid: be6a4e3a9d00d8f4599719c8a26bc12a, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - DistortionLevel: 0.02
+    - Vector1_3cf020a520d440a4a9f2dab2b6dc59f6: 4
+    - Vector1_4943da79db88402f8870934edf51c51f: 0.8
+    - Vector1_a294a100ff214cda8016561ef8ed8637: -0.2
+    - Vector1_a63e76e431c340568326a405b8c0eacc: 0.02
+    - distortionLevel: 0
+    m_Colors: []
+  m_BuildTextureStacks: []

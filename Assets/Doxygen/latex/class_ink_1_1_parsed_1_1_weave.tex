@@ -1,0 +1,91 @@
+\hypertarget{class_ink_1_1_parsed_1_1_weave}{}\doxysection{Ink.\+Parsed.\+Weave Class Reference}
+\label{class_ink_1_1_parsed_1_1_weave}\index{Ink.Parsed.Weave@{Ink.Parsed.Weave}}
+Inheritance diagram for Ink.\+Parsed.\+Weave\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ink_1_1_parsed_1_1_weave}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_parsed_1_1_weave_1_1_gather_point_to_resolve}{Gather\+Point\+To\+Resolve}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_weave_a9ce7ed80188d76fbc3094ebb08438bea}\label{class_ink_1_1_parsed_1_1_weave_a9ce7ed80188d76fbc3094ebb08438bea}} 
+{\bfseries Weave} (\mbox{\hyperlink{class_ink_1_1_parsed_1_1_list}{List}}$<$ \mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Parsed.\+Object}} $>$ cont, int indent\+Index=-\/1)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_weave_a1b750f3c35c5dc5928c553cad4cdc7ab}\label{class_ink_1_1_parsed_1_1_weave_a1b750f3c35c5dc5928c553cad4cdc7ab}} 
+void {\bfseries Resolve\+Weave\+Point\+Naming} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_weave_a3b475887199b46ba7d1deb3631fc3809}\label{class_ink_1_1_parsed_1_1_weave_a3b475887199b46ba7d1deb3631fc3809}} 
+int {\bfseries Determine\+Base\+Indentation\+From\+Content} (\mbox{\hyperlink{class_ink_1_1_parsed_1_1_list}{List}}$<$ \mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Parsed.\+Object}} $>$ content\+List)
+\item 
+override \mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Runtime.\+Object}} \mbox{\hyperlink{class_ink_1_1_parsed_1_1_weave_a4873bc7b09c9134b92b466c10baf45cf}{Generate\+Runtime\+Object}} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_weave_a908d16130cc6d5c8e168c8c7faf22ec9}\label{class_ink_1_1_parsed_1_1_weave_a908d16130cc6d5c8e168c8c7faf22ec9}} 
+void {\bfseries Add\+Runtime\+For\+Nested\+Weave} (\mbox{\hyperlink{class_ink_1_1_parsed_1_1_weave}{Weave}} nested\+Result)
+\item 
+override void \mbox{\hyperlink{class_ink_1_1_parsed_1_1_weave_a22317f6a2263f687fb2a52e5ca65d28b}{Resolve\+References}} (\mbox{\hyperlink{class_ink_1_1_parsed_1_1_story}{Story}} context)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_weave_a2a093f781ad11107bb73e810d1b1b87e}\label{class_ink_1_1_parsed_1_1_weave_a2a093f781ad11107bb73e810d1b1b87e}} 
+\mbox{\hyperlink{interface_ink_1_1_parsed_1_1_i_weave_point}{IWeave\+Point}} {\bfseries Weave\+Point\+Named} (string name)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_weave_a38213d417b3761090e91de5360648291}\label{class_ink_1_1_parsed_1_1_weave_a38213d417b3761090e91de5360648291}} 
+delegate void {\bfseries Bad\+Termination\+Handler} (\mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Parsed.\+Object}} terminating\+Obj)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_weave_a157fa8ce42ef299e7a9c6834ffb7c0d7}\label{class_ink_1_1_parsed_1_1_weave_a157fa8ce42ef299e7a9c6834ffb7c0d7}} 
+void {\bfseries Validate\+Termination} (Bad\+Termination\+Handler bad\+Termination\+Handler)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_weave_a3fdc8c2fc5d010112f0eb62afc54ef67}\label{class_ink_1_1_parsed_1_1_weave_a3fdc8c2fc5d010112f0eb62afc54ef67}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_list}{List}}$<$ \mbox{\hyperlink{interface_ink_1_1_parsed_1_1_i_weave_point}{IWeave\+Point}} $>$ {\bfseries loose\+Ends}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_weave_a9533cef8330b1fa7372a53a2d773adc3}\label{class_ink_1_1_parsed_1_1_weave_a9533cef8330b1fa7372a53a2d773adc3}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_list}{List}}$<$ \mbox{\hyperlink{class_ink_1_1_parsed_1_1_weave_1_1_gather_point_to_resolve}{Gather\+Point\+To\+Resolve}} $>$ {\bfseries gather\+Points\+To\+Resolve}
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_weave_a3ab641b46c4f4ec00b783f2621e3c463}\label{class_ink_1_1_parsed_1_1_weave_a3ab641b46c4f4ec00b783f2621e3c463}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_container}{Runtime.\+Container}} {\bfseries root\+Container}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_weave_a671a012811bd6fe193eb3b6161f228b9}\label{class_ink_1_1_parsed_1_1_weave_a671a012811bd6fe193eb3b6161f228b9}} 
+int {\bfseries base\+Indent\+Index}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_weave_a03e6abdaf6d7786e6525ed7ba1e39317}\label{class_ink_1_1_parsed_1_1_weave_a03e6abdaf6d7786e6525ed7ba1e39317}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Parsed.\+Object}} {\bfseries last\+Parsed\+Significant\+Object}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_weave_a4873bc7b09c9134b92b466c10baf45cf}\label{class_ink_1_1_parsed_1_1_weave_a4873bc7b09c9134b92b466c10baf45cf}} 
+\index{Ink.Parsed.Weave@{Ink.Parsed.Weave}!GenerateRuntimeObject@{GenerateRuntimeObject}}
+\index{GenerateRuntimeObject@{GenerateRuntimeObject}!Ink.Parsed.Weave@{Ink.Parsed.Weave}}
+\doxysubsubsection{\texorpdfstring{GenerateRuntimeObject()}{GenerateRuntimeObject()}}
+{\footnotesize\ttfamily override \mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Runtime.\+Object}} Ink.\+Parsed.\+Weave.\+Generate\+Runtime\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Ink.\+Parsed.\+Object}}.
+
+\mbox{\Hypertarget{class_ink_1_1_parsed_1_1_weave_a22317f6a2263f687fb2a52e5ca65d28b}\label{class_ink_1_1_parsed_1_1_weave_a22317f6a2263f687fb2a52e5ca65d28b}} 
+\index{Ink.Parsed.Weave@{Ink.Parsed.Weave}!ResolveReferences@{ResolveReferences}}
+\index{ResolveReferences@{ResolveReferences}!Ink.Parsed.Weave@{Ink.Parsed.Weave}}
+\doxysubsubsection{\texorpdfstring{ResolveReferences()}{ResolveReferences()}}
+{\footnotesize\ttfamily override void Ink.\+Parsed.\+Weave.\+Resolve\+References (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ink_1_1_parsed_1_1_story}{Story}}}]{context }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Ink.\+Parsed.\+Object}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Ink\+Libs/\+Ink\+Compiler/\+Parsed\+Hierarchy/Weave.\+cs\end{DoxyCompactItemize}

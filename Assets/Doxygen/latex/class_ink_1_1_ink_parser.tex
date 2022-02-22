@@ -1,0 +1,547 @@
+\hypertarget{class_ink_1_1_ink_parser}{}\doxysection{Ink.\+Ink\+Parser Class Reference}
+\label{class_ink_1_1_ink_parser}\index{Ink.InkParser@{Ink.InkParser}}
+Inheritance diagram for Ink.\+Ink\+Parser\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ink_1_1_ink_parser}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_ink_parser_1_1_flow_decl}{Flow\+Decl}}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_ink_parser_1_1_infix_operator}{Infix\+Operator}}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_ink_parser_1_1_name_with_metadata}{Name\+With\+Metadata}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_ab0211748d5e98d48a6f6e8352e3893a8}\label{class_ink_1_1_ink_parser_ab0211748d5e98d48a6f6e8352e3893a8}} 
+{\bfseries Ink\+Parser} (string str, string filename\+For\+Metadata=null, \mbox{\hyperlink{namespace_ink_a81ccaafe32f36d4c3fb65b9d63a4935e}{Ink.\+Error\+Handler}} external\+Error\+Handler=null, \mbox{\hyperlink{interface_ink_1_1_i_file_handler}{IFile\+Handler}} file\+Handler=null)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_ac1b6c911238fdbef5f243cee06c498e8}\label{class_ink_1_1_ink_parser_ac1b6c911238fdbef5f243cee06c498e8}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_story}{Parsed.\+Story}} {\bfseries Parse} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a9958713622cd478186de32f8e426d7ae}\label{class_ink_1_1_ink_parser_a9958713622cd478186de32f8e426d7ae}} 
+\mbox{\hyperlink{class_ink_1_1_command_line_input}{Command\+Line\+Input}} {\bfseries Command\+Line\+User\+Input} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_ink_1_1_character_range}{Character\+Range}}\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_ink_1_1_ink_parser_a8e77abae6c68214acf3a44b7432d5a6b}{List\+All\+Character\+Ranges}} ()
+\begin{DoxyCompactList}\small\item\em Gets an array of \mbox{\hyperlink{class_ink_1_1_character_range}{Character\+Range}} representing all of the currently supported non-\/\+ASCII character ranges that can be used in identifier names. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static readonly \mbox{\hyperlink{class_ink_1_1_character_range}{Character\+Range}} \mbox{\hyperlink{class_ink_1_1_ink_parser_a55e4c90012c4e8f7eeafbb34583ccad4}{Latin\+Basic}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a076dfeea862b63e30cb509e6e1b62a37}\label{class_ink_1_1_ink_parser_a076dfeea862b63e30cb509e6e1b62a37}} 
+static readonly \mbox{\hyperlink{class_ink_1_1_character_range}{Character\+Range}} {\bfseries Latin\+ExtendedA} = Character\+Range.\+Define(\textquotesingle{}\textbackslash{}u0100\textquotesingle{}, \textquotesingle{}\textbackslash{}u017F\textquotesingle{})
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a708f9c7dd5a9295f9337d0042d1d3a5f}\label{class_ink_1_1_ink_parser_a708f9c7dd5a9295f9337d0042d1d3a5f}} 
+static readonly \mbox{\hyperlink{class_ink_1_1_character_range}{Character\+Range}} {\bfseries Latin\+ExtendedB} = Character\+Range.\+Define(\textquotesingle{}\textbackslash{}u0180\textquotesingle{}, \textquotesingle{}\textbackslash{}u024F\textquotesingle{})
+\item 
+static readonly \mbox{\hyperlink{class_ink_1_1_character_range}{Character\+Range}} \mbox{\hyperlink{class_ink_1_1_ink_parser_a664805095481ea17b98f09706bb77d5b}{Greek}}
+\item 
+static readonly \mbox{\hyperlink{class_ink_1_1_character_range}{Character\+Range}} \mbox{\hyperlink{class_ink_1_1_ink_parser_af497315867ab302de00a2077a317e2ad}{Cyrillic}}
+\item 
+static readonly \mbox{\hyperlink{class_ink_1_1_character_range}{Character\+Range}} \mbox{\hyperlink{class_ink_1_1_ink_parser_a432877ca21bed18a5e06d0f92ad11a23}{Armenian}}
+\item 
+static readonly \mbox{\hyperlink{class_ink_1_1_character_range}{Character\+Range}} \mbox{\hyperlink{class_ink_1_1_ink_parser_a1682d9311ded459485ec147eb7fece5e}{Hebrew}}
+\item 
+static readonly \mbox{\hyperlink{class_ink_1_1_character_range}{Character\+Range}} \mbox{\hyperlink{class_ink_1_1_ink_parser_a7f54c828a38a5d54a106f06b9afaf14e}{Arabic}}
+\item 
+static readonly \mbox{\hyperlink{class_ink_1_1_character_range}{Character\+Range}} \mbox{\hyperlink{class_ink_1_1_ink_parser_ae2d1e48793fb8129eb59e3542a5ed43d}{Korean}}
+\item 
+static readonly \mbox{\hyperlink{class_ink_1_1_character_range}{Character\+Range}} \mbox{\hyperlink{class_ink_1_1_ink_parser_a93105a7b4cc1191db6bc3b1fdb802945}{Latin1\+Supplement}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_acc9d20d795223749f0c2a4621c11ac71}\label{class_ink_1_1_ink_parser_acc9d20d795223749f0c2a4621c11ac71}} 
+enum {\bfseries Custom\+Flags} \{ {\bfseries Parsing\+String} = 0x1
+ \}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a314e07be7303a19cc244d8c763f99034}\label{class_ink_1_1_ink_parser_a314e07be7303a19cc244d8c763f99034}} 
+enum {\bfseries Statement\+Level} \{ {\bfseries Inner\+Block}
+, {\bfseries Stitch}
+, {\bfseries Knot}
+, {\bfseries Top}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ T $>$ \mbox{\hyperlink{class_ink_1_1_ink_parser_a6f778dfea006a23280f96970e06fcd89}{Separated\+List$<$ T $>$}} (Specific\+Parse\+Rule$<$ T $>$ main\+Rule, Parse\+Rule separator\+Rule)
+\item 
+override string \mbox{\hyperlink{class_ink_1_1_ink_parser_a5653771cdcf2e4608ef691ac7959479d}{Pre\+Process\+Input\+String}} (string str)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a61e40dea9b29e05a2392826d2970a8d7}\label{class_ink_1_1_ink_parser_a61e40dea9b29e05a2392826d2970a8d7}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_debug_metadata}{Runtime.\+Debug\+Metadata}} {\bfseries Create\+Debug\+Metadata} (\mbox{\hyperlink{class_ink_1_1_string_parser_state_1_1_element}{String\+Parser\+State.\+Element}} state\+At\+Start, \mbox{\hyperlink{class_ink_1_1_string_parser_state_1_1_element}{String\+Parser\+State.\+Element}} state\+At\+End)
+\item 
+override void \mbox{\hyperlink{class_ink_1_1_ink_parser_a6013c9297fe0b2c46cb3e45e8072c525}{Rule\+Did\+Succeed}} (object result, \mbox{\hyperlink{class_ink_1_1_string_parser_state_1_1_element}{String\+Parser\+State.\+Element}} state\+At\+Start, \mbox{\hyperlink{class_ink_1_1_string_parser_state_1_1_element}{String\+Parser\+State.\+Element}} state\+At\+End)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_af70a2237c0ccfbcdf803abe80f2e7a30}\label{class_ink_1_1_ink_parser_af70a2237c0ccfbcdf803abe80f2e7a30}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_author_warning}{Author\+Warning}} {\bfseries Author\+Warning} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_afd1ef6e44848a16e5a8db98b5c158827}\label{class_ink_1_1_ink_parser_afd1ef6e44848a16e5a8db98b5c158827}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_choice}{Choice}} {\bfseries Choice} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a77ecf2a4606056da509d91e9ffce4682}\label{class_ink_1_1_ink_parser_a77ecf2a4606056da509d91e9ffce4682}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_expression}{Expression}} {\bfseries Choice\+Condition} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_aa4b0690d844f396e900e82e2add79a14}\label{class_ink_1_1_ink_parser_aa4b0690d844f396e900e82e2add79a14}} 
+object {\bfseries Choice\+Conditions\+Space} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_ac7a218ba15596d2c24b8aa5e323513e9}\label{class_ink_1_1_ink_parser_ac7a218ba15596d2c24b8aa5e323513e9}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_expression}{Expression}} {\bfseries Choice\+Single\+Condition} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a22685dacfc4f0f58b9600716524f5447}\label{class_ink_1_1_ink_parser_a22685dacfc4f0f58b9600716524f5447}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_gather}{Gather}} {\bfseries Gather} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_aae33c72e408fd8bee9ca7af66f6d8e4a}\label{class_ink_1_1_ink_parser_aae33c72e408fd8bee9ca7af66f6d8e4a}} 
+object {\bfseries Gather\+Dashes} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_abc758200fac9e508843c094f9e98ba4a}\label{class_ink_1_1_ink_parser_abc758200fac9e508843c094f9e98ba4a}} 
+object {\bfseries Parse\+Dash\+Not\+Arrow} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a178ab7f7e1ac64354a78eac1e838d4f2}\label{class_ink_1_1_ink_parser_a178ab7f7e1ac64354a78eac1e838d4f2}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_identifier}{Identifier}} {\bfseries Bracketed\+Name} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a3cf537504316944110c16cdac43d90d2}\label{class_ink_1_1_ink_parser_a3cf537504316944110c16cdac43d90d2}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_conditional}{Conditional}} {\bfseries Inner\+Conditional\+Content} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_ab5f63174ed09d9b28f5ab183a02c02c9}\label{class_ink_1_1_ink_parser_ab5f63174ed09d9b28f5ab183a02c02c9}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_conditional}{Conditional}} {\bfseries Inner\+Conditional\+Content} (\mbox{\hyperlink{class_ink_1_1_parsed_1_1_expression}{Expression}} initial\+Query\+Expression)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_aad29a67f29d9591724e920dca5a5b734}\label{class_ink_1_1_ink_parser_aad29a67f29d9591724e920dca5a5b734}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_list}{List}}$<$ \mbox{\hyperlink{class_ink_1_1_parsed_1_1_conditional_single_branch}{Conditional\+Single\+Branch}} $>$ {\bfseries Inline\+Conditional\+Branches} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a86bbaa75aa91cb9327f460237ad6afc8}\label{class_ink_1_1_ink_parser_a86bbaa75aa91cb9327f460237ad6afc8}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_list}{List}}$<$ \mbox{\hyperlink{class_ink_1_1_parsed_1_1_conditional_single_branch}{Conditional\+Single\+Branch}} $>$ {\bfseries Multiline\+Conditional\+Branches} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_ae9453b8ad930950b4e13e58def68727c}\label{class_ink_1_1_ink_parser_ae9453b8ad930950b4e13e58def68727c}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_conditional_single_branch}{Conditional\+Single\+Branch}} {\bfseries Single\+Multiline\+Condition} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a49afddb123ec9d34c6095a383f0f2e9b}\label{class_ink_1_1_ink_parser_a49afddb123ec9d34c6095a383f0f2e9b}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_expression}{Expression}} {\bfseries Condition\+Expression} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_ab766fda43e5e44dc52c9d61f81b65656}\label{class_ink_1_1_ink_parser_ab766fda43e5e44dc52c9d61f81b65656}} 
+object {\bfseries Else\+Expression} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a8c320355b07d8e1c64d43c752adc879e}\label{class_ink_1_1_ink_parser_a8c320355b07d8e1c64d43c752adc879e}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_list}{List}}$<$ \mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Parsed.\+Object}} $>$ {\bfseries Line\+Of\+Mixed\+Text\+And\+Logic} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_add39c7c5f7a4da4100901cccd31b6b01}\label{class_ink_1_1_ink_parser_add39c7c5f7a4da4100901cccd31b6b01}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_list}{List}}$<$ \mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Parsed.\+Object}} $>$ {\bfseries Mixed\+Text\+And\+Logic} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a289b0a0f5d642340beccd2015c3dc046}\label{class_ink_1_1_ink_parser_a289b0a0f5d642340beccd2015c3dc046}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_text}{Parsed.\+Text}} {\bfseries Content\+Text} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a419ee08b9cca723242b3805662eacc8d}\label{class_ink_1_1_ink_parser_a419ee08b9cca723242b3805662eacc8d}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_text}{Parsed.\+Text}} {\bfseries Content\+Text\+Allowing\+Ecape\+Char} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a3d9411f7644f466d7b79a2fe909107b8}\label{class_ink_1_1_ink_parser_a3d9411f7644f466d7b79a2fe909107b8}} 
+string {\bfseries Content\+Text\+No\+Escape} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_ac355660cc1f5eb6421551f7b81b3799e}\label{class_ink_1_1_ink_parser_ac355660cc1f5eb6421551f7b81b3799e}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_list}{List}}$<$ \mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Parsed.\+Object}} $>$ {\bfseries Multi\+Divert} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_aeff29267b72263aadc3993ae9ddd382e}\label{class_ink_1_1_ink_parser_aeff29267b72263aadc3993ae9ddd382e}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_divert}{Divert}} {\bfseries Start\+Thread} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a779bc1040a9f1292522f88a06bfc10a9}\label{class_ink_1_1_ink_parser_a779bc1040a9f1292522f88a06bfc10a9}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_divert}{Divert}} {\bfseries Divert\+Identifier\+With\+Arguments} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a8faabd06f8683971f21017ea3a083ee8}\label{class_ink_1_1_ink_parser_a8faabd06f8683971f21017ea3a083ee8}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_divert}{Divert}} {\bfseries Single\+Divert} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_af39cd5b7532c5ca2ff24cdc5f5d94e17}\label{class_ink_1_1_ink_parser_af39cd5b7532c5ca2ff24cdc5f5d94e17}} 
+string {\bfseries Parse\+Divert\+Arrow\+Or\+Tunnel\+Onwards} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a761554ca212b034f3bf21628b324f3fe}\label{class_ink_1_1_ink_parser_a761554ca212b034f3bf21628b324f3fe}} 
+string {\bfseries Parse\+Divert\+Arrow} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_abfb07eeebbabe1f99e0b538847d0f370}\label{class_ink_1_1_ink_parser_abfb07eeebbabe1f99e0b538847d0f370}} 
+string {\bfseries Parse\+Thread\+Arrow} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_ab2744f6333db120004a4ca1db8510ee4}\label{class_ink_1_1_ink_parser_ab2744f6333db120004a4ca1db8510ee4}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Parsed.\+Object}} {\bfseries Temp\+Declaration\+Or\+Assignment} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a7fdea30615e62b4f61f9c32302e76d9f}\label{class_ink_1_1_ink_parser_a7fdea30615e62b4f61f9c32302e76d9f}} 
+void {\bfseries Disallow\+Increment} (\mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Parsed.\+Object}} expr)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a94465d9379c70ec454777c8737d25286}\label{class_ink_1_1_ink_parser_a94465d9379c70ec454777c8737d25286}} 
+bool {\bfseries Parse\+Temp\+Keyword} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a918ecc504581bd023416190b3635b6ab}\label{class_ink_1_1_ink_parser_a918ecc504581bd023416190b3635b6ab}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_return}{Parsed.\+Return}} {\bfseries Return\+Statement} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a3b401c9087360abc0f82facf56c3304b}\label{class_ink_1_1_ink_parser_a3b401c9087360abc0f82facf56c3304b}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_expression}{Expression}} {\bfseries Expression} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a9a9a3306522d3f6fade1d7cfdac85b77}\label{class_ink_1_1_ink_parser_a9a9a3306522d3f6fade1d7cfdac85b77}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_expression}{Expression}} {\bfseries Expression} (int minimum\+Precedence)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_adf55050abc52f3a0c2fbd734b0579e2e}\label{class_ink_1_1_ink_parser_adf55050abc52f3a0c2fbd734b0579e2e}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_expression}{Expression}} {\bfseries Expression\+Unary} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_aadef0e0431ad682eb7b3e855ef7d446b}\label{class_ink_1_1_ink_parser_aadef0e0431ad682eb7b3e855ef7d446b}} 
+string {\bfseries Expression\+Not} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a2affe0c00582c9ea0e3b6c2882946a01}\label{class_ink_1_1_ink_parser_a2affe0c00582c9ea0e3b6c2882946a01}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_expression}{Expression}} {\bfseries Expression\+Literal} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_ac24f32708b0ecbc890df1b83fbe7fc29}\label{class_ink_1_1_ink_parser_ac24f32708b0ecbc890df1b83fbe7fc29}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_expression}{Expression}} {\bfseries Expression\+Divert\+Target} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a97a862965c8629d67904617334f36f76}\label{class_ink_1_1_ink_parser_a97a862965c8629d67904617334f36f76}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_number}{Number}} {\bfseries Expression\+Int} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_ac403b8eeff392f5b4748078f9ba529f7}\label{class_ink_1_1_ink_parser_ac403b8eeff392f5b4748078f9ba529f7}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_number}{Number}} {\bfseries Expression\+Float} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_adfeca6ac3a39f124d70d1c20d50a3f83}\label{class_ink_1_1_ink_parser_adfeca6ac3a39f124d70d1c20d50a3f83}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_string_expression}{String\+Expression}} {\bfseries Expression\+String} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a7cfbdd06501779ec8f8723b9de7112d8}\label{class_ink_1_1_ink_parser_a7cfbdd06501779ec8f8723b9de7112d8}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_number}{Number}} {\bfseries Expression\+Bool} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_aa66a7004a7b0425a70c3a10550d85828}\label{class_ink_1_1_ink_parser_aa66a7004a7b0425a70c3a10550d85828}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_expression}{Expression}} {\bfseries Expression\+Function\+Call} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_ae0f25d74d68eb59f0569aef444bc8486}\label{class_ink_1_1_ink_parser_ae0f25d74d68eb59f0569aef444bc8486}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_list}{List}}$<$ \mbox{\hyperlink{class_ink_1_1_parsed_1_1_expression}{Expression}} $>$ {\bfseries Expression\+Function\+Call\+Arguments} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a13dfc88d9ba4ddc4a480178e145a0ded}\label{class_ink_1_1_ink_parser_a13dfc88d9ba4ddc4a480178e145a0ded}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_expression}{Expression}} {\bfseries Expression\+Variable\+Name} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a6b933582550dfa9fb0807d5407e0ed99}\label{class_ink_1_1_ink_parser_a6b933582550dfa9fb0807d5407e0ed99}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_expression}{Expression}} {\bfseries Expression\+Paren} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_ac91058e73cdc267b23e64af7ff424b21}\label{class_ink_1_1_ink_parser_ac91058e73cdc267b23e64af7ff424b21}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_expression}{Expression}} {\bfseries Expression\+Infix\+Right} (\mbox{\hyperlink{class_ink_1_1_parsed_1_1_expression}{Parsed.\+Expression}} left, \mbox{\hyperlink{class_ink_1_1_ink_parser_1_1_infix_operator}{Infix\+Operator}} op)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_ad970d71f1eed1345bd9a83142fc409bd}\label{class_ink_1_1_ink_parser_ad970d71f1eed1345bd9a83142fc409bd}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_list}{Parsed.\+List}} {\bfseries Expression\+List} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_ad95d9485d1250abf717b74ae940af241}\label{class_ink_1_1_ink_parser_ad95d9485d1250abf717b74ae940af241}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_identifier}{Identifier}} {\bfseries List\+Member} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a624e2d4dffde46c288d32a6b7024221d}\label{class_ink_1_1_ink_parser_a624e2d4dffde46c288d32a6b7024221d}} 
+object {\bfseries Include\+Statement} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a07d931e87c94b2ec7826140099a4b341}\label{class_ink_1_1_ink_parser_a07d931e87c94b2ec7826140099a4b341}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_knot}{Knot}} {\bfseries Knot\+Definition} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a992f69c9d5f68be9d97f68a307cec189}\label{class_ink_1_1_ink_parser_a992f69c9d5f68be9d97f68a307cec189}} 
+\mbox{\hyperlink{class_ink_1_1_ink_parser_1_1_flow_decl}{Flow\+Decl}} {\bfseries Knot\+Declaration} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_ac32a7c4abb2221170409d9ec3b8560ca}\label{class_ink_1_1_ink_parser_ac32a7c4abb2221170409d9ec3b8560ca}} 
+string {\bfseries Knot\+Title\+Equals} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a48893a8f570c825e1588ef70a976e374}\label{class_ink_1_1_ink_parser_a48893a8f570c825e1588ef70a976e374}} 
+object {\bfseries Stitch\+Definition} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_ae9e17222e5bcc2eafd6a23232d3bbf80}\label{class_ink_1_1_ink_parser_ae9e17222e5bcc2eafd6a23232d3bbf80}} 
+\mbox{\hyperlink{class_ink_1_1_ink_parser_1_1_flow_decl}{Flow\+Decl}} {\bfseries Stitch\+Declaration} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a838b7b15f2bdc44a20016b5c1b864594}\label{class_ink_1_1_ink_parser_a838b7b15f2bdc44a20016b5c1b864594}} 
+object {\bfseries Knot\+Stitch\+No\+Content\+Recovery\+Rule} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a4fa33de48415590ac7d5419ea4c33c5f}\label{class_ink_1_1_ink_parser_a4fa33de48415590ac7d5419ea4c33c5f}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_list}{List}}$<$ \mbox{\hyperlink{class_ink_1_1_parsed_1_1_flow_base_1_1_argument}{Flow\+Base.\+Argument}} $>$ {\bfseries Bracketed\+Knot\+Decl\+Arguments} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a3119dfc507b210374d1ede5df2041690}\label{class_ink_1_1_ink_parser_a3119dfc507b210374d1ede5df2041690}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_flow_base_1_1_argument}{Flow\+Base.\+Argument}} {\bfseries Flow\+Decl\+Argument} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_ad30f348b4fbac07289de9836ccafc2ab}\label{class_ink_1_1_ink_parser_ad30f348b4fbac07289de9836ccafc2ab}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_external_declaration}{External\+Declaration}} {\bfseries External\+Declaration} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a32d3caf08f78f9198dcb58757ce4bb85}\label{class_ink_1_1_ink_parser_a32d3caf08f78f9198dcb58757ce4bb85}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Parsed.\+Object}} {\bfseries Logic\+Line} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_ac9595bb5f7506e9cf060a74fdbce5090}\label{class_ink_1_1_ink_parser_ac9595bb5f7506e9cf060a74fdbce5090}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Parsed.\+Object}} {\bfseries Variable\+Declaration} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a47bb891f802fe856f973a6dcf11ae1d4}\label{class_ink_1_1_ink_parser_a47bb891f802fe856f973a6dcf11ae1d4}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_variable_assignment}{Parsed.\+Variable\+Assignment}} {\bfseries List\+Declaration} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_af184c03d3c86c3e34554828389e6a2b9}\label{class_ink_1_1_ink_parser_af184c03d3c86c3e34554828389e6a2b9}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_list_definition}{Parsed.\+List\+Definition}} {\bfseries List\+Definition} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a2344f38d7b055cf1e4f4854f298e34d0}\label{class_ink_1_1_ink_parser_a2344f38d7b055cf1e4f4854f298e34d0}} 
+string {\bfseries List\+Element\+Definition\+Separator} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_afa2f0948673c16ddf2989ee3dfb1468c}\label{class_ink_1_1_ink_parser_afa2f0948673c16ddf2989ee3dfb1468c}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_list_element_definition}{Parsed.\+List\+Element\+Definition}} {\bfseries List\+Element\+Definition} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a1110fdbeae0c910aebae0ecb05e8d459}\label{class_ink_1_1_ink_parser_a1110fdbeae0c910aebae0ecb05e8d459}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Parsed.\+Object}} {\bfseries Const\+Declaration} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a6bd57ffd8bd52d72ebbff305f7e14c6e}\label{class_ink_1_1_ink_parser_a6bd57ffd8bd52d72ebbff305f7e14c6e}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Parsed.\+Object}} {\bfseries Inline\+Logic\+Or\+Glue} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a6ae3620f0d30e30f0a8baed28d108254}\label{class_ink_1_1_ink_parser_a6ae3620f0d30e30f0a8baed28d108254}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_glue}{Parsed.\+Glue}} {\bfseries Glue} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_adc9d524fc8a7dee46a22d9ea223ded41}\label{class_ink_1_1_ink_parser_adc9d524fc8a7dee46a22d9ea223ded41}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Parsed.\+Object}} {\bfseries Inline\+Logic} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_ae3365e5cc3e7d1065308402be80ab1f5}\label{class_ink_1_1_ink_parser_ae3365e5cc3e7d1065308402be80ab1f5}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Parsed.\+Object}} {\bfseries Inner\+Logic} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_ab7c6cb80a4d668a08b9deb7ffac91160}\label{class_ink_1_1_ink_parser_ab7c6cb80a4d668a08b9deb7ffac91160}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Parsed.\+Object}} {\bfseries Inner\+Expression} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_ab8796532bb77bfc56a0dfc5315abe38c}\label{class_ink_1_1_ink_parser_ab8796532bb77bfc56a0dfc5315abe38c}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_identifier}{Identifier}} {\bfseries Identifier\+With\+Metadata} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_ad18732a3eb62c9ebb22645d9061303dd}\label{class_ink_1_1_ink_parser_ad18732a3eb62c9ebb22645d9061303dd}} 
+string {\bfseries Identifier} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_aad7e967df3924877cf09650deb4206f9}\label{class_ink_1_1_ink_parser_aad7e967df3924877cf09650deb4206f9}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_sequence}{Sequence}} {\bfseries Inner\+Sequence} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a294236aa549e038fefcf5c0def9c02b5}\label{class_ink_1_1_ink_parser_a294236aa549e038fefcf5c0def9c02b5}} 
+object {\bfseries Sequence\+Type\+Annotation} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a738eac6a54da4c9dfc01cebec10a4ece}\label{class_ink_1_1_ink_parser_a738eac6a54da4c9dfc01cebec10a4ece}} 
+object {\bfseries Sequence\+Type\+Symbol\+Annotation} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a8290f0adeecb61a41fd6b295d3b24cc6}\label{class_ink_1_1_ink_parser_a8290f0adeecb61a41fd6b295d3b24cc6}} 
+object {\bfseries Sequence\+Type\+Word\+Annotation} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_aa2ee6a572d6cb7fa50e4d5b2cf9cd289}\label{class_ink_1_1_ink_parser_aa2ee6a572d6cb7fa50e4d5b2cf9cd289}} 
+object {\bfseries Sequence\+Type\+Single\+Word} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a8067bd838a2e442a50592ff320a73df3}\label{class_ink_1_1_ink_parser_a8067bd838a2e442a50592ff320a73df3}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_list}{List}}$<$ \mbox{\hyperlink{class_ink_1_1_parsed_1_1_content_list}{Content\+List}} $>$ {\bfseries Inner\+Sequence\+Objects} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a3e4fe7e3eb87b439769474f01713ef46}\label{class_ink_1_1_ink_parser_a3e4fe7e3eb87b439769474f01713ef46}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_list}{List}}$<$ \mbox{\hyperlink{class_ink_1_1_parsed_1_1_content_list}{Content\+List}} $>$ {\bfseries Inner\+Inline\+Sequence\+Objects} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a41067215b884021e6ec028006b5bfa4f}\label{class_ink_1_1_ink_parser_a41067215b884021e6ec028006b5bfa4f}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_list}{List}}$<$ \mbox{\hyperlink{class_ink_1_1_parsed_1_1_content_list}{Content\+List}} $>$ {\bfseries Inner\+Multiline\+Sequence\+Objects} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a314e631496203a370454cafcd2d5d324}\label{class_ink_1_1_ink_parser_a314e631496203a370454cafcd2d5d324}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_content_list}{Content\+List}} {\bfseries Single\+Multiline\+Sequence\+Element} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_aba20e7a43d9392122718015baa2ebf00}\label{class_ink_1_1_ink_parser_aba20e7a43d9392122718015baa2ebf00}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_list}{List}}$<$ \mbox{\hyperlink{class_ink_1_1_parsed_1_1_object}{Parsed.\+Object}} $>$ {\bfseries Statements\+At\+Level} (Statement\+Level level)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a442568ae19534fa2fa7a3536b5616dd9}\label{class_ink_1_1_ink_parser_a442568ae19534fa2fa7a3536b5616dd9}} 
+object {\bfseries Statement\+At\+Level} (Statement\+Level level)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_aa5136359df33d1cb0f98ec624c6b8745}\label{class_ink_1_1_ink_parser_aa5136359df33d1cb0f98ec624c6b8745}} 
+object {\bfseries Statements\+Break\+For\+Level} (Statement\+Level level)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a82d2e4a6236f5037ce01f7801052abd6}\label{class_ink_1_1_ink_parser_a82d2e4a6236f5037ce01f7801052abd6}} 
+object {\bfseries Skip\+To\+Next\+Line} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a65abd9237a112b891ef22a4cd3fff734}\label{class_ink_1_1_ink_parser_a65abd9237a112b891ef22a4cd3fff734}} 
+Parse\+Rule {\bfseries Line} (Parse\+Rule inline\+Rule)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a50a80ae302e7ad82ba8838cd148c3386}\label{class_ink_1_1_ink_parser_a50a80ae302e7ad82ba8838cd148c3386}} 
+\mbox{\hyperlink{class_ink_1_1_parsed_1_1_tag}{Parsed.\+Tag}} {\bfseries Tag} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_adb6a5380c60dde247fe59187b928b62b}\label{class_ink_1_1_ink_parser_adb6a5380c60dde247fe59187b928b62b}} 
+List$<$ \mbox{\hyperlink{class_ink_1_1_parsed_1_1_tag}{Parsed.\+Tag}} $>$ {\bfseries Tags} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_ab468a517faf9a04827b2e68a5990ddec}\label{class_ink_1_1_ink_parser_ab468a517faf9a04827b2e68a5990ddec}} 
+object {\bfseries End\+Of\+Line} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_ac0771e2679273bdd58d1c9909b5e691b}\label{class_ink_1_1_ink_parser_ac0771e2679273bdd58d1c9909b5e691b}} 
+object {\bfseries Newline} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a250661c77bbe789d3e15f168f9a65872}\label{class_ink_1_1_ink_parser_a250661c77bbe789d3e15f168f9a65872}} 
+object {\bfseries End\+Of\+File} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_adda4f169122380e3330490b6802521ca}\label{class_ink_1_1_ink_parser_adda4f169122380e3330490b6802521ca}} 
+object {\bfseries Multiline\+Whitespace} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a14bc3d62ea1c930cc2813c0f1dbb9723}\label{class_ink_1_1_ink_parser_a14bc3d62ea1c930cc2813c0f1dbb9723}} 
+object {\bfseries Whitespace} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a43ba1342acc34ec9333db057fd20953c}\label{class_ink_1_1_ink_parser_a43ba1342acc34ec9333db057fd20953c}} 
+Parse\+Rule {\bfseries Spaced} (Parse\+Rule rule)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a04fc74e600798445716b016aa95031f8}\label{class_ink_1_1_ink_parser_a04fc74e600798445716b016aa95031f8}} 
+object {\bfseries Any\+Whitespace} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a23880f98b7b5b8d2bafe14ec81cc7d02}\label{class_ink_1_1_ink_parser_a23880f98b7b5b8d2bafe14ec81cc7d02}} 
+Parse\+Rule {\bfseries Multi\+Spaced} (Parse\+Rule rule)
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_aba7e633db5aeebfec6dd58c61d784cfa}\label{class_ink_1_1_ink_parser_aba7e633db5aeebfec6dd58c61d784cfa}} 
+bool {\bfseries parsing\+String\+Expression}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a8e77abae6c68214acf3a44b7432d5a6b}\label{class_ink_1_1_ink_parser_a8e77abae6c68214acf3a44b7432d5a6b}} 
+\index{Ink.InkParser@{Ink.InkParser}!ListAllCharacterRanges@{ListAllCharacterRanges}}
+\index{ListAllCharacterRanges@{ListAllCharacterRanges}!Ink.InkParser@{Ink.InkParser}}
+\doxysubsubsection{\texorpdfstring{ListAllCharacterRanges()}{ListAllCharacterRanges()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_ink_1_1_character_range}{Character\+Range}}\mbox{[}$\,$\mbox{]} Ink.\+Ink\+Parser.\+List\+All\+Character\+Ranges (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Gets an array of \mbox{\hyperlink{class_ink_1_1_character_range}{Character\+Range}} representing all of the currently supported non-\/\+ASCII character ranges that can be used in identifier names. 
+
+\begin{DoxyReturn}{Returns}
+An array of \mbox{\hyperlink{class_ink_1_1_character_range}{Character\+Range}} representing all of the currently supported non-\/\+ASCII character ranges that can be used in identifier names. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a5653771cdcf2e4608ef691ac7959479d}\label{class_ink_1_1_ink_parser_a5653771cdcf2e4608ef691ac7959479d}} 
+\index{Ink.InkParser@{Ink.InkParser}!PreProcessInputString@{PreProcessInputString}}
+\index{PreProcessInputString@{PreProcessInputString}!Ink.InkParser@{Ink.InkParser}}
+\doxysubsubsection{\texorpdfstring{PreProcessInputString()}{PreProcessInputString()}}
+{\footnotesize\ttfamily override string Ink.\+Ink\+Parser.\+Pre\+Process\+Input\+String (\begin{DoxyParamCaption}\item[{string}]{str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_ink_1_1_string_parser}{Ink.\+String\+Parser}}.
+
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a6013c9297fe0b2c46cb3e45e8072c525}\label{class_ink_1_1_ink_parser_a6013c9297fe0b2c46cb3e45e8072c525}} 
+\index{Ink.InkParser@{Ink.InkParser}!RuleDidSucceed@{RuleDidSucceed}}
+\index{RuleDidSucceed@{RuleDidSucceed}!Ink.InkParser@{Ink.InkParser}}
+\doxysubsubsection{\texorpdfstring{RuleDidSucceed()}{RuleDidSucceed()}}
+{\footnotesize\ttfamily override void Ink.\+Ink\+Parser.\+Rule\+Did\+Succeed (\begin{DoxyParamCaption}\item[{object}]{result,  }\item[{\mbox{\hyperlink{class_ink_1_1_string_parser_state_1_1_element}{String\+Parser\+State.\+Element}}}]{state\+At\+Start,  }\item[{\mbox{\hyperlink{class_ink_1_1_string_parser_state_1_1_element}{String\+Parser\+State.\+Element}}}]{state\+At\+End }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_ink_1_1_string_parser}{Ink.\+String\+Parser}}.
+
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a6f778dfea006a23280f96970e06fcd89}\label{class_ink_1_1_ink_parser_a6f778dfea006a23280f96970e06fcd89}} 
+\index{Ink.InkParser@{Ink.InkParser}!SeparatedList$<$ T $>$@{SeparatedList$<$ T $>$}}
+\index{SeparatedList$<$ T $>$@{SeparatedList$<$ T $>$}!Ink.InkParser@{Ink.InkParser}}
+\doxysubsubsection{\texorpdfstring{SeparatedList$<$ T $>$()}{SeparatedList< T >()}}
+{\footnotesize\ttfamily List$<$ T $>$ Ink.\+Ink\+Parser.\+Separated\+List$<$ T $>$ (\begin{DoxyParamCaption}\item[{Specific\+Parse\+Rule$<$ T $>$}]{main\+Rule,  }\item[{Parse\+Rule}]{separator\+Rule }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em class}]\end{description}
+\end{Desc}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a7f54c828a38a5d54a106f06b9afaf14e}\label{class_ink_1_1_ink_parser_a7f54c828a38a5d54a106f06b9afaf14e}} 
+\index{Ink.InkParser@{Ink.InkParser}!Arabic@{Arabic}}
+\index{Arabic@{Arabic}!Ink.InkParser@{Ink.InkParser}}
+\doxysubsubsection{\texorpdfstring{Arabic}{Arabic}}
+{\footnotesize\ttfamily readonly \mbox{\hyperlink{class_ink_1_1_character_range}{Character\+Range}} Ink.\+Ink\+Parser.\+Arabic\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= }
+\DoxyCodeLine{            CharacterRange.Define(\textcolor{stringliteral}{'\(\backslash\)u0600'}, \textcolor{stringliteral}{'\(\backslash\)u06FF'}, excludes: \textcolor{keyword}{new} CharacterSet())}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a432877ca21bed18a5e06d0f92ad11a23}\label{class_ink_1_1_ink_parser_a432877ca21bed18a5e06d0f92ad11a23}} 
+\index{Ink.InkParser@{Ink.InkParser}!Armenian@{Armenian}}
+\index{Armenian@{Armenian}!Ink.InkParser@{Ink.InkParser}}
+\doxysubsubsection{\texorpdfstring{Armenian}{Armenian}}
+{\footnotesize\ttfamily readonly \mbox{\hyperlink{class_ink_1_1_character_range}{Character\+Range}} Ink.\+Ink\+Parser.\+Armenian\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= }
+\DoxyCodeLine{            CharacterRange.Define(\textcolor{stringliteral}{'\(\backslash\)u0530'}, \textcolor{stringliteral}{'\(\backslash\)u058F'}, excludes: \textcolor{keyword}{new} CharacterSet().AddCharacters(\textcolor{stringliteral}{"{}\(\backslash\)u0530"{}}).AddRange(\textcolor{stringliteral}{'\(\backslash\)u0557'}, \textcolor{stringliteral}{'\(\backslash\)u0560'}).AddRange(\textcolor{stringliteral}{'\(\backslash\)u0588'}, \textcolor{stringliteral}{'\(\backslash\)u058E'}))}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_af497315867ab302de00a2077a317e2ad}\label{class_ink_1_1_ink_parser_af497315867ab302de00a2077a317e2ad}} 
+\index{Ink.InkParser@{Ink.InkParser}!Cyrillic@{Cyrillic}}
+\index{Cyrillic@{Cyrillic}!Ink.InkParser@{Ink.InkParser}}
+\doxysubsubsection{\texorpdfstring{Cyrillic}{Cyrillic}}
+{\footnotesize\ttfamily readonly \mbox{\hyperlink{class_ink_1_1_character_range}{Character\+Range}} Ink.\+Ink\+Parser.\+Cyrillic\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= }
+\DoxyCodeLine{            CharacterRange.Define(\textcolor{stringliteral}{'\(\backslash\)u0400'}, \textcolor{stringliteral}{'\(\backslash\)u04FF'}, excludes: \textcolor{keyword}{new} CharacterSet().AddRange(\textcolor{stringliteral}{'\(\backslash\)u0482'}, \textcolor{stringliteral}{'\(\backslash\)u0489'}))}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a664805095481ea17b98f09706bb77d5b}\label{class_ink_1_1_ink_parser_a664805095481ea17b98f09706bb77d5b}} 
+\index{Ink.InkParser@{Ink.InkParser}!Greek@{Greek}}
+\index{Greek@{Greek}!Ink.InkParser@{Ink.InkParser}}
+\doxysubsubsection{\texorpdfstring{Greek}{Greek}}
+{\footnotesize\ttfamily readonly \mbox{\hyperlink{class_ink_1_1_character_range}{Character\+Range}} Ink.\+Ink\+Parser.\+Greek\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= }
+\DoxyCodeLine{            CharacterRange.Define(\textcolor{stringliteral}{'\(\backslash\)u0370'}, \textcolor{stringliteral}{'\(\backslash\)u03FF'}, excludes: \textcolor{keyword}{new} CharacterSet().AddRange(\textcolor{stringliteral}{'\(\backslash\)u0378'},\textcolor{stringliteral}{'\(\backslash\)u0385'}).AddCharacters(\textcolor{stringliteral}{"{}\(\backslash\)u0374\(\backslash\)u0375\(\backslash\)u0378\(\backslash\)u0387\(\backslash\)u038B\(\backslash\)u038D\(\backslash\)u03A2"{}}))}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a1682d9311ded459485ec147eb7fece5e}\label{class_ink_1_1_ink_parser_a1682d9311ded459485ec147eb7fece5e}} 
+\index{Ink.InkParser@{Ink.InkParser}!Hebrew@{Hebrew}}
+\index{Hebrew@{Hebrew}!Ink.InkParser@{Ink.InkParser}}
+\doxysubsubsection{\texorpdfstring{Hebrew}{Hebrew}}
+{\footnotesize\ttfamily readonly \mbox{\hyperlink{class_ink_1_1_character_range}{Character\+Range}} Ink.\+Ink\+Parser.\+Hebrew\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= }
+\DoxyCodeLine{            CharacterRange.Define(\textcolor{stringliteral}{'\(\backslash\)u0590'}, \textcolor{stringliteral}{'\(\backslash\)u05FF'}, excludes: \textcolor{keyword}{new} CharacterSet())}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_ae2d1e48793fb8129eb59e3542a5ed43d}\label{class_ink_1_1_ink_parser_ae2d1e48793fb8129eb59e3542a5ed43d}} 
+\index{Ink.InkParser@{Ink.InkParser}!Korean@{Korean}}
+\index{Korean@{Korean}!Ink.InkParser@{Ink.InkParser}}
+\doxysubsubsection{\texorpdfstring{Korean}{Korean}}
+{\footnotesize\ttfamily readonly \mbox{\hyperlink{class_ink_1_1_character_range}{Character\+Range}} Ink.\+Ink\+Parser.\+Korean\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{            CharacterRange.Define(\textcolor{stringliteral}{'\(\backslash\)uAC00'}, \textcolor{stringliteral}{'\(\backslash\)uD7AF'}, excludes: \textcolor{keyword}{new} CharacterSet())}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a93105a7b4cc1191db6bc3b1fdb802945}\label{class_ink_1_1_ink_parser_a93105a7b4cc1191db6bc3b1fdb802945}} 
+\index{Ink.InkParser@{Ink.InkParser}!Latin1Supplement@{Latin1Supplement}}
+\index{Latin1Supplement@{Latin1Supplement}!Ink.InkParser@{Ink.InkParser}}
+\doxysubsubsection{\texorpdfstring{Latin1Supplement}{Latin1Supplement}}
+{\footnotesize\ttfamily readonly \mbox{\hyperlink{class_ink_1_1_character_range}{Character\+Range}} Ink.\+Ink\+Parser.\+Latin1\+Supplement\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{            CharacterRange.Define(\textcolor{stringliteral}{'\(\backslash\)u0080'}, \textcolor{stringliteral}{'\(\backslash\)u00FF'}, excludes: \textcolor{keyword}{new} CharacterSet())}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_ink_1_1_ink_parser_a55e4c90012c4e8f7eeafbb34583ccad4}\label{class_ink_1_1_ink_parser_a55e4c90012c4e8f7eeafbb34583ccad4}} 
+\index{Ink.InkParser@{Ink.InkParser}!LatinBasic@{LatinBasic}}
+\index{LatinBasic@{LatinBasic}!Ink.InkParser@{Ink.InkParser}}
+\doxysubsubsection{\texorpdfstring{LatinBasic}{LatinBasic}}
+{\footnotesize\ttfamily readonly \mbox{\hyperlink{class_ink_1_1_character_range}{Character\+Range}} Ink.\+Ink\+Parser.\+Latin\+Basic\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= }
+\DoxyCodeLine{            CharacterRange.Define (\textcolor{stringliteral}{'\(\backslash\)u0041'}, \textcolor{stringliteral}{'\(\backslash\)u007A'}, excludes: \textcolor{keyword}{new} CharacterSet().AddRange(\textcolor{stringliteral}{'\(\backslash\)u005B'}, \textcolor{stringliteral}{'\(\backslash\)u0060'}))}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Ink\+Libs/\+Ink\+Compiler/\+Ink\+Parser/Ink\+Parser.\+cs\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Ink\+Libs/\+Ink\+Compiler/\+Ink\+Parser/Ink\+Parser\+\_\+\+Character\+Ranges.\+cs\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Ink\+Libs/\+Ink\+Compiler/\+Ink\+Parser/Ink\+Parser\+\_\+\+Choices.\+cs\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Ink\+Libs/\+Ink\+Compiler/\+Ink\+Parser/Ink\+Parser\+\_\+\+Command\+Line\+Input.\+cs\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Ink\+Libs/\+Ink\+Compiler/\+Ink\+Parser/Ink\+Parser\+\_\+\+Content.\+cs\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Ink\+Libs/\+Ink\+Compiler/\+Ink\+Parser/Ink\+Parser\+\_\+\+Expressions.\+cs\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Ink\+Libs/\+Ink\+Compiler/\+Ink\+Parser/Ink\+Parser\+\_\+\+Include.\+cs\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Ink\+Libs/\+Ink\+Compiler/\+Ink\+Parser/Ink\+Parser\+\_\+\+Logic.\+cs\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Ink\+Libs/\+Ink\+Compiler/\+Ink\+Parser/Ink\+Parser\+\_\+\+Sequences.\+cs\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Ink\+Libs/\+Ink\+Compiler/\+Ink\+Parser/Ink\+Parser\+\_\+\+Statements.\+cs\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Ink\+Libs/\+Ink\+Compiler/\+Ink\+Parser/Ink\+Parser\+\_\+\+Tags.\+cs\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Ink\+Libs/\+Ink\+Compiler/\+Ink\+Parser/Ink\+Parser\+\_\+\+Whitespace.\+cs\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Ink\+Libs/\+Ink\+Compiler/\+Ink\+Parser/Ink\+Parser\+\_\+\+Author\+Warning.\+cs\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Ink\+Libs/\+Ink\+Compiler/\+Ink\+Parser/Ink\+Parser\+\_\+\+Conditional.\+cs\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Ink\+Libs/\+Ink\+Compiler/\+Ink\+Parser/Ink\+Parser\+\_\+\+Divert.\+cs\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Ink\+Libs/\+Ink\+Compiler/\+Ink\+Parser/Ink\+Parser\+\_\+\+Knot.\+cs\end{DoxyCompactItemize}

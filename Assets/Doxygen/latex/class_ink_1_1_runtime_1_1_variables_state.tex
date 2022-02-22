@@ -1,0 +1,96 @@
+\hypertarget{class_ink_1_1_runtime_1_1_variables_state}{}\doxysection{Ink.\+Runtime.\+Variables\+State Class Reference}
+\label{class_ink_1_1_runtime_1_1_variables_state}\index{Ink.Runtime.VariablesState@{Ink.Runtime.VariablesState}}
+
+
+Encompasses all the global variables in an ink \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}}, and allows binding of a Variable\+Changed event so that that game code can be notified whenever the global variables change.  
+
+
+Inheritance diagram for Ink.\+Runtime.\+Variables\+State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ink_1_1_runtime_1_1_variables_state}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_variables_state_a50acaa4fece2a7b1a848b7928370f065}\label{class_ink_1_1_runtime_1_1_variables_state_a50acaa4fece2a7b1a848b7928370f065}} 
+delegate void {\bfseries Variable\+Changed} (string variable\+Name, \mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Runtime.\+Object}} new\+Value)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_variables_state_a0e7b4b85bec0237248950b6b235c96bf}\label{class_ink_1_1_runtime_1_1_variables_state_a0e7b4b85bec0237248950b6b235c96bf}} 
+IEnumerator$<$ string $>$ {\bfseries Get\+Enumerator} ()
+\begin{DoxyCompactList}\small\item\em Enumerator to allow iteration over all global variables by name. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_variables_state_a9db008c7fb4da858c0e3883860b49e2c}\label{class_ink_1_1_runtime_1_1_variables_state_a9db008c7fb4da858c0e3883860b49e2c}} 
+{\bfseries Variables\+State} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_call_stack}{Call\+Stack}} call\+Stack, \mbox{\hyperlink{class_ink_1_1_runtime_1_1_list_definitions_origin}{List\+Definitions\+Origin}} list\+Defs\+Origin)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_variables_state_aa2456ed78f07492b1662825782e8e8cb}\label{class_ink_1_1_runtime_1_1_variables_state_aa2456ed78f07492b1662825782e8e8cb}} 
+void {\bfseries Apply\+Patch} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_variables_state_aeaf10b7baffda3690e8ebc00ec853151}\label{class_ink_1_1_runtime_1_1_variables_state_aeaf10b7baffda3690e8ebc00ec853151}} 
+void {\bfseries Set\+Json\+Token} (Dictionary$<$ string, object $>$ j\+Token)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_variables_state_a42485481e4812613f34a236bfdfa93d6}\label{class_ink_1_1_runtime_1_1_variables_state_a42485481e4812613f34a236bfdfa93d6}} 
+void {\bfseries Write\+Json} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_simple_json_1_1_writer}{Simple\+Json.\+Writer}} writer)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_variables_state_a2b6e3291533c79147b0862aee7ae3370}\label{class_ink_1_1_runtime_1_1_variables_state_a2b6e3291533c79147b0862aee7ae3370}} 
+bool {\bfseries Runtime\+Objects\+Equal} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Runtime.\+Object}} obj1, \mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Runtime.\+Object}} obj2)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_variables_state_a182a40cbc2773bd4536c9c0522fec0e1}\label{class_ink_1_1_runtime_1_1_variables_state_a182a40cbc2773bd4536c9c0522fec0e1}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Runtime.\+Object}} {\bfseries Get\+Variable\+With\+Name} (string name)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_variables_state_af2e230bbe7f4c62a723f1761ae9d675a}\label{class_ink_1_1_runtime_1_1_variables_state_af2e230bbe7f4c62a723f1761ae9d675a}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Runtime.\+Object}} {\bfseries Try\+Get\+Default\+Variable\+Value} (string name)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_variables_state_ac0024a8d0ac6e6e211306ccc2958468a}\label{class_ink_1_1_runtime_1_1_variables_state_ac0024a8d0ac6e6e211306ccc2958468a}} 
+bool {\bfseries Global\+Variable\+Exists\+With\+Name} (string name)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_variables_state_afbfb80a93c76c1e7dad3e18857b1ff99}\label{class_ink_1_1_runtime_1_1_variables_state_afbfb80a93c76c1e7dad3e18857b1ff99}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Runtime.\+Object}} {\bfseries Value\+At\+Variable\+Pointer} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_variable_pointer_value}{Variable\+Pointer\+Value}} pointer)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_variables_state_ad06a236a84cfc643e781a7c6b323278c}\label{class_ink_1_1_runtime_1_1_variables_state_ad06a236a84cfc643e781a7c6b323278c}} 
+void {\bfseries Assign} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_variable_assignment}{Variable\+Assignment}} var\+Ass, \mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Runtime.\+Object}} value)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_variables_state_a7b3ffaa869757ce3fbc4cb8c9e4cbf9a}\label{class_ink_1_1_runtime_1_1_variables_state_a7b3ffaa869757ce3fbc4cb8c9e4cbf9a}} 
+void {\bfseries Snapshot\+Default\+Globals} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_variables_state_ad4c4a414e0a6b379ae07b899c3acf75b}\label{class_ink_1_1_runtime_1_1_variables_state_ad4c4a414e0a6b379ae07b899c3acf75b}} 
+void {\bfseries Set\+Global} (string variable\+Name, \mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Runtime.\+Object}} value)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_variables_state_a77d91f4c1b149ca3bdb4a50874c2f260}\label{class_ink_1_1_runtime_1_1_variables_state_a77d91f4c1b149ca3bdb4a50874c2f260}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_state_patch}{State\+Patch}} {\bfseries patch}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_variables_state_a662c4f54f5ce608e9134c8245b31eb29}\label{class_ink_1_1_runtime_1_1_variables_state_a662c4f54f5ce608e9134c8245b31eb29}} 
+static bool {\bfseries dont\+Save\+Default\+Values} = true
+\begin{DoxyCompactList}\small\item\em When saving out JSON state, we can skip saving global values that remain equal to the initial values that were declared in ink. This makes the save file (potentially) much smaller assuming that at least a portion of the globals haven\textquotesingle{}t changed. However, it can also take marginally longer to save in the case that the majority HAVE changed, since it has to compare all globals. It may also be useful to turn this off for testing worst case save timing. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_variables_state_a00d104aba8941534b5ed946883416253}\label{class_ink_1_1_runtime_1_1_variables_state_a00d104aba8941534b5ed946883416253}} 
+bool {\bfseries batch\+Observing\+Variable\+Changes}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_variables_state_ad5b848ee915135e4d6017d60a4924adc}\label{class_ink_1_1_runtime_1_1_variables_state_ad5b848ee915135e4d6017d60a4924adc}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_call_stack}{Call\+Stack}} {\bfseries call\+Stack}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_variables_state_a878323b90936cd71acf6a780aa2adb3b}\label{class_ink_1_1_runtime_1_1_variables_state_a878323b90936cd71acf6a780aa2adb3b}} 
+object {\bfseries this\mbox{[}string variable\+Name\mbox{]}}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Get or set the value of a named global ink variable. The types available are the standard ink types. Certain types will be implicitly casted when setting. For example, doubles to floats, longs to ints, and bools to ints. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Events}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_variables_state_af1b8f9159d82e5aeeae2ab32d2ed5784}\label{class_ink_1_1_runtime_1_1_variables_state_af1b8f9159d82e5aeeae2ab32d2ed5784}} 
+Variable\+Changed {\bfseries variable\+Changed\+Event}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Encompasses all the global variables in an ink \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}}, and allows binding of a Variable\+Changed event so that that game code can be notified whenever the global variables change. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Ink\+Libs/\+Ink\+Runtime/Variables\+State.\+cs\end{DoxyCompactItemize}

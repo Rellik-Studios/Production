@@ -1,0 +1,92 @@
+\hypertarget{class_ink_1_1_runtime_1_1_container}{}\doxysection{Ink.\+Runtime.\+Container Class Reference}
+\label{class_ink_1_1_runtime_1_1_container}\index{Ink.Runtime.Container@{Ink.Runtime.Container}}
+Inheritance diagram for Ink.\+Runtime.\+Container\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ink_1_1_runtime_1_1_container}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_container_ac2fadd0a2769381573b7ed453c9b8b25}\label{class_ink_1_1_runtime_1_1_container_ac2fadd0a2769381573b7ed453c9b8b25}} 
+enum {\bfseries Count\+Flags} \{ {\bfseries Visits} = 1
+, {\bfseries Turns} = 2
+, {\bfseries Count\+Start\+Only} = 4
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_container_a4e139ac9f3465a4c91acfa1306bee58d}\label{class_ink_1_1_runtime_1_1_container_a4e139ac9f3465a4c91acfa1306bee58d}} 
+void {\bfseries Add\+Content} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Runtime.\+Object}} content\+Obj)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_container_ac9f262ea0c8b324e71563d094029adf7}\label{class_ink_1_1_runtime_1_1_container_ac9f262ea0c8b324e71563d094029adf7}} 
+void {\bfseries Add\+Content} (IList$<$ \mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Runtime.\+Object}} $>$ content\+List)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_container_a36e717f24d5d7fbee2be9b2f0fbf2b64}\label{class_ink_1_1_runtime_1_1_container_a36e717f24d5d7fbee2be9b2f0fbf2b64}} 
+void {\bfseries Insert\+Content} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Runtime.\+Object}} content\+Obj, int index)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_container_aaa9a84803683342409537f33fff6827a}\label{class_ink_1_1_runtime_1_1_container_aaa9a84803683342409537f33fff6827a}} 
+void {\bfseries Try\+Add\+Named\+Content} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Runtime.\+Object}} content\+Obj)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_container_a81f21d86d5843d746067246b32245ff5}\label{class_ink_1_1_runtime_1_1_container_a81f21d86d5843d746067246b32245ff5}} 
+void {\bfseries Add\+To\+Named\+Content\+Only} (\mbox{\hyperlink{interface_ink_1_1_runtime_1_1_i_named_content}{INamed\+Content}} named\+Content\+Obj)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_container_adb71ff7657a4a5cec6156e12aa95d628}\label{class_ink_1_1_runtime_1_1_container_adb71ff7657a4a5cec6156e12aa95d628}} 
+void {\bfseries Add\+Contents\+Of\+Container} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_container}{Container}} other\+Container)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_container_ad853613cd4a58321a96588b225de2f3c}\label{class_ink_1_1_runtime_1_1_container_ad853613cd4a58321a96588b225de2f3c}} 
+\mbox{\hyperlink{struct_ink_1_1_runtime_1_1_search_result}{Search\+Result}} {\bfseries Content\+At\+Path} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_path}{Path}} path, int partial\+Path\+Start=0, int partial\+Path\+Length=-\/1)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_container_af8e5ebd4099235e7fe07bb9b5be92040}\label{class_ink_1_1_runtime_1_1_container_af8e5ebd4099235e7fe07bb9b5be92040}} 
+void {\bfseries Build\+String\+Of\+Hierarchy} (String\+Builder sb, int indentation, \mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Runtime.\+Object}} pointed\+Obj)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_container_afdfd73337b75a968a4e60b9f09ed73d8}\label{class_ink_1_1_runtime_1_1_container_afdfd73337b75a968a4e60b9f09ed73d8}} 
+virtual string {\bfseries Build\+String\+Of\+Hierarchy} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_container_a41f744f1b78d3b0525a3155f821b26b3}\label{class_ink_1_1_runtime_1_1_container_a41f744f1b78d3b0525a3155f821b26b3}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Runtime.\+Object}} {\bfseries Content\+With\+Path\+Component} (Path.\+Component component)
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_container_af03d8da0625e5d37190737d09116ab9b}\label{class_ink_1_1_runtime_1_1_container_af03d8da0625e5d37190737d09116ab9b}} 
+string {\bfseries name}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_container_aeb9448ee91970c673acf101ceb650155}\label{class_ink_1_1_runtime_1_1_container_aeb9448ee91970c673acf101ceb650155}} 
+List$<$ \mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Runtime.\+Object}} $>$ {\bfseries content}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_container_af9dbe5377ebe2226586b3100b5736010}\label{class_ink_1_1_runtime_1_1_container_af9dbe5377ebe2226586b3100b5736010}} 
+Dictionary$<$ string, \mbox{\hyperlink{interface_ink_1_1_runtime_1_1_i_named_content}{INamed\+Content}} $>$ {\bfseries named\+Content}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_container_a2214967be13ffd916c27855d92d2654c}\label{class_ink_1_1_runtime_1_1_container_a2214967be13ffd916c27855d92d2654c}} 
+Dictionary$<$ string, \mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Runtime.\+Object}} $>$ {\bfseries named\+Only\+Content}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_container_a1d80f0a4310883a65d344ae4a1f3ffc0}\label{class_ink_1_1_runtime_1_1_container_a1d80f0a4310883a65d344ae4a1f3ffc0}} 
+bool {\bfseries visits\+Should\+Be\+Counted}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_container_ad0c41fc9c2a9e9aa4f97df9a758bc50f}\label{class_ink_1_1_runtime_1_1_container_ad0c41fc9c2a9e9aa4f97df9a758bc50f}} 
+bool {\bfseries turn\+Index\+Should\+Be\+Counted}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_container_aedfb967675e1f7f9bda6228a27fc9d33}\label{class_ink_1_1_runtime_1_1_container_aedfb967675e1f7f9bda6228a27fc9d33}} 
+bool {\bfseries counting\+At\+Start\+Only}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_container_a2b1d2c812de9cfc25b894c3494032025}\label{class_ink_1_1_runtime_1_1_container_a2b1d2c812de9cfc25b894c3494032025}} 
+int {\bfseries count\+Flags}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_container_a5a95766652bc7a852c897e40cfb3cd8a}\label{class_ink_1_1_runtime_1_1_container_a5a95766652bc7a852c897e40cfb3cd8a}} 
+bool {\bfseries has\+Valid\+Name}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_container_a52f6a4197c365e0dd99504828600c247}\label{class_ink_1_1_runtime_1_1_container_a52f6a4197c365e0dd99504828600c247}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_path}{Path}} {\bfseries path\+To\+First\+Leaf\+Content}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Ink\+Libs/\+Ink\+Runtime/Container.\+cs\end{DoxyCompactItemize}

@@ -1,0 +1,87 @@
+This Unity package allows you to integrate inkle\textquotesingle{}s \href{http://www.inklestudios.com/ink}{\texttt{ ink narrative scripting language}} with Unity and provides tools to {\bfseries{compile}}, {\bfseries{play}} and {\bfseries{debug}} your stories.\hypertarget{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md1}{}\doxysection{Overview}\label{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md1}
+
+\begin{DoxyItemize}
+\item {\bfseries{Using ink in your game}}\+: Allows running and controlling ink files in Unity via the \href{https://github.com/inkle/ink/blob/master/Documentation/RunningYourInk.md}{\texttt{ C\# runtime API}}.
+\item {\bfseries{ink player}}\+: Provides a powerful \href{https://github.com/inkle/ink-unity-integration/blob/master/Documentation/InkPlayerWindow.md}{\texttt{ Ink Player Window}} for playing and debugging stories.
+\item {\bfseries{Auto compilation}}\+: Instantly creates and updates a JSON story file when a {\ttfamily .ink} is updated.
+\item {\bfseries{Inspector tools}}\+: Provides an icon for ink files, and a custom inspector that provides information about a file.
+\end{DoxyItemize}\hypertarget{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md2}{}\doxysection{Getting started}\label{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md2}
+\hypertarget{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md3}{}\doxysubsection{\+:inbox\+\_\+tray\+: Downloading the package}\label{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md3}
+\hypertarget{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md4}{}\doxysubsubsection{\+:star\+:\+As a UPM Package (\+Recommended)\+:star\+:}\label{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md4}
+
+\begin{DoxyItemize}
+\item Navigate to \href{https://openupm.com/packages/com.inklestudios.ink-unity-integration/}{\texttt{ Open\+UPM}} and click \char`\"{}\+Get installer.\+unitypackage\char`\"{}.
+\item Open the downloaded file. The installer will do the rest!
+\item The project will have installed at Packages \texorpdfstring{$>$}{>} \mbox{\hyperlink{namespace_ink}{Ink}} Unity Integration.
+\item Demo projects can be imported from Packages \texorpdfstring{$>$}{>} \mbox{\hyperlink{namespace_ink}{Ink}} Unity Integration \texorpdfstring{$>$}{>} Examples
+\end{DoxyItemize}\hypertarget{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md5}{}\doxysubsubsection{As a .\+Unity\+Package}\label{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md5}
+This will import the source into your Assets folder. This is a good option if you intend to edit the source for your own needs.
+\begin{DoxyItemize}
+\item \href{https://github.com/inkle/ink-unity-integration/releases}{\texttt{ Download the latest .Unity\+Package}}.
+\item Open the downloaded file to import it into your Unity project.
+\end{DoxyItemize}\hypertarget{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md6}{}\doxysubsubsection{Via the Asset Store}\label{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md6}
+For convinience a .Unity\+Package is hosted at the \href{https://assetstore.unity.com/packages/tools/integration/ink-unity-integration-60055}{\texttt{ Unity Asset Store}}. {\bfseries{This version is updated rarely, and so is not recommended.}} This will import the source into your Assets folder. This is a good option if you intend to edit the source for your own needs.\hypertarget{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md7}{}\doxysubsubsection{From Git\+Hub}\label{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md7}
+You can fork the project on \href{https://github.com/inkle/ink-unity-integration}{\texttt{ Git\+Hub}}.\hypertarget{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md8}{}\doxysubsection{\+:video\+\_\+game\+: Demos}\label{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md8}
+This project includes a demo scene, providing a simple example of how to control an ink story with C\# code using Unity UI.
+
+(If you imported this package as a UPM (recommended), then you must first import the demos from Packages \texorpdfstring{$>$}{>} \mbox{\hyperlink{namespace_ink}{Ink}} Unity Integration \texorpdfstring{$>$}{>} Examples)
+
+To run a demo, double-\/click the scene file at the root of the demo folder to open it, and press the Play button at the top of the screen to start it.\hypertarget{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md9}{}\doxysubsection{\+:page\+\_\+facing\+\_\+up\+: C\# API}\label{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md9}
+The C\# API provides all you need to control ink stories in code; advancing your story, making choices, diverting to knots, saving and loading, and much more. \href{https://github.com/inkle/ink/blob/master/Documentation/RunningYourInk.md\#getting-started-with-the-runtime-api}{\texttt{ It is documented in the main ink repo}} For convenience, the package also creates an ({\bfseries{Help \texorpdfstring{$>$}{>} \mbox{\hyperlink{namespace_ink}{Ink}} \texorpdfstring{$>$}{>} API Documentation}}) menu option.\hypertarget{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md10}{}\doxysubsection{\+:pencil2\+: Writing ink}\label{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md10}
+For more information on writing with {\bfseries{ink}}, see \href{https://github.com/inkle/ink}{\texttt{ the documentation in the main ink repo}}. For convenience, the package also creates an ({\bfseries{Help \texorpdfstring{$>$}{>} \mbox{\hyperlink{namespace_ink}{Ink}} \texorpdfstring{$>$}{>} Writing Tutorial}}) menu option.\hypertarget{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md11}{}\doxysubsection{\+:question\+: Further Help}\label{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md11}
+For assistance with writing or code, \href{https://discord.gg/tD8Am2K}{\texttt{ Inkle\textquotesingle{}s Discord forum}} is full of lovely people who can help you out!
+
+To keep up to date with the latest news about ink \href{http://www.inklestudios.com/ink\#signup}{\texttt{ sign up for the mailing list}}.\hypertarget{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md12}{}\doxysection{Features}\label{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md12}
+\hypertarget{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md13}{}\doxysubsection{Compilation}\label{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md13}
+\mbox{\hyperlink{namespace_ink}{Ink}} files must be compiled to JSON before they can be used in-\/game. {\bfseries{This package compiles all edited ink files automatically.}} By default, compiled files are created next to their ink file.\hypertarget{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md14}{}\doxysubsubsection{Editor Compilation}\label{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md14}
+This package provides tools to automate this process when a .ink file is edited.
+
+{\bfseries{Disabling auto-\/compilation}}\+: You might want to have manual control over ink compilation. If this is the case, you can disable \char`\"{}\+Compile ink automatically\char`\"{} in the Ink\+Settings file or delete the Ink\+Post\+Processor class.
+
+{\bfseries{Manual compilation}}\+: If you have disabled auto-\/compilation, you can manually compile all ink files using the {\bfseries{Assets \texorpdfstring{$>$}{>} Recompile \mbox{\hyperlink{namespace_ink}{Ink}}}} menu item, individually via the inspector of an ink file, or via code using Ink\+Compiler.\+Compile\+Ink().
+
+{\bfseries{Play mode delay}}\+: By default, ink does not compile while in play mode. This can be disabled in the Ink\+Settings file.\hypertarget{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md15}{}\doxysubsubsection{In-\/game Compilation}\label{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md15}
+The compiler is included in builds (See \href{\#WebGLBestPractices}{\texttt{ Web\+GL best practices}} for information on removing it), enabling you to allow the editing of ink files as part of your game.\hypertarget{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md16}{}\doxysubsection{$<$a name=\char`\"{}\+Ink\+Player\+Window\char`\"{}$>$$<$/a$>$\+Ink Player Window}\label{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md16}
+The \mbox{\hyperlink{namespace_ink}{Ink}} Player Window ({\bfseries{Window \texorpdfstring{$>$}{>} \mbox{\hyperlink{namespace_ink}{Ink}} Player}}) allows you to play stories in an editor window, and provides functionality to edit variables on the fly, test functions, profile performance, save and load states, and divert.
+
+To play a story, click the \char`\"{}play\char`\"{} button shown on the inspector of a compiled ink file, or drag a compiled ink story Text\+Asset into the window.
+
+{\bfseries{Editor Attaching}}\+: Attaching the Ink\+Story instance used by your game to the \mbox{\hyperlink{namespace_ink}{Ink}} Player window allows you to view and edit your story as it runs in game.
+
+See Basic\+Ink\+Example\+Editor.\+cs in the Examples folder for an example of how to\+:
+\begin{DoxyItemize}
+\item Show an attach/detach button on an inspector
+\item Automatically attach on entering play mode
+\end{DoxyItemize}
+
+\href{https://github.com/inkle/ink-unity-integration/blob/master/Documentation/InkPlayerWindow.md}{\texttt{ More information on using and extending Ink Player Window}}\hypertarget{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md17}{}\doxysubsection{Inspector tools}\label{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md17}
+This package replaces the icon for ink files to make them easier to spot, and adds a custom inspector for a selected ink file.
+
+{\bfseries{The Inspector}}\+: Selecting an ink file displays its last compile time; lists any include files; and shows any errors, warnings or todos. It also shows a Play button which runs the story in the \mbox{\hyperlink{namespace_ink}{Ink}} Player Window.\hypertarget{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md18}{}\doxysection{Visual Scripting Support}\label{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md18}
+\hypertarget{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md19}{}\doxysubsection{Bolt}\label{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md19}
+There is currently no support for Bolt, Unity\textquotesingle{}s official visual scripting tool. If you\textquotesingle{}re interested in building one, we\textquotesingle{}d love to see it!\hypertarget{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md20}{}\doxysubsection{Play\+Maker}\label{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md20}
+There\textquotesingle{}s \href{https://github.com/inkle/ink-unity-integration/issues/22}{\texttt{ unofficial support for Play\+Maker here.}}
+
+We\textquotesingle{}d love to see this supported more if you\textquotesingle{}d like to assist the effort!\hypertarget{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md21}{}\doxysection{Source control tips}\label{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md21}
+When you edit ink files, the compiler will also update the corresponding compiled .json file. If no compiled file existed before, Unity will also create a meta file for it. It is recommended that you always commit both ink and json files at the same time to avoid the file being re-\/compiled by your team members.
+
+Adding or removing ink files will also make changes to the Ink\+Library file, and we could recommend authors also commit this file for the same reasons.\hypertarget{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md22}{}\doxysection{$<$a name=\char`\"{}\+Web\+GLBest\+Practices\char`\"{}$>$$<$/a$>$\+Web\+GL best practices}\label{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md22}
+Web\+GL builds should be as small as possible. The ink compiler is included in builds, but is typically only used in the editor. If your game doesn\textquotesingle{}t require compiling ink at runtime we recommend adding a .asmdef at \mbox{\hyperlink{namespace_ink}{Ink}} Unity Integration \texorpdfstring{$>$}{>} Ink\+Libs \texorpdfstring{$>$}{>} Ink\+Compiler that only functions in the editor.\hypertarget{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md23}{}\doxysection{FAQ}\label{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md23}
+
+\begin{DoxyItemize}
+\item Is the Linux Unity Editor supported?
+
+{\itshape Yes!}
+\item What versions of Unity are supported?
+
+We officially support 2018 LTS and above, but it should work going back to at least Unity 5.
+\end{DoxyItemize}\hypertarget{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md24}{}\doxysection{Support us!\+:heart\+:}\label{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md24}
+\mbox{\hyperlink{namespace_ink}{Ink}} is free, forever; but we\textquotesingle{}d really appreciate your support! If you\textquotesingle{}re able to give back, generous donations at our \href{https://www.patreon.com/inkle}{\texttt{ Patreon}} mean the world to us.\hypertarget{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md25}{}\doxysection{License}\label{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md25}
+{\bfseries{ink}} and this package is released under the MIT license. Although we don\textquotesingle{}t require attribution, we\textquotesingle{}d love to know if you decide to use {\bfseries{ink}} a project! Let us know on \href{http://www.twitter.com/inkleStudios}{\texttt{ Twitter}} or \href{mailto:info@inklestudios.com}{\texttt{ by email}}.\hypertarget{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md26}{}\doxysubsubsection{The MIT License (\+MIT)}\label{md__d___repos__vertical_slice__assets__ink__r_e_a_d_m_e_autotoc_md26}
+Copyright (c) 2016 inkle Ltd.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \char`\"{}\+Software\char`\"{}), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions\+:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \char`\"{}\+AS IS\char`\"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 

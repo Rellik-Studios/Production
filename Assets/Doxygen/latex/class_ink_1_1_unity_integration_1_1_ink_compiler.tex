@@ -1,0 +1,113 @@
+\hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler}{}\doxysection{Ink.\+Unity\+Integration.\+Ink\+Compiler Class Reference}
+\label{class_ink_1_1_unity_integration_1_1_ink_compiler}\index{Ink.UnityIntegration.InkCompiler@{Ink.UnityIntegration.InkCompiler}}
+Inheritance diagram for Ink.\+Unity\+Integration.\+Ink\+Compiler\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ink_1_1_unity_integration_1_1_ink_compiler}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_compiler_1_1_asset_saver}{Asset\+Saver}}
+\item 
+class \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_compiler_1_1_compilation_stack_item}{Compilation\+Stack\+Item}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_a48ee195e8af8c3fe0cb3d3b9828d9ba6}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_a48ee195e8af8c3fe0cb3d3b9828d9ba6}} 
+void {\bfseries Save} (bool save\+As\+Text)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_aae67bb8c71a09990655b2c4d8cc3f90b}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_aae67bb8c71a09990655b2c4d8cc3f90b}} 
+delegate void {\bfseries On\+Compile\+Ink\+Event} (\mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_file}{Ink\+File}} ink\+File)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_a198f6e755fac1f41b12d9688be39ee23}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_a198f6e755fac1f41b12d9688be39ee23}} 
+static void {\bfseries Load\+Or\+Create\+Instance} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_abaea2be725c0401a8676597842bd8207}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_abaea2be725c0401a8676597842bd8207}} 
+static void {\bfseries Save\+Static} (bool save\+As\+Text)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_aed13ba81dbaf65086735d719b1275daa}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_aed13ba81dbaf65086735d719b1275daa}} 
+static float {\bfseries Get\+Estimated\+Compilation\+Progress} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_a8fced4b9d9967a2268bab4874a3ba497}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_a8fced4b9d9967a2268bab4874a3ba497}} 
+static void {\bfseries Compile\+Ink} (params \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_file}{Ink\+File}}\mbox{[}$\,$\mbox{]} ink\+Files)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_a84e443fe4a8fc309e17eb88a46065cb7}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_a84e443fe4a8fc309e17eb88a46065cb7}} 
+static void {\bfseries Compile\+Ink} (\mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_file}{Ink\+File}}\mbox{[}$\,$\mbox{]} ink\+Files, bool immediate, Action on\+Complete)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_acd3f6193875a24e338b0f4d778e0eadc}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_acd3f6193875a24e338b0f4d778e0eadc}} 
+static List$<$ \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_file}{Ink\+File}} $>$ {\bfseries Get\+Unique\+Master\+Ink\+Files\+To\+Compile} (List$<$ string $>$ imported\+Ink\+Assets)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_aab00985da3a93bf9473edb0d73514d52}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_aab00985da3a93bf9473edb0d73514d52}} 
+static IEnumerable$<$ \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_file}{Ink\+File}} $>$ {\bfseries Get\+Master\+Files\+Including\+Ink\+Asset\+Path} (string imported\+Asset\+Path)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_ad19ead8eff8fd948d72705a4fa62f980}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_ad19ead8eff8fd948d72705a4fa62f980}} 
+static void {\bfseries Add\+To\+Compilation\+Stack} (\mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_compiler_1_1_compilation_stack_item}{Ink\+Compiler.\+Compilation\+Stack\+Item}} compilation\+Stack\+Item)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_ab8d59f5ff730cf8cc0f0a5f143598deb}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_ab8d59f5ff730cf8cc0f0a5f143598deb}} 
+static void {\bfseries Clear\+Compilation\+Stack} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_aa76a320fb95255a54bbc518b7fbdfeef}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_aa76a320fb95255a54bbc518b7fbdfeef}} 
+static void {\bfseries Add\+To\+Pending\+Compilation\+Stack} (string file\+Path)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_a77cd79bea89030e1dec3e57c1a0a7185}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_a77cd79bea89030e1dec3e57c1a0a7185}} 
+static void {\bfseries Remove\+From\+Pending\+Compilation\+Stack} (\mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_file}{Ink\+File}} ink\+File)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_a56227dd640eacd0ddec9ce6743e2dc71}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_a56227dd640eacd0ddec9ce6743e2dc71}} 
+static void {\bfseries Clear\+Compilation\+Stacks} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_a6037c5f63e0d9a1e1ff2899670cec4db}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_a6037c5f63e0d9a1e1ff2899670cec4db}} 
+static int {\bfseries Num\+Files\+In\+Compiling\+Stack\+In\+State} (Ink\+Compiler.\+Compilation\+Stack\+Item.\+State state)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_a746ad9820efe9b638ea88bf624b47b9c}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_a746ad9820efe9b638ea88bf624b47b9c}} 
+static List$<$ \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_compiler_1_1_compilation_stack_item}{Ink\+Compiler.\+Compilation\+Stack\+Item}} $>$ {\bfseries Files\+In\+Compiling\+Stack\+In\+State} (Ink\+Compiler.\+Compilation\+Stack\+Item.\+State state)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_a0b2c80e2f729b4e82f5b3c40d8c40717}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_a0b2c80e2f729b4e82f5b3c40d8c40717}} 
+static \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_compiler_1_1_compilation_stack_item}{Ink\+Compiler.\+Compilation\+Stack\+Item}} {\bfseries Get\+Compilation\+Stack\+Item} (\mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_file}{Ink\+File}} ink\+File)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_a087a156cde19d1714f0ef3a2fbfd13eb}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_a087a156cde19d1714f0ef3a2fbfd13eb}} 
+List$<$ string $>$ {\bfseries pending\+Compilation\+Stack} = new List$<$string$>$()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_a7a2fa13b3d9d166d206ea1177ac06fcb}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_a7a2fa13b3d9d166d206ea1177ac06fcb}} 
+List$<$ \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_compiler_1_1_compilation_stack_item}{Ink\+Compiler.\+Compilation\+Stack\+Item}} $>$ {\bfseries compilation\+Stack} = new List$<$\mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_compiler_1_1_compilation_stack_item}{Ink\+Compiler.\+Compilation\+Stack\+Item}}$>$()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_a39a760e8d36b379653ecb476b7943fcd}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_a39a760e8d36b379653ecb476b7943fcd}} 
+static bool {\bfseries build\+Blocked} = false
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_a093cdd7eeb66ebb8667c5ad0acaae43b}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_a093cdd7eeb66ebb8667c5ad0acaae43b}} 
+static bool {\bfseries has\+Locked\+Unity\+Compilation} = false
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_a2e9230003c8187ae0f19e87739d3133b}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_a2e9230003c8187ae0f19e87739d3133b}} 
+static bool {\bfseries created}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_ab9f936d55b5eed8665477325b83efd49}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_ab9f936d55b5eed8665477325b83efd49}} 
+static \mbox{\hyperlink{class_ink_1_1_unity_integration_1_1_ink_compiler}{Ink\+Compiler}} {\bfseries instance}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_ac4fd9bbf376bfeb1e97d4866c3f71ad2}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_ac4fd9bbf376bfeb1e97d4866c3f71ad2}} 
+static bool {\bfseries compiling}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Events}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_unity_integration_1_1_ink_compiler_a9eec1a1a258834c939aae6a403526fd8}\label{class_ink_1_1_unity_integration_1_1_ink_compiler_a9eec1a1a258834c939aae6a403526fd8}} 
+static On\+Compile\+Ink\+Event {\bfseries On\+Compile\+Ink}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Editor/\+Core/\+Compiler/Ink\+Compiler.\+cs\end{DoxyCompactItemize}

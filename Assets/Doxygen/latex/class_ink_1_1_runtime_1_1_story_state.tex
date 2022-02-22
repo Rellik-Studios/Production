@@ -1,0 +1,255 @@
+\hypertarget{class_ink_1_1_runtime_1_1_story_state}{}\doxysection{Ink.\+Runtime.\+Story\+State Class Reference}
+\label{class_ink_1_1_runtime_1_1_story_state}\index{Ink.Runtime.StoryState@{Ink.Runtime.StoryState}}
+
+
+All story state information is included in the \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_state}{Story\+State}} class, including global variables, read counts, the pointer to the current point in the story, the call stack (for tunnels, functions, etc), and a few other smaller bits and pieces. You can save the current state using the json serialisation functions To\+Json and Load\+Json.  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_state_a3560abbb1ce35d60006f73b84d0a7c12}{To\+Json}} ()
+\begin{DoxyCompactList}\small\item\em Exports the current state to json format, in order to save the game. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a4c4d95dc2b30abd3a79a8726f145e7c3}\label{class_ink_1_1_runtime_1_1_story_state_a4c4d95dc2b30abd3a79a8726f145e7c3}} 
+void {\bfseries To\+Json} (Stream stream)
+\begin{DoxyCompactList}\small\item\em Exports the current state to json format, in order to save the game. For this overload you can pass in a custom stream, such as a File\+Stream. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_state_a0031dccd52317ef439e8f1783e7f43fd}{Load\+Json}} (string json)
+\begin{DoxyCompactList}\small\item\em Loads a previously saved state in JSON format. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_state_aa8e2949ced8b3142b40a77d1658e6f4c}{Visit\+Count\+At\+Path\+String}} (string path\+String)
+\begin{DoxyCompactList}\small\item\em Gets the visit/read count of a particular \mbox{\hyperlink{class_ink_1_1_runtime_1_1_container}{Container}} at the given path. For a knot or stitch, that path string will be in the form\+: \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a568d6a96bcac47deb212556f1a810f50}\label{class_ink_1_1_runtime_1_1_story_state_a568d6a96bcac47deb212556f1a810f50}} 
+int {\bfseries Visit\+Count\+For\+Container} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_container}{Container}} container)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_abddd16f964d9f0af76b1de2ef0432d29}\label{class_ink_1_1_runtime_1_1_story_state_abddd16f964d9f0af76b1de2ef0432d29}} 
+void {\bfseries Increment\+Visit\+Count\+For\+Container} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_container}{Container}} container)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a9a2548d69426853e9a493582f50a4fda}\label{class_ink_1_1_runtime_1_1_story_state_a9a2548d69426853e9a493582f50a4fda}} 
+void {\bfseries Record\+Turn\+Index\+Visit\+To\+Container} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_container}{Container}} container)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_ac4378204b933645fc4bef5a8f7aaba5c}\label{class_ink_1_1_runtime_1_1_story_state_ac4378204b933645fc4bef5a8f7aaba5c}} 
+int {\bfseries Turns\+Since\+For\+Container} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_container}{Container}} container)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a02607d65683e8746fee38c77b4792545}\label{class_ink_1_1_runtime_1_1_story_state_a02607d65683e8746fee38c77b4792545}} 
+{\bfseries Story\+State} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}} story)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_ad61273c5737d0dd51d3359584423196e}\label{class_ink_1_1_runtime_1_1_story_state_ad61273c5737d0dd51d3359584423196e}} 
+void {\bfseries Go\+To\+Start} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_af2a55ef966beeae896c7f4742ba62364}\label{class_ink_1_1_runtime_1_1_story_state_af2a55ef966beeae896c7f4742ba62364}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_state}{Story\+State}} {\bfseries Copy\+And\+Start\+Patching} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a7b3522de59dd9a3db17157b74d4e12dc}\label{class_ink_1_1_runtime_1_1_story_state_a7b3522de59dd9a3db17157b74d4e12dc}} 
+void {\bfseries Restore\+After\+Patch} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a79822a3783797e8f21ac37f05ec73b7c}\label{class_ink_1_1_runtime_1_1_story_state_a79822a3783797e8f21ac37f05ec73b7c}} 
+void {\bfseries Apply\+Any\+Patch} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a5ca5db0e712aceb8f87b28151f68c1f4}\label{class_ink_1_1_runtime_1_1_story_state_a5ca5db0e712aceb8f87b28151f68c1f4}} 
+void {\bfseries Reset\+Errors} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_af5a80e3d99489a76fe556ffa01de9ccf}\label{class_ink_1_1_runtime_1_1_story_state_af5a80e3d99489a76fe556ffa01de9ccf}} 
+void {\bfseries Reset\+Output} (List$<$ \mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Runtime.\+Object}} $>$ objs=null)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a8e09bcc6f57dd61a5c33e54ee84e78ce}\label{class_ink_1_1_runtime_1_1_story_state_a8e09bcc6f57dd61a5c33e54ee84e78ce}} 
+void {\bfseries Push\+To\+Output\+Stream} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Runtime.\+Object}} obj)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_aa57b068f03546cc7b239ac3bdb04cf57}\label{class_ink_1_1_runtime_1_1_story_state_aa57b068f03546cc7b239ac3bdb04cf57}} 
+void {\bfseries Pop\+From\+Output\+Stream} (int count)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_afb0dfb335d06ecccbe4cfdf6aaa3037f}\label{class_ink_1_1_runtime_1_1_story_state_afb0dfb335d06ecccbe4cfdf6aaa3037f}} 
+void {\bfseries Push\+Evaluation\+Stack} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Runtime.\+Object}} obj)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a472ab72c1987c5343acbcf9b4a59ffb2}\label{class_ink_1_1_runtime_1_1_story_state_a472ab72c1987c5343acbcf9b4a59ffb2}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Runtime.\+Object}} {\bfseries Pop\+Evaluation\+Stack} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_af875e58279f1af0ab607062d430e9f45}\label{class_ink_1_1_runtime_1_1_story_state_af875e58279f1af0ab607062d430e9f45}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Runtime.\+Object}} {\bfseries Peek\+Evaluation\+Stack} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a5bad0161488f0bb75e74fb3ef2157925}\label{class_ink_1_1_runtime_1_1_story_state_a5bad0161488f0bb75e74fb3ef2157925}} 
+List$<$ \mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Runtime.\+Object}} $>$ {\bfseries Pop\+Evaluation\+Stack} (int number\+Of\+Objects)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_adc1c572fe1d2e4520ca1e928dfa4bdd3}\label{class_ink_1_1_runtime_1_1_story_state_adc1c572fe1d2e4520ca1e928dfa4bdd3}} 
+void {\bfseries Force\+End} ()
+\begin{DoxyCompactList}\small\item\em Ends the current ink flow, unwrapping the callstack but without affecting any variables. Useful if the ink is (say) in the middle a nested tunnel, and you want it to reset so that you can divert elsewhere using Choose\+Path\+String(). Otherwise, after finishing the content you diverted to, it would continue where it left off. Calling this is equivalent to calling -\/\texorpdfstring{$>$}{>} END in ink. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_ad15f7749a4760cddcfbfff2dc33d2672}\label{class_ink_1_1_runtime_1_1_story_state_ad15f7749a4760cddcfbfff2dc33d2672}} 
+void {\bfseries Pop\+Callstack} (Push\+Pop\+Type? pop\+Type=null)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a9043ff38291edd54b6f27d37474fdbd0}\label{class_ink_1_1_runtime_1_1_story_state_a9043ff38291edd54b6f27d37474fdbd0}} 
+void {\bfseries Set\+Chosen\+Path} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_path}{Path}} path, bool incrementing\+Turn\+Index)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a84fe87d23a547d11854373b17fd3cd4e}\label{class_ink_1_1_runtime_1_1_story_state_a84fe87d23a547d11854373b17fd3cd4e}} 
+void {\bfseries Start\+Function\+Evaluation\+From\+Game} (\mbox{\hyperlink{class_ink_1_1_runtime_1_1_container}{Container}} func\+Container, params object\mbox{[}$\,$\mbox{]} arguments)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_aab546b70c053f386a93f087708cca76f}\label{class_ink_1_1_runtime_1_1_story_state_aab546b70c053f386a93f087708cca76f}} 
+void {\bfseries Pass\+Arguments\+To\+Evaluation\+Stack} (params object\mbox{[}$\,$\mbox{]} arguments)
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a7f2d4e72e05f7e50b9aea60029947570}\label{class_ink_1_1_runtime_1_1_story_state_a7f2d4e72e05f7e50b9aea60029947570}} 
+bool {\bfseries Try\+Exit\+Function\+Evaluation\+From\+Game} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_ac6ffa8c9e5bce40b787c9b8966957a5c}\label{class_ink_1_1_runtime_1_1_story_state_ac6ffa8c9e5bce40b787c9b8966957a5c}} 
+object {\bfseries Complete\+Function\+Evaluation\+From\+Game} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a40c9aa24f564d7797dcb4be6140b9772}\label{class_ink_1_1_runtime_1_1_story_state_a40c9aa24f564d7797dcb4be6140b9772}} 
+void {\bfseries Add\+Error} (string message, bool is\+Warning)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a903376f9ab7dec390c91ffca2df433ef}\label{class_ink_1_1_runtime_1_1_story_state_a903376f9ab7dec390c91ffca2df433ef}} 
+const int {\bfseries k\+Ink\+Save\+State\+Version} = 9
+\begin{DoxyCompactList}\small\item\em The current version of the state save file JSON-\/based format. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a926dfb6590470d83428b36ab563ccb0d}\label{class_ink_1_1_runtime_1_1_story_state_a926dfb6590470d83428b36ab563ccb0d}} 
+int {\bfseries callstack\+Depth}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a435f6d2321d5df254a571d95c9958464}\label{class_ink_1_1_runtime_1_1_story_state_a435f6d2321d5df254a571d95c9958464}} 
+List$<$ \mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Runtime.\+Object}} $>$ {\bfseries output\+Stream}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a4dff5b3b7d97575e044965b5c03968b1}\label{class_ink_1_1_runtime_1_1_story_state_a4dff5b3b7d97575e044965b5c03968b1}} 
+List$<$ \mbox{\hyperlink{class_ink_1_1_runtime_1_1_choice}{Choice}} $>$ {\bfseries current\+Choices}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a997cec825c5ce9d3832dfb3186392794}\label{class_ink_1_1_runtime_1_1_story_state_a997cec825c5ce9d3832dfb3186392794}} 
+List$<$ \mbox{\hyperlink{class_ink_1_1_runtime_1_1_choice}{Choice}} $>$ {\bfseries generated\+Choices}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a8b03888a68845765b2300fe22ff70d2e}\label{class_ink_1_1_runtime_1_1_story_state_a8b03888a68845765b2300fe22ff70d2e}} 
+List$<$ string $>$ {\bfseries current\+Errors}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a78f400fed39e6ba7d00c2d6d4602c842}\label{class_ink_1_1_runtime_1_1_story_state_a78f400fed39e6ba7d00c2d6d4602c842}} 
+List$<$ string $>$ {\bfseries current\+Warnings}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a5013dfc8b846879b6ad6244f417c9539}\label{class_ink_1_1_runtime_1_1_story_state_a5013dfc8b846879b6ad6244f417c9539}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_variables_state}{Variables\+State}} {\bfseries variables\+State}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a96030accb40e7065d2ab6dfcbdc66bd0}\label{class_ink_1_1_runtime_1_1_story_state_a96030accb40e7065d2ab6dfcbdc66bd0}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_call_stack}{Call\+Stack}} {\bfseries call\+Stack}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_ae03f05a8fba3896411478aa26ef1f070}\label{class_ink_1_1_runtime_1_1_story_state_ae03f05a8fba3896411478aa26ef1f070}} 
+List$<$ \mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Runtime.\+Object}} $>$ {\bfseries evaluation\+Stack}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_af009577fab15554dbe9c3d18c295d6ca}\label{class_ink_1_1_runtime_1_1_story_state_af009577fab15554dbe9c3d18c295d6ca}} 
+\mbox{\hyperlink{struct_ink_1_1_runtime_1_1_pointer}{Pointer}} {\bfseries diverted\+Pointer}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a671bd536d982f5ae6a17100b96ff0abe}\label{class_ink_1_1_runtime_1_1_story_state_a671bd536d982f5ae6a17100b96ff0abe}} 
+int {\bfseries current\+Turn\+Index}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a432bc33df5f203adbce14baa452e1d11}\label{class_ink_1_1_runtime_1_1_story_state_a432bc33df5f203adbce14baa452e1d11}} 
+int {\bfseries story\+Seed}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a60120475cd6197a9baa38a0e4cb27d25}\label{class_ink_1_1_runtime_1_1_story_state_a60120475cd6197a9baa38a0e4cb27d25}} 
+int {\bfseries previous\+Random}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a0011ccebc92140482831c813f3d68ea4}\label{class_ink_1_1_runtime_1_1_story_state_a0011ccebc92140482831c813f3d68ea4}} 
+bool {\bfseries did\+Safe\+Exit}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a71f6b8f06027756ceb8bb07d50ef42f4}\label{class_ink_1_1_runtime_1_1_story_state_a71f6b8f06027756ceb8bb07d50ef42f4}} 
+\mbox{\hyperlink{class_ink_1_1_runtime_1_1_story}{Story}} {\bfseries story}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_af331e41682693cc8e3325b9d3cc232bd}\label{class_ink_1_1_runtime_1_1_story_state_af331e41682693cc8e3325b9d3cc232bd}} 
+string {\bfseries current\+Path\+String}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em String representation of the location where the story currently is. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a661a1deb90ca0d8a17782488a90e0bc0}\label{class_ink_1_1_runtime_1_1_story_state_a661a1deb90ca0d8a17782488a90e0bc0}} 
+\mbox{\hyperlink{struct_ink_1_1_runtime_1_1_pointer}{Runtime.\+Pointer}} {\bfseries current\+Pointer}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a577c8748d369e697c816289a9f5ffd05}\label{class_ink_1_1_runtime_1_1_story_state_a577c8748d369e697c816289a9f5ffd05}} 
+\mbox{\hyperlink{struct_ink_1_1_runtime_1_1_pointer}{Pointer}} {\bfseries previous\+Pointer}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_adcb493e1b00d440b5878aba41d42726f}\label{class_ink_1_1_runtime_1_1_story_state_adcb493e1b00d440b5878aba41d42726f}} 
+bool {\bfseries can\+Continue}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a055a8295636eae6a1927a4623f96b406}\label{class_ink_1_1_runtime_1_1_story_state_a055a8295636eae6a1927a4623f96b406}} 
+bool {\bfseries has\+Error}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a10952cca4f5a38905ca1718e723437ce}\label{class_ink_1_1_runtime_1_1_story_state_a10952cca4f5a38905ca1718e723437ce}} 
+bool {\bfseries has\+Warning}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_acd85630dcd051e5d7e4fc88dc9aba14d}\label{class_ink_1_1_runtime_1_1_story_state_acd85630dcd051e5d7e4fc88dc9aba14d}} 
+string {\bfseries current\+Text}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_afd505cdd0937d68a3d25e1dece40131a}\label{class_ink_1_1_runtime_1_1_story_state_afd505cdd0937d68a3d25e1dece40131a}} 
+List$<$ string $>$ {\bfseries current\+Tags}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a0d973117a329d73dcb1cd82fed672ec7}\label{class_ink_1_1_runtime_1_1_story_state_a0d973117a329d73dcb1cd82fed672ec7}} 
+string {\bfseries current\+Flow\+Name}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_ad57f19c4e2c9e0181b11edf82670302d}\label{class_ink_1_1_runtime_1_1_story_state_ad57f19c4e2c9e0181b11edf82670302d}} 
+bool {\bfseries in\+Expression\+Evaluation}\hspace{0.3cm}{\ttfamily  \mbox{[}getset\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_aeaf805cab8d65b5010f715f06b5549f6}\label{class_ink_1_1_runtime_1_1_story_state_aeaf805cab8d65b5010f715f06b5549f6}} 
+bool {\bfseries output\+Stream\+Ends\+In\+Newline}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a1c6c3652942265f1409f367cf4e0d1a9}\label{class_ink_1_1_runtime_1_1_story_state_a1c6c3652942265f1409f367cf4e0d1a9}} 
+bool {\bfseries output\+Stream\+Contains\+Content}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a6c01fff5067dca6a66c9632b54e1e240}\label{class_ink_1_1_runtime_1_1_story_state_a6c01fff5067dca6a66c9632b54e1e240}} 
+bool {\bfseries in\+String\+Evaluation}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Events}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a8b65aec779901e8dccfcf8068c680452}\label{class_ink_1_1_runtime_1_1_story_state_a8b65aec779901e8dccfcf8068c680452}} 
+Action {\bfseries on\+Did\+Load\+State}
+\begin{DoxyCompactList}\small\item\em Callback for when a state is loaded \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+All story state information is included in the \mbox{\hyperlink{class_ink_1_1_runtime_1_1_story_state}{Story\+State}} class, including global variables, read counts, the pointer to the current point in the story, the call stack (for tunnels, functions, etc), and a few other smaller bits and pieces. You can save the current state using the json serialisation functions To\+Json and Load\+Json. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a0031dccd52317ef439e8f1783e7f43fd}\label{class_ink_1_1_runtime_1_1_story_state_a0031dccd52317ef439e8f1783e7f43fd}} 
+\index{Ink.Runtime.StoryState@{Ink.Runtime.StoryState}!LoadJson@{LoadJson}}
+\index{LoadJson@{LoadJson}!Ink.Runtime.StoryState@{Ink.Runtime.StoryState}}
+\doxysubsubsection{\texorpdfstring{LoadJson()}{LoadJson()}}
+{\footnotesize\ttfamily void Ink.\+Runtime.\+Story\+State.\+Load\+Json (\begin{DoxyParamCaption}\item[{string}]{json }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Loads a previously saved state in JSON format. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em json} & The JSON string to load.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_a3560abbb1ce35d60006f73b84d0a7c12}\label{class_ink_1_1_runtime_1_1_story_state_a3560abbb1ce35d60006f73b84d0a7c12}} 
+\index{Ink.Runtime.StoryState@{Ink.Runtime.StoryState}!ToJson@{ToJson}}
+\index{ToJson@{ToJson}!Ink.Runtime.StoryState@{Ink.Runtime.StoryState}}
+\doxysubsubsection{\texorpdfstring{ToJson()}{ToJson()}}
+{\footnotesize\ttfamily string Ink.\+Runtime.\+Story\+State.\+To\+Json (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Exports the current state to json format, in order to save the game. 
+
+\begin{DoxyReturn}{Returns}
+The save state in json format.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_story_state_aa8e2949ced8b3142b40a77d1658e6f4c}\label{class_ink_1_1_runtime_1_1_story_state_aa8e2949ced8b3142b40a77d1658e6f4c}} 
+\index{Ink.Runtime.StoryState@{Ink.Runtime.StoryState}!VisitCountAtPathString@{VisitCountAtPathString}}
+\index{VisitCountAtPathString@{VisitCountAtPathString}!Ink.Runtime.StoryState@{Ink.Runtime.StoryState}}
+\doxysubsubsection{\texorpdfstring{VisitCountAtPathString()}{VisitCountAtPathString()}}
+{\footnotesize\ttfamily int Ink.\+Runtime.\+Story\+State.\+Visit\+Count\+At\+Path\+String (\begin{DoxyParamCaption}\item[{string}]{path\+String }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the visit/read count of a particular \mbox{\hyperlink{class_ink_1_1_runtime_1_1_container}{Container}} at the given path. For a knot or stitch, that path string will be in the form\+: 
+
+\begin{DoxyVerb}knot
+knot.stitch
+\end{DoxyVerb}
+ 
+
+\begin{DoxyReturn}{Returns}
+The number of times the specific knot or stitch has been enountered by the ink engine.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em path\+String} & The dot-\/separated path string of the specific knot or stitch.\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Ink\+Libs/\+Ink\+Runtime/Story\+State.\+cs\end{DoxyCompactItemize}

@@ -1,0 +1,157 @@
+\hypertarget{class_ink_1_1_runtime_1_1_control_command}{}\doxysection{Ink.\+Runtime.\+Control\+Command Class Reference}
+\label{class_ink_1_1_runtime_1_1_control_command}\index{Ink.Runtime.ControlCommand@{Ink.Runtime.ControlCommand}}
+Inheritance diagram for Ink.\+Runtime.\+Control\+Command\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ink_1_1_runtime_1_1_control_command}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_control_command_accc11253934a6cdc45e162c18ea540be}\label{class_ink_1_1_runtime_1_1_control_command_accc11253934a6cdc45e162c18ea540be}} 
+enum {\bfseries Command\+Type} \{ \newline
+{\bfseries Not\+Set} = -\/1
+, {\bfseries Eval\+Start}
+, {\bfseries Eval\+Output}
+, {\bfseries Eval\+End}
+, \newline
+{\bfseries Duplicate}
+, {\bfseries Pop\+Evaluated\+Value}
+, {\bfseries Pop\+Function}
+, {\bfseries Pop\+Tunnel}
+, \newline
+{\bfseries Begin\+String}
+, {\bfseries End\+String}
+, {\bfseries No\+Op}
+, {\bfseries Choice\+Count}
+, \newline
+{\bfseries Turns}
+, {\bfseries Turns\+Since}
+, {\bfseries Read\+Count}
+, {\bfseries Random}
+, \newline
+{\bfseries Seed\+Random}
+, {\bfseries Visit\+Index}
+, {\bfseries Sequence\+Shuffle\+Index}
+, {\bfseries Start\+Thread}
+, \newline
+{\bfseries Done}
+, {\bfseries End}
+, {\bfseries List\+From\+Int}
+, {\bfseries List\+Range}
+, \newline
+{\bfseries List\+Random}
+, {\bfseries TOTAL\+\_\+\+VALUES}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_control_command_a76072865902a75bb002843ffdf4d4acc}\label{class_ink_1_1_runtime_1_1_control_command_a76072865902a75bb002843ffdf4d4acc}} 
+{\bfseries Control\+Command} (Command\+Type command\+Type)
+\item 
+override \mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Object}} \mbox{\hyperlink{class_ink_1_1_runtime_1_1_control_command_ad07b42061640059f5a6afd2681559be9}{Copy}} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_control_command_a9b84ba8cf829ab93f4e0ddefbeb9975d}\label{class_ink_1_1_runtime_1_1_control_command_a9b84ba8cf829ab93f4e0ddefbeb9975d}} 
+override string {\bfseries To\+String} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_control_command_a4d61cc42ec21b8822b0fc9d6e770bf28}\label{class_ink_1_1_runtime_1_1_control_command_a4d61cc42ec21b8822b0fc9d6e770bf28}} 
+static \mbox{\hyperlink{class_ink_1_1_runtime_1_1_control_command}{Control\+Command}} {\bfseries Eval\+Start} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_control_command_a33df5f1897b022ab989aaa2b409bbcde}\label{class_ink_1_1_runtime_1_1_control_command_a33df5f1897b022ab989aaa2b409bbcde}} 
+static \mbox{\hyperlink{class_ink_1_1_runtime_1_1_control_command}{Control\+Command}} {\bfseries Eval\+Output} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_control_command_a438cbe2534ef35462387dc94cc5a1b27}\label{class_ink_1_1_runtime_1_1_control_command_a438cbe2534ef35462387dc94cc5a1b27}} 
+static \mbox{\hyperlink{class_ink_1_1_runtime_1_1_control_command}{Control\+Command}} {\bfseries Eval\+End} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_control_command_ab771b618562cc90b9db01e3f3bd7cdc7}\label{class_ink_1_1_runtime_1_1_control_command_ab771b618562cc90b9db01e3f3bd7cdc7}} 
+static \mbox{\hyperlink{class_ink_1_1_runtime_1_1_control_command}{Control\+Command}} {\bfseries Duplicate} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_control_command_a31219a88c7d6fb7635b4ee1f83741257}\label{class_ink_1_1_runtime_1_1_control_command_a31219a88c7d6fb7635b4ee1f83741257}} 
+static \mbox{\hyperlink{class_ink_1_1_runtime_1_1_control_command}{Control\+Command}} {\bfseries Pop\+Evaluated\+Value} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_control_command_a2091813e47ba8c1ae046e7fa5af41e97}\label{class_ink_1_1_runtime_1_1_control_command_a2091813e47ba8c1ae046e7fa5af41e97}} 
+static \mbox{\hyperlink{class_ink_1_1_runtime_1_1_control_command}{Control\+Command}} {\bfseries Pop\+Function} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_control_command_aef172bd4650ac4f5058c7c73b094acb1}\label{class_ink_1_1_runtime_1_1_control_command_aef172bd4650ac4f5058c7c73b094acb1}} 
+static \mbox{\hyperlink{class_ink_1_1_runtime_1_1_control_command}{Control\+Command}} {\bfseries Pop\+Tunnel} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_control_command_ae791102ea02734bfa78f615f1a045e3d}\label{class_ink_1_1_runtime_1_1_control_command_ae791102ea02734bfa78f615f1a045e3d}} 
+static \mbox{\hyperlink{class_ink_1_1_runtime_1_1_control_command}{Control\+Command}} {\bfseries Begin\+String} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_control_command_a2e7624fa8e203330d0cf3d8853e34cc3}\label{class_ink_1_1_runtime_1_1_control_command_a2e7624fa8e203330d0cf3d8853e34cc3}} 
+static \mbox{\hyperlink{class_ink_1_1_runtime_1_1_control_command}{Control\+Command}} {\bfseries End\+String} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_control_command_ab1479e460a6915537d5ea84c4a987d32}\label{class_ink_1_1_runtime_1_1_control_command_ab1479e460a6915537d5ea84c4a987d32}} 
+static \mbox{\hyperlink{class_ink_1_1_runtime_1_1_control_command}{Control\+Command}} {\bfseries No\+Op} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_control_command_a4e743e0e1b99acb367cd31f1cbfbb534}\label{class_ink_1_1_runtime_1_1_control_command_a4e743e0e1b99acb367cd31f1cbfbb534}} 
+static \mbox{\hyperlink{class_ink_1_1_runtime_1_1_control_command}{Control\+Command}} {\bfseries Choice\+Count} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_control_command_a8825c8d8703b69011fe3d5145e11e907}\label{class_ink_1_1_runtime_1_1_control_command_a8825c8d8703b69011fe3d5145e11e907}} 
+static \mbox{\hyperlink{class_ink_1_1_runtime_1_1_control_command}{Control\+Command}} {\bfseries Turns} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_control_command_ad411c12daa22e8ed0cc367b00d54c0da}\label{class_ink_1_1_runtime_1_1_control_command_ad411c12daa22e8ed0cc367b00d54c0da}} 
+static \mbox{\hyperlink{class_ink_1_1_runtime_1_1_control_command}{Control\+Command}} {\bfseries Turns\+Since} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_control_command_a2ed66ca102bb013994929b39810ad87b}\label{class_ink_1_1_runtime_1_1_control_command_a2ed66ca102bb013994929b39810ad87b}} 
+static \mbox{\hyperlink{class_ink_1_1_runtime_1_1_control_command}{Control\+Command}} {\bfseries Read\+Count} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_control_command_abba0615cef135ad9e313effd16fc0c15}\label{class_ink_1_1_runtime_1_1_control_command_abba0615cef135ad9e313effd16fc0c15}} 
+static \mbox{\hyperlink{class_ink_1_1_runtime_1_1_control_command}{Control\+Command}} {\bfseries Random} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_control_command_a99dd85694b209f18ae50b71042587882}\label{class_ink_1_1_runtime_1_1_control_command_a99dd85694b209f18ae50b71042587882}} 
+static \mbox{\hyperlink{class_ink_1_1_runtime_1_1_control_command}{Control\+Command}} {\bfseries Seed\+Random} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_control_command_a3e1256a9da357f4aeffa352c7f9dc6c8}\label{class_ink_1_1_runtime_1_1_control_command_a3e1256a9da357f4aeffa352c7f9dc6c8}} 
+static \mbox{\hyperlink{class_ink_1_1_runtime_1_1_control_command}{Control\+Command}} {\bfseries Visit\+Index} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_control_command_a4465e104fa628c60c9384344d6de4230}\label{class_ink_1_1_runtime_1_1_control_command_a4465e104fa628c60c9384344d6de4230}} 
+static \mbox{\hyperlink{class_ink_1_1_runtime_1_1_control_command}{Control\+Command}} {\bfseries Sequence\+Shuffle\+Index} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_control_command_a1ef3ac061aff77c789db20a510b37b85}\label{class_ink_1_1_runtime_1_1_control_command_a1ef3ac061aff77c789db20a510b37b85}} 
+static \mbox{\hyperlink{class_ink_1_1_runtime_1_1_control_command}{Control\+Command}} {\bfseries Start\+Thread} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_control_command_acd8f3e4aa7208883c48a7adfae506480}\label{class_ink_1_1_runtime_1_1_control_command_acd8f3e4aa7208883c48a7adfae506480}} 
+static \mbox{\hyperlink{class_ink_1_1_runtime_1_1_control_command}{Control\+Command}} {\bfseries Done} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_control_command_a2a69aafb5b900f8b3a82df740cf8978e}\label{class_ink_1_1_runtime_1_1_control_command_a2a69aafb5b900f8b3a82df740cf8978e}} 
+static \mbox{\hyperlink{class_ink_1_1_runtime_1_1_control_command}{Control\+Command}} {\bfseries End} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_control_command_a5e00ad700c339045b81eb58ba7a856d0}\label{class_ink_1_1_runtime_1_1_control_command_a5e00ad700c339045b81eb58ba7a856d0}} 
+static \mbox{\hyperlink{class_ink_1_1_runtime_1_1_control_command}{Control\+Command}} {\bfseries List\+From\+Int} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_control_command_a1fd8b7d8f0fad4b54c9e9ad4b063a609}\label{class_ink_1_1_runtime_1_1_control_command_a1fd8b7d8f0fad4b54c9e9ad4b063a609}} 
+static \mbox{\hyperlink{class_ink_1_1_runtime_1_1_control_command}{Control\+Command}} {\bfseries List\+Range} ()
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_control_command_a8af2757669bc45d4e0f04514dd296eb2}\label{class_ink_1_1_runtime_1_1_control_command_a8af2757669bc45d4e0f04514dd296eb2}} 
+static \mbox{\hyperlink{class_ink_1_1_runtime_1_1_control_command}{Control\+Command}} {\bfseries List\+Random} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_control_command_aaa127211892560225c5d5a853dc7f610}\label{class_ink_1_1_runtime_1_1_control_command_aaa127211892560225c5d5a853dc7f610}} 
+Command\+Type {\bfseries command\+Type}\hspace{0.3cm}{\ttfamily  \mbox{[}getprotected set\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_ink_1_1_runtime_1_1_control_command_ad07b42061640059f5a6afd2681559be9}\label{class_ink_1_1_runtime_1_1_control_command_ad07b42061640059f5a6afd2681559be9}} 
+\index{Ink.Runtime.ControlCommand@{Ink.Runtime.ControlCommand}!Copy@{Copy}}
+\index{Copy@{Copy}!Ink.Runtime.ControlCommand@{Ink.Runtime.ControlCommand}}
+\doxysubsubsection{\texorpdfstring{Copy()}{Copy()}}
+{\footnotesize\ttfamily override \mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Object}} Ink.\+Runtime.\+Control\+Command.\+Copy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_ink_1_1_runtime_1_1_object}{Ink.\+Runtime.\+Object}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Repos/\+Vertical\+Slice/\+Assets/\+Ink/\+Ink\+Libs/\+Ink\+Runtime/Control\+Command.\+cs\end{DoxyCompactItemize}
