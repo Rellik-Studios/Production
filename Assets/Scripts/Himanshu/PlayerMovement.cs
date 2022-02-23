@@ -69,9 +69,9 @@ namespace Himanshu
 
         private void Update()
         {
-            m_isGrounded = Physics.Raycast(transform.position, -Vector3.up, m_groundDistance, m_groundMask, QueryTriggerInteraction.Ignore);
+            //m_isGrounded = Physics.Raycast(transform.position, -Vector3.up, m_groundDistance, m_groundMask, QueryTriggerInteraction.Ignore);
             Movement();
-            Jump();
+            //Jump();
             m_sprintNarratorTimer -= Time.deltaTime;
         }
 
