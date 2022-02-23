@@ -195,6 +195,7 @@ namespace Himanshu
         public List<CollectableObject> m_testInventory;
         private void OnEnable()
         {
+            m_inventory = new Dictionary<CollectableObject, Wrapper<int>>();
             m_enemies = GameObject.FindObjectsOfType<EnemyController>().ToList();
             Debug.Log(m_enemies.Count);
         }
