@@ -22,7 +22,7 @@ namespace Himanshu
         [SerializeField] private bool m_loop;
         private Renderer m_cubeRenderer;
 
-        #region Properties
+        #region AnimatorProperties
 
         // private bool aInfect
         // {
@@ -49,7 +49,8 @@ namespace Himanshu
        
  
         #endregion
-        
+
+        public bool isUsed => m_player != null;
 
         [SerializeField] private float m_distortionValue;
         public float distortionValue
