@@ -197,13 +197,14 @@ namespace Himanshu
         {
             m_inventory = new Dictionary<CollectableObject, Wrapper<int>>();
             m_enemies = GameObject.FindObjectsOfType<EnemyController>().ToList();
+            m_inventory ??= new Dictionary<CollectableObject, Wrapper<int>>();
             Debug.Log(m_enemies.Count);
         }
 
         private void Start()
         {
             //m_testInventory = new List<CollectableObject>();
-            //m_inventory = new Dictionary<CollectableObject, Wrapper<int>>();
+            //
             m_narrator = FindObjectOfType<Narrator>();
             m_kickRoutine = StartCoroutine(temp());
             m_fillRoutine = StartCoroutine(temp());
