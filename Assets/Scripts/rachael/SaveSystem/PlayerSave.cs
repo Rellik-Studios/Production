@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Himanshu;
 using UnityEngine;
@@ -30,11 +31,11 @@ namespace rachael.SaveSystem
             m_depositedToTheClock = new List<CollectableObject>();
             m_inventory = new Dictionary<CollectableObject, Wrapper<int>>();
             Debug.Log(Application.persistentDataPath);
-            if (PlayerPrefs.HasKey("SaveFile") && !gameManager.Instance.m_isSafeRoom)
+            if (!gameManager.Instance.m_isSafeRoom && Directory.Exists(Application.persistentDataPath + "/player/"))
             {
                 LoadPlayer();
             }
-            else if (PlayerPrefs.HasKey("SaveFile"))
+            else if (Directory.Exists(Application.persistentDataPath + "/player/"))
             {
                 LoadPlayer(true);
                 gameManager.Instance.m_isSafeRoom = false;
