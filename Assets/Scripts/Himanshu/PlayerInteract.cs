@@ -14,7 +14,7 @@ using UnityEngine.Video;
 
 namespace Himanshu
 {
-         public class PlayerInteract : MonoBehaviour
+    public class PlayerInteract : MonoBehaviour
     {
         private bool m_spotted;
         public GameObject LoseScreen;
