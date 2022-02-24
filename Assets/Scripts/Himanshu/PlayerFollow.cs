@@ -9,11 +9,12 @@ namespace Himanshu
         [SerializeField] private Transform m_playerTransform;
         private PlayerMovement m_playerMovement;
 
-        private float m_mouseX;
-        private float m_mouseY;
+        public float m_mouseX;
+        public float m_mouseY;
 
         private bool m_xLimiter;
         private bool m_yLimiter = true;
+        public bool m_mouseInput = true;
 
         private Vector2 m_xRange;
         private Vector2 m_yRange = new Vector2(-30f, 30f);
@@ -29,12 +30,15 @@ namespace Himanshu
             if(Time.timeScale == 0) return;
             transform.position = m_playerMovement.calculatedPosition;
 
-            
-            m_mouseX += Input.GetAxis("Mouse X");
-            m_mouseY -= Input.GetAxis("Mouse Y");
+            if (m_mouseInput)
+            {
 
-            m_mouseY = m_yLimiter ? Mathf.Clamp(m_mouseY, m_yRange.x, m_yRange.y): m_mouseY;
-            m_mouseX = m_xLimiter ? Mathf.Clamp(m_mouseX, m_xRange.x, m_xRange.y): m_mouseX;
+                m_mouseX += Input.GetAxis("Mouse X");
+                m_mouseY -= Input.GetAxis("Mouse Y");
+
+                m_mouseY = m_yLimiter ? Mathf.Clamp(m_mouseY, m_yRange.x, m_yRange.y) : m_mouseY;
+                m_mouseX = m_xLimiter ? Mathf.Clamp(m_mouseX, m_xRange.x, m_xRange.y) : m_mouseX;
+            }
 
             transform.rotation = Quaternion.Euler(m_mouseY, m_mouseX, 0f);
             m_playerTransform.forward = new Vector3(transform.forward.x, 0f, transform.forward.z);

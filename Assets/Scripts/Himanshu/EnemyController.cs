@@ -469,6 +469,7 @@ namespace Himanshu
             {
                 //pushback Here
                 m_frozen = true;
+                toPatrol = true;
                 this.Invoke(() => m_frozen = false, 3f);
                 FindObjectOfType<PlayerInteract>().m_hasAmulet = false;
             }

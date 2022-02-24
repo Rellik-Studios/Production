@@ -67,19 +67,30 @@ namespace Himanshu
             dir.y = 0; // keep the direction strictly horizontal
             Quaternion rot = Quaternion.LookRotation(dir);
 
-            
+            yield return new WaitWhile(()=>hidingSpot.GetComponent<HidingSpot>().isUsed);
 
-            while ((m_player.transform.rotation.eulerAngles - rot.eulerAngles).magnitude > 0.1f)
+
+            GameObject.FindObjectOfType<PlayerFollow>().m_mouseInput = false;
+            
+            while (Mathf.Abs(GameObject.FindObjectOfType<PlayerFollow>().m_mouseX - rot.eulerAngles.y) > 5f)
             {
                 dir = m_enemy.transform.position - m_player.transform.position;
                 dir.y = 0; // keep the direction strictly horizontal
                 rot = Quaternion.LookRotation(dir);
                 // slerp to the desired rotation over time
-                GameObject.FindObjectOfType<PlayerFollow>().transform.rotation =
-                    Quaternion.Slerp(GameObject.FindObjectOfType<PlayerFollow>().transform.rotation, rot, Time.deltaTime);
+                GameObject.FindObjectOfType<PlayerFollow>().m_mouseX =
+                    Mathf.Lerp(GameObject.FindObjectOfType<PlayerFollow>().m_mouseX, rot.eulerAngles.y,
+                        Time.deltaTime * 2.75f);
+                
+                GameObject.FindObjectOfType<PlayerFollow>().m_mouseY =
+                    Mathf.Lerp(GameObject.FindObjectOfType<PlayerFollow>().m_mouseY, rot.eulerAngles.x,
+                        Time.deltaTime * 2.75f);
 
                 yield return null;
             }
+            
+            GameObject.FindObjectOfType<PlayerFollow>().m_mouseInput = true;
+
             
             
             yield return PlayNextDialogue();
