@@ -17,7 +17,7 @@ namespace rachael
         [FormerlySerializedAs("enemiesToEnable")] [SerializeField]
         private List<GameObject> m_enemiesToEnable;
 
-        
+        public bool isDoorOpen => m_doorOpen;
         
         public bool doorOpen
         {

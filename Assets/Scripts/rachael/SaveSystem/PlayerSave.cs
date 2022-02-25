@@ -42,6 +42,7 @@ namespace rachael.SaveSystem
             }
             else
             {
+                FindObjectOfType<Himanshu.Tutorial>().RunTutorial();
                 SavePlayer();
                 PlayerPrefs.SetInt("Death", 0);
                 PlayerPrefs.SetInt("SaveFile", 1);

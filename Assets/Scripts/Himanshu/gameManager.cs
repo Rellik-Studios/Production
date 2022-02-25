@@ -11,6 +11,8 @@ namespace Himanshu
 
         public int m_deathCounter;
         public bool m_isSafeRoom;
+
+        public bool isTutorialRunning = false;
         private void Awake()
         {
             if (m_instance == null)
