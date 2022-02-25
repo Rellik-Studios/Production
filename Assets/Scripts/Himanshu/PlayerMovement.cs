@@ -79,8 +79,8 @@ namespace Himanshu
         {
             m_playerVelocity.y -= m_gravity;
             if (m_isGrounded) m_playerVelocity.y = 0f;
-            if (m_playerInput.jump && m_isGrounded) 
-                m_playerVelocity.y += Mathf.Sqrt(m_jumpHeight * 3.0f * m_gravity);
+            //if (m_playerInput.jump && m_isGrounded) 
+            //    m_playerVelocity.y += Mathf.Sqrt(m_jumpHeight * 3.0f * m_gravity);
             m_characterController.Move(m_playerVelocity * Time.deltaTime);
         }
 

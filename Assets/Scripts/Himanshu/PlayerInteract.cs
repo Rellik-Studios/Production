@@ -14,7 +14,7 @@ using UnityEngine.Video;
 
 namespace Himanshu
 {
-         public class PlayerInteract : MonoBehaviour
+    public class PlayerInteract : MonoBehaviour
     {
         private bool m_spotted;
         public GameObject LoseScreen;
@@ -195,6 +195,7 @@ namespace Himanshu
         public List<CollectableObject> m_testInventory;
         private void OnEnable()
         {
+            m_inventory = new Dictionary<CollectableObject, Wrapper<int>>();
             m_enemies = GameObject.FindObjectsOfType<EnemyController>().ToList();
             m_inventory ??= new Dictionary<CollectableObject, Wrapper<int>>();
             Debug.Log(m_enemies.Count);
@@ -216,19 +217,19 @@ namespace Himanshu
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                GetComponent<CharacterController>().enabled = false;
-                StopCoroutine(m_fillRoutine);
-                m_fillRoutine = StartCoroutine(m_timeRewind.FillBar(5));
-            }
+            //if (Input.GetKeyDown(KeyCode.R))
+            //{
+            //    GetComponent<CharacterController>().enabled = false;
+            //    StopCoroutine(m_fillRoutine);
+            //    m_fillRoutine = StartCoroutine(m_timeRewind.FillBar(5));
+            //}
 
-            if (Input.GetKeyUp(KeyCode.R))
-            {
-                GetComponent<CharacterController>().enabled = true;
-                StopCoroutine(m_fillRoutine);
-                m_fillRoutine = StartCoroutine(m_timeRewind.FillBar(5, -1));
-            }
+            //if (Input.GetKeyUp(KeyCode.R))
+            //{
+            //    GetComponent<CharacterController>().enabled = true;
+            //    StopCoroutine(m_fillRoutine);
+            //    m_fillRoutine = StartCoroutine(m_timeRewind.FillBar(5, -1));
+            //}
             if (m_playerInput.interact && !m_hiding)
             {
                 m_raycast.objectInFront?.GetComponent<IInteract>()?.Execute(this);
