@@ -21,11 +21,16 @@ namespace Himanshu
         private void Start()
         {
             counter = 0;
+            GetComponent<BoxCollider>().enabled = false;
         }
 
         private void Update()
         {
             m_waitTimer -= Time.deltaTime;
+            if (!GetComponent<BoxCollider>().enabled && !gameManager.Instance.isTutorialRunning)
+            {
+                GetComponent<BoxCollider>().enabled = true;
+            }
         }
 
         private void OnTriggerEnter(Collider _collider)

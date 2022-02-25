@@ -44,7 +44,8 @@ namespace Himanshu
                     }
 
                     //m_audioSource.volume = 0.5f;
-                    m_audioSource.PlayOneShot(m_breathingClip, 0.2f);
+                    if(!m_audioSource.isPlaying)
+                        m_audioSource.PlayOneShot(m_breathingClip, 0.2f);
                     
                 }
                 m_sprintTimer = value;

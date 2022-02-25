@@ -251,6 +251,8 @@ namespace Himanshu
         }
         public void Play(List<string> _toPlay, bool _isRandom = true)
         {
+            if (gameManager.Instance.isTutorialRunning) return;
+                
             if (_toPlay.Count > 1 && !m_settingText)
             {
                 int rand = Random.Range(1, _toPlay.Count);

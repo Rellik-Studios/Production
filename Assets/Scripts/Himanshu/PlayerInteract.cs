@@ -22,7 +22,7 @@ namespace Himanshu
         public Animator SaveProcess;
 
         private Narrator m_narrator;
-        private List<EnemyController> m_enemies;
+        public List<EnemyController> m_enemies;
         public  IEnumerator FillBar(Image _fillImage, float _time, int _dir = 1, float _waitTime = 0f)
         {
             yield return new WaitForSeconds(_waitTime);
@@ -192,11 +192,24 @@ namespace Himanshu
 
         public Dictionary<CollectableObject, Wrapper<int>> m_inventory;
 
+        [SerializeField] private Image m_eye;
+        private EnemyController.eDanger m_playerDanger = EnemyController.eDanger.white;
+
+        public EnemyController.eDanger playerDanger
+        {
+            get => m_playerDanger;
+            set
+            {
+                m_playerDanger = value;
+                m_eye.color = value == EnemyController.eDanger.red ? Color.red :
+                              value == EnemyController.eDanger.yellow ? Color.yellow : Color.white;
+            }
+        }
         public List<CollectableObject> m_testInventory;
         private void OnEnable()
         {
             m_inventory = new Dictionary<CollectableObject, Wrapper<int>>();
-            m_enemies = GameObject.FindObjectsOfType<EnemyController>().ToList();
+            m_enemies = GameObject.FindObjectsOfType<EnemyController>(true).ToList();
             m_inventory ??= new Dictionary<CollectableObject, Wrapper<int>>();
             Debug.Log(m_enemies.Count);
         }
@@ -230,6 +243,13 @@ namespace Himanshu
             //    StopCoroutine(m_fillRoutine);
             //    m_fillRoutine = StartCoroutine(m_timeRewind.FillBar(5, -1));
             //}
+
+            playerDanger = m_enemies.Any((t) => t.m_dangerLevel == EnemyController.eDanger.red) 
+                                                                                                                    ?  EnemyController.eDanger.red 
+                         : m_enemies.Any((t) => t.m_dangerLevel == EnemyController.eDanger.yellow)
+                                                                                                                    ? EnemyController.eDanger.yellow
+                                                                                                                    : EnemyController.eDanger.white; 
+            
             if (m_playerInput.interact && !m_hiding)
             {
                 m_raycast.objectInFront?.GetComponent<IInteract>()?.Execute(this);
@@ -426,7 +446,10 @@ namespace Himanshu
             m_deathCount++;
             PlayerPrefs.SetInt("Death", m_deathCount);
 
-            m_sceneManager.LoseScreen();
+            if (!gameManager.Instance.isTutorialRunning)
+                m_sceneManager.LoseScreen();
+            else
+                FindObjectOfType<Tutorial>().Retry();
             gameManager.Instance.m_isSafeRoom = true;
             
             //MUST REDO

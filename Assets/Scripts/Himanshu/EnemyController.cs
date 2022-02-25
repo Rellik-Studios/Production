@@ -21,8 +21,18 @@ namespace Himanshu
     /// </summary>
     public class EnemyController : MonoBehaviour, IEnemy
     {
+
+        public enum eDanger
+        {
+            white,
+            yellow,
+            red,
+        }
         [SerializeField] private GameObject m_distortion;
 
+        PlayerMovement m_player;
+
+        public eDanger m_dangerLevel = eDanger.white;
         public Distraction currentDistraction { get; set; }
         public bool qteHideResult => m_QTEHide.GetComponent<QteRing>().m_result;
         
@@ -134,6 +144,7 @@ namespace Himanshu
         }
         private void Start()
         {
+            m_player = FindObjectOfType<PlayerMovement>();
             m_animator = transform.Find("GFX").GetComponent<Animator>();
             m_agent = GetComponent<NavMeshAgent>();
             m_defaultAttackTimer = m_attackTimer;
@@ -180,11 +191,11 @@ namespace Himanshu
                     //player.m_hasAmulet = false;
                     StartCoroutine(eQTEHide());
                     m_QTEHide.transform.parent.gameObject.SetActive(true);                    
-                    //player.Unhide();
+                    // player.Unhide();
                 }
                 else
                 {
-                    player.Death();
+                   player.Death();
                 }
             }
             else if (Time.timeScale > 0)
@@ -268,24 +279,34 @@ namespace Himanshu
 
         public void ChaseUpdate()
         {
-            Physics.Raycast(transform.position, Quaternion.AngleAxis(30f, transform.up) * transform.forward, out m_hits[0], 20f);
-            Physics.Raycast(transform.position, transform.forward, out m_hits[1], 20f);
-            Physics.Raycast(transform.position, Quaternion.AngleAxis(-30f, transform.up) * transform.forward, out m_hits[2], 20f);
-            
-            for (int i = 0; i <= 2; i++)
+            if ((m_player.transform.position - transform.position).magnitude < 7f)
             {
-                if (m_hits[i].collider != null && m_hits[i].collider.gameObject.CompareTag("Player") && m_hits[i].collider.GetComponentInParent<CharacterController>().enabled)
-                {
-                    return;
-                }
+                m_dangerLevel = eDanger.red;
             }
-            m_spotted = false;
+            else
+            {
+                m_dangerLevel = eDanger.yellow;
+            }
+            // Physics.Raycast(transform.position, Quaternion.AngleAxis(30f, transform.up) * transform.forward, out m_hits[0], 20f);
+            // Physics.Raycast(transform.position, transform.forward, out m_hits[1], 20f);
+            // Physics.Raycast(transform.position, Quaternion.AngleAxis(-30f, transform.up) * transform.forward, out m_hits[2], 20f);
+            //
+            // for (int i = 0; i <= 2; i++)
+            // {
+            //     if (m_hits[i].collider != null && m_hits[i].collider.gameObject.CompareTag("Player") && m_hits[i].collider.GetComponentInParent<CharacterController>().enabled)
+            //     {
+            //         return;
+            //     }
+            // }
+            // m_spotted = false;
         }
         
         public void PatrolStart()
         {
             m_spotted = false;
+            m_dangerLevel = eDanger.white;
 
+            
             GetComponent<AudioSource>().Stop();
            
             if(m_patrolPoints.Count > 0)
@@ -341,9 +362,8 @@ namespace Himanshu
                 }
             }
 
-            var player = FindObjectOfType<PlayerMovement>();
-            var colliders = Physics.OverlapSphere(transform.position, m_hearingRadius * (player.crouching ? 0.5f : 1f));
-            if (colliders.Any(t => t.CompareTag("Player")))
+            var colliders = Physics.OverlapSphere(transform.position, m_hearingRadius * (m_player.crouching ? 0.5f : 1f));
+            if (colliders.Any(t => t.CompareTag("Player") && !t.transform.parent.GetComponent<PlayerInteract>().m_hiding))
             {
                 return true;
             }
@@ -355,6 +375,11 @@ namespace Himanshu
             Physics.Raycast(transform.position, Quaternion.AngleAxis(30f, transform.up) * transform.forward, out m_hits[0], 20f);
             Physics.Raycast(transform.position, transform.forward, out m_hits[1], 20f);
             Physics.Raycast(transform.position, Quaternion.AngleAxis(-30f, transform.up) * transform.forward, out m_hits[2], 20f);
+
+            if (m_player.GetComponent<PlayerInteract>().m_hiding && m_dangerLevel == eDanger.yellow)
+            {
+                return true;
+            }
             
             for (int i = 0; i <= 2; i++)
             {
@@ -398,7 +423,7 @@ namespace Himanshu
         {
 
             //StartCoroutine(eChaseEnter());
-
+            m_dangerLevel = eDanger.yellow;
             m_spotted = true;
             GetComponent<AudioSource>().Play();
             m_enemyHead.m_look = true;
@@ -415,6 +440,7 @@ namespace Himanshu
             },
                 3f);
 
+            
             this.Invoke(()=>
             {
                 m_agent.speed = speed;
@@ -469,6 +495,7 @@ namespace Himanshu
             {
                 //pushback Here
                 m_frozen = true;
+                toPatrol = true;
                 this.Invoke(() => m_frozen = false, 3f);
                 FindObjectOfType<PlayerInteract>().m_hasAmulet = false;
             }
@@ -490,7 +517,7 @@ namespace Himanshu
                 m_frozen = true;
                 
                 this.Invoke(() => m_frozen = false, 3f);
-                FindObjectOfType<PlayerInteract>().m_canQTEHide = false;
+                // FindObjectOfType<PlayerInteract>().m_canQTEHide = false;
             }
             else
                 FindObjectOfType<PlayerInteract>().Death();
