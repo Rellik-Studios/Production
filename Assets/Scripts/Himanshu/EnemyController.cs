@@ -383,6 +383,10 @@ namespace Himanshu
             
             for (int i = 0; i <= 2; i++)
             {
+                if (m_hits[i].collider != null && m_hits[i].collider.gameObject.CompareTag("Player"))
+                {
+                    return false;
+                }
                 if (m_hits[i].collider != null && m_hits[i].collider.gameObject.CompareTag("EnemyBlocker"))
                 {
                     return true;
