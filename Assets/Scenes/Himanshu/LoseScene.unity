@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -224,7 +224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7005089455472014269, guid: 78e9dc9bfed756a44a8708b7390f0089, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7005089455472014269, guid: 78e9dc9bfed756a44a8708b7390f0089, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -240,7 +240,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7005089455472014269, guid: 78e9dc9bfed756a44a8708b7390f0089, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SceneChanger, Assembly-CSharp
+      value: rachael.SceneChanger, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7005089455472014269, guid: 78e9dc9bfed756a44a8708b7390f0089, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -370,7 +370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c7bd8511e6c61d42aeb76b4a0a92a73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ContinueBlock: {fileID: 0}
+  m_continueBlock: {fileID: 0}
 --- !u!4 &299745824
 Transform:
   m_ObjectHideFlags: 0
