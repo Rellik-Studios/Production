@@ -1,14 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using rachael.FavorSystem;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameCommandPrompt : MonoBehaviour
 {
     [SerializeField] FavorSystem favorSystem;
+
+    [SerializeField] private TMP_InputField m_inputField;
+    //[SerializeField] private GameObject m_caretImage;
+    private float m_defaultPosition;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        //m_defaultPosition = m_caretImage.transform.position.x;
     }
     private void OnEnable()
     {
@@ -18,16 +26,20 @@ public class GameCommandPrompt : MonoBehaviour
     {
 
     }
+    
+    
 
     // Update is called once per frame
     void Update()
     {
         PlayerInputCommand();
+
+        //m_caretImage.transform.position = new Vector2(m_defaultPosition + m_inputField.caretPosition * 60f, 0f);
     }
 
     void PlayerInputCommand()
     {
-        if (!favorSystem.isDanger)
+        if (!favorSystem.m_isDanger)
         {
             DefaultCommandList();
         }
