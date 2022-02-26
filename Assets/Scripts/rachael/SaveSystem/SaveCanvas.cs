@@ -19,13 +19,13 @@ namespace rachael.SaveSystem
         // Update is called once per frame
         void Update()
         {
-            if(Input.GetKeyDown(KeyCode.Alpha1))
-            {
+            //if(Input.GetKeyDown(KeyCode.Alpha1))
+            //{
             
-                m_saveCanvas.SetActive(true);
-                Cursor.lockState = CursorLockMode.None;
-                DisbleMovement();
-            }
+            //    m_saveCanvas.SetActive(true);
+            //    Cursor.lockState = CursorLockMode.None;
+            //    DisbleMovement();
+            //}
         }
         public void DisbleMovement()
         {

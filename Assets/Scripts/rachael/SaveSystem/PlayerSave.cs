@@ -64,10 +64,13 @@ namespace rachael.SaveSystem
             //{
             //    LoadPlayer();
             //}
+
+            #if UNITY_EDITOR
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 PlayerPrefs.DeleteAll();
             }
+            #endif
 
         }
 
