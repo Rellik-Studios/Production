@@ -13,6 +13,8 @@ public class GameCommandPrompt : MonoBehaviour
     //[SerializeField] private GameObject m_caretImage;
     private float m_defaultPosition;
 
+    public string here;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,14 +22,13 @@ public class GameCommandPrompt : MonoBehaviour
     }
     private void OnEnable()
     {
-        
+        m_inputField.ActivateInputField();
+        m_inputField.Select();
     }
     private void OnDisable()
     {
 
     }
-    
-    
 
     // Update is called once per frame
     void Update()
@@ -39,14 +40,14 @@ public class GameCommandPrompt : MonoBehaviour
 
     void PlayerInputCommand()
     {
-        if (!favorSystem.m_isDanger)
-        {
-            DefaultCommandList();
-        }
-        else
-        {
-            SpecialCommandList();
-        }
+        //if (!favorSystem.m_isDanger)
+        //{
+        //    DefaultCommandList();
+        //}
+        //else
+        //{
+        //    SpecialCommandList();
+        //}
     }
 
 
@@ -92,5 +93,56 @@ public class GameCommandPrompt : MonoBehaviour
         {
             Debug.Log("Quit");
         }
+    }
+    void CheckInput(string input)
+    { 
+
+        if (input == "HELP" && favorSystem.m_isDanger)
+        {
+            Debug.Log("help");
+        }
+        else 
+        {
+            switch (input)
+            {
+                case"TALK":
+                    {
+                        Debug.Log("Talk!");
+                        break;
+                    }
+                case"TIME":
+                    {
+                        Debug.Log("Time!");
+                        break;
+                    }
+                case"USER":
+                    {
+                        Debug.Log("User!");
+                        break;
+                    }
+                case"QUIT":
+                    {
+                        Debug.Log("Quit!");
+                        break;
+                    }
+                default:
+                    {
+                        Debug.Log(input);
+                        break;
+                    }
+            }
+
+        }
+
+    }
+
+    public void playerEnterCommand(string textInput)
+    {
+
+        m_inputField.ActivateInputField();
+        m_inputField.Select();
+        
+
+        CheckInput(textInput.ToUpper());
     }
 }
