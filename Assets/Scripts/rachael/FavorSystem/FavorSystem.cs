@@ -1,76 +1,88 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class FavorSystem : MonoBehaviour
+namespace rachael.FavorSystem
 {
-    private bool isOpen = false;
-    public bool isDanger = false;
-    public GameObject commandPrompt;
-
-    public Text[] commandFeatures;
-    public Text commandText;
-
-    // Start is called before the first frame update
-    void Start()
+    public class FavorSystem : MonoBehaviour
     {
-        if (!isOpen)
+        private bool m_isOpen = false;
+        [FormerlySerializedAs("isDanger")] public bool m_isDanger = false;
+        [FormerlySerializedAs("commandPrompt")] public GameObject m_commandPrompt;
+
+        [FormerlySerializedAs("commandFeatures")] public Text[] m_commandFeatures;
+        [FormerlySerializedAs("commandText")] public Text m_commandText;
+
+    
+        // Start is called before the first frame update
+        void Start()
         {
-            commandPrompt.SetActive(false);
-            Debug.Log(isDanger);
+            if (!m_isOpen)
+            {
+                m_commandPrompt.SetActive(false);
+                Debug.Log(m_isDanger);
+            }
+
         }
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.C))
-            OpenCommandPromptWindow();
-    }
-
-    void OpenCommandPromptWindow()
-    {
-        isOpen = !isOpen;
-        if (isOpen)
+        // Update is called once per frame
+        void Update()
         {
-            Debug.Log("Command Prompt is open");
-            commandPrompt.SetActive(true);
-            DisplayingCommands();
+            if (Input.GetKeyDown(KeyCode.C))
+                OpenCommandPromptWindow();
+        }
+
+        void OpenCommandPromptWindow()
+        {
+            m_isOpen = !m_isOpen;
+            if (m_isOpen)
+            {
+                Debug.Log("Command Prompt is open");
+                m_commandPrompt.SetActive(true);
+                DisplayingCommands();
+
+
+            }
+            else
+            {
+                Debug.Log("Command Prompt is close");
+                m_commandPrompt.SetActive(false);
+
+            }
+        }
+
+        private IEnumerator EKeyboardInput()
+        {
+        
+        
+            yield return null;
+        }
+
+        public void DisplayingCommands()
+        {
+            //Displaying different commands depending on the user
+
+            if (m_isDanger)
+            {
+                //Opening special commands
+                m_commandText.text = m_commandFeatures[1].text;
+            }
+            else
+            {
+                //Opening normal commands
+                m_commandText.text = m_commandFeatures[0].text;
+            }
 
 
         }
-        else
-        {
-            Debug.Log("Command Prompt is close");
-            commandPrompt.SetActive(false);
 
+
+        public void AddCommmandLine(int i)
+        {
+            m_commandText.text += "\n\n";
+            m_commandText.text += m_commandText.text = m_commandFeatures[i].text;
         }
     }
 
-    public void DisplayingCommands()
-    {
-        //Displaying different commands depending on the user
-
-        if (isDanger)
-        {
-            //Opening special commands
-            commandText.text = commandFeatures[1].text;
-        }
-        else
-        {
-            //Opening normal commands
-            commandText.text = commandFeatures[0].text;
-        }
-
-
-    }
-
-
-    public void AddCommmandLine(int i)
-    {
-        commandText.text += "\n\n";
-        commandText.text += commandText.text = commandFeatures[i].text;
-    }
 }
