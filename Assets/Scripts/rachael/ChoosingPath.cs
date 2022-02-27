@@ -42,5 +42,16 @@ namespace rachael
                     Destroy(this);
             }
         }
+
+        public void CheckCollect()
+        {
+            Debug.Log(m_assignedObject);
+
+            if (m_assignedObject == null)
+            {
+                m_assignDoor.GetComponent<DoorToWall>().TransformDoorToWall();
+                Destroy(this);
+            }
+        }
     }
 }

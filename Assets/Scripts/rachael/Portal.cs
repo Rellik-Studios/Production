@@ -42,6 +42,11 @@ namespace rachael
             Debug.Log("Contact");
             if (_other.CompareTag("Player"))
             {
+                foreach (var choosingPath in FindObjectsOfType<ChoosingPath>())
+                {
+                    choosingPath.CheckCollect();
+                }
+
                 m_changeFurniture.EndofTimeEra(_other);
             }
         }

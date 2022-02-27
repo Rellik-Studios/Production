@@ -13,6 +13,8 @@ namespace Himanshu
         public bool m_isSafeRoom;
 
         public bool isTutorialRunning = false;
+        public float m_triggerDistance = 10f;
+
         private void Awake()
         {
             if (m_instance == null)

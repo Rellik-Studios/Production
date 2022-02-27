@@ -6,8 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="de8b67ab-e0b5-4d99-a633-e1ffe02f1d8c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Production/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Production/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/rachael/FavorSystem/FavorSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/rachael/FavorSystem/FavorSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/rachael/FavorSystem/GameCommandPrompt.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/rachael/FavorSystem/GameCommandPrompt.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Rachael/Path_face 3.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Rachael/Path_face 3.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Himanshu/EnemyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Himanshu/EnemyController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Himanshu/gameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Himanshu/gameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/rachael/ChoosingPath.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/rachael/ChoosingPath.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/rachael/Portal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/rachael/Portal.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
@@ -32,6 +35,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_SelectionCaret.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CFC1AD89-0650-411E-946C-FF2E6F276711/80/49928638/KeyCode.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Caret.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CFC1AD89-0650-411E-946C-FF2E6F276711/3d/a0cd6baa/SetupCoroutine.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_InputField.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -40,7 +44,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/PlayerFollow.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/rachael/GrandfatherClock.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/PlayerMovement.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/gameManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/PlayerInteract.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/rachael/SaveSystem/PlayerSave.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/rachael/SaveSystem/PlayerData.cs" />
@@ -50,10 +53,14 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/Tutorial.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/rachael/SceneChanger.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/rachael/SaveSystem/SaveSystem.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/EnemyController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/rachael/FavorSystem/FavorSystem.cs" />
       <option value="$PROJECT_DIR$/Assets/Caret.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/rachael/FavorSystem/GameCommandPrompt.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/EnemyController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/gameManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/rachael/ChoosingPath.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/rachael/Portal.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/DevMenu.cs" />
     </changedPaths>
   </component>
   <component name="MarkdownSettingsMigration">
@@ -66,7 +73,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34994584" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34991798" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
@@ -94,10 +101,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="17376">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="17376" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -115,6 +122,8 @@
       <updated>1645568096077</updated>
       <workItem from="1645568103977" duration="12738000" />
       <workItem from="1645683402805" duration="21611000" />
+      <workItem from="1645926029280" duration="1935000" />
+      <workItem from="1645928010727" duration="1679000" />
     </task>
     <servers />
   </component>
@@ -134,6 +143,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
@@ -146,10 +156,10 @@
           <line>318</line>
           <properties documentPath="D:\Repos\Production\Assets\Scripts\Himanshu\EnemyController.cs" initialLine="297" containingFunctionPresentation="method 'PatrolUpdate'">
             <startOffsets>
-              <option value="10074" />
+              <option value="10110" />
             </startOffsets>
             <endOffsets>
-              <option value="10111" />
+              <option value="10147" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />
@@ -166,6 +176,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/rachael/ChoosingPath.cs</url>
+          <line>51</line>
+          <properties documentPath="D:\Repos\Production\Assets\Scripts\rachael\ChoosingPath.cs" initialLine="49" containingFunctionPresentation="method 'CheckCollect'">
+            <startOffsets>
+              <option value="1493" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1555" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
