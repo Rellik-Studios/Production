@@ -20,6 +20,7 @@ public class GameCommandPrompt : MonoBehaviour
     {
         //m_defaultPosition = m_caretImage.transform.position.x;
     }
+
     private void OnEnable()
     {
         m_inputField.ActivateInputField();
@@ -94,12 +95,14 @@ public class GameCommandPrompt : MonoBehaviour
             Debug.Log("Quit");
         }
     }
+
+
     void CheckInput(string input)
     { 
 
         if (input == "HELP" && favorSystem.m_isDanger)
         {
-            Debug.Log("help");
+            FavorCommand();
         }
         else 
         {
@@ -107,27 +110,27 @@ public class GameCommandPrompt : MonoBehaviour
             {
                 case"TALK":
                     {
-                        Debug.Log("Talk!");
+                        TalkCommand();
                         break;
                     }
                 case"TIME":
                     {
-                        Debug.Log("Time!");
+                        TimeCommand();
                         break;
                     }
                 case"USER":
                     {
-                        Debug.Log("User!");
+                        UserCommand();
                         break;
                     }
                 case"QUIT":
                     {
-                        Debug.Log("Quit!");
+                        QuitCommand();
                         break;
                     }
                 default:
                     {
-                        Debug.Log(input);
+                        Debug.Log("INVALID INPUT! TRY AGAIN");
                         break;
                     }
             }
@@ -136,13 +139,40 @@ public class GameCommandPrompt : MonoBehaviour
 
     }
 
+    void FavorCommand()
+    {
+        Debug.Log("help!");
+    }
+
+    void TalkCommand()
+    {
+        Debug.Log("Talk!");
+    }
+
+    void TimeCommand()
+    {
+        Debug.Log("Time!");
+    }
+
+    void UserCommand()
+    {
+        Debug.Log("User!");
+    }
+
+    void QuitCommand()
+    {
+        Debug.Log("Quit!");
+    }
+
     public void playerEnterCommand(string textInput)
     {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            m_inputField.ActivateInputField();
+            m_inputField.Select();
 
-        m_inputField.ActivateInputField();
-        m_inputField.Select();
-        
-
-        CheckInput(textInput.ToUpper());
+            CheckInput(textInput.ToUpper());
+            m_inputField.text = "";
+        }
     }
 }
