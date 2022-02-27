@@ -30,7 +30,7 @@ namespace rachael
             {
                 // saves the player data into the system
                 tempPlayer.GetComponent<PlayerSave>().SavePlayer();
-                //_player.SaveProcess.SetTrigger("Save");
+                _player.SaveProcess.SetTrigger("Save");
                 //Debug.Log(eraChanging.Rooms[eraChanging.Index].name);
                 //
                 //DefineRoom(m_eraChanging.m_rooms[m_eraChanging.index].name);
