@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using TMPro;
 
 namespace rachael.FavorSystem
 {
@@ -14,7 +15,9 @@ namespace rachael.FavorSystem
         [FormerlySerializedAs("commandFeatures")] public Text[] m_commandFeatures;
         [FormerlySerializedAs("commandText")] public Text m_commandText;
 
-    
+        [SerializeField] private TMP_InputField m_inputField;
+
+
         // Start is called before the first frame update
         void Start()
         {
@@ -30,7 +33,12 @@ namespace rachael.FavorSystem
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.C))
+            {
+                m_inputField.ActivateInputField();
+                m_inputField.Select();
+                m_inputField.text = "";
                 OpenCommandPromptWindow();
+            }
         }
 
         void OpenCommandPromptWindow()
