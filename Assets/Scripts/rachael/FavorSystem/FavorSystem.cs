@@ -6,6 +6,12 @@ using TMPro;
 
 namespace rachael.FavorSystem
 {
+    public enum ConsoleDisplay
+    {
+        defaultMenu = 0,
+        SpecialMenu = 1
+    }
+
     public class FavorSystem : MonoBehaviour
     {
         private bool m_isOpen = false;
@@ -17,6 +23,9 @@ namespace rachael.FavorSystem
 
         [SerializeField] private TMP_InputField m_inputField;
 
+        
+
+        public ConsoleDisplay consoleDisplay;
 
         // Start is called before the first frame update
         void Start()
@@ -32,23 +41,23 @@ namespace rachael.FavorSystem
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.C))
+            if (Input.GetKeyDown(KeyCode.C) && !m_isOpen)
             {
-                m_inputField.ActivateInputField();
-                m_inputField.Select();
                 m_inputField.text = "";
-                OpenCommandPromptWindow();
+                CommandPromptWindow();
             }
         }
 
-        void OpenCommandPromptWindow()
+        void CommandPromptWindow()
         {
             m_isOpen = !m_isOpen;
             if (m_isOpen)
             {
                 Debug.Log("Command Prompt is open");
                 m_commandPrompt.SetActive(true);
-                DisplayingCommands();
+                DisplayingMainMenu();
+                m_inputField.ActivateInputField();
+                m_inputField.Select();
 
 
             }
@@ -60,6 +69,23 @@ namespace rachael.FavorSystem
             }
         }
 
+        public void OpenCommandPrompt()
+        {
+            Debug.Log("Command Prompt is open");
+            m_commandPrompt.SetActive(true);
+            DisplayingMainMenu();
+            m_inputField.ActivateInputField();
+            m_inputField.Select();
+            m_isOpen = true;
+        }
+
+        public void CloseCommandPrompt()
+        {
+            Debug.Log("Command Prompt is close");
+            m_isOpen = false;
+            m_commandPrompt.SetActive(false);
+        }
+
         private IEnumerator EKeyboardInput()
         {
         
@@ -67,24 +93,42 @@ namespace rachael.FavorSystem
             yield return null;
         }
 
-        public void DisplayingCommands()
+        public void DisplayingMainMenu()
         {
             //Displaying different commands depending on the user
-
             if (m_isDanger)
             {
                 //Opening special commands
                 m_commandText.text = m_commandFeatures[1].text;
+                consoleDisplay = ConsoleDisplay.SpecialMenu;
             }
             else
             {
                 //Opening normal commands
                 m_commandText.text = m_commandFeatures[0].text;
+                consoleDisplay = ConsoleDisplay.defaultMenu;
             }
 
 
         }
 
+        public int getEnumConsoleNum()
+        {
+            return ((int)consoleDisplay);
+        }
+
+
+        public void DisplayScreen()
+        {
+            m_commandText.text = m_commandFeatures[getEnumConsoleNum()].text;
+        }
+
+        public void SetConsoleScreen(ConsoleDisplay _displayConsole)
+        {
+            m_commandText.text = m_commandFeatures[(int)_displayConsole].text;
+            consoleDisplay = _displayConsole;
+
+        }
 
         public void AddCommmandLine(int i)
         {
