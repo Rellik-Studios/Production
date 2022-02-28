@@ -13,7 +13,8 @@ public class GameCommandPrompt : MonoBehaviour
     //[SerializeField] private GameObject m_caretImage;
     private float m_defaultPosition;
 
-    public string here;
+    private int m_failedAttempts = 0;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,8 @@ public class GameCommandPrompt : MonoBehaviour
     {
         m_inputField.ActivateInputField();
         m_inputField.Select();
+        Debug.Log("opening");
+        m_failedAttempts = 0;
     }
     private void OnDisable()
     {
@@ -102,6 +105,7 @@ public class GameCommandPrompt : MonoBehaviour
 
         if (input == "HELP" && favorSystem.m_isDanger)
         {
+            m_failedAttempts = 0;
             FavorCommand();
         }
         else 
@@ -110,16 +114,19 @@ public class GameCommandPrompt : MonoBehaviour
             {
                 case"TALK":
                     {
+                        m_failedAttempts = 0;
                         TalkCommand();
                         break;
                     }
                 case"TIME":
                     {
+                        m_failedAttempts = 0;
                         TimeCommand();
                         break;
                     }
                 case"USER":
                     {
+                        m_failedAttempts = 0;
                         UserCommand();
                         break;
                     }
@@ -130,7 +137,7 @@ public class GameCommandPrompt : MonoBehaviour
                     }
                 default:
                     {
-                        Debug.Log("INVALID INPUT! TRY AGAIN");
+                        InvalidInput();
                         break;
                     }
             }
@@ -146,22 +153,58 @@ public class GameCommandPrompt : MonoBehaviour
 
     void TalkCommand()
     {
+        favorSystem.DisplayScreen();
         Debug.Log("Talk!");
     }
 
     void TimeCommand()
     {
+        favorSystem.DisplayScreen();
         Debug.Log("Time!");
     }
 
     void UserCommand()
     {
+        favorSystem.DisplayScreen();
         Debug.Log("User!");
     }
 
     void QuitCommand()
     {
+        favorSystem.CloseCommandPrompt();
         Debug.Log("Quit!");
+    }
+
+    void InvalidInput()
+    {
+        Debug.Log("INVALID INPUT! TRY AGAIN");
+
+        m_failedAttempts++;
+
+        
+
+        if(m_failedAttempts > 3)
+        {
+            favorSystem.m_commandText.text = "TOO MANY FAILED ATTEMPTS\n\n SHUTTING DOWN COMMAND PROMPT";
+            Debug.Log("TOO MANY FAILED ATTEMPTS, COMMENCE COMMAND PROMPT CLOSE DOWN");
+            StartCoroutine(ShutDownCommandProcess());
+            
+        }
+        else
+        {
+            favorSystem.m_commandText.text = (m_failedAttempts != 1 ? ("[" + m_failedAttempts + "] ") : "") + "Error: INVALID INPUT! TRY AGAIN";
+            favorSystem.AddCommmandLine(favorSystem.getEnumConsoleNum());
+        }
+
+      
+    }
+
+    private IEnumerator ShutDownCommandProcess()
+    {
+        yield return new WaitForSeconds(3);
+        favorSystem.CloseCommandPrompt();
+
+        yield return null;
     }
 
     public void playerEnterCommand(string textInput)
