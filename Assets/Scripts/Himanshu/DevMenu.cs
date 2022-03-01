@@ -257,6 +257,13 @@ namespace Himanshu
 
             teleport = float.Parse(output);
 
+            
+            yield return new WaitUntil(() =>
+            {
+                return !Input.GetKey(KeyCode.Alpha1) && !Input.GetKey(KeyCode.Alpha2) &&
+                       !Input.GetKey(KeyCode.Alpha3) && !Input.GetKey(KeyCode.Alpha4);
+            });
+            
             StartCoroutine(MainMenu());
             yield break;
             
