@@ -15,6 +15,7 @@ namespace Himanshu
     public class Narrator : MonoBehaviour
     {
         public NarratorDialogue m_narratorDialogue;
+        
         #region Text
 
         
@@ -185,6 +186,12 @@ namespace Himanshu
         
         private Coroutine m_waitPlay;
         private bool m_settingText = false;
+        public bool settingText
+        {
+            get => m_settingText;
+            set => m_settingText = value;
+        }
+
         [SerializeField] private GameObject m_textBackdrop;
 
         private void Start()
@@ -233,8 +240,19 @@ namespace Himanshu
             m_idleTimer = Random.Range(90f, 120f);
         }
 
+        public void Play(string _toPlay)
+        {
+            StopAllCoroutines();
+            m_textBox.text = "";
+            // if (!m_settingText)
+            {
+                StartCoroutine(SetText(_toPlay, m_textBox)); 
+            }
+        }
         public void Play(List<string> _toPlay, bool _isRandom = true)
         {
+            if (gameManager.Instance.isTutorialRunning) return;
+                
             if (_toPlay.Count > 1 && !m_settingText)
             {
                 int rand = Random.Range(1, _toPlay.Count);

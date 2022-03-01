@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using Himanshu;
@@ -24,6 +25,7 @@ namespace rachael.SaveSystem
                 path = Application.persistentDataPath + "/player/player.safeRoom";
             FileStream stream = new FileStream(path, FileMode.Create);
 
+            _player.m_inventory ??= new Dictionary<CollectableObject, Wrapper<int>>();
             PlayerData data = new PlayerData(_player);
 
             formatter.Serialize(stream, data);
@@ -57,7 +59,6 @@ namespace rachael.SaveSystem
             path = Application.persistentDataPath + "/narrator/";
             DirectoryInfo directory = new DirectoryInfo(path);
             directory.Delete(true);
-            Directory.CreateDirectory(path);
         
         }
 
@@ -68,7 +69,6 @@ namespace rachael.SaveSystem
             path = Application.persistentDataPath + "/player/";
             DirectoryInfo directory = new DirectoryInfo(path);
             directory.Delete(true);
-            Directory.CreateDirectory(path);
 
         }
 
