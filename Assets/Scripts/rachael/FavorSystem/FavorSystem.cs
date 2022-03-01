@@ -33,7 +33,7 @@ namespace rachael.FavorSystem
             if (!m_isOpen)
             {
                 m_commandPrompt.SetActive(false);
-                Debug.Log(m_isDanger);
+                //Debug.Log(m_isDanger);
             }
 
         }
@@ -45,6 +45,11 @@ namespace rachael.FavorSystem
             {
                 m_inputField.text = "";
                 CommandPromptWindow();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha5) && !m_isOpen)
+            {
+                m_isDanger = !m_isDanger;
             }
         }
 

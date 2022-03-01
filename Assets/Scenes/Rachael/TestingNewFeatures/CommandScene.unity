@@ -425,7 +425,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   favorSystem: {fileID: 252048848}
   m_inputField: {fileID: 48240079}
-  here: 
 --- !u!1 &252048847
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,13 +454,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f4d57e7f2fd9ee438ccf2ba5fc06c36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_isDanger: 0
+  m_isDanger: 1
   m_commandPrompt: {fileID: 143930217}
   m_commandFeatures:
   - {fileID: 1252592595}
   - {fileID: 1080340583}
   m_commandText: {fileID: 1859493163}
   m_inputField: {fileID: 48240079}
+  consoleDisplay: 0
 --- !u!4 &252048849
 Transform:
   m_ObjectHideFlags: 0
@@ -474,7 +474,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &299262285
 GameObject:
@@ -592,7 +592,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &894075522
 GameObject:

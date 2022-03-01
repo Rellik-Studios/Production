@@ -24,34 +24,26 @@ public class GameCommandPrompt : MonoBehaviour
 
     private void OnEnable()
     {
-        m_inputField.ActivateInputField();
-        m_inputField.Select();
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        selectInputField();
         Debug.Log("opening");
         m_failedAttempts = 0;
     }
     private void OnDisable()
     {
-
+        Debug.Log("closing");
+        Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        PlayerInputCommand();
-
-        //m_caretImage.transform.position = new Vector2(m_defaultPosition + m_inputField.caretPosition * 60f, 0f);
-    }
-
-    void PlayerInputCommand()
-    {
-        //if (!favorSystem.m_isDanger)
-        //{
-        //    DefaultCommandList();
-        //}
-        //else
-        //{
-        //    SpecialCommandList();
-        //}
+        
     }
 
 
@@ -181,12 +173,12 @@ public class GameCommandPrompt : MonoBehaviour
 
         m_failedAttempts++;
 
-        
 
-        if(m_failedAttempts > 3)
+        if (m_failedAttempts > 3)
         {
             favorSystem.m_commandText.text = "TOO MANY FAILED ATTEMPTS\n\n SHUTTING DOWN COMMAND PROMPT";
             Debug.Log("TOO MANY FAILED ATTEMPTS, COMMENCE COMMAND PROMPT CLOSE DOWN");
+            m_inputField.enabled = false;
             StartCoroutine(ShutDownCommandProcess());
             
         }
@@ -199,10 +191,18 @@ public class GameCommandPrompt : MonoBehaviour
       
     }
 
+    private void selectInputField()
+    {
+        m_inputField.ActivateInputField();
+        m_inputField.Select();
+    }
+
     private IEnumerator ShutDownCommandProcess()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSecondsRealtime(3);
+        m_inputField.enabled = true;
         favorSystem.CloseCommandPrompt();
+       
 
         yield return null;
     }
@@ -211,9 +211,7 @@ public class GameCommandPrompt : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            m_inputField.ActivateInputField();
-            m_inputField.Select();
-
+            selectInputField();
             CheckInput(textInput.ToUpper());
             m_inputField.text = "";
         }
