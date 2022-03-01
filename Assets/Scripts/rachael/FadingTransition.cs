@@ -71,8 +71,10 @@ namespace rachael
             {
                 //transforming the opaque material to transparent material
                 this.m_doorframe.GetComponent<Renderer>().material = m_materialDoor;
+                
                 FadeOutObject();
                 m_wall.SetActive(true);
+                m_wall.tag = "EnemyBlocker";
             }
         }
     }
