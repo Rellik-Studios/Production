@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using rachael.FavorSystem;
+using rachael;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,7 +15,9 @@ public class GameCommandPrompt : MonoBehaviour
     private float m_defaultPosition;
 
     private int m_failedAttempts = 0;
-    
+
+    int counter = 0;
+
 
     // Start is called before the first frame update
     void Start()
@@ -140,24 +143,36 @@ public class GameCommandPrompt : MonoBehaviour
 
     void FavorCommand()
     {
+        favorSystem.m_commandText.text = "PROCESSING";
+        favorSystem.m_commandText.resizeTextForBestFit = false;
+        m_inputField.enabled = false;
+        StartCoroutine(HelpCommandProcess());
         Debug.Log("help!");
     }
 
     void TalkCommand()
     {
-        favorSystem.DisplayScreen();
+        favorSystem.m_commandText.text = "Hello world\n\nPress any key to continue";
+        favorSystem.consoleDisplay = ConsoleDisplay.talkMenu;
+        //favorSystem.DisplayScreen();
         Debug.Log("Talk!");
     }
 
     void TimeCommand()
     {
-        favorSystem.DisplayScreen();
+        string here = NarratorScript.Time;
+        favorSystem.m_commandText.text = "the current time is " + NarratorScript.Time +  "\n\nPress any key to continue";
+        favorSystem.consoleDisplay = ConsoleDisplay.timeMenu;
+        //favorSystem.DisplayScreen();
         Debug.Log("Time!");
+        Debug.Log(here);
     }
 
     void UserCommand()
     {
-        favorSystem.DisplayScreen();
+        favorSystem.m_commandText.text = "Your username is " + NarratorScript.UserName + "\n\nPress any key to continue";
+        favorSystem.consoleDisplay = ConsoleDisplay.userMenu;
+        //favorSystem.DisplayScreen();
         Debug.Log("User!");
     }
 
@@ -197,23 +212,100 @@ public class GameCommandPrompt : MonoBehaviour
         m_inputField.Select();
     }
 
+    public void playerEnterCommand(string textInput)
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+
+            CheckMenuForInput(textInput);
+            //selectInputField();
+            //CheckInput(textInput.ToUpper());
+            //m_inputField.text = "";
+
+
+        }
+    }
+    
+
+    public void CheckMenuForInput(string textInput)
+    {
+        switch (favorSystem.consoleDisplay)
+        {
+            case ConsoleDisplay.defaultMenu:
+                {
+                    selectInputField();
+                    CheckInput(textInput.ToUpper());
+                    m_inputField.text = "";
+                    Debug.Log("APPLE");
+                }
+                break;
+            case ConsoleDisplay.SpecialMenu:
+                {
+                    selectInputField();
+                    CheckInput(textInput.ToUpper());
+                    m_inputField.text = "";
+                    Debug.Log("BANANA");
+                }
+                break;
+            case ConsoleDisplay.userMenu:
+                {
+                    selectInputField();
+                    favorSystem.DisplayingMainMenu();
+                    Debug.Log("CANAPLE");
+                }
+                break;
+            case ConsoleDisplay.talkMenu:
+                {
+                    selectInputField();
+                    favorSystem.DisplayingMainMenu();
+                    Debug.Log("CANAPLE");
+                }
+                break;
+            case ConsoleDisplay.timeMenu:
+                {
+                    selectInputField();
+                    favorSystem.DisplayingMainMenu();
+                    Debug.Log("CANAPLE");
+                }
+                break;
+            default:
+                Debug.Log("NOTHING");
+                CheckInput(textInput.ToUpper());
+                break;
+        }
+    }
+
+
     private IEnumerator ShutDownCommandProcess()
     {
         yield return new WaitForSecondsRealtime(3);
         m_inputField.enabled = true;
         favorSystem.CloseCommandPrompt();
-       
+
 
         yield return null;
     }
 
-    public void playerEnterCommand(string textInput)
+
+    private IEnumerator HelpCommandProcess()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        
+        while (counter < 30)
         {
-            selectInputField();
-            CheckInput(textInput.ToUpper());
-            m_inputField.text = "";
+            favorSystem.m_commandText.text += ".";
+            counter++;
+            yield return new WaitForSecondsRealtime(0.1f);
         }
+        favorSystem.m_commandText.resizeTextForBestFit = true;
+        favorSystem.m_commandText.text = "Process done goodbye";
+        counter = 0;
+        yield return new WaitForSecondsRealtime(3);
+        m_inputField.enabled = true;
+
+        favorSystem.m_isDanger = false;
+        favorSystem.CloseCommandPrompt();
+
+
+        yield return null;
     }
 }

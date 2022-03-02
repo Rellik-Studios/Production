@@ -9,7 +9,12 @@ namespace rachael.FavorSystem
     public enum ConsoleDisplay
     {
         defaultMenu = 0,
-        SpecialMenu = 1
+        SpecialMenu = 1,
+        talkMenu = 2,
+        timeMenu = 3,
+        userMenu = 4,
+        quitMenu = 5,
+        helpMenu = 6,
     }
 
     public class FavorSystem : MonoBehaviour
