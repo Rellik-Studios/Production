@@ -40,6 +40,7 @@ namespace Himanshu
 
         private GameObject m_enemy;
         [SerializeField] private List<Door> m_doors;
+        [SerializeField] private List<string> m_deathDialogues;
 
         private void Start()
         {
@@ -114,7 +115,7 @@ namespace Himanshu
 
                     yield return PlayNextDialogue();
 
-
+                    yield return PlayNextDialogue();
 
 
                     yield return new WaitWhile(() => hidingSpot.GetComponent<HidingSpot>().isUsed);
@@ -148,11 +149,12 @@ namespace Himanshu
 
 
 
-                yield return PlayNextDialogue(2);
+                yield return PlayNextDialogue(3);
 
                 m_enemy.GetComponent<StateMachine>().enabled = true;
 
                 yield return PlayNextDialogue();
+                
 
                 yield return new WaitForSeconds(2f);
 
@@ -170,17 +172,31 @@ namespace Himanshu
                 yield return null;
             
 
-            m_tutorialOver = true;
-            // m_narrator.enabled = true;
+            m_tutorialOver = true; 
             wallcolor = Color.black;
         }
 
 
         public void Retry()
         {
+            
+            IEnumerator PlayNextDialogue()
+            {
+                m_narrator.settingText = false;
+                if(m_deathDialogues.Count > 0)
+                {
+                    m_narrator.Play(m_deathDialogues[0]);
+                    m_deathDialogues.RemoveAt(0);
+                }
+
+                yield return new WaitWhile(() => m_narrator.settingText);
+            }
+            
+            
             IEnumerator DeathDialogues()
             {
                 StopAllCoroutines();
+                yield return PlayNextDialogue();
                 yield return StartCoroutine(eTutorial(true));
                 yield return null;
             }
