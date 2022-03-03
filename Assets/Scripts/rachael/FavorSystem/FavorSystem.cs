@@ -122,6 +122,18 @@ namespace rachael.FavorSystem
 
         }
 
+        public void WhichMenuDisplay()
+        {
+            if (m_isDanger)
+            {
+                consoleDisplay = ConsoleDisplay.SpecialMenu;
+            }
+            else
+            {
+                consoleDisplay = ConsoleDisplay.defaultMenu;
+            }
+        }
+
         public int getEnumConsoleNum()
         {
             return ((int)consoleDisplay);
@@ -145,6 +157,15 @@ namespace rachael.FavorSystem
             m_commandText.text += "\n\n";
             m_commandText.text += m_commandText.text = m_commandFeatures[i].text;
         }
+        
+
+
+        public bool CheckUserCanUseSpecialCommands()
+        {
+            //STILL NEED TO CHECK ALSO FOR WHETHER THE USER IS SPOTED
+            return m_isDanger;
+        }
+
     }
 
 }

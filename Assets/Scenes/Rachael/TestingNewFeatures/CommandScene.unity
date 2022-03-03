@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &295541811 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3928306722895430707, guid: 6200c8c3c39659642a4ddc3cd44ff7d4, type: 3}
+  m_PrefabInstance: {fileID: 3351539180911043444}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &363525309
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,6 +476,26 @@ PrefabInstance:
     - target: {fileID: 3351539180389591967, guid: 6200c8c3c39659642a4ddc3cd44ff7d4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3351539180860888740, guid: 6200c8c3c39659642a4ddc3cd44ff7d4, type: 3}
+      propertyPath: m_commandFeatures.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3351539180860888740, guid: 6200c8c3c39659642a4ddc3cd44ff7d4, type: 3}
+      propertyPath: m_commandFeatures.Array.data[3]
+      value: 
+      objectReference: {fileID: 295541811}
+    - target: {fileID: 3351539180860888740, guid: 6200c8c3c39659642a4ddc3cd44ff7d4, type: 3}
+      propertyPath: m_commandFeatures.Array.data[4]
+      value: 
+      objectReference: {fileID: 295541811}
+    - target: {fileID: 3351539180860888740, guid: 6200c8c3c39659642a4ddc3cd44ff7d4, type: 3}
+      propertyPath: m_commandFeatures.Array.data[5]
+      value: 
+      objectReference: {fileID: 295541811}
+    - target: {fileID: 3351539181428162143, guid: 6200c8c3c39659642a4ddc3cd44ff7d4, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6200c8c3c39659642a4ddc3cd44ff7d4, type: 3}

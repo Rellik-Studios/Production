@@ -18,6 +18,8 @@ public class GameCommandPrompt : MonoBehaviour
 
     int counter = 0;
 
+    bool changingName = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +36,8 @@ public class GameCommandPrompt : MonoBehaviour
         selectInputField();
         Debug.Log("opening");
         m_failedAttempts = 0;
+        counter = 0;
+        changingName = false;
     }
     private void OnDisable()
     {
@@ -141,6 +145,57 @@ public class GameCommandPrompt : MonoBehaviour
 
     }
 
+    void AskToChangeName(string answer)
+    {
+        if(answer == "YES")
+        {
+            Debug.Log("it works");
+            favorSystem.m_commandText.text = "Current Username:\n" + NarratorScript.UserName + "\n\nInput New Username";
+            changingName = true;
+            favorSystem.m_commandFeatures[favorSystem.getEnumConsoleNum()].text = favorSystem.m_commandText.text;
+        }
+        else if(answer == "NO")
+        {
+            favorSystem.m_commandText.text = "You did not change your username\n" + NarratorScript.UserName;
+
+            m_inputField.enabled = false;
+            changingName = false;
+            StartCoroutine(ReturnToMenuCommandProcess());
+        }
+        else
+        {
+            InvalidInput();
+        }
+
+    }
+
+    //public bool ConsistsOfWhiteSpace(string s)
+    //{
+    //    foreach (char c in s)
+    //    {
+    //        if (c != ' ') return false;
+    //    }
+    //    return true;
+    //}
+
+    void InputNewUsername(string answer)
+    {
+        if (string.IsNullOrWhiteSpace(answer))
+        {
+            InvalidInput();
+            Debug.Log("yes it does contain white space");
+        }
+        else
+        {
+            favorSystem.m_commandText.text = "Old Username:\n" + NarratorScript.UserName + "\n\nNew Username:\n" + answer;
+            Debug.Log("yes it does not contain white space");
+            NarratorScript.UserName = answer;
+            changingName = false;
+            StartCoroutine(ReturnToMenuCommandProcess());
+
+        }
+    }
+
     void FavorCommand()
     {
         favorSystem.m_commandText.text = "PROCESSING";
@@ -160,18 +215,17 @@ public class GameCommandPrompt : MonoBehaviour
 
     void TimeCommand()
     {
-        string here = NarratorScript.Time;
         favorSystem.m_commandText.text = "the current time is " + NarratorScript.Time +  "\n\nPress any key to continue";
         favorSystem.consoleDisplay = ConsoleDisplay.timeMenu;
         //favorSystem.DisplayScreen();
         Debug.Log("Time!");
-        Debug.Log(here);
     }
 
     void UserCommand()
     {
-        favorSystem.m_commandText.text = "Your username is " + NarratorScript.UserName + "\n\nPress any key to continue";
+        favorSystem.m_commandText.text = "Your username is " + NarratorScript.UserName + "\n\nWould you like to change your name?\n[YES/NO]";
         favorSystem.consoleDisplay = ConsoleDisplay.userMenu;
+        favorSystem.m_commandFeatures[favorSystem.getEnumConsoleNum()].text = favorSystem.m_commandText.text;
         //favorSystem.DisplayScreen();
         Debug.Log("User!");
     }
@@ -249,8 +303,19 @@ public class GameCommandPrompt : MonoBehaviour
                 break;
             case ConsoleDisplay.userMenu:
                 {
-                    selectInputField();
-                    favorSystem.DisplayingMainMenu();
+                    if (changingName)
+                    {
+                        selectInputField();
+                        InputNewUsername(textInput);
+
+                    }
+                    else
+                    {
+                        selectInputField();
+                        //favorSystem.DisplayingMainMenu();
+                        AskToChangeName(textInput.ToUpper());
+                    }
+                    m_inputField.text = "";
                     Debug.Log("CANAPLE");
                 }
                 break;
@@ -274,7 +339,16 @@ public class GameCommandPrompt : MonoBehaviour
                 break;
         }
     }
+    private IEnumerator ReturnToMenuCommandProcess()
+    {
+        m_inputField.enabled = false;
+        yield return new WaitForSecondsRealtime(3);
+        m_inputField.enabled = true;
+        favorSystem.DisplayingMainMenu();
 
+
+        yield return null;
+    }
 
     private IEnumerator ShutDownCommandProcess()
     {
