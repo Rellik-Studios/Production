@@ -467,7 +467,20 @@ namespace Himanshu
             
             switch (_condition)
             {
-                   
+                case "tutorialSkipped ":
+                {
+                    if (Tutorial.m_tutorialSkipped)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                    break;
+                }
+                
+                default: return 0;
             }
 
             return 0;
