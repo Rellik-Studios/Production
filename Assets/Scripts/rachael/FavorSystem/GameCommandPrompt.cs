@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using rachael.FavorSystem;
@@ -14,11 +15,26 @@ public class GameCommandPrompt : MonoBehaviour
     private float m_defaultPosition;
 
     private int m_failedAttempts = 0;
+
     
+
+    private Dictionary<string, Func<bool>> m_commands;
 
     // Start is called before the first frame update
     void Start()
     {
+        var comparer = StringComparer.OrdinalIgnoreCase;
+        m_commands = new Dictionary<string, Func<bool>>(comparer)
+        {
+            {"HELP", FavorCommand},
+            {"TALK", TalkCommand},
+            {"TIME", TimeCommand},
+            {"USER", UserCommand},
+            {"QUIT", QuitCommand}
+        };
+
+
+
         //m_defaultPosition = m_caretImage.transform.position.x;
     }
 
@@ -95,77 +111,96 @@ public class GameCommandPrompt : MonoBehaviour
     void CheckInput(string input)
     { 
 
-        if (input == "HELP" && favorSystem.m_isDanger)
+        // if (input == "HELP" && favorSystem.m_isDanger)
+        // {
+        //     m_failedAttempts = 0;
+        //     FavorCommand();
+        // }
+        // else 
+        // {
+        //     switch (input)
+        //     {
+        //         case"TALK":
+        //             {
+        //                 m_failedAttempts = 0;
+        //                 TalkCommand();
+        //                 break;
+        //             }
+        //         case"TIME":
+        //             {
+        //                 m_failedAttempts = 0;
+        //                 TimeCommand();
+        //                 break;
+        //             }
+        //         case"USER":
+        //             {
+        //                 m_failedAttempts = 0;
+        //                 UserCommand();
+        //                 break;
+        //             }
+        //         case"QUIT":
+        //             {
+        //                 QuitCommand();
+        //                 break;
+        //             }
+        //         default:
+        //             {
+        //                 InvalidInput();
+        //                 break;
+        //             }
+        //     }
+        //
+        // }
+        
+        if(m_commands.TryGetValue(input, out Func<bool> _value))
         {
-            m_failedAttempts = 0;
-            FavorCommand();
+            _value.Invoke();
         }
-        else 
+        else
         {
-            switch (input)
-            {
-                case"TALK":
-                    {
-                        m_failedAttempts = 0;
-                        TalkCommand();
-                        break;
-                    }
-                case"TIME":
-                    {
-                        m_failedAttempts = 0;
-                        TimeCommand();
-                        break;
-                    }
-                case"USER":
-                    {
-                        m_failedAttempts = 0;
-                        UserCommand();
-                        break;
-                    }
-                case"QUIT":
-                    {
-                        QuitCommand();
-                        break;
-                    }
-                default:
-                    {
-                        InvalidInput();
-                        break;
-                    }
-            }
-
+            InvalidInput();
         }
 
     }
 
-    void FavorCommand()
+    #region Commands
+
+    bool FavorCommand()
     {
         Debug.Log("help!");
+        return true;
     }
 
-    void TalkCommand()
+    bool TalkCommand()
     {
         favorSystem.DisplayScreen();
         Debug.Log("Talk!");
+        return true;
     }
 
-    void TimeCommand()
+    bool TimeCommand()
     {
         favorSystem.DisplayScreen();
         Debug.Log("Time!");
+        return true;
     }
 
-    void UserCommand()
+    bool UserCommand()
     {
         favorSystem.DisplayScreen();
         Debug.Log("User!");
+        return true;
     }
 
-    void QuitCommand()
+    bool QuitCommand()
     {
         favorSystem.CloseCommandPrompt();
         Debug.Log("Quit!");
+        return true;
     }
+
+    #endregion
+    
 
     void InvalidInput()
     {
@@ -214,6 +249,22 @@ public class GameCommandPrompt : MonoBehaviour
             selectInputField();
             CheckInput(textInput.ToUpper());
             m_inputField.text = "";
+        }
+    }
+
+    public void HelpActive(bool _value)
+    {
+        if (_value)
+        {
+            if (m_commands.ContainsKey("HELP"))
+                return;
+            m_commands.Add("Help", FavorCommand);
+        }
+        else
+        {
+            if (!m_commands.ContainsKey("HELP"))
+                return;
+            m_commands.Remove("Help");
         }
     }
 }
