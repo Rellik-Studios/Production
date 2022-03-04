@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -97,6 +98,7 @@ namespace rachael.SaveSystem
             m_eraChanging.SaveIndex(m_index);
             m_player.m_deathCount = PlayerPrefs.GetInt("Death");
             m_player.Load(_inventory);
+            
             //m_player.m_inventory = m_inventory;
             //m_grandfatherClock.m_depositedObjects = m_depositedToTheClock.Keys.ToList();
             m_grandfatherClock.Load(_depositedObjects);
@@ -144,6 +146,8 @@ namespace rachael.SaveSystem
 
                 GetComponent<RespawnManager>().SetPosition(playerTransform);
                 GetComponent<RespawnManager>().Respawn();
+
+                NarratorScript.UserName = data.m_userName ?? Environment.UserName;
 
 
 

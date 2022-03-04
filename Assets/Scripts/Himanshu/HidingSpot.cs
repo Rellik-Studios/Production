@@ -154,12 +154,12 @@ namespace Himanshu
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.U))
-            {
-                //m_cubeRenderer.SetFloat("DistorionLevel", 0.02f);
-                //transform.Find("Cube").GetComponent<Renderer>().material.SetFloat("DistortionLevel", 0.02f);
-                distortionValue = m_distortionValue;
-            }
+            // if (Input.GetKeyDown(KeyCode.U))
+            // {
+            //     //m_cubeRenderer.SetFloat("DistorionLevel", 0.02f);
+            //     //transform.Find("Cube").GetComponent<Renderer>().material.SetFloat("DistortionLevel", 0.02f);
+            //     distortionValue = m_distortionValue;
+            // }
             
             if (m_player !=  null)
             {

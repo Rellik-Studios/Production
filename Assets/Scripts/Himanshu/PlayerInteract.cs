@@ -480,7 +480,9 @@ namespace Himanshu
         {
             m_inventory = new Dictionary<CollectableObject, Wrapper<int>>();
             var collectables = GameObject.FindObjectsOfType<Collectable>();
+            
             //collectables = collectables.Where(t => t.m_collectableObject.m_objectName.Contains("Clock_")).ToArray();
+            
             foreach (var piece in _inventory)
             {
                     var objToAdd = collectables.FirstOrDefault(t => t.m_collectableObject.m_objectName.Equals(piece.m_objectName));
