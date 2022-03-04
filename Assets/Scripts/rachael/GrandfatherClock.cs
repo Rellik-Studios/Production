@@ -66,17 +66,17 @@ namespace rachael
         public void CanExecute(Raycast _raycast)
         {
             //if the gear is within possession
-            // if (_raycast.m_player.GetComponent<PlayerInteract>().m_placedDown)
-            // {
-            //     if (_raycast.m_indication != null)
-            //         _raycast.m_indication.sprite = Resources.Load<Sprite>("Place");
-            // }
-            // // no gear
-            // else
-            // {
-            //     if (_raycast.m_indication != null)
-            //         _raycast.m_indication.enabled = false;
-            // }
+             if (_raycast.m_player.GetComponent<PlayerInteract>().m_inventory.Count > 0)
+             {
+                 if (_raycast.m_indication != null)
+                     _raycast.m_indication.sprite = Resources.Load<Sprite>("Place");
+             }
+             // no gear
+             else
+             {
+                 if (_raycast.m_indication != null)
+                     _raycast.m_indication.enabled = false;
+             }
         }
 
         public void Load(List<CollectableObjectWrapper> _objs)

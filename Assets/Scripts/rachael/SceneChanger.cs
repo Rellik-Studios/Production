@@ -1,3 +1,4 @@
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -30,7 +31,7 @@ namespace rachael
 
         public void ButtonPresent()
         {
-            if (PlayerPrefs.GetInt("SaveFile") == 0)
+            if (Directory.Exists(Application.persistentDataPath + "/player/"))
             {
                 m_continueBlock.SetActive(false);
             }
@@ -52,8 +53,15 @@ namespace rachael
         {
             PlayerPrefs.SetInt("Death", 0);
         }
-        public void Play()
+        public void Play(bool _newGame)
         {
+            if (_newGame)
+            {
+                if(Directory.Exists(Application.persistentDataPath + "/player/"))
+                    SaveSystem.SaveSystem.DeletePlayer();
+                if(Directory.Exists(Application.persistentDataPath + "/narrator/"))
+                    SaveSystem.SaveSystem.DeleteNarrator();
+            }
             SceneManager.LoadScene(1);
         }
         public void Ending()
