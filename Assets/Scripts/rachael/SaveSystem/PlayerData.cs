@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Himanshu;
+using JetBrains.Annotations;
 using UnityEngine.Serialization;
 
 namespace rachael.SaveSystem
@@ -11,6 +12,8 @@ namespace rachael.SaveSystem
         //public Dictionary<CollectableObject, Wrapper<int>> m_inventory;
         public List<CollectableObjectWrapper> m_depositedToTheClock;
         public List<CollectableObjectWrapper> m_inventory;
+
+        [CanBeNull] public string m_userName;
         
         [FormerlySerializedAs("Index")] public int m_index; //the number which index for each time era (for change furniture)
         //public int Death;
@@ -25,6 +28,7 @@ namespace rachael.SaveSystem
         public PlayerData(PlayerSave _player)
         {
             //Death = player.Death;
+            m_userName = NarratorScript.UserName;
             m_depositedToTheClock = _player.m_depositedToTheClock.Select(t=>t.m_wrapper).ToList();
             
             m_inventory = _player.m_inventory.Keys.Select(t => t.m_wrapper).ToList();

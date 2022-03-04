@@ -30,7 +30,7 @@ public class GameCommandPrompt : MonoBehaviour
         var comparer = StringComparer.OrdinalIgnoreCase;
         m_commands = new Dictionary<string, Func<bool>>(comparer)
         {
-            {"HELP", FavorCommand},
+            //{"HELP", FavorCommand},
             {"TALK", TalkCommand},
             {"TIME", TimeCommand},
             {"USER", UserCommand},
@@ -160,6 +160,7 @@ public class GameCommandPrompt : MonoBehaviour
         
         if(m_commands.TryGetValue(input, out Func<bool> _value))
         {
+            m_failedAttempts = 0;
             _value.Invoke();
         }
         else
@@ -290,6 +291,30 @@ public class GameCommandPrompt : MonoBehaviour
         }
     }
     
+    void AskToChangeName(string answer)
+    {
+        if(answer == "YES" || answer == "Y")
+        {
+            Debug.Log("it works");
+            favorSystem.m_commandText.text = "Current Username:\n" + NarratorScript.UserName + "\n\nInput New Username";
+            changingName = true;
+            favorSystem.m_commandFeatures[favorSystem.getEnumConsoleNum()].text = favorSystem.m_commandText.text;
+        }
+        else if(answer == "NO" || answer == "N")
+        {
+            favorSystem.m_commandText.text = "You did not change your username\n" + NarratorScript.UserName;
+
+            m_inputField.enabled = false;
+            changingName = false;
+            StartCoroutine(ReturnToMenuCommandProcess());
+        }
+        else
+        {
+            InvalidInput();
+        }
+
+    }
+    
 
     public void CheckMenuForInput(string textInput)
     {
@@ -323,7 +348,7 @@ public class GameCommandPrompt : MonoBehaviour
                     {
                         selectInputField();
                         //favorSystem.DisplayingMainMenu();
-                        //AskToChangeName(textInput.ToUpper());
+                        AskToChangeName(textInput.ToUpper());
                     }
                     m_inputField.text = "";
                     Debug.Log("CANAPLE");
@@ -352,6 +377,7 @@ public class GameCommandPrompt : MonoBehaviour
     private IEnumerator ReturnToMenuCommandProcess()
     {
         m_inputField.enabled = false;
+        m_failedAttempts = 0;
         yield return new WaitForSecondsRealtime(3);
         m_inputField.enabled = true;
         favorSystem.DisplayingMainMenu();
