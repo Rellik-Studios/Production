@@ -52,7 +52,7 @@ namespace rachael.FavorSystem
         // Start is called before the first frame update
         void Start()
         {
-            m_gameCommandPrompt = GetComponent<GameCommandPrompt>();
+            m_gameCommandPrompt = m_commandPrompt.GetComponent<GameCommandPrompt>();
             m_playerInteract = FindObjectOfType<PlayerInteract>();
             
             if (!m_isOpen)
