@@ -95,16 +95,17 @@ namespace Himanshu
                 else
                     m_hidingIndex = m_hidingSpots[value < 0 ? m_hidingSpots.Count - 1 : value > m_hidingSpots.Count - 1 ? 0 : value];
 
-                m_hidingIndex.TurnOn();
+                
 
                 if (m_player != null)
                 {
                     Debug.Log("Hide");
                     //m_player.SetPositionAndRotation(m_hidingSpots[m_hidingIndex]);
                     m_player.transform.position = new Vector3((m_hidingIndex.transform.position + m_hidingIndex.actualForward * 3f).x, m_player.transform.position.y, (m_hidingIndex.transform.position + m_hidingIndex.actualForward * 3f).z);
-                    m_player.transform.rotation = m_hidingIndex.transform.rotation;
+                    //m_player.transform.rotation = m_hidingIndex.transform.rotation;
                     m_player.GetComponent<CharacterController>().enabled = false;
                 }
+                m_hidingIndex.TurnOn();
             }
         }
 
@@ -148,6 +149,9 @@ namespace Himanshu
 
         public void Disable()
         {
+            
+            m_player.m_followCam.ResetMouse();
+            m_player.m_followCam.m_mouseInput = true;
             m_player = null;
             m_hidingIndex.TurnOff();
         }
@@ -227,7 +231,8 @@ namespace Himanshu
         {
             m_player = _player;
             m_player.Hide(this);
-            m_hidingIndex = _hidingLocation;
+            m_player.m_followCam.m_mouseInput = false;
+                m_hidingIndex = _hidingLocation;
             var index = 0;
             foreach (var hidingSpot in m_hidingSpots)
             {
