@@ -18,7 +18,11 @@ namespace Himanshu
         [SerializeField] private float m_jumpHeight;
         [SerializeField] private float m_groundDistance = 0.1f;
         private bool m_isGrounded;
-        public bool crouching => m_playerInput.m_crouching;
+        public bool crouching
+        {
+            get => m_playerInput.m_crouching;
+            set => m_playerInput.m_crouching = value;
+        }
 
         [SerializeField] private AudioClip m_breathingClip;
         [SerializeField] private float m_maxSprintTimer;
@@ -90,8 +94,9 @@ namespace Himanshu
             var movement = m_playerInput.movement.x * transform.right + m_playerInput.movement.z * transform.forward;
             m_characterController.Move(movement * (m_speed * (crouching ? 0.5f : 1f) * ((m_playerInput.sprint && sprintTimer > 0f && !crouching) ? 2.5f : 1.0f)  * Time.deltaTime));
 
-            if (m_playerInput.sprint && sprintTimer > 0f && m_playerInput.movement.magnitude > 0f && !crouching)
-            { 
+            if (m_playerInput.sprint && sprintTimer > 0f && m_playerInput.movement.magnitude > 0f)
+            {
+                crouching = false;
                 sprintTimer -= Time.deltaTime;
             }
             else if (sprintTimer < m_maxSprintTimer)

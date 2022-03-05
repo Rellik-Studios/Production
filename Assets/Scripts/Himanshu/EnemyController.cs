@@ -119,6 +119,7 @@ namespace Himanshu
         public GameObject m_QTE;
         [SerializeField] private GameObject m_QTEHide;
         private bool m_coroutinePlaying;
+        private bool m_canBeRed = false;
 
 
         private void Awake()
@@ -182,33 +183,9 @@ namespace Himanshu
         {
             if(m_frozen || m_coroutinePlaying) return;
             var player = FindObjectOfType<PlayerInteract>();
-
-            if (player.m_hiding && Time.timeScale > 0)
-            {
-                //Time.timeScale = 0f;
-                if (player.m_canQTEHide)
-                {
-                    //player.m_hasAmulet = false;
-                    StartCoroutine(eQTEHide());
-                    m_QTEHide.transform.parent.gameObject.SetActive(true);                    
-                    // player.Unhide();
-                }
-                else
-                {
-                   player.Death();
-                }
-            }
-            else if (Time.timeScale > 0)
-            {
-                if (player.m_hasAmulet)
-                {
-                    StartCoroutine(eQTE());
-                    m_QTE.SetActive(true);
-                    player.enabled = false;
-                }
-                else
-                    player.Death();
-            }
+            
+            player.Death();
+            
             
             m_spotted = true;
         }
@@ -279,7 +256,7 @@ namespace Himanshu
 
         public void ChaseUpdate()
         {
-            if ((m_player.transform.position - transform.position).magnitude < gameManager.Instance.m_triggerDistance)
+            if ((m_player.transform.position - transform.position).magnitude < gameManager.Instance.m_triggerDistance && m_canBeRed)
             {
                 m_dangerLevel = eDanger.red;
             }
@@ -426,6 +403,8 @@ namespace Himanshu
         public void ChaseEnter()
         {
 
+            m_canBeRed = false;
+            this.Invoke(()=>m_canBeRed = true, 3f);
             //StartCoroutine(eChaseEnter());
             m_dangerLevel = eDanger.yellow;
             m_spotted = true;
@@ -438,11 +417,7 @@ namespace Himanshu
             m_agent.speed = 0f;
             m_agent.angularSpeed = 0f;
             
-            this.Invoke(() =>
-            {
-                m_enemyHead.m_look = false;
-            },
-                3f);
+            this.Invoke(() => m_enemyHead.m_look = false, 3f);
 
             
             this.Invoke(()=>
