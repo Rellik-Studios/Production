@@ -1,4 +1,5 @@
 using System;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace rachael
@@ -9,7 +10,7 @@ namespace rachael
 
         public static string Time;
 
-        public static string UserName;
+        [CanBeNull] public static string UserName;
 
         public static string DeviceName;
 
@@ -44,7 +45,7 @@ namespace rachael
         }
         void Start()
         {
-            UserName = Environment.UserName;
+            UserName ??= Environment.UserName;
             DeviceName = SystemInfo.deviceName;
             WeekDay = System.DateTime.Now.DayOfWeek.ToString();
         

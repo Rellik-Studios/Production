@@ -1,4 +1,5 @@
 using System.Collections;
+using Himanshu;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -20,7 +21,21 @@ namespace rachael.FavorSystem
     public class FavorSystem : MonoBehaviour
     {
         private bool m_isOpen = false;
-        [FormerlySerializedAs("isDanger")] public bool m_isDanger = false;
+
+        private PlayerInteract m_playerInteract;
+
+        //public bool isDanger => m_playerInteract.playerDanger == EnemyController.eDanger.red || m_playerInteract.playerDanger == EnemyController.eDanger.yellow;
+        public bool isDanger
+        {
+            get => m_isDanger;
+            set
+            {
+                m_isDanger = value;
+                m_gameCommandPrompt.HelpActive(value);
+            }
+            
+        }
+
         [FormerlySerializedAs("commandPrompt")] public GameObject m_commandPrompt;
 
         [FormerlySerializedAs("commandFeatures")] public Text[] m_commandFeatures;
@@ -28,19 +43,23 @@ namespace rachael.FavorSystem
 
         [SerializeField] private TMP_InputField m_inputField;
 
+        private GameCommandPrompt m_gameCommandPrompt;
         
 
         public ConsoleDisplay consoleDisplay;
+        private bool m_isDanger;
 
         // Start is called before the first frame update
         void Start()
         {
+            m_gameCommandPrompt = m_commandPrompt.GetComponent<GameCommandPrompt>();
+            m_playerInteract = FindObjectOfType<PlayerInteract>();
+            
             if (!m_isOpen)
             {
                 m_commandPrompt.SetActive(false);
                 //Debug.Log(m_isDanger);
             }
-
         }
 
         // Update is called once per frame
@@ -54,7 +73,7 @@ namespace rachael.FavorSystem
 
             if (Input.GetKeyDown(KeyCode.Alpha5) && !m_isOpen)
             {
-                m_isDanger = !m_isDanger;
+                isDanger = !isDanger;
             }
         }
 
@@ -106,7 +125,7 @@ namespace rachael.FavorSystem
         public void DisplayingMainMenu()
         {
             //Displaying different commands depending on the user
-            if (m_isDanger)
+            if (isDanger)
             {
                 //Opening special commands
                 m_commandText.text = m_commandFeatures[1].text;

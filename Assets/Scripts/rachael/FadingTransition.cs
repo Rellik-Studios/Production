@@ -74,7 +74,8 @@ namespace rachael
                 
                 FadeOutObject();
                 m_wall.SetActive(true);
-                m_wall.tag = "EnemyBlocker";
+                if(GetComponent<SafeRoom>() != null)
+                    m_wall.tag = "EnemyBlocker";
             }
         }
     }
