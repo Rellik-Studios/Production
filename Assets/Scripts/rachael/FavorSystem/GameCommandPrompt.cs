@@ -6,6 +6,7 @@ using rachael;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class GameCommandPrompt : MonoBehaviour
 {
@@ -20,6 +21,10 @@ public class GameCommandPrompt : MonoBehaviour
     int counter = 0;
 
     bool changingName = false;
+
+    bool enableTyping = true;
+
+    string favorName;
 
 
     private Dictionary<string, Func<bool>> m_commands;
@@ -37,6 +42,8 @@ public class GameCommandPrompt : MonoBehaviour
             {"QUIT", QuitCommand}
         };
 
+        
+
 
 
         //m_defaultPosition = m_caretImage.transform.position.x;
@@ -53,6 +60,8 @@ public class GameCommandPrompt : MonoBehaviour
         m_failedAttempts = 0;
         counter = 0;
         changingName = false;
+        m_inputField.enabled = true;
+        enableTyping = true;
     }
     private void OnDisable()
     {
@@ -65,7 +74,7 @@ public class GameCommandPrompt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //Debug.Log(Random.Range(1, 3));
     }
 
 
@@ -112,7 +121,16 @@ public class GameCommandPrompt : MonoBehaviour
             Debug.Log("Quit");
         }
     }
-
+    public void DisableTypingForPlayer()
+    {
+        if(!enableTyping && Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Return))
+        {
+            m_inputField.text = "";
+            enableTyping = true;
+            selectInputField();
+            favorSystem.DisplayingMainMenu();
+        }
+    }
 
     void  CheckInput(string input)
     { 
@@ -213,6 +231,7 @@ public class GameCommandPrompt : MonoBehaviour
     {
         favorSystem.m_commandText.text = "Hello world\n\nPress any key to continue";
         favorSystem.consoleDisplay = ConsoleDisplay.talkMenu;
+        enableTyping = false;
         //favorSystem.DisplayScreen();
         Debug.Log("Talk!");
         return true;
@@ -222,6 +241,7 @@ public class GameCommandPrompt : MonoBehaviour
     {
         favorSystem.m_commandText.text = "the current time is " + NarratorScript.Time +  "\n\nPress any key to continue";
         favorSystem.consoleDisplay = ConsoleDisplay.timeMenu;
+        enableTyping = false;
         //favorSystem.DisplayScreen();
         Debug.Log("Time!");
         return true;
@@ -290,7 +310,51 @@ public class GameCommandPrompt : MonoBehaviour
 
         }
     }
-    
+
+    bool DoesTimeGrantFavor()
+    {
+        int x = Random.Range(1, 3);
+
+        return x == 1 ? true : false;
+    }
+
+    string GrantTypeofFavor()
+    {
+        int x = Random.Range(1, 3);
+
+        return x == 1 ? "Rewind" : "Stop";
+    }
+
+    void FavorDecision()
+    {
+        if (DoesTimeGrantFavor())
+        {
+            favorName = GrantTypeofFavor();
+            favorSystem.m_commandText.text += "Favor Accepted.";
+            favorSystem.m_commandText.text += "\nGrant " + NarratorScript.UserName + " the ability of " + favorName;
+            favorSystem.m_commandText.text += "\n\nCommence shut down process.";
+
+        }
+        else
+        {
+            favorSystem.m_commandText.text += "Favor Denied.\n\nCommence shut down process";
+        }
+    }
+
+    /// <summary>
+    /// Grand Rewind favor
+    /// NOTE: needs the rewind reference aka teleport and restarting from the last checkpoint
+    /// </summary>
+    void GrantRewind()
+    {
+        Debug.Log("Grant Rewind Time");
+    }
+
+    void GrantStop()
+    {
+        Debug.Log("Grant Stop Time");
+    }
+
     void AskToChangeName(string answer)
     {
         if(answer == "YES" || answer == "Y")
@@ -356,6 +420,7 @@ public class GameCommandPrompt : MonoBehaviour
                 break;
             case ConsoleDisplay.talkMenu:
                 {
+                    enableTyping = true;
                     selectInputField();
                     favorSystem.DisplayingMainMenu();
                     Debug.Log("CANAPLE");
@@ -363,6 +428,7 @@ public class GameCommandPrompt : MonoBehaviour
                 break;
             case ConsoleDisplay.timeMenu:
                 {
+                    enableTyping = true;
                     selectInputField();
                     favorSystem.DisplayingMainMenu();
                     Debug.Log("CANAPLE");
@@ -406,18 +472,34 @@ public class GameCommandPrompt : MonoBehaviour
             counter++;
             yield return new WaitForSecondsRealtime(0.1f);
         }
-        favorSystem.m_commandText.resizeTextForBestFit = true;
-        favorSystem.m_commandText.text = "Process done goodbye";
+        
+        favorSystem.m_commandText.text = "Process done!";
+        
         counter = 0;
+        FavorDecision();
         yield return new WaitForSecondsRealtime(3);
-        m_inputField.enabled = true;
 
+        if (favorName != null)
+        {
+            if(favorName == "Rewind")
+            {
+                GrantRewind();
+            }
+            else
+            {
+                GrantStop();
+            }
+        }
+
+        m_inputField.enabled = true;
+        favorSystem.m_commandText.resizeTextForBestFit = true;
         favorSystem.isDanger = false;
         favorSystem.CloseCommandPrompt();
 
 
         yield return null;
     }
+
 
     public void HelpActive(bool _value)
     {
