@@ -38,11 +38,19 @@ public class HidingLocation : MonoBehaviour, IInteract
 
 
     public void TurnOn()
-    {
+    { 
+        var dir = FindObjectOfType<PlayerFollow>().transform.position - transform.position;
+        dir.y = 0; // keep the direction strictly horizontal
+        var rot = Quaternion.LookRotation(dir);
+
+
         if(GetComponent<CinemachineVirtualCamera>() != null)
             GetComponent<CinemachineVirtualCamera>().enabled = true;
         else if (transform.childCount > 0 && transform.GetChild(0).GetComponent<CinemachineVirtualCamera>() != null)
             transform.GetChild(0).GetComponent<CinemachineVirtualCamera>().enabled = true;
+        
+        this.Invoke(()=> FindObjectOfType<PlayerFollow>().transform.rotation = transform.rotation, 2f);
+
     }
 
     public void TurnOff()
