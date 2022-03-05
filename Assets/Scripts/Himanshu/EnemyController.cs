@@ -279,7 +279,7 @@ namespace Himanshu
 
         public void ChaseUpdate()
         {
-            if ((m_player.transform.position - transform.position).magnitude < 7f)
+            if ((m_player.transform.position - transform.position).magnitude < gameManager.Instance.m_triggerDistance)
             {
                 m_dangerLevel = eDanger.red;
             }

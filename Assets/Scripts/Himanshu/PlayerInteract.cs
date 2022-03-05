@@ -208,7 +208,6 @@ namespace Himanshu
         public List<CollectableObject> m_testInventory;
         private void OnEnable()
         {
-            m_inventory = new Dictionary<CollectableObject, Wrapper<int>>();
             m_enemies = GameObject.FindObjectsOfType<EnemyController>(true).ToList();
             m_inventory ??= new Dictionary<CollectableObject, Wrapper<int>>();
             Debug.Log(m_enemies.Count);
@@ -481,7 +480,9 @@ namespace Himanshu
         {
             m_inventory = new Dictionary<CollectableObject, Wrapper<int>>();
             var collectables = GameObject.FindObjectsOfType<Collectable>();
+            
             //collectables = collectables.Where(t => t.m_collectableObject.m_objectName.Contains("Clock_")).ToArray();
+            
             foreach (var piece in _inventory)
             {
                     var objToAdd = collectables.FirstOrDefault(t => t.m_collectableObject.m_objectName.Equals(piece.m_objectName));

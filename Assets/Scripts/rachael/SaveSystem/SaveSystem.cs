@@ -17,6 +17,7 @@ namespace rachael.SaveSystem
                 Directory.CreateDirectory(Application.persistentDataPath + "/player/");
             }
             
+            
             BinaryFormatter formatter = new BinaryFormatter();
             string path = "";
             if (!_isSafeRoom)
