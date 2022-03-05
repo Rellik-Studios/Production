@@ -21,6 +21,8 @@ public class GameCommandPrompt : MonoBehaviour
 
     bool changingName = false;
 
+    bool enableTyping = true;
+
 
     private Dictionary<string, Func<bool>> m_commands;
 
@@ -53,6 +55,8 @@ public class GameCommandPrompt : MonoBehaviour
         m_failedAttempts = 0;
         counter = 0;
         changingName = false;
+        m_inputField.enabled = true;
+        enableTyping = true;
     }
     private void OnDisable()
     {
@@ -112,7 +116,16 @@ public class GameCommandPrompt : MonoBehaviour
             Debug.Log("Quit");
         }
     }
-
+    public void DisableTypingForPlayer()
+    {
+        if(!enableTyping && Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Return))
+        {
+            m_inputField.text = "";
+            enableTyping = true;
+            selectInputField();
+            favorSystem.DisplayingMainMenu();
+        }
+    }
 
     void  CheckInput(string input)
     { 
@@ -213,6 +226,7 @@ public class GameCommandPrompt : MonoBehaviour
     {
         favorSystem.m_commandText.text = "Hello world\n\nPress any key to continue";
         favorSystem.consoleDisplay = ConsoleDisplay.talkMenu;
+        enableTyping = false;
         //favorSystem.DisplayScreen();
         Debug.Log("Talk!");
         return true;
@@ -222,6 +236,7 @@ public class GameCommandPrompt : MonoBehaviour
     {
         favorSystem.m_commandText.text = "the current time is " + NarratorScript.Time +  "\n\nPress any key to continue";
         favorSystem.consoleDisplay = ConsoleDisplay.timeMenu;
+        enableTyping = false;
         //favorSystem.DisplayScreen();
         Debug.Log("Time!");
         return true;
@@ -356,6 +371,7 @@ public class GameCommandPrompt : MonoBehaviour
                 break;
             case ConsoleDisplay.talkMenu:
                 {
+                    enableTyping = true;
                     selectInputField();
                     favorSystem.DisplayingMainMenu();
                     Debug.Log("CANAPLE");
@@ -363,6 +379,7 @@ public class GameCommandPrompt : MonoBehaviour
                 break;
             case ConsoleDisplay.timeMenu:
                 {
+                    enableTyping = true;
                     selectInputField();
                     favorSystem.DisplayingMainMenu();
                     Debug.Log("CANAPLE");

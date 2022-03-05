@@ -189,6 +189,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &810670416 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3351539180786520090, guid: 6200c8c3c39659642a4ddc3cd44ff7d4, type: 3}
+  m_PrefabInstance: {fileID: 3351539180911043444}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e773c8d69279084ba86c9f1dc43ddd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &969664154
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,6 +476,75 @@ PrefabInstance:
     - target: {fileID: 3351539180389591967, guid: 6200c8c3c39659642a4ddc3cd44ff7d4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3351539180959282875, guid: 6200c8c3c39659642a4ddc3cd44ff7d4, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3351539180959282875, guid: 6200c8c3c39659642a4ddc3cd44ff7d4, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3351539180959282875, guid: 6200c8c3c39659642a4ddc3cd44ff7d4, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 810670416}
+    - target: {fileID: 3351539180959282875, guid: 6200c8c3c39659642a4ddc3cd44ff7d4, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3351539180959282875, guid: 6200c8c3c39659642a4ddc3cd44ff7d4, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisableTypingForPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 3351539180959282875, guid: 6200c8c3c39659642a4ddc3cd44ff7d4, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameCommandPrompt, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3351539180959282875, guid: 6200c8c3c39659642a4ddc3cd44ff7d4, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3351539181595093794, guid: 6200c8c3c39659642a4ddc3cd44ff7d4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3351539181895067815, guid: 6200c8c3c39659642a4ddc3cd44ff7d4, type: 3}
+      propertyPath: m_Text
+      value: 'What would you like?
+
+
+        > TALK
+
+
+        > TIME
+
+
+        >
+        USER
+
+
+        > QUIT'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3351539181991301907, guid: 6200c8c3c39659642a4ddc3cd44ff7d4, type: 3}
+      propertyPath: m_Text
+      value: 'What would you like?
+
+
+        > TALK
+
+
+        > TIME
+
+
+        >
+        USER
+
+
+        > HELP
+
+
+        > QUIT'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6200c8c3c39659642a4ddc3cd44ff7d4, type: 3}
