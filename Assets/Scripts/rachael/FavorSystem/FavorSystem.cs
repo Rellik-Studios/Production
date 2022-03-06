@@ -22,19 +22,21 @@ namespace rachael.FavorSystem
     {
         private bool m_isOpen = false;
 
+        public bool m_timeStop = false;
         private PlayerInteract m_playerInteract;
 
-        //public bool isDanger => m_playerInteract.playerDanger == EnemyController.eDanger.red || m_playerInteract.playerDanger == EnemyController.eDanger.yellow;
         public bool isDanger
         {
-            get => m_isDanger;
-            set
+            get
             {
-                m_isDanger = value;
-                m_gameCommandPrompt.HelpActive(value);
+                m_isDanger = m_playerInteract.playerDanger == EnemyController.eDanger.red ||
+                             m_playerInteract.playerDanger == EnemyController.eDanger.yellow;
+
+                m_gameCommandPrompt.HelpActive(m_isDanger);
+                return m_isDanger;
             }
-            
         }
+
 
         [FormerlySerializedAs("commandPrompt")] public GameObject m_commandPrompt;
 
@@ -71,10 +73,10 @@ namespace rachael.FavorSystem
                 CommandPromptWindow();
             }
 
-            if (Input.GetKeyDown(KeyCode.Alpha5) && !m_isOpen)
-            {
-                isDanger = !isDanger;
-            }
+            // if (Input.GetKeyDown(KeyCode.Alpha5) && !m_isOpen)
+            // {
+            //     isDanger = !isDanger;
+            // }
         }
 
         void CommandPromptWindow()
@@ -185,6 +187,27 @@ namespace rachael.FavorSystem
             return m_isDanger;
         }
 
+        public void ResetTime()
+        {
+            
+            IEnumerator Reset()
+            {
+
+                m_timeStop = true;
+                float counter = 0f;
+                while (counter < 5f)
+                {
+                    counter += Time.unscaledDeltaTime;
+                    yield return null;
+                }
+
+                Time.timeScale = 1f;
+                m_timeStop = false;
+
+            }
+
+            StartCoroutine(Reset());
+        }
     }
 
 }
