@@ -24,8 +24,17 @@ namespace Himanshu
         public bool jump => m_jump;
         private void Update()
         {
-            m_horizontal = Input.GetAxis("Horizontal");
-            m_vertical = Input.GetAxis("Vertical");
+            if (Time.timeScale > 0)
+            {
+                m_horizontal = Input.GetAxis("Horizontal");
+                m_vertical = Input.GetAxis("Vertical");
+            }
+            else
+            {
+                m_horizontal = Input.GetAxisRaw("Horizontal");
+                m_vertical = Input.GetAxisRaw("Vertical");
+            }
+
             m_jump = Input.GetButtonDown("Jump");
             m_interact = Input.GetButtonDown("Interact");
             m_interactHold = Input.GetButton("Interact");
