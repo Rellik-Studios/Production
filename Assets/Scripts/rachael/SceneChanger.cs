@@ -14,11 +14,7 @@ namespace rachael
         {
             if(m_continueBlock != null)
             {
-                if (!PlayerPrefs.HasKey("SaveFile"))
-                {
-                    m_continueBlock.SetActive(false);
-
-                }
+                ButtonPresent();
 
             }
         }
@@ -71,10 +67,15 @@ namespace rachael
         }
         public void DeleteFile()
         {
-            PlayerPrefs.DeleteAll();
-            SaveSystem.SaveSystem.DeleteNarrator();
-            SaveSystem.SaveSystem.DeletePlayer();
-            
+            if (Directory.Exists(Application.persistentDataPath + "/player/"))
+            {
+                PlayerPrefs.DeleteAll();
+                SaveSystem.SaveSystem.DeleteNarrator();
+                SaveSystem.SaveSystem.DeletePlayer();
+                ButtonPresent();
+            }
+
+
         }
         //public void Continue()
         //{
