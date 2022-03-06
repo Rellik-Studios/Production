@@ -55,14 +55,21 @@ namespace Himanshu
         }
         void Update()
         {
-            if(Time.timeScale == 0) return;
+            if(Time.timeScale == 0 && !m_playerMovement.canMoveUnscaled) return;
             transform.position = m_playerMovement.calculatedPosition;
 
             if (m_mouseInput)
             {
-
-                m_mouseX += Input.GetAxis("Mouse X");
-                m_mouseY -= Input.GetAxis("Mouse Y");
+                if (!m_playerMovement.canMoveUnscaled)
+                {
+                    m_mouseX += Input.GetAxis("Mouse X");
+                    m_mouseY -= Input.GetAxis("Mouse Y");
+                }
+                else
+                {
+                    m_mouseX += Input.GetAxisRaw("Mouse X");
+                    m_mouseY -= Input.GetAxisRaw("Mouse Y");
+                }
 
                 m_mouseY = m_yLimiter ? Mathf.Clamp(m_mouseY, m_yRange.x, m_yRange.y) : m_mouseY;
                 m_mouseX = m_xLimiter ? Mathf.Clamp(m_mouseX, m_xRange.x, m_xRange.y) : m_mouseX;
@@ -77,8 +84,15 @@ namespace Himanshu
 
         public void ResetMouse(float _mouseX = 0f, float _mouseY = 0f) 
         {
-            m_mouseX = transform.rotation.eulerAngles.y;
-            m_mouseY = transform.rotation.eulerAngles.x;
+            var rotation = transform.rotation;
+            m_mouseX = rotation.eulerAngles.y;
+            m_mouseY = rotation.eulerAngles.x;
+        }
+        
+        public void SetRotation(Quaternion _rotation)
+        {
+            ResetMouse();
+            transform.rotation = _rotation;
         }
 
         public void SetRotation(Transform _transform, Vector2 _xRange)
@@ -89,11 +103,7 @@ namespace Himanshu
             transform.rotation = _transform.rotation;
         }
         
-        public void SetRotation(Quaternion _rotation)
-        {
-            ResetMouse();
-            transform.rotation = _rotation;
-        }
+       
 
         public void ResetRotationLock()
         {

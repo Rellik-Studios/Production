@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using rachael.FavorSystem;
 using rachael;
+using Himanshu;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -28,11 +30,13 @@ public class GameCommandPrompt : MonoBehaviour
 
 
     private Dictionary<string, Func<bool>> m_commands;
+    private bool m_timeStop;
 
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         var comparer = StringComparer.OrdinalIgnoreCase;
+
         m_commands = new Dictionary<string, Func<bool>>(comparer)
         {
             //{"HELP", FavorCommand},
@@ -41,6 +45,11 @@ public class GameCommandPrompt : MonoBehaviour
             {"USER", UserCommand},
             {"QUIT", QuitCommand}
         };
+    }
+
+    void Start()
+    {
+        
 
         
 
@@ -66,7 +75,13 @@ public class GameCommandPrompt : MonoBehaviour
     private void OnDisable()
     {
         Debug.Log("closing");
-        Time.timeScale = 1f;
+        if (!timeStop)
+            Time.timeScale = 1f;
+        else
+        {
+            favorSystem.ResetTime();
+            //this.Invoke(()=>timeStop = false, 5, true);
+        }
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -315,6 +330,7 @@ public class GameCommandPrompt : MonoBehaviour
     {
         int x = Random.Range(1, 3);
 
+        //return true;
         return x == 1 ? true : false;
     }
 
@@ -322,6 +338,7 @@ public class GameCommandPrompt : MonoBehaviour
     {
         int x = Random.Range(1, 3);
 
+        //return "Stop";
         return x == 1 ? "Rewind" : "Stop";
     }
 
@@ -347,12 +364,26 @@ public class GameCommandPrompt : MonoBehaviour
     /// </summary>
     void GrantRewind()
     {
+        gameManager.Instance.m_isSafeRoom = true;
+        SceneManager.LoadScene("Path_face 3");
         Debug.Log("Grant Rewind Time");
     }
 
     void GrantStop()
     {
+        Time.timeScale = 0;
+        timeStop = true;
         Debug.Log("Grant Stop Time");
+    }
+
+    public bool timeStop
+    {
+        get => m_timeStop;
+        set
+        {
+            m_timeStop = value;
+            //Time.timeScale = value ? 0f : 1f;
+        }
     }
 
     void AskToChangeName(string answer)
@@ -493,7 +524,7 @@ public class GameCommandPrompt : MonoBehaviour
 
         m_inputField.enabled = true;
         favorSystem.m_commandText.resizeTextForBestFit = true;
-        favorSystem.isDanger = false;
+        //favorSystem.isDanger = false;
         favorSystem.CloseCommandPrompt();
 
 
