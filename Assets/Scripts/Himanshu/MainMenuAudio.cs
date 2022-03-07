@@ -10,6 +10,12 @@ namespace Himanshu
         [SerializeField] private Slider m_bgSlider;
         [SerializeField] private Slider m_sfxSlider;
 
+        private void Start()
+        {
+            SetBGVolume(0);
+            SetSFXVolume(0);
+        }
+
         public void SetBGVolume(float _value)
         {
             m_audioMixer.SetFloat("bgAudio", m_bgSlider.value);
