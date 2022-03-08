@@ -14,6 +14,7 @@ namespace Himanshu
         
     public class Narrator : MonoBehaviour
     {
+        private Dictionary<string, AudioClip> m_audioClips;
         public NarratorDialogue m_narratorDialogue;
         
         #region Text
@@ -193,9 +194,18 @@ namespace Himanshu
         }
 
         [SerializeField] private GameObject m_textBackdrop;
+        private AudioSource m_audioSource;
 
         private void Start()
         {
+            m_audioSource = GetComponent<AudioSource>();
+            m_audioClips = new Dictionary<string, AudioClip>();
+            var clips = Resources.LoadAll<AudioClip>("Dialogues/");
+            foreach (var clip in clips)
+            {
+                m_audioClips.Add(clip.name.Substring(0, 10), clip);
+                Debug.Log(clip.name);
+            }
             var tempNarr = SaveSystem.LoadNarrator();
 
             m_narratorDialogue = tempNarr ?? new NarratorDialogue();
@@ -281,6 +291,11 @@ namespace Himanshu
 
         IEnumerator SetText(string _text, TMP_Text _textBox, bool additive = false)
         {
+            
+            if (m_audioClips.TryGetValue(_text.Substring(0, 10), out AudioClip clip))
+            {
+                m_audioSource.PlayOneShot(clip);
+            }
             m_settingText = true;
             if(!additive) _textBox.text = "";
             bool commandStart = false;
@@ -315,7 +330,6 @@ namespace Himanshu
                 //conditionStart = true;
                 if (conditionStart)
                 {
-
                     if (conditionEnd)
                     {
                         if (letter == '|')

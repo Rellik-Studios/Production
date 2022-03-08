@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using rachael.FavorSystem;
 using rachael;
 using Himanshu;
@@ -331,14 +332,16 @@ public class GameCommandPrompt : MonoBehaviour
     {
         int x = Random.Range(1, 3);
 
-        return x == 1 ? true : false;
+        return true;
+        return x == 1;
     }
 
     string GrantTypeofFavor()
     {
-        int x = Random.Range(1, 4);
+        int x = Random.Range(1, 3);
         string[] ListOfAbilities = new string[] { "Teleport", "Rewind", "Stop" };
 
+        return "Rewind";
         return ListOfAbilities[x - 1];
     }
 
@@ -371,6 +374,11 @@ public class GameCommandPrompt : MonoBehaviour
 
     void GrantRewind()
     {
+        FindObjectsOfType<TimeBody>().All((t) =>
+        {
+            t.isRewinding = true;
+            return true;
+        });
         Debug.Log("Grant Rewind Time");
     }
 

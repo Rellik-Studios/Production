@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="de8b67ab-e0b5-4d99-a633-e1ffe02f1d8c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Production/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Production/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Rachael/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Rachael/MainMenu.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +26,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_SelectionCaret.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/127EB672-E4B8-4160-B30D-CD07825A809E/7a/32194daa/EventBus.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Himanshu/Objective.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Caret.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CFC1AD89-0650-411E-946C-FF2E6F276711/3d/a0cd6baa/SetupCoroutine.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CFC1AD89-0650-411E-946C-FF2E6F276711/a4/9ec41a7a/CursorLockMode.cs" root0="SKIP_HIGHLIGHTING" />
@@ -48,21 +48,23 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/rachael/SaveSystem/PlayerSave.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/rachael/NarratorScript.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/rachael/FadingTransition.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/Narrator.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/Tutorial.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/PlayerInteract.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/HidingSpot.cs" />
       <option value="$PROJECT_DIR$/Assets/HidingLocation.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/EnemyController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/Utility.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/rachael/FavorSystem/FavorSystem.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/PlayerMovement.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/PlayerInput.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/PlayerFollow.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/rachael/FavorSystem/GameCommandPrompt.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/Collectable.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/MainMenuAudio.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/ClockFollow.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/Objective.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/rachael/FavorSystem/GameCommandPrompt.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/TimeBody.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/EnemyController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/Utility.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/Narrator.cs" />
     </changedPaths>
   </component>
   <component name="MarkdownSettingsMigration">
@@ -75,7 +77,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34991798" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34994584" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
@@ -105,10 +107,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="26704">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="26704" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -133,7 +135,7 @@
       <workItem from="1646367843726" duration="6385000" />
       <workItem from="1646432256034" duration="6101000" />
       <workItem from="1646451558330" duration="15280000" />
-      <workItem from="1646652882832" duration="3899000" />
+      <workItem from="1646652882832" duration="11233000" />
     </task>
     <servers />
   </component>
@@ -169,29 +171,42 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Himanshu/Narrator.cs</url>
-          <line>467</line>
+          <line>481</line>
           <properties documentPath="D:\Repos\Production\Assets\Scripts\Himanshu\Narrator.cs" initialLine="467" containingFunctionPresentation="method 'ConditionCheck'">
             <startOffsets>
-              <option value="13036" />
+              <option value="13677" />
             </startOffsets>
             <endOffsets>
-              <option value="13055" />
+              <option value="13696" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Himanshu/Narrator.cs</url>
-          <line>343</line>
+          <line>357</line>
           <properties documentPath="D:\Repos\Production\Assets\Scripts\Himanshu\Narrator.cs" initialLine="343" containingFunctionPresentation="method 'SetText'">
             <startOffsets>
-              <option value="9004" />
+              <option value="9645" />
             </startOffsets>
             <endOffsets>
-              <option value="9103" />
+              <option value="9744" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Himanshu/Narrator.cs</url>
+          <line>294</line>
+          <properties documentPath="D:\Repos\Production\Assets\Scripts\Himanshu\Narrator.cs" initialLine="293" containingFunctionPresentation="method 'SetText'">
+            <startOffsets>
+              <option value="7477" />
+            </startOffsets>
+            <endOffsets>
+              <option value="7550" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
