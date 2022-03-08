@@ -29,8 +29,11 @@ namespace rachael.FavorSystem
         {
             get
             {
-                m_isDanger = m_playerInteract.playerDanger == EnemyController.eDanger.red ||
-                             m_playerInteract.playerDanger == EnemyController.eDanger.yellow;
+                if (m_playerInteract)
+                {
+                    m_isDanger = m_playerInteract.playerDanger == EnemyController.eDanger.red ||
+                                 m_playerInteract.playerDanger == EnemyController.eDanger.yellow;
+                }
 
                 m_gameCommandPrompt.HelpActive(m_isDanger);
                 return m_isDanger;

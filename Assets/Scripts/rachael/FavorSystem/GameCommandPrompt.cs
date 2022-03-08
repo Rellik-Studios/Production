@@ -71,6 +71,7 @@ public class GameCommandPrompt : MonoBehaviour
         changingName = false;
         m_inputField.enabled = true;
         enableTyping = true;
+        favorName = "";
     }
     private void OnDisable()
     {
@@ -330,16 +331,15 @@ public class GameCommandPrompt : MonoBehaviour
     {
         int x = Random.Range(1, 3);
 
-        //return true;
         return x == 1 ? true : false;
     }
 
     string GrantTypeofFavor()
     {
-        int x = Random.Range(1, 3);
+        int x = Random.Range(1, 4);
+        string[] ListOfAbilities = new string[] { "Teleport", "Rewind", "Stop" };
 
-        //return "Stop";
-        return x == 1 ? "Rewind" : "Stop";
+        return ListOfAbilities[x - 1];
     }
 
     void FavorDecision()
@@ -362,10 +362,15 @@ public class GameCommandPrompt : MonoBehaviour
     /// Grand Rewind favor
     /// NOTE: needs the rewind reference aka teleport and restarting from the last checkpoint
     /// </summary>
-    void GrantRewind()
+    void GrantTeleport()
     {
         gameManager.Instance.m_isSafeRoom = true;
         SceneManager.LoadScene("Path_face 3");
+        Debug.Log("Grant Teleport Time");
+    }
+
+    void GrantRewind()
+    {
         Debug.Log("Grant Rewind Time");
     }
 
@@ -512,7 +517,11 @@ public class GameCommandPrompt : MonoBehaviour
 
         if (favorName != null)
         {
-            if(favorName == "Rewind")
+            if(favorName == "Teleport")
+            {
+                GrantTeleport();
+            }
+            else if(favorName == "Rewind")
             {
                 GrantRewind();
             }
