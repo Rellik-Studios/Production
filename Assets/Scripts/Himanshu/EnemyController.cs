@@ -120,6 +120,7 @@ namespace Himanshu
         [SerializeField] private GameObject m_QTEHide;
         private bool m_coroutinePlaying;
         private bool m_canBeRed = false;
+        private bool m_canChase = true;
 
 
         private void Awake()
@@ -329,7 +330,7 @@ namespace Himanshu
 
         public bool PatrolToChaseTransition()
         {
-           
+            if (!canChase) return false;
             
             for (int i = 0; i <= 2; i++)
             {
@@ -345,6 +346,18 @@ namespace Himanshu
                 return true;
             }
             return false;
+        }
+
+        public bool canChase
+        {
+            get => m_canChase;
+            set
+            {
+                m_canChase = value;
+                if(!value)
+                    this.Invoke(()=>canChase = true, 2f);
+            }
+            
         }
 
         public bool ChaseToPatrol()
