@@ -1,4 +1,5 @@
 using System.Collections;
+using Himanshu;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -9,13 +10,37 @@ namespace rachael.FavorSystem
     public enum ConsoleDisplay
     {
         defaultMenu = 0,
-        SpecialMenu = 1
+        SpecialMenu = 1,
+        talkMenu = 2,
+        timeMenu = 3,
+        userMenu = 4,
+        quitMenu = 5,
+        helpMenu = 6,
     }
 
     public class FavorSystem : MonoBehaviour
     {
         private bool m_isOpen = false;
-        [FormerlySerializedAs("isDanger")] public bool m_isDanger = false;
+
+        public bool m_timeStop = false;
+        private PlayerInteract m_playerInteract;
+
+        public bool isDanger
+        {
+            get
+            {
+                if (m_playerInteract)
+                {
+                    m_isDanger = m_playerInteract.playerDanger == EnemyController.eDanger.red ||
+                                 m_playerInteract.playerDanger == EnemyController.eDanger.yellow;
+                }
+
+                m_gameCommandPrompt.HelpActive(m_isDanger);
+                return m_isDanger;
+            }
+        }
+
+
         [FormerlySerializedAs("commandPrompt")] public GameObject m_commandPrompt;
 
         [FormerlySerializedAs("commandFeatures")] public Text[] m_commandFeatures;
@@ -23,19 +48,23 @@ namespace rachael.FavorSystem
 
         [SerializeField] private TMP_InputField m_inputField;
 
+        private GameCommandPrompt m_gameCommandPrompt;
         
 
         public ConsoleDisplay consoleDisplay;
+        private bool m_isDanger;
 
         // Start is called before the first frame update
         void Start()
         {
+            m_gameCommandPrompt = m_commandPrompt.GetComponent<GameCommandPrompt>();
+            m_playerInteract = FindObjectOfType<PlayerInteract>();
+            
             if (!m_isOpen)
             {
                 m_commandPrompt.SetActive(false);
                 //Debug.Log(m_isDanger);
             }
-
         }
 
         // Update is called once per frame
@@ -47,10 +76,10 @@ namespace rachael.FavorSystem
                 CommandPromptWindow();
             }
 
-            if (Input.GetKeyDown(KeyCode.Alpha5) && !m_isOpen)
-            {
-                m_isDanger = !m_isDanger;
-            }
+            // if (Input.GetKeyDown(KeyCode.Alpha5) && !m_isOpen)
+            // {
+            //     isDanger = !isDanger;
+            // }
         }
 
         void CommandPromptWindow()
@@ -101,7 +130,7 @@ namespace rachael.FavorSystem
         public void DisplayingMainMenu()
         {
             //Displaying different commands depending on the user
-            if (m_isDanger)
+            if (isDanger)
             {
                 //Opening special commands
                 m_commandText.text = m_commandFeatures[1].text;
@@ -115,6 +144,18 @@ namespace rachael.FavorSystem
             }
 
 
+        }
+
+        public void WhichMenuDisplay()
+        {
+            if (m_isDanger)
+            {
+                consoleDisplay = ConsoleDisplay.SpecialMenu;
+            }
+            else
+            {
+                consoleDisplay = ConsoleDisplay.defaultMenu;
+            }
         }
 
         public int getEnumConsoleNum()
@@ -139,6 +180,36 @@ namespace rachael.FavorSystem
         {
             m_commandText.text += "\n\n";
             m_commandText.text += m_commandText.text = m_commandFeatures[i].text;
+        }
+        
+
+
+        public bool CheckUserCanUseSpecialCommands()
+        {
+            //STILL NEED TO CHECK ALSO FOR WHETHER THE USER IS SPOTED
+            return m_isDanger;
+        }
+
+        public void ResetTime()
+        {
+            
+            IEnumerator Reset()
+            {
+
+                m_timeStop = true;
+                float counter = 0f;
+                while (counter < 5f)
+                {
+                    counter += Time.unscaledDeltaTime;
+                    yield return null;
+                }
+
+                Time.timeScale = 1f;
+                m_timeStop = false;
+
+            }
+
+            StartCoroutine(Reset());
         }
     }
 

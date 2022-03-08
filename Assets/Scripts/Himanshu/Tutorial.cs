@@ -18,6 +18,9 @@ namespace Himanshu
 
         [SerializeField] private GameObject[] m_walls;
 
+        public static bool m_tutorialSkipped = false;
+        private int m_deathCounter;
+
         private Color wallcolor
         {
             get => m_walls[0].GetComponent<Renderer>().material.color;
@@ -40,9 +43,18 @@ namespace Himanshu
 
         private GameObject m_enemy;
         [SerializeField] private List<Door> m_doors;
+        
+        [TextArea(4, 6)]
+        [SerializeField] private List<string> m_deathDialogues;
+
+        private Vector3 m_defaultPosition;
+
+        [TextArea(4, 6)] 
+        public List<string> m_noticedDialogues;
 
         private void Start()
         {
+            m_defaultPosition = m_player.transform.position;
             m_narrator = GetComponent<Narrator>();
             // RunTutorial();
             m_enemy = GameObject.Instantiate(m_enemyDefault, transform, true);
@@ -66,7 +78,10 @@ namespace Himanshu
             {
 
                 yield return new WaitUntil(() => m_doors.Any((t) => t.isDoorOpen));
-                
+
+                m_tutorialSkipped = true;
+                m_doors.First((t) => t.isDoorOpen).doorOpen = false;
+                m_player.transform.position = m_defaultPosition;
                 m_narrator.Play("Suit Yourself");
                 m_tutorialOver = true;
                 // m_narrator.enabled = true;
@@ -76,6 +91,34 @@ namespace Himanshu
 
                 
                 yield return null;
+            }
+
+            IEnumerator PleaseGetNoticed()
+            {
+                float timer = 20f;
+                while (m_player.playerDanger == EnemyController.eDanger.white)
+                {
+                    if (timer > 0)
+                    {
+                        timer -= Time.deltaTime;
+                        if(m_player.playerDanger != EnemyController.eDanger.white)
+                            yield break;
+                    }
+                    else
+                    {
+                        
+                        m_narrator.settingText = false;
+                        m_narrator.Play(m_noticedDialogues[0]);
+
+                        if(m_noticedDialogues.Count > 1)
+                            m_noticedDialogues.RemoveAt(0);
+                        timer = 20f;
+
+                        yield return new WaitWhile(() => m_narrator.settingText);
+                    }
+                    
+                    yield return null;
+                }
             }
 
             
@@ -114,7 +157,7 @@ namespace Himanshu
 
                     yield return PlayNextDialogue();
 
-
+                    yield return PlayNextDialogue();
 
 
                     yield return new WaitWhile(() => hidingSpot.GetComponent<HidingSpot>().isUsed);
@@ -148,13 +191,17 @@ namespace Himanshu
 
 
 
-                yield return PlayNextDialogue(2);
+                yield return PlayNextDialogue(3);
 
                 m_enemy.GetComponent<StateMachine>().enabled = true;
 
                 yield return PlayNextDialogue();
+                
 
                 yield return new WaitForSeconds(2f);
+
+
+                yield return PleaseGetNoticed();
 
                 yield return new WaitUntil(() =>
                     m_player.playerDanger == EnemyController.eDanger.red ||
@@ -170,19 +217,38 @@ namespace Himanshu
                 yield return null;
             
 
-            m_tutorialOver = true;
-            // m_narrator.enabled = true;
+            m_tutorialOver = true; 
+            StopAllCoroutines();
             wallcolor = Color.black;
         }
 
 
         public void Retry()
         {
+            StopAllCoroutines();
+            IEnumerator PlayNextDialogue()
+            {
+                m_narrator.settingText = false;
+                if(m_deathDialogues.Count > 0)
+                {
+                    m_narrator.Play(m_deathDialogues[0]);
+                    m_deathDialogues.RemoveAt(0);
+                    m_deathCounter++;
+                }
+                else
+                {
+                    m_narrator.Play($"No, I still believe in you. We’re only on attempt {++m_deathCounter}.");
+                }
+
+                yield return new WaitWhile(() => m_narrator.settingText);
+            }
+            
+            
             IEnumerator DeathDialogues()
             {
-                StopAllCoroutines();
+                
+                yield return PlayNextDialogue();
                 yield return StartCoroutine(eTutorial(true));
-                yield return null;
             }
             m_player.m_enemies.Remove(m_enemy.GetComponent<EnemyController>());
             Destroy(m_enemy);

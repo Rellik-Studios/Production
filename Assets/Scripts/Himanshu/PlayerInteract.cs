@@ -21,6 +21,7 @@ namespace Himanshu
         public SceneChanger m_sceneManager;
         public Animator SaveProcess;
 
+        public PlayerFollow m_followCam;
         private Narrator m_narrator;
         public List<EnemyController> m_enemies;
         public  IEnumerator FillBar(Image _fillImage, float _time, int _dir = 1, float _waitTime = 0f)
@@ -480,7 +481,9 @@ namespace Himanshu
         {
             m_inventory = new Dictionary<CollectableObject, Wrapper<int>>();
             var collectables = GameObject.FindObjectsOfType<Collectable>();
+            
             //collectables = collectables.Where(t => t.m_collectableObject.m_objectName.Contains("Clock_")).ToArray();
+            
             foreach (var piece in _inventory)
             {
                     var objToAdd = collectables.FirstOrDefault(t => t.m_collectableObject.m_objectName.Equals(piece.m_objectName));
