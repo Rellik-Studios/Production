@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,6 +33,18 @@ namespace Himanshu
             else
                 yield return new WaitForSeconds(_delay);
             _action();
+        }
+        
+        public static string RemoveSpecialCharacters(this string str)
+        {
+            string output = "";
+            
+            foreach (char c in str) {
+                if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || c == '.' || c == '_') {
+                    output += c;
+                }
+            }
+            return output.ToLower();
         }
         
         public static IEnumerator FillBar(this Image _fillImage, float _time, int _dir = 1, float _waitTime = 0f)

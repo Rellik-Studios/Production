@@ -10,7 +10,37 @@ namespace Himanshu
         private List<Vector3> m_positions;
 
         private List<Quaternion> m_rotations;
+
+        public bool isRewinding
+        {
+            get => m_isRewinding;
+            set
+            {
+                m_isRewinding = value;
+                if (value)
+                {
+                    if(TryGetComponent(out EnemyController enemyController))
+                        enemyController.m_frozen = true;
+                    this.Invoke(()=> isRewinding = false, 5f);
+                }
+                else
+                {
+                    if(TryGetComponent(out EnemyController enemyController))
+                    {
+                        enemyController.m_frozen = true;
+                        this.Invoke(()=>GetComponent<EnemyController>().m_frozen = false, 0.5f);
+                    }
+                    else
+                    {
+                        Debug.Log($"{gameObject.name} does not have a EnemyController");
+                    }
+                   
+                }
+            }
+
         
+        }
+
         // Start is called before the first frame update
         void Start()
         {
@@ -18,8 +48,10 @@ namespace Himanshu
             m_rotations = new List<Quaternion>();
         }
 
+        
         void Update()
         {
+            
             //if(Input.GetKeyDown(KeyCode.R))
             //    m_isRewinding = true;
             //if (Input.GetKeyUp(KeyCode.R))
@@ -28,7 +60,7 @@ namespace Himanshu
 
         private void FixedUpdate()
         {
-            if (m_isRewinding)
+            if (isRewinding)
                 Rewind();
             else
                 Record();
@@ -38,11 +70,11 @@ namespace Himanshu
         {
             transform.position = m_positions[0];
             transform.rotation = m_rotations[0];
-            m_positions.RemoveAt(0);
-            m_rotations.RemoveAt(0);
-
-            if (m_positions.Count == 0 || m_rotations.Count == 0)
-                m_isRewinding = false;
+            if (m_positions.Count > 1 && m_rotations.Count > 1)
+            {
+                m_positions.RemoveAt(0);
+                m_rotations.RemoveAt(0);
+            }
         }
 
         private void Record()
