@@ -10,7 +10,7 @@ namespace Himanshu
         private GameObject m_centre;
 
         private float hourRotation => m_hourHand.transform.rotation.eulerAngles.z;
-        private float minuteRotation => (hourRotation % 5) * 72f; 
+        private float minuteRotation => ((hourRotation/6f) % 5) * 72f; 
         
         void Start()
         {
@@ -33,6 +33,7 @@ namespace Himanshu
  
             m_hourHand.transform.rotation =  Quaternion.Euler(0f,0f,angle + 90f);
             m_minuteHand.transform.rotation = Quaternion.Euler(0f, 0f, minuteRotation);
+            Debug.Log(minuteRotation);
             
         }
  
