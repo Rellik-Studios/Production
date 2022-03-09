@@ -138,6 +138,7 @@ namespace Himanshu
                 if (!_retry)
                 {
 
+                    yield return new WaitForFixedUpdate();
                     yield return PlayNextDialogue();
                     var hidingSpot = m_hidingSpots.Random();
 

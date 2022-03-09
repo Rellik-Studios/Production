@@ -12,6 +12,7 @@ namespace rachael
         // Start is called before the first frame update
         void Start()
         {
+        
             if(m_continueBlock != null)
             {
                 ButtonPresent();
@@ -29,11 +30,11 @@ namespace rachael
         {
             if (Directory.Exists(Application.persistentDataPath + "/player/"))
             {
-                m_continueBlock.SetActive(false);
+                m_continueBlock.SetActive(true);
             }
             else
             {
-                m_continueBlock.SetActive(true);
+                m_continueBlock.SetActive(false);
             }
         }
         public void MainScene()
