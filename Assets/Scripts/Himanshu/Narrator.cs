@@ -292,7 +292,7 @@ namespace Himanshu
         IEnumerator SetText(string _text, TMP_Text _textBox, bool additive = false)
         {
             
-            if (m_audioClips.TryGetValue(_text.Substring(0, 10), out AudioClip clip))
+            if (_text.Length > 10 && m_audioClips.TryGetValue(_text.Substring(0, 10), out AudioClip clip))
             {
                 m_audioSource.PlayOneShot(clip);
             }
