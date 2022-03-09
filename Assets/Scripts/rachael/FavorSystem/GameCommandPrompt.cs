@@ -330,10 +330,16 @@ public class GameCommandPrompt : MonoBehaviour
 
     bool DoesTimeGrantFavor()
     {
-        int x = Random.Range(1, 3);
+        int x = Random.Range(0, 2);
+        favorSystem.m_defaultPoints = x / 2.0f;
+        favorSystem.m_result = favorSystem.m_defaultPoints + favorSystem.m_favorPoints;
+        Debug.Log(x);
+        Debug.Log(favorSystem.m_defaultPoints);
+        Debug.Log(favorSystem.m_favorPoints);
+        Debug.Log(favorSystem.m_result);
 
-        return true;
-        return x == 1;
+        //return true;
+        return favorSystem.m_result >= 0.5f;
     }
 
     string GrantTypeofFavor()
@@ -341,7 +347,7 @@ public class GameCommandPrompt : MonoBehaviour
         int x = Random.Range(1, 3);
         string[] ListOfAbilities = new string[] { "Teleport", "Rewind", "Stop" };
 
-        return "Rewind";
+        //return "Stop";
         return ListOfAbilities[x - 1];
     }
 
@@ -350,14 +356,15 @@ public class GameCommandPrompt : MonoBehaviour
         if (DoesTimeGrantFavor())
         {
             favorName = GrantTypeofFavor();
-            favorSystem.m_commandText.text += "Favor Accepted.";
+            favorSystem.m_commandText.text += " Favor Accepted.";
             favorSystem.m_commandText.text += "\nGrant " + NarratorScript.UserName + " the ability of " + favorName;
             favorSystem.m_commandText.text += "\n\nCommence shut down process.";
 
         }
         else
         {
-            favorSystem.m_commandText.text += "Favor Denied.\n\nCommence shut down process";
+            favorName = "";
+            favorSystem.m_commandText.text += " Favor Denied.\n\nCommence shut down process";
         }
     }
 
