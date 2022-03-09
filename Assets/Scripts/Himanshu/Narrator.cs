@@ -203,7 +203,7 @@ namespace Himanshu
             var clips = Resources.LoadAll<AudioClip>("Dialogues/");
             foreach (var clip in clips)
             {
-                m_audioClips.Add(clip.name.Substring(0, 10), clip);
+                m_audioClips.Add(clip.name.Substring(0, 15), clip);
                 Debug.Log(clip.name);
             }
             var tempNarr = SaveSystem.LoadNarrator();
@@ -291,8 +291,9 @@ namespace Himanshu
 
         IEnumerator SetText(string _text, TMP_Text _textBox, bool additive = false)
         {
-            
-            if (_text.Length > 10 && m_audioClips.TryGetValue(_text.Substring(0, 10), out AudioClip clip))
+            if(_text.Length > 15)
+                Debug.Log(_text.Substring(0, 15));
+            if (_text.Length > 15 && m_audioClips.TryGetValue(_text.Substring(0, 15), out AudioClip clip))
             {
                 m_audioSource.PlayOneShot(clip);
             }
