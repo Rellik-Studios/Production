@@ -39,6 +39,8 @@ namespace rachael
         }
         public void MainScene()
         {
+            Cursor.visible = true;
+
             Cursor.lockState = CursorLockMode.None;
             SceneManager.LoadScene(0);
         }
