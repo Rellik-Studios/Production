@@ -229,6 +229,8 @@ namespace Himanshu
 
         public void BeginHide(HidingLocation _hidingLocation, PlayerInteract _player)
         {
+            Time.timeScale = 0.1f;
+            this.Invoke(()=>Time.timeScale  = 1f, 2, true);
             m_player = _player;
             m_player.Hide(this);
             m_player.m_followCam.m_mouseInput = false;

@@ -207,6 +207,8 @@ namespace Himanshu
             }
         }
         public List<CollectableObject> m_testInventory;
+        public bool m_isDying = false;
+
         private void OnEnable()
         {
             m_enemies = GameObject.FindObjectsOfType<EnemyController>(true).ToList();
@@ -308,6 +310,7 @@ namespace Himanshu
 
         public void Unhide()
         {
+            if(!m_hiding) return;
             if (m_hidingSpot.m_cupboard)
             {
                 StartCoroutine(eUnHide());

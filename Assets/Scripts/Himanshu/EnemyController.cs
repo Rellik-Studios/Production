@@ -53,6 +53,12 @@ namespace Himanshu
             set => m_animator.SetFloat("speed", value);
         }
 
+        private bool aKill
+        {
+            get => m_animator.GetBool("kill");
+            set => m_animator.SetBool("kill", value);
+        }
+
         [SerializeField] private EnemyHeadTurn m_enemyHead;
         [SerializeField] private Transform m_headBone;
         [SerializeField] private Transform m_neck1Bone;
@@ -182,10 +188,40 @@ namespace Himanshu
         //Called through the Visual Script
         public void Attack()
         {
+            if (m_dangerLevel == eDanger.yellow)
+            {
+                if (m_canBeRed)
+                    m_dangerLevel = eDanger.red;
+                else
+                    return;
+            }
             if(m_frozen || m_coroutinePlaying) return;
             var player = FindObjectOfType<PlayerInteract>();
+
+            if (player.m_isDying) return;
             
-            player.Death();
+            Time.timeScale = 0.1f;
+
+            player.m_followCam.m_mouseInput = false;
+            // player.m_followCam.transform.LookAt(transform);
+            //player.m_followCam.transform.rotation = Quaternion.Euler(player.m_followCam.transform.rotation.eulerAngles.x, 0f, player.m_followCam.transform.rotation.eulerAngles.z);
+            
+            Vector3 dir = transform.position - m_player.transform.position;
+            dir.y = 0; // keep the direction strictly horizontal
+            Quaternion rot = Quaternion.LookRotation(dir);
+            player.m_followCam.transform.rotation = rot;
+            player.m_followCam.ResetMouse();
+
+            player.GetComponent<CharacterController>().enabled = false;
+            player.transform.position -= player.m_followCam.transform.forward * 4f;
+            aKill = true;
+
+            player.m_isDying = true;
+            
+            this.Invoke(()=>player.Death(), 5f, true);
+            this.Invoke(()=>Time.timeScale = 1f, 5f, true);
+            
+            player.GetComponent<CharacterController>().enabled = true;
             
             
             m_spotted = true;
