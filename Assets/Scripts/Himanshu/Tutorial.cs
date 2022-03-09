@@ -48,12 +48,14 @@ namespace Himanshu
         [SerializeField] private List<string> m_deathDialogues;
 
         private Vector3 m_defaultPosition;
+        private Quaternion m_defaultRotation;
 
         [TextArea(4, 6)] 
         public List<string> m_noticedDialogues;
 
         private void Start()
         {
+            m_defaultRotation = m_player.transform.rotation;
             m_defaultPosition = m_player.transform.position;
             m_narrator = GetComponent<Narrator>();
             // RunTutorial();
@@ -82,6 +84,8 @@ namespace Himanshu
                 m_tutorialSkipped = true;
                 m_doors.First((t) => t.isDoorOpen).doorOpen = false;
                 m_player.transform.position = m_defaultPosition;
+                m_player.m_followCam.transform.rotation = m_defaultRotation;
+                m_player.m_followCam.ResetMouse();
                 m_narrator.Play("Suit Yourself");
                 m_tutorialOver = true;
                 // m_narrator.enabled = true;

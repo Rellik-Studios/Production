@@ -246,6 +246,10 @@ namespace Himanshu
 
 #if UNITY_EDITOR
 
+            if(Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                m_sceneManager.MainScene();
+            }
 
 #else
             if (Input.GetKeyDown(KeyCode.Escape))
