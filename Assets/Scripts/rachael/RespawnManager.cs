@@ -50,7 +50,7 @@ namespace rachael
             {
                 m_cam.transform.rotation = m_rotation;
                 Debug.Log("Here");
-                m_cam.GetComponent<PlayerFollow>()?.ResetMouse(m_rotation.eulerAngles.y, m_rotation.eulerAngles.x);
+                m_cam.GetComponent<PlayerFollow>()?.ResetMouse();
 
             }
             GetComponent<CharacterController>().enabled = true;
