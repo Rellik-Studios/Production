@@ -30,11 +30,11 @@ namespace rachael
         {
             if (Directory.Exists(Application.persistentDataPath + "/player/"))
             {
-                m_continueBlock.SetActive(false);
+                m_continueBlock.SetActive(true);
             }
             else
             {
-                m_continueBlock.SetActive(true);
+                m_continueBlock.SetActive(false);
             }
         }
         public void MainScene()
@@ -64,19 +64,19 @@ namespace rachael
         public void Ending()
         {
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             SceneManager.LoadScene(2);
         }
         public void DeleteFile()
         {
+
             if (Directory.Exists(Application.persistentDataPath + "/player/"))
-            {
-                PlayerPrefs.DeleteAll();
-                SaveSystem.SaveSystem.DeleteNarrator();
                 SaveSystem.SaveSystem.DeletePlayer();
-                ButtonPresent();
-            }
+            if (Directory.Exists(Application.persistentDataPath + "/narrator/"))
+                SaveSystem.SaveSystem.DeleteNarrator();
 
-
+            ButtonPresent();
+            
         }
         //public void Continue()
         //{
@@ -92,6 +92,7 @@ namespace rachael
 
         public void LoseScreen()
         {
+            Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             SceneManager.LoadScene(3);
 

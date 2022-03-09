@@ -244,6 +244,11 @@ namespace Himanshu
             //    m_fillRoutine = StartCoroutine(m_timeRewind.FillBar(5, -1));
             //}
 
+            if(Input.GetKeyDown(KeyCode.Escape))
+            {
+                m_sceneManager.MainScene();
+            }
+
             playerDanger = m_enemies.Any((t) => t.m_dangerLevel == EnemyController.eDanger.red) 
                                                                                                                     ?  EnemyController.eDanger.red 
                          : m_enemies.Any((t) => t.m_dangerLevel == EnemyController.eDanger.yellow)
