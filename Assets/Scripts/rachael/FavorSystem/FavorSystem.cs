@@ -48,18 +48,27 @@ namespace rachael.FavorSystem
 
         [SerializeField] private TMP_InputField m_inputField;
 
+        [FormerlySerializedAs("defaultValue")] public float m_defaultPoints;
+        [FormerlySerializedAs("favorPoint")] public float m_favorPoints;
+        [FormerlySerializedAs("resultant")] public float m_result;
+
         private GameCommandPrompt m_gameCommandPrompt;
         
 
         public ConsoleDisplay consoleDisplay;
         private bool m_isDanger;
 
+        private float m_waitTimer;
+        public bool startTimer = false;
+
         // Start is called before the first frame update
         void Start()
         {
             m_gameCommandPrompt = m_commandPrompt.GetComponent<GameCommandPrompt>();
             m_playerInteract = FindObjectOfType<PlayerInteract>();
-            
+            m_waitTimer = 0.0f;
+
+
             if (!m_isOpen)
             {
                 m_commandPrompt.SetActive(false);
@@ -76,10 +85,49 @@ namespace rachael.FavorSystem
                 CommandPromptWindow();
             }
 
+            //THIS WAS USED FOR TESTING PURPOSES
+            if(Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                startTimer = true;
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                startTimer = false;
+            }
+            //--------------------------
+
+
+            //starting timer for how long will  the objective be completed
+            if (startTimer)
+                m_waitTimer += Time.deltaTime;
+            else if(!startTimer && m_waitTimer != 0.0f)
+            {
+                ConvertingToFavorPoints();
+                m_waitTimer = 0.0f;
+            }
+
             // if (Input.GetKeyDown(KeyCode.Alpha5) && !m_isOpen)
             // {
             //     isDanger = !isDanger;
             // }
+        }
+
+        void ConvertingToFavorPoints()
+        {
+            Debug.Log(m_waitTimer);
+            Debug.Log(Time.deltaTime);
+            if(m_waitTimer <= 10 )
+            {
+                m_favorPoints = 0.0f;
+            }
+            else if (m_waitTimer <= 15)
+            {
+                m_favorPoints = 0.25f;
+            }
+            else
+            {
+                m_favorPoints = 0.5f;
+            }
         }
 
         void CommandPromptWindow()
