@@ -14,7 +14,7 @@ namespace rachael
         {
             if (_other.CompareTag("Player"))
             {
-                if (!Tutorial.m_bookTutorialPlayed ?? false)
+                if (!gameManager.Instance.m_bookTutorialPlayed ?? false)
                 {
                     Tutorial.RunBookTutorial();
                 }

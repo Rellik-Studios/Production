@@ -19,6 +19,8 @@ namespace Himanshu
 
         public bool m_isHospital;
         public UnityEvent m_hospitalIdle;
+        [SerializeField] private GameObject m_objective;
+
         private void Start()
         {
             counter = 0;
@@ -36,9 +38,9 @@ namespace Himanshu
 
         private void OnTriggerEnter(Collider _collider)
         {
-            if (m_objTutorial && (!Tutorial.m_objTutorialPlayed ?? false))
+            if (m_objTutorial && (!gameManager.Instance.m_objTutorialPlayed ?? false))
             {
-                Tutorial.RunObjTutorial();
+                Tutorial.RunObjTutorial(m_objective);
             }
             //m_waitTimer = Random.Range(25f, 40f);
             if(GetComponent<AudioSource>() != null)
@@ -54,7 +56,7 @@ namespace Himanshu
         private void OnTriggerStay(Collider _collider)
         {
 
-            if (!Tutorial.m_objTutorialPlayed ?? false) return;
+            if (!gameManager.Instance.m_objTutorialPlayed ?? false) return;
             
             if (_collider.CompareTag("Player") && m_waitTimer < 0f)
             {

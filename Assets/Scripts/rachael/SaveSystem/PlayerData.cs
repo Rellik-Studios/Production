@@ -31,8 +31,8 @@ namespace rachael.SaveSystem
 
         public PlayerData(PlayerSave _player)
         {
-            m_bookTutorialPlayed = Tutorial.m_bookTutorialPlayed;
-            m_objTutorialPlayed = Tutorial.m_objTutorialPlayed;
+            m_bookTutorialPlayed = gameManager.Instance.m_bookTutorialPlayed;
+            m_objTutorialPlayed = gameManager.Instance.m_objTutorialPlayed;
             //Death = player.Death;
             m_userName = NarratorScript.UserName;
             m_depositedToTheClock = _player.m_depositedToTheClock.Select(t=>t.m_wrapper).ToList();
