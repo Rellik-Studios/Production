@@ -93,7 +93,7 @@ namespace Himanshu
                 m_player.m_enemies.Remove(m_enemy.GetComponent<EnemyController>());
                 Destroy(m_enemy);
                 
-                m_hidingSpot.SetActive(false);
+                m_hidingSpot?.SetActive(false);
                 
                 m_player.Unhide();
                 m_narrator.Play("Suit Yourself");
