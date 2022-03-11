@@ -1,4 +1,5 @@
 using rachael;
+using rachael.FavorSystem;
 using UnityEngine;
 
 namespace Himanshu
@@ -9,6 +10,7 @@ namespace Himanshu
         
         public void Execute(PlayerInteract _player)
         {
+            FavorSystem.startTimer = false;
             m_dissapearingDoor.SetActive(false);
             gameObject.SetActive(false);
         }

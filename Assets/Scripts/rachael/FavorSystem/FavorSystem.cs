@@ -59,7 +59,7 @@ namespace rachael.FavorSystem
         private bool m_isDanger;
 
         private float m_waitTimer;
-        public bool startTimer = false;
+        public static bool startTimer = false;
 
         // Start is called before the first frame update
         void Start()
