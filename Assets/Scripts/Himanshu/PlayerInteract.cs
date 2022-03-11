@@ -21,6 +21,8 @@ namespace Himanshu
         public SceneChanger m_sceneManager;
         public Animator SaveProcess;
 
+        public bool m_invincible = false;
+        public bool m_debugInvincible = false;
         public PlayerFollow m_followCam;
         private Narrator m_narrator;
         public List<EnemyController> m_enemies;

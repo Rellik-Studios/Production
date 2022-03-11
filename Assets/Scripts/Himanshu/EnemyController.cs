@@ -185,9 +185,23 @@ namespace Himanshu
             m_frozen = false;
         }
 
+
+        public bool AttackToChase()
+        {
+            var playerInteract = m_player.GetComponent<PlayerInteract>();
+            if (playerInteract.m_invincible || playerInteract.m_debugInvincible)
+                return true;
+
+            return false;
+        }
+
         //Called through the Visual Script
         public void Attack()
         {
+            var playerInteract = m_player.GetComponent<PlayerInteract>();
+            if (playerInteract.m_invincible || playerInteract.m_debugInvincible)
+                return;
+            
             if (m_dangerLevel == eDanger.yellow)
             {
                 if (m_canBeRed)
@@ -367,6 +381,11 @@ namespace Himanshu
         public bool PatrolToChaseTransition()
         {
             if (!canChase) return false;
+
+            var playerInteract = m_player.GetComponent<PlayerInteract>();
+            if (playerInteract.m_invincible || playerInteract.m_debugInvincible)
+                return false;    
+            
             
             for (int i = 0; i <= 2; i++)
             {
@@ -398,6 +417,10 @@ namespace Himanshu
 
         public bool ChaseToPatrol()
         {
+            
+            var playerInteract = m_player.GetComponent<PlayerInteract>();
+            if (playerInteract.m_invincible || playerInteract.m_debugInvincible)
+                return true;    
             Physics.Raycast(transform.position, Quaternion.AngleAxis(30f, transform.up) * transform.forward, out m_hits[0], 20f);
             Physics.Raycast(transform.position, transform.forward, out m_hits[1], 20f);
             Physics.Raycast(transform.position, Quaternion.AngleAxis(-30f, transform.up) * transform.forward, out m_hits[2], 20f);

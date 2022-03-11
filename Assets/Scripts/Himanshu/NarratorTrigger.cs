@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using rachael.FavorSystem;
 using UnityEngine;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
@@ -21,8 +22,12 @@ namespace Himanshu
         public UnityEvent m_hospitalIdle;
         [SerializeField] private GameObject m_objective;
 
+        private PlayerInteract m_player;
+
         private void Start()
         {
+
+            m_player = FindObjectOfType<PlayerInteract>();
             counter = 0;
             GetComponent<BoxCollider>().enabled = false;
         }
@@ -38,17 +43,25 @@ namespace Himanshu
 
         private void OnTriggerEnter(Collider _collider)
         {
-            if (m_objTutorial && (!gameManager.Instance.m_objTutorialPlayed ?? false))
+            if (m_objTutorial && (!gameManager.Instance.m_objTutorialPlayed ?? true))
             {
                 Tutorial.RunObjTutorial(m_objective);
             }
             //m_waitTimer = Random.Range(25f, 40f);
             if(GetComponent<AudioSource>() != null)
                 GetComponent<AudioSource>()?.Play();
+
+            m_player.m_invincible = false;
+
+            if (gameObject.name != "Hub") 
+            {
+                FavorSystem.startTimer = true;
+            }
         }
 
         private void OnTriggerExit(Collider other)
         {
+            m_player.m_invincible = true;
             if(GetComponent<AudioSource>() != null)
                 GetComponent<AudioSource>()?.Stop();
         }
@@ -56,7 +69,7 @@ namespace Himanshu
         private void OnTriggerStay(Collider _collider)
         {
 
-            if (!gameManager.Instance.m_objTutorialPlayed ?? false) return;
+            if (!gameManager.Instance.m_objTutorialPlayed ?? true && m_objTutorial) return;
             
             if (_collider.CompareTag("Player") && m_waitTimer < 0f)
             {
