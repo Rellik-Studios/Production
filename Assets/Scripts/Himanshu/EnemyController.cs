@@ -226,16 +226,14 @@ namespace Himanshu
             player.m_followCam.transform.rotation = rot;
             player.m_followCam.ResetMouse();
 
-            player.GetComponent<CharacterController>().enabled = false;
-            player.transform.position -= player.m_followCam.transform.forward * 4f;
+         
             aKill = true;
 
             player.m_isDying = true;
             
             this.Invoke(()=>player.Death(), 5f, true);
             this.Invoke(()=>Time.timeScale = 1f, 5f, true);
-            
-            player.GetComponent<CharacterController>().enabled = true;
+
             
             
             m_spotted = true;
@@ -395,7 +393,7 @@ namespace Himanshu
                 }
             }
 
-            var colliders = Physics.OverlapSphere(transform.position, m_hearingRadius * (m_player.crouching ? 0.5f : 1f));
+            var colliders = Physics.OverlapSphere(transform.position, m_hearingRadius * (m_player.crouching ? 1f : 3f));
             if (colliders.Any(t => t.CompareTag("Player") && !t.transform.parent.GetComponent<PlayerInteract>().m_hiding))
             {
                 return true;
@@ -580,4 +578,5 @@ namespace Himanshu
         }
         
     }
+
 }
