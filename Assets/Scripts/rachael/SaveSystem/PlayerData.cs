@@ -13,6 +13,10 @@ namespace rachael.SaveSystem
         public List<CollectableObjectWrapper> m_depositedToTheClock;
         public List<CollectableObjectWrapper> m_inventory;
 
+        public bool? m_bookTutorialPlayed = null;
+        public bool? m_objTutorialPlayed = null;
+        
+        
         [CanBeNull] public string m_userName;
         
         [FormerlySerializedAs("Index")] public int m_index; //the number which index for each time era (for change furniture)
@@ -27,6 +31,8 @@ namespace rachael.SaveSystem
 
         public PlayerData(PlayerSave _player)
         {
+            m_bookTutorialPlayed = gameManager.Instance.m_bookTutorialPlayed;
+            m_objTutorialPlayed = gameManager.Instance.m_objTutorialPlayed;
             //Death = player.Death;
             m_userName = NarratorScript.UserName;
             m_depositedToTheClock = _player.m_depositedToTheClock.Select(t=>t.m_wrapper).ToList();

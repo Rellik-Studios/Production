@@ -14,7 +14,13 @@ namespace Himanshu
 
         public bool isTutorialRunning = false;
         public float m_triggerDistance = 10f;
+        
+        public bool? m_objTutorialPlayed = null;
+        public bool? m_bookTutorialPlayed = null;
 
+        private int m_objTut;
+        private int m_bookTut;
+        
         private void Awake()
         {
             if (m_instance == null)
@@ -26,6 +32,14 @@ namespace Himanshu
             {
                 Destroy(this.gameObject);
             }
+        }
+
+        private void Update()
+        {
+
+            m_objTut = m_objTutorialPlayed == true ? 1 : m_objTutorialPlayed == false ? 0 : 2;
+            m_bookTut = m_bookTutorialPlayed == true ? 1 : m_objTutorialPlayed == false ? 0 : 2;
+
         }
 
     }

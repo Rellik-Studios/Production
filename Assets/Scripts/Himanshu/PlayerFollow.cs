@@ -18,7 +18,7 @@ namespace Himanshu
         public bool m_mouseInput = true;
 
         private Vector2 m_xRange;
-        private Vector2 m_yRange = new Vector2(-30f, 30f);
+        private Vector2 m_yRange = new Vector2(-45f, 45f);
         void Start()
         {
             m_playerMovement = m_playerTransform.GetComponent<PlayerMovement>();
