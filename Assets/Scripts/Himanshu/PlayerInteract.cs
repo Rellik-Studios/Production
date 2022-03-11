@@ -266,9 +266,9 @@ namespace Himanshu
 
 
 
-            playerDanger = m_enemies.Any((t) => t.m_dangerLevel == EnemyController.eDanger.red) 
+            playerDanger = m_enemies.Any((t) => t.dangerLevel == EnemyController.eDanger.red) 
                                                                                                                     ?  EnemyController.eDanger.red 
-                         : m_enemies.Any((t) => t.m_dangerLevel == EnemyController.eDanger.yellow)
+                         : m_enemies.Any((t) => t.dangerLevel == EnemyController.eDanger.yellow)
                                                                                                                     ? EnemyController.eDanger.yellow
                                                                                                                     : EnemyController.eDanger.white; 
             

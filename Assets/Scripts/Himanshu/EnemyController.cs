@@ -30,9 +30,18 @@ namespace Himanshu
         }
         [SerializeField] private GameObject m_distortion;
 
+        [SerializeField] private MaskChange m_mask;
+        
         PlayerMovement m_player;
 
-        public eDanger m_dangerLevel = eDanger.white;
+        public eDanger dangerLevel {
+            get => m_dangerLevel;
+            set 
+            {
+                m_dangerLevel = value;
+                m_mask.dangerLevel = value;
+            }
+        }
         public Distraction currentDistraction { get; set; }
         public bool qteHideResult => m_QTEHide.GetComponent<QteRing>().m_result;
         
@@ -127,6 +136,7 @@ namespace Himanshu
         private bool m_coroutinePlaying;
         private bool m_canBeRed = false;
         private bool m_canChase = true;
+        private eDanger m_dangerLevel = eDanger.white;
 
 
         private void Awake()
@@ -202,10 +212,10 @@ namespace Himanshu
             if (playerInteract.m_invincible || playerInteract.m_debugInvincible)
                 return;
             
-            if (m_dangerLevel == eDanger.yellow)
+            if (dangerLevel == eDanger.yellow)
             {
                 if (m_canBeRed)
-                    m_dangerLevel = eDanger.red;
+                    dangerLevel = eDanger.red;
                 else
                     return;
             }
@@ -307,11 +317,11 @@ namespace Himanshu
         {
             if ((m_player.transform.position - transform.position).magnitude < gameManager.Instance.m_triggerDistance && m_canBeRed)
             {
-                m_dangerLevel = eDanger.red;
+                dangerLevel = eDanger.red;
             }
             else
             {
-                m_dangerLevel = eDanger.yellow;
+                dangerLevel = eDanger.yellow;
             }
             // Physics.Raycast(transform.position, Quaternion.AngleAxis(30f, transform.up) * transform.forward, out m_hits[0], 20f);
             // Physics.Raycast(transform.position, transform.forward, out m_hits[1], 20f);
@@ -330,7 +340,7 @@ namespace Himanshu
         public void PatrolStart()
         {
             m_spotted = false;
-            m_dangerLevel = eDanger.white;
+            dangerLevel = eDanger.white;
 
             
             GetComponent<AudioSource>().Stop();
@@ -423,7 +433,7 @@ namespace Himanshu
             Physics.Raycast(transform.position, transform.forward, out m_hits[1], 20f);
             Physics.Raycast(transform.position, Quaternion.AngleAxis(-30f, transform.up) * transform.forward, out m_hits[2], 20f);
 
-            if (m_player.GetComponent<PlayerInteract>().m_hiding && m_dangerLevel == eDanger.yellow)
+            if (m_player.GetComponent<PlayerInteract>().m_hiding && dangerLevel == eDanger.yellow)
             {
                 return true;
             }
@@ -476,7 +486,7 @@ namespace Himanshu
             m_canBeRed = false;
             this.Invoke(()=>m_canBeRed = true, 3f);
             //StartCoroutine(eChaseEnter());
-            m_dangerLevel = eDanger.yellow;
+            dangerLevel = eDanger.yellow;
             m_spotted = true;
             GetComponent<AudioSource>().Play();
             m_enemyHead.m_look = true;
