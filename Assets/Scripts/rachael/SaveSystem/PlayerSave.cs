@@ -133,7 +133,9 @@ namespace rachael.SaveSystem
 
                 Transform playerTransform = gameObject.transform;
                 playerTransform.position = new Vector3(position.x, position.y, position.z);
-            
+
+                Tutorial.m_bookTutorialPlayed = data.m_bookTutorialPlayed ?? false;
+                Tutorial.m_objTutorialPlayed = data.m_objTutorialPlayed ?? false;
             
                 Vector3 rotation = new Vector3(0, 0, 0);
                 rotation.x = data.m_rotation[0];

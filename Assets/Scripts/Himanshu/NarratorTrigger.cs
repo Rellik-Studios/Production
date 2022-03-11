@@ -10,6 +10,7 @@ namespace Himanshu
     {
         public UnityEvent m_event;
 
+        public bool m_objTutorial;
         
         private float m_waitTimer;
 
@@ -35,6 +36,10 @@ namespace Himanshu
 
         private void OnTriggerEnter(Collider _collider)
         {
+            if (m_objTutorial && (!Tutorial.m_objTutorialPlayed ?? false))
+            {
+                Tutorial.RunObjTutorial();
+            }
             //m_waitTimer = Random.Range(25f, 40f);
             if(GetComponent<AudioSource>() != null)
                 GetComponent<AudioSource>()?.Play();
@@ -48,6 +53,9 @@ namespace Himanshu
 
         private void OnTriggerStay(Collider _collider)
         {
+
+            if (!Tutorial.m_objTutorialPlayed ?? false) return;
+            
             if (_collider.CompareTag("Player") && m_waitTimer < 0f)
             {
                 if (counter < 1)
