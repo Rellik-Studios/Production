@@ -30,9 +30,18 @@ namespace Himanshu
         }
         [SerializeField] private GameObject m_distortion;
 
+        [SerializeField] private MaskChange m_mask;
+        
         PlayerMovement m_player;
 
-        public eDanger m_dangerLevel = eDanger.white;
+        public eDanger dangerLevel {
+            get => m_dangerLevel;
+            set 
+            {
+                m_dangerLevel = value;
+                m_mask.dangerLevel = value;
+            }
+        }
         public Distraction currentDistraction { get; set; }
         public bool qteHideResult => m_QTEHide.GetComponent<QteRing>().m_result;
         
@@ -127,6 +136,7 @@ namespace Himanshu
         private bool m_coroutinePlaying;
         private bool m_canBeRed = false;
         private bool m_canChase = true;
+        private eDanger m_dangerLevel = eDanger.white;
 
 
         private void Awake()
@@ -185,13 +195,27 @@ namespace Himanshu
             m_frozen = false;
         }
 
+
+        public bool AttackToChase()
+        {
+            var playerInteract = m_player.GetComponent<PlayerInteract>();
+            if (playerInteract.m_invincible || playerInteract.m_debugInvincible)
+                return true;
+
+            return false;
+        }
+
         //Called through the Visual Script
         public void Attack()
         {
-            if (m_dangerLevel == eDanger.yellow)
+            var playerInteract = m_player.GetComponent<PlayerInteract>();
+            if (playerInteract.m_invincible || playerInteract.m_debugInvincible)
+                return;
+            
+            if (dangerLevel == eDanger.yellow)
             {
                 if (m_canBeRed)
-                    m_dangerLevel = eDanger.red;
+                    dangerLevel = eDanger.red;
                 else
                     return;
             }
@@ -212,16 +236,14 @@ namespace Himanshu
             player.m_followCam.transform.rotation = rot;
             player.m_followCam.ResetMouse();
 
-            player.GetComponent<CharacterController>().enabled = false;
-            player.transform.position -= player.m_followCam.transform.forward * 4f;
+         
             aKill = true;
 
             player.m_isDying = true;
             
             this.Invoke(()=>player.Death(), 5f, true);
             this.Invoke(()=>Time.timeScale = 1f, 5f, true);
-            
-            player.GetComponent<CharacterController>().enabled = true;
+
             
             
             m_spotted = true;
@@ -295,11 +317,11 @@ namespace Himanshu
         {
             if ((m_player.transform.position - transform.position).magnitude < gameManager.Instance.m_triggerDistance && m_canBeRed)
             {
-                m_dangerLevel = eDanger.red;
+                dangerLevel = eDanger.red;
             }
             else
             {
-                m_dangerLevel = eDanger.yellow;
+                dangerLevel = eDanger.yellow;
             }
             // Physics.Raycast(transform.position, Quaternion.AngleAxis(30f, transform.up) * transform.forward, out m_hits[0], 20f);
             // Physics.Raycast(transform.position, transform.forward, out m_hits[1], 20f);
@@ -318,7 +340,7 @@ namespace Himanshu
         public void PatrolStart()
         {
             m_spotted = false;
-            m_dangerLevel = eDanger.white;
+            dangerLevel = eDanger.white;
 
             
             GetComponent<AudioSource>().Stop();
@@ -367,6 +389,11 @@ namespace Himanshu
         public bool PatrolToChaseTransition()
         {
             if (!canChase) return false;
+
+            var playerInteract = m_player.GetComponent<PlayerInteract>();
+            if (playerInteract.m_invincible || playerInteract.m_debugInvincible)
+                return false;    
+            
             
             for (int i = 0; i <= 2; i++)
             {
@@ -376,7 +403,7 @@ namespace Himanshu
                 }
             }
 
-            var colliders = Physics.OverlapSphere(transform.position, m_hearingRadius * (m_player.crouching ? 0.5f : 1f));
+            var colliders = Physics.OverlapSphere(transform.position, m_hearingRadius * (m_player.crouching ? 1f : 3f));
             if (colliders.Any(t => t.CompareTag("Player") && !t.transform.parent.GetComponent<PlayerInteract>().m_hiding))
             {
                 return true;
@@ -398,11 +425,15 @@ namespace Himanshu
 
         public bool ChaseToPatrol()
         {
+            
+            var playerInteract = m_player.GetComponent<PlayerInteract>();
+            if (playerInteract.m_invincible || playerInteract.m_debugInvincible)
+                return true;    
             Physics.Raycast(transform.position, Quaternion.AngleAxis(30f, transform.up) * transform.forward, out m_hits[0], 20f);
             Physics.Raycast(transform.position, transform.forward, out m_hits[1], 20f);
             Physics.Raycast(transform.position, Quaternion.AngleAxis(-30f, transform.up) * transform.forward, out m_hits[2], 20f);
 
-            if (m_player.GetComponent<PlayerInteract>().m_hiding && m_dangerLevel == eDanger.yellow)
+            if (m_player.GetComponent<PlayerInteract>().m_hiding && dangerLevel == eDanger.yellow)
             {
                 return true;
             }
@@ -455,7 +486,7 @@ namespace Himanshu
             m_canBeRed = false;
             this.Invoke(()=>m_canBeRed = true, 3f);
             //StartCoroutine(eChaseEnter());
-            m_dangerLevel = eDanger.yellow;
+            dangerLevel = eDanger.yellow;
             m_spotted = true;
             GetComponent<AudioSource>().Play();
             m_enemyHead.m_look = true;
@@ -557,4 +588,5 @@ namespace Himanshu
         }
         
     }
+
 }

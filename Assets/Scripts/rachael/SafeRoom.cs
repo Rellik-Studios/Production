@@ -1,3 +1,4 @@
+using Himanshu;
 using rachael.SaveSystem;
 using UnityEngine;
 
@@ -13,6 +14,10 @@ namespace rachael
         {
             if (_other.CompareTag("Player"))
             {
+                if (!gameManager.Instance.m_bookTutorialPlayed ?? false)
+                {
+                    Tutorial.RunBookTutorial();
+                }
                 m_isSafe = true;
                 if (_other.GetComponentInParent<RespawnManager>() != null)
                 {
