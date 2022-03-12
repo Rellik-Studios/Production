@@ -15,7 +15,7 @@ namespace Himanshu
             SetBGVolume(0);
             SetSFXVolume(0);
             
-            gameManager.Instance.ResetManager();
+            gameManager.Instance?.ResetManager();
         }
 
         public void SetBGVolume(float _value)
