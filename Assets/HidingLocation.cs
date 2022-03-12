@@ -14,8 +14,8 @@ public class HidingLocation : MonoBehaviour, IInteract
     public Vector3 actualForward => GetComponent<CinemachineVirtualCamera>() != null ? transform.forward : transform.GetChild(0).forward;
 
     
-    private Vector2 m_xRange = new Vector2(-30f, 30f);
-    private Vector2 m_yRange = new Vector2(-30f, 30f);
+    [SerializeField] private Vector2 m_xRange = new Vector2(-30f, 30f);
+    [SerializeField] private Vector2 m_yRange = new Vector2(-30f, 30f);
     
     public float m_mouseX;
     public float m_mouseY;
@@ -41,6 +41,7 @@ public class HidingLocation : MonoBehaviour, IInteract
             m_mouseX = Mathf.Clamp(m_mouseX, m_xRange.x, m_xRange.y);
             
             transform.rotation = Quaternion.Euler(  m_defMouseY + m_mouseY,m_defMouseX + m_mouseX, 0f);
+            
         }
     }
 
@@ -48,7 +49,6 @@ public class HidingLocation : MonoBehaviour, IInteract
     {
         m_hidingSpot.BeginHide(this, _player);
         Debug.Log("Hiding is begining");
-
     }
 
     public void CanExecute(Raycast _raycast)
@@ -60,11 +60,12 @@ public class HidingLocation : MonoBehaviour, IInteract
 
     public void TurnOn()
     {
-        m_defMouseX = transform.localRotation.eulerAngles.y;
-        m_defMouseY = transform.localRotation.eulerAngles.x;
-        var dir = FindObjectOfType<PlayerFollow>().transform.position - transform.position;
-        dir.y = 0; // keep the direction strictly horizontal
-        var rot = Quaternion.LookRotation(dir);
+        m_mouseX = 0f;
+        m_mouseY = 0f;
+        m_defMouseX = transform.rotation.eulerAngles.y;
+        m_defMouseY = transform.rotation.eulerAngles.x;
+        Debug.Log($"X: {m_defMouseY} Y: {m_defMouseX}");
+        
 
 
         if(GetComponent<CinemachineVirtualCamera>() != null)
@@ -78,6 +79,8 @@ public class HidingLocation : MonoBehaviour, IInteract
 
     public void TurnOff()
     {
+        if(!isActive) return;
+            transform.rotation = Quaternion.Euler(m_defMouseY, m_defMouseX, 0f);
         if(GetComponent<CinemachineVirtualCamera>() != null)
             GetComponent<CinemachineVirtualCamera>().enabled = false;
         else if (transform.childCount > 0 && transform.GetChild(0).GetComponent<CinemachineVirtualCamera>() != null)

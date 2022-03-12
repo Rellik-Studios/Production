@@ -7,7 +7,7 @@ namespace rachael
 {
     public class Raycast : MonoBehaviour
     {
-        [FormerlySerializedAs("raydist")] [SerializeField] private float m_raydist = 5.0f;
+        [FormerlySerializedAs("raydist")] [SerializeField] private float m_raydist = 10.0f;
 
         public GameObject objectInFront
         { 

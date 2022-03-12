@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="de8b67ab-e0b5-4d99-a633-e1ffe02f1d8c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Production/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Production/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Himanshu/MainMenuAudio.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Himanshu/MainMenuAudio.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Himanshu/gameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Himanshu/gameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HidingLocation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HidingLocation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Rachael/Path_face 3.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Rachael/Path_face 3.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/rachael/Raycast.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/rachael/Raycast.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,11 +27,12 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_SelectionCaret.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/HidingLocation.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Himanshu/Objective.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Caret.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_InputField.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Himanshu/Objective.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/HidingLocation.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Caret.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/31cdb409b5db411a8c2f8d19ca65c663c600/d8/2fdaae4b/NavMeshAgent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_SelectionCaret.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -44,7 +46,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/rachael/FadingTransition.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/PlayerInteract.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/HidingSpot.cs" />
-      <option value="$PROJECT_DIR$/Assets/HidingLocation.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/rachael/FavorSystem/FavorSystem.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/PlayerMovement.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/PlayerInput.cs" />
@@ -67,6 +68,7 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/NarratorTrigger.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/MainMenuAudio.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/gameManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/HidingLocation.cs" />
     </changedPaths>
   </component>
   <component name="MarkdownSettingsMigration">
@@ -79,7 +81,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34994584" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34975636" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
@@ -109,10 +111,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="5410">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="5410" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -146,6 +148,7 @@
       <workItem from="1646999945911" duration="2067000" />
       <workItem from="1647003684724" duration="517000" />
       <workItem from="1647005487406" duration="1417000" />
+      <workItem from="1647084564393" duration="47000" />
     </task>
     <servers />
   </component>
