@@ -344,11 +344,11 @@ public class GameCommandPrompt : MonoBehaviour
 
     string GrantTypeofFavor()
     {
-        int x = Random.Range(1, 3);
-        string[] ListOfAbilities = new string[] { "Teleport", "Rewind", "Stop" };
+        int x = Random.Range(0, 2);
+        string[] ListOfAbilities = new string[] { "Rewind", "Stop" };
 
         //return "Stop";
-        return ListOfAbilities[x - 1];
+        return ListOfAbilities[x];
     }
 
     void FavorDecision()
@@ -532,11 +532,8 @@ public class GameCommandPrompt : MonoBehaviour
 
         if (favorName != null)
         {
-            if(favorName == "Teleport")
-            {
-                GrantTeleport();
-            }
-            else if(favorName == "Rewind")
+            
+            if(favorName == "Rewind")
             {
                 GrantRewind();
             }
@@ -548,6 +545,7 @@ public class GameCommandPrompt : MonoBehaviour
 
         m_inputField.enabled = true;
         favorSystem.m_commandText.resizeTextForBestFit = true;
+        FavorSystem.m_grantSpecial = false;
         //favorSystem.isDanger = false;
         favorSystem.CloseCommandPrompt();
 

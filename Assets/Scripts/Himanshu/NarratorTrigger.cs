@@ -56,6 +56,7 @@ namespace Himanshu
             if (gameObject.name != "Hub") 
             {
                 FavorSystem.startTimer = true;
+                FavorSystem.m_grantSpecial = true;
             }
         }
 

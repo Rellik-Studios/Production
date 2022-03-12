@@ -20,8 +20,8 @@ namespace rachael
         public void Execute(PlayerInteract _player)
         {
 
-            _player.m_hasAmulet = true;
-            _player.m_amulet.enabled = true;
+            //_player.m_hasAmulet = true;
+            //_player.m_amulet.enabled = true;
             Destroy(gameObject);
 
 

@@ -84,7 +84,7 @@ namespace Himanshu
         [Header("Images")] 
         public Image m_timeRewind;
         public Image m_timeStop;
-        public Image m_amulet;
+        //public Image m_amulet;
         
         
         public bool interactHold => m_playerInput.interactHold;
@@ -191,7 +191,7 @@ namespace Himanshu
         private PlayerFollow m_playerFollow;
         private Coroutine m_kickRoutine;
         public bool m_canQTEHide = true;
-        public bool m_hasAmulet = true;
+        //public bool m_hasAmulet = true;
 
         public Dictionary<CollectableObject, Wrapper<int>> m_inventory;
 
