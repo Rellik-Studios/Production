@@ -78,6 +78,7 @@ public class HidingLocation : MonoBehaviour, IInteract
 
     public void TurnOff()
     {
+        transform.rotation = Quaternion.Euler(m_defMouseY, m_defMouseX, 0f);
         if(GetComponent<CinemachineVirtualCamera>() != null)
             GetComponent<CinemachineVirtualCamera>().enabled = false;
         else if (transform.childCount > 0 && transform.GetChild(0).GetComponent<CinemachineVirtualCamera>() != null)
