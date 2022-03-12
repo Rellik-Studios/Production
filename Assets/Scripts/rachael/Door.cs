@@ -55,13 +55,17 @@ namespace rachael
 
         public void OpenTheDoor()
         {
+            doorOpen = true;
+
+            if (!gameManager.Instance.m_objTutorialPlayed ?? true) return;
+            
+            
             foreach (var enemy in m_enemiesToEnable)
             {
                 enemy.GetComponent<StateMachine>().enabled = true;
                 enemy.GetComponent<EnemyController>().enabled = true;
             }
 
-            doorOpen = true;
         }
 
         public void Execute(PlayerInteract _player)

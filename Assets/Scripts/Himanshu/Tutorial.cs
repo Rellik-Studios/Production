@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Bolt;
 using rachael;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 namespace Himanshu
@@ -38,6 +40,12 @@ namespace Himanshu
         [TextArea(4, 6)]
         [SerializeField] private List<string> m_tutorialDialogues;
         
+        [TextArea(4, 6)]
+        [SerializeField] private List<string> m_tutorialBook;
+        
+        [TextArea(4, 6)]
+        [SerializeField] private List<string> m_tutorialObj;
+        
         [SerializeField] private PlayerInteract m_player;
         [FormerlySerializedAs("m_enemy")] [SerializeField] private GameObject m_enemyDefault;
 
@@ -54,7 +62,9 @@ namespace Himanshu
         public List<string> m_noticedDialogues;
 
         private GameObject m_hidingSpot;
+        
 
+        
         private void Start()
         {
             m_defaultRotation = m_player.transform.rotation;
@@ -69,6 +79,7 @@ namespace Himanshu
         {
             StartCoroutine(eTutorial());
         }
+        
         
         private IEnumerator eTutorial(bool _retry = false)
         {
@@ -93,7 +104,7 @@ namespace Himanshu
                 m_player.m_enemies.Remove(m_enemy.GetComponent<EnemyController>());
                 Destroy(m_enemy);
                 
-                m_hidingSpot.SetActive(false);
+                m_hidingSpot?.SetActive(false);
                 
                 m_player.Unhide();
                 m_narrator.Play("Suit Yourself");
@@ -249,6 +260,59 @@ namespace Himanshu
             wallcolor = Color.black;
         }
 
+        public static void RunBookTutorial()
+        {
+            Debug.Log("Book Tutorial");
+
+            Tutorial tutorial = FindObjectOfType<Tutorial>();
+            
+            tutorial.m_narrator.Play(tutorial.m_tutorialBook);
+            gameManager.Instance.m_bookTutorialPlayed = true;
+        }
+
+        public static void RunObjTutorial(GameObject _objective)
+        {
+            IEnumerator ObjectiveCoroutine()
+            {
+
+                gameManager.Instance.isTutorialRunning = true;
+                Tutorial tutorial = FindObjectOfType<Tutorial>();
+
+                FindObjectOfType<PlayerMovement>().GetComponent<CharacterController>().enabled = false;
+
+                tutorial.m_narrator.Play(tutorial.m_tutorialObj[0]);
+
+                yield return new WaitWhile(() => tutorial.m_narrator.settingText);
+
+                FindObjectOfType<PlayerMovement>().GetComponent<CharacterController>().enabled = true;
+
+                yield return new WaitWhile(() => _objective.activeSelf);
+                
+                tutorial.m_narrator.Play(tutorial.m_tutorialObj[1]);
+
+                yield return new WaitWhile(() => tutorial.m_narrator.settingText);
+
+                gameManager.Instance.m_isSafeRoom = true;
+
+                
+                SceneManager.LoadScene("Path_face 3");
+                
+                gameManager.Instance.m_objTutorialPlayed = true;
+
+                gameManager.Instance.isTutorialRunning = false;
+
+                yield return null;
+                
+            }
+            
+            Debug.Log("Obj Tutorial");
+            Tutorial tutorial = FindObjectOfType<Tutorial>();
+
+            tutorial.StartCoroutine(ObjectiveCoroutine());
+            
+
+            
+        }
 
         public void Retry()
         {

@@ -21,6 +21,8 @@ namespace Himanshu
         public SceneChanger m_sceneManager;
         public Animator SaveProcess;
 
+        public bool m_invincible = false;
+        public bool m_debugInvincible = false;
         public PlayerFollow m_followCam;
         private Narrator m_narrator;
         public List<EnemyController> m_enemies;
@@ -82,7 +84,7 @@ namespace Himanshu
         [Header("Images")] 
         public Image m_timeRewind;
         public Image m_timeStop;
-        public Image m_amulet;
+        //public Image m_amulet;
         
         
         public bool interactHold => m_playerInput.interactHold;
@@ -189,7 +191,7 @@ namespace Himanshu
         private PlayerFollow m_playerFollow;
         private Coroutine m_kickRoutine;
         public bool m_canQTEHide = true;
-        public bool m_hasAmulet = true;
+        //public bool m_hasAmulet = true;
 
         public Dictionary<CollectableObject, Wrapper<int>> m_inventory;
 
@@ -264,9 +266,9 @@ namespace Himanshu
 
 
 
-            playerDanger = m_enemies.Any((t) => t.m_dangerLevel == EnemyController.eDanger.red) 
+            playerDanger = m_enemies.Any((t) => t.dangerLevel == EnemyController.eDanger.red) 
                                                                                                                     ?  EnemyController.eDanger.red 
-                         : m_enemies.Any((t) => t.m_dangerLevel == EnemyController.eDanger.yellow)
+                         : m_enemies.Any((t) => t.dangerLevel == EnemyController.eDanger.yellow)
                                                                                                                     ? EnemyController.eDanger.yellow
                                                                                                                     : EnemyController.eDanger.white; 
             

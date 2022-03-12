@@ -291,8 +291,6 @@ namespace Himanshu
 
         IEnumerator SetText(string _text, TMP_Text _textBox, bool additive = false)
         {
-            if(_text.Length > 15)
-                Debug.Log(_text.Substring(0, 15));
             if (_text.Length > 15 && m_audioClips.TryGetValue(_text.Substring(0, 15), out AudioClip clip))
             {
                 m_audioSource.PlayOneShot(clip);

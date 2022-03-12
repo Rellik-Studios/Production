@@ -23,7 +23,11 @@ namespace rachael.FavorSystem
         private bool m_isOpen = false;
 
         public bool m_timeStop = false;
+
+        public static bool m_grantSpecial = false; 
+
         private PlayerInteract m_playerInteract;
+
 
         public bool isDanger
         {
@@ -31,8 +35,9 @@ namespace rachael.FavorSystem
             {
                 if (m_playerInteract)
                 {
-                    m_isDanger = m_playerInteract.playerDanger == EnemyController.eDanger.red ||
-                                 m_playerInteract.playerDanger == EnemyController.eDanger.yellow;
+                    m_isDanger = (m_playerInteract.playerDanger == EnemyController.eDanger.red ||
+                                 m_playerInteract.playerDanger == EnemyController.eDanger.yellow) && 
+                                 (m_grantSpecial);
                 }
 
                 m_gameCommandPrompt.HelpActive(m_isDanger);
@@ -59,7 +64,12 @@ namespace rachael.FavorSystem
         private bool m_isDanger;
 
         private float m_waitTimer;
-        public bool startTimer = false;
+        public static bool startTimer = false;
+
+
+
+        public GameObject CommandIcon;
+        public Image NotifIcon;
 
         // Start is called before the first frame update
         void Start()
@@ -79,7 +89,7 @@ namespace rachael.FavorSystem
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.C) && !m_isOpen)
+            if (Input.GetKeyDown(KeyCode.C) && !m_isOpen && (gameManager.Instance.m_objTutorialPlayed ?? false))
             {
                 m_inputField.text = "";
                 CommandPromptWindow();
@@ -194,18 +204,6 @@ namespace rachael.FavorSystem
 
         }
 
-        public void WhichMenuDisplay()
-        {
-            if (m_isDanger)
-            {
-                consoleDisplay = ConsoleDisplay.SpecialMenu;
-            }
-            else
-            {
-                consoleDisplay = ConsoleDisplay.defaultMenu;
-            }
-        }
-
         public int getEnumConsoleNum()
         {
             return ((int)consoleDisplay);
@@ -228,14 +226,6 @@ namespace rachael.FavorSystem
         {
             m_commandText.text += "\n\n";
             m_commandText.text += m_commandText.text = m_commandFeatures[i].text;
-        }
-        
-
-
-        public bool CheckUserCanUseSpecialCommands()
-        {
-            //STILL NEED TO CHECK ALSO FOR WHETHER THE USER IS SPOTED
-            return m_isDanger;
         }
 
         public void ResetTime()
