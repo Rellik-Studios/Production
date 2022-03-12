@@ -34,6 +34,12 @@ namespace Himanshu
             }
         }
 
+        public void ResetManager()
+        {
+            m_objTutorialPlayed = null;
+            m_bookTutorialPlayed = null;
+        }
+
         private void Update()
         {
 
