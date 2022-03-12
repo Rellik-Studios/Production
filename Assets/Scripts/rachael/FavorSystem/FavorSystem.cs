@@ -69,6 +69,16 @@ namespace rachael.FavorSystem
 
 
         public GameObject CommandIcon;
+        private Animator m_notifAnimator;
+        private bool aNotifEnabled {
+            get => m_notifAnimator.GetBool("IsEnabled");
+            set
+            {
+                if(m_notifAnimator.GetBool("IsEnabled") != value)
+                    m_notifAnimator.SetBool("IsEnabled", value);
+            }
+        }
+
         public Image NotifIcon;
 
         // Start is called before the first frame update
@@ -77,7 +87,7 @@ namespace rachael.FavorSystem
             m_gameCommandPrompt = m_commandPrompt.GetComponent<GameCommandPrompt>();
             m_playerInteract = FindObjectOfType<PlayerInteract>();
             m_waitTimer = 0.0f;
-
+            m_notifAnimator = CommandIcon.GetComponent<Animator>();
 
             if (!m_isOpen)
             {
@@ -89,14 +99,20 @@ namespace rachael.FavorSystem
         // Update is called once per frame
         void Update()
         {
+            if(!CommandIcon.activeSelf && (gameManager.Instance.m_objTutorialPlayed ?? false))
+            {
+                CommandIcon.SetActive(true);
+            }
+
             if (Input.GetKeyDown(KeyCode.C) && !m_isOpen && (gameManager.Instance.m_objTutorialPlayed ?? false))
             {
                 m_inputField.text = "";
                 CommandPromptWindow();
             }
+            aNotifEnabled = (m_playerInteract?.playerDanger != EnemyController.eDanger.white && m_grantSpecial);
 
             //THIS WAS USED FOR TESTING PURPOSES
-            if(Input.GetKeyDown(KeyCode.Alpha2))
+            if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 startTimer = true;
             }
