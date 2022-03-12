@@ -38,6 +38,7 @@ namespace Himanshu
         {
             m_objTutorialPlayed = null;
             m_bookTutorialPlayed = null;
+            isTutorialRunning = false;
         }
 
         private void Update()
