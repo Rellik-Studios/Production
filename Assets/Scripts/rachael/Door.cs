@@ -57,7 +57,7 @@ namespace rachael
         {
             doorOpen = true;
 
-            if (!gameManager.Instance.m_objTutorialPlayed ?? false) return;
+            if (!gameManager.Instance.m_objTutorialPlayed ?? true) return;
             
             
             foreach (var enemy in m_enemiesToEnable)

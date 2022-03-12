@@ -296,6 +296,8 @@ namespace Himanshu
                 
                 SceneManager.LoadScene("Path_face 3");
                 
+                gameManager.Instance.m_objTutorialPlayed = true;
+
                 yield return null;
                 
             }
@@ -305,7 +307,6 @@ namespace Himanshu
 
             tutorial.StartCoroutine(ObjectiveCoroutine());
             
-            gameManager.Instance.m_objTutorialPlayed = true;
 
             
         }
