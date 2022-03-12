@@ -530,7 +530,7 @@ public class GameCommandPrompt : MonoBehaviour
         FavorDecision();
         yield return new WaitForSecondsRealtime(3);
 
-        if (favorName != null)
+        if (favorName != "")
         {
             
             if(favorName == "Rewind")
