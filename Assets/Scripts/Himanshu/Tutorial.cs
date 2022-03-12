@@ -274,7 +274,8 @@ namespace Himanshu
         {
             IEnumerator ObjectiveCoroutine()
             {
-            
+
+                gameManager.Instance.isTutorialRunning = true;
                 Tutorial tutorial = FindObjectOfType<Tutorial>();
 
                 FindObjectOfType<PlayerMovement>().GetComponent<CharacterController>().enabled = false;
@@ -297,6 +298,8 @@ namespace Himanshu
                 SceneManager.LoadScene("Path_face 3");
                 
                 gameManager.Instance.m_objTutorialPlayed = true;
+
+                gameManager.Instance.isTutorialRunning = false;
 
                 yield return null;
                 

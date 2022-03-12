@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using rachael.FavorSystem;
 using UnityEngine;
@@ -43,7 +44,7 @@ namespace Himanshu
 
         private void OnTriggerEnter(Collider _collider)
         {
-            if (m_objTutorial && (!gameManager.Instance.m_objTutorialPlayed ?? true))
+            if (m_objTutorial && (!gameManager.Instance.m_objTutorialPlayed ?? true) && !gameManager.Instance.isTutorialRunning)
             {
                 Tutorial.RunObjTutorial(m_objective);
             }
