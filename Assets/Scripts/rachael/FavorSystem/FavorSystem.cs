@@ -111,17 +111,6 @@ namespace rachael.FavorSystem
             }
             aNotifEnabled = (m_playerInteract?.playerDanger != EnemyController.eDanger.white && m_grantSpecial);
 
-            //THIS WAS USED FOR TESTING PURPOSES
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                startTimer = true;
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                startTimer = false;
-            }
-            //--------------------------
-
 
             //starting timer for how long will  the objective be completed
             if (startTimer)
