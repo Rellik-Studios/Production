@@ -22,19 +22,29 @@ namespace rachael.FavorSystem
     {
         private bool m_isOpen = false;
 
+        public bool m_timeStop = false;
+
+        public static bool m_grantSpecial = false; 
+
         private PlayerInteract m_playerInteract;
 
-        //public bool isDanger => m_playerInteract.playerDanger == EnemyController.eDanger.red || m_playerInteract.playerDanger == EnemyController.eDanger.yellow;
+
         public bool isDanger
         {
-            get => m_isDanger;
-            set
+            get
             {
-                m_isDanger = value;
-                m_gameCommandPrompt.HelpActive(value);
+                if (m_playerInteract)
+                {
+                    m_isDanger = (m_playerInteract.playerDanger == EnemyController.eDanger.red ||
+                                 m_playerInteract.playerDanger == EnemyController.eDanger.yellow) && 
+                                 (m_grantSpecial);
+                }
+
+                m_gameCommandPrompt.HelpActive(m_isDanger);
+                return m_isDanger;
             }
-            
         }
+
 
         [FormerlySerializedAs("commandPrompt")] public GameObject m_commandPrompt;
 
@@ -43,18 +53,42 @@ namespace rachael.FavorSystem
 
         [SerializeField] private TMP_InputField m_inputField;
 
+        [FormerlySerializedAs("defaultValue")] public float m_defaultPoints;
+        [FormerlySerializedAs("favorPoint")] public float m_favorPoints;
+        [FormerlySerializedAs("resultant")] public float m_result;
+
         private GameCommandPrompt m_gameCommandPrompt;
         
 
         public ConsoleDisplay consoleDisplay;
         private bool m_isDanger;
 
+        private float m_waitTimer;
+        public static bool startTimer = false;
+
+
+
+        public GameObject CommandIcon;
+        private Animator m_notifAnimator;
+        private bool aNotifEnabled {
+            get => m_notifAnimator.GetBool("IsEnabled");
+            set
+            {
+                if(m_notifAnimator.GetBool("IsEnabled") != value)
+                    m_notifAnimator.SetBool("IsEnabled", value);
+            }
+        }
+
+        public Image NotifIcon;
+
         // Start is called before the first frame update
         void Start()
         {
             m_gameCommandPrompt = m_commandPrompt.GetComponent<GameCommandPrompt>();
             m_playerInteract = FindObjectOfType<PlayerInteract>();
-            
+            m_waitTimer = 0.0f;
+            m_notifAnimator = CommandIcon.GetComponent<Animator>();
+
             if (!m_isOpen)
             {
                 m_commandPrompt.SetActive(false);
@@ -65,15 +99,60 @@ namespace rachael.FavorSystem
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.C) && !m_isOpen)
+            if(!CommandIcon.activeSelf && (gameManager.Instance.m_objTutorialPlayed ?? false))
+            {
+                CommandIcon.SetActive(true);
+            }
+
+            if (Input.GetKeyDown(KeyCode.C) && !m_isOpen && (gameManager.Instance.m_objTutorialPlayed ?? false))
             {
                 m_inputField.text = "";
                 CommandPromptWindow();
             }
+            aNotifEnabled = (m_playerInteract?.playerDanger != EnemyController.eDanger.white && m_grantSpecial);
 
-            if (Input.GetKeyDown(KeyCode.Alpha5) && !m_isOpen)
+            //THIS WAS USED FOR TESTING PURPOSES
+            if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                isDanger = !isDanger;
+                startTimer = true;
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                startTimer = false;
+            }
+            //--------------------------
+
+
+            //starting timer for how long will  the objective be completed
+            if (startTimer)
+                m_waitTimer += Time.deltaTime;
+            else if(!startTimer && m_waitTimer != 0.0f)
+            {
+                ConvertingToFavorPoints();
+                m_waitTimer = 0.0f;
+            }
+
+            // if (Input.GetKeyDown(KeyCode.Alpha5) && !m_isOpen)
+            // {
+            //     isDanger = !isDanger;
+            // }
+        }
+
+        void ConvertingToFavorPoints()
+        {
+            Debug.Log(m_waitTimer);
+            Debug.Log(Time.deltaTime);
+            if(m_waitTimer <= 10 )
+            {
+                m_favorPoints = 0.0f;
+            }
+            else if (m_waitTimer <= 15)
+            {
+                m_favorPoints = 0.25f;
+            }
+            else
+            {
+                m_favorPoints = 0.5f;
             }
         }
 
@@ -141,18 +220,6 @@ namespace rachael.FavorSystem
 
         }
 
-        public void WhichMenuDisplay()
-        {
-            if (m_isDanger)
-            {
-                consoleDisplay = ConsoleDisplay.SpecialMenu;
-            }
-            else
-            {
-                consoleDisplay = ConsoleDisplay.defaultMenu;
-            }
-        }
-
         public int getEnumConsoleNum()
         {
             return ((int)consoleDisplay);
@@ -176,15 +243,28 @@ namespace rachael.FavorSystem
             m_commandText.text += "\n\n";
             m_commandText.text += m_commandText.text = m_commandFeatures[i].text;
         }
-        
 
-
-        public bool CheckUserCanUseSpecialCommands()
+        public void ResetTime()
         {
-            //STILL NEED TO CHECK ALSO FOR WHETHER THE USER IS SPOTED
-            return m_isDanger;
-        }
+            
+            IEnumerator Reset()
+            {
 
+                m_timeStop = true;
+                float counter = 0f;
+                while (counter < 5f)
+                {
+                    counter += Time.unscaledDeltaTime;
+                    yield return null;
+                }
+
+                Time.timeScale = 1f;
+                m_timeStop = false;
+
+            }
+
+            StartCoroutine(Reset());
+        }
     }
 
 }

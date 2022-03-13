@@ -21,6 +21,9 @@ namespace Himanshu
         public SceneChanger m_sceneManager;
         public Animator SaveProcess;
 
+        public bool m_invincible = false;
+        public bool m_debugInvincible = false;
+        public PlayerFollow m_followCam;
         private Narrator m_narrator;
         public List<EnemyController> m_enemies;
         public  IEnumerator FillBar(Image _fillImage, float _time, int _dir = 1, float _waitTime = 0f)
@@ -81,7 +84,7 @@ namespace Himanshu
         [Header("Images")] 
         public Image m_timeRewind;
         public Image m_timeStop;
-        public Image m_amulet;
+        //public Image m_amulet;
         
         
         public bool interactHold => m_playerInput.interactHold;
@@ -188,7 +191,7 @@ namespace Himanshu
         private PlayerFollow m_playerFollow;
         private Coroutine m_kickRoutine;
         public bool m_canQTEHide = true;
-        public bool m_hasAmulet = true;
+        //public bool m_hasAmulet = true;
 
         public Dictionary<CollectableObject, Wrapper<int>> m_inventory;
 
@@ -206,6 +209,8 @@ namespace Himanshu
             }
         }
         public List<CollectableObject> m_testInventory;
+        public bool m_isDying = false;
+
         private void OnEnable()
         {
             m_enemies = GameObject.FindObjectsOfType<EnemyController>(true).ToList();
@@ -243,9 +248,27 @@ namespace Himanshu
             //    m_fillRoutine = StartCoroutine(m_timeRewind.FillBar(5, -1));
             //}
 
-            playerDanger = m_enemies.Any((t) => t.m_dangerLevel == EnemyController.eDanger.red) 
+#if UNITY_EDITOR
+
+            if(Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                m_sceneManager.MainScene();
+            }
+
+#else
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                m_sceneManager.MainScene();
+            }
+
+#endif
+
+
+
+
+            playerDanger = m_enemies.Any((t) => t.dangerLevel == EnemyController.eDanger.red) 
                                                                                                                     ?  EnemyController.eDanger.red 
-                         : m_enemies.Any((t) => t.m_dangerLevel == EnemyController.eDanger.yellow)
+                         : m_enemies.Any((t) => t.dangerLevel == EnemyController.eDanger.yellow)
                                                                                                                     ? EnemyController.eDanger.yellow
                                                                                                                     : EnemyController.eDanger.white; 
             
@@ -289,6 +312,7 @@ namespace Himanshu
 
         public void Unhide()
         {
+            if(!m_hiding) return;
             if (m_hidingSpot.m_cupboard)
             {
                 StartCoroutine(eUnHide());

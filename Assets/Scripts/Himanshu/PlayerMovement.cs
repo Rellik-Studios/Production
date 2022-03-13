@@ -1,4 +1,5 @@
 using System;
+using rachael.FavorSystem;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -18,7 +19,12 @@ namespace Himanshu
         [SerializeField] private float m_jumpHeight;
         [SerializeField] private float m_groundDistance = 0.1f;
         private bool m_isGrounded;
-        public bool crouching => m_playerInput.m_crouching;
+        public bool canMoveUnscaled => FindObjectOfType<FavorSystem>().m_timeStop;
+        public bool crouching
+        {
+            get => m_playerInput.m_crouching;
+            set => m_playerInput.m_crouching = value;
+        }
 
         [SerializeField] private AudioClip m_breathingClip;
         [SerializeField] private float m_maxSprintTimer;
@@ -28,6 +34,7 @@ namespace Himanshu
         private float m_sprintNarratorTimer = 40f;
         private AudioSource m_audioSource;
         [SerializeField] private LayerMask m_groundMask;
+        private float calculatedDeltaTime => (canMoveUnscaled ? Time.unscaledDeltaTime : Time.deltaTime);
 
         private float sprintTimer
         {
@@ -73,7 +80,7 @@ namespace Himanshu
             m_isGrounded = Physics.Raycast(transform.position, -Vector3.up, m_groundDistance, m_groundMask, QueryTriggerInteraction.Ignore);
             Movement();
             Jump();
-            m_sprintNarratorTimer -= Time.deltaTime;
+            m_sprintNarratorTimer -= calculatedDeltaTime;
         }
 
         private void Jump()
@@ -82,21 +89,22 @@ namespace Himanshu
             if (m_isGrounded) m_playerVelocity.y = 0f;
             //if (m_playerInput.jump && m_isGrounded) 
             //    m_playerVelocity.y += Mathf.Sqrt(m_jumpHeight * 3.0f * m_gravity);
-            m_characterController.Move(m_playerVelocity * Time.deltaTime);
+            m_characterController.Move(m_playerVelocity * calculatedDeltaTime);
         }
 
         private void Movement()
         {
             var movement = m_playerInput.movement.x * transform.right + m_playerInput.movement.z * transform.forward;
-            m_characterController.Move(movement * (m_speed * (crouching ? 0.5f : 1f) * ((m_playerInput.sprint && sprintTimer > 0f && !crouching) ? 2.5f : 1.0f)  * Time.deltaTime));
+            m_characterController.Move(movement * (m_speed * (crouching ? 0.5f : 1f) * ((m_playerInput.sprint && sprintTimer > 0f && !crouching) ? 2.5f : 1.0f)  * calculatedDeltaTime));
 
-            if (m_playerInput.sprint && sprintTimer > 0f && m_playerInput.movement.magnitude > 0f && !crouching)
-            { 
-                sprintTimer -= Time.deltaTime;
+            if (m_playerInput.sprint && sprintTimer > 0f && m_playerInput.movement.magnitude > 0f)
+            {
+                crouching = false;
+                sprintTimer -= calculatedDeltaTime;
             }
             else if (sprintTimer < m_maxSprintTimer)
             {
-                sprintTimer += Time.deltaTime / 4f;
+                sprintTimer += calculatedDeltaTime / 4f;
             }
         }
     }

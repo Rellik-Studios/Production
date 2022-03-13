@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Bolt;
 using rachael;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 namespace Himanshu
@@ -38,6 +40,12 @@ namespace Himanshu
         [TextArea(4, 6)]
         [SerializeField] private List<string> m_tutorialDialogues;
         
+        [TextArea(4, 6)]
+        [SerializeField] private List<string> m_tutorialBook;
+        
+        [TextArea(4, 6)]
+        [SerializeField] private List<string> m_tutorialObj;
+        
         [SerializeField] private PlayerInteract m_player;
         [FormerlySerializedAs("m_enemy")] [SerializeField] private GameObject m_enemyDefault;
 
@@ -48,12 +56,18 @@ namespace Himanshu
         [SerializeField] private List<string> m_deathDialogues;
 
         private Vector3 m_defaultPosition;
+        private Quaternion m_defaultRotation;
 
         [TextArea(4, 6)] 
         public List<string> m_noticedDialogues;
 
+        private GameObject m_hidingSpot;
+        
+
+        
         private void Start()
         {
+            m_defaultRotation = m_player.transform.rotation;
             m_defaultPosition = m_player.transform.position;
             m_narrator = GetComponent<Narrator>();
             // RunTutorial();
@@ -65,6 +79,7 @@ namespace Himanshu
         {
             StartCoroutine(eTutorial());
         }
+        
         
         private IEnumerator eTutorial(bool _retry = false)
         {
@@ -82,6 +97,16 @@ namespace Himanshu
                 m_tutorialSkipped = true;
                 m_doors.First((t) => t.isDoorOpen).doorOpen = false;
                 m_player.transform.position = m_defaultPosition;
+                m_player.m_followCam.transform.rotation = m_defaultRotation;
+                m_player.m_followCam.ResetMouse();
+                m_player.m_followCam.m_mouseInput = true;
+                
+                m_player.m_enemies.Remove(m_enemy.GetComponent<EnemyController>());
+                Destroy(m_enemy);
+                
+                m_hidingSpot?.SetActive(false);
+                
+                m_player.Unhide();
                 m_narrator.Play("Suit Yourself");
                 m_tutorialOver = true;
                 // m_narrator.enabled = true;
@@ -138,29 +163,30 @@ namespace Himanshu
                 if (!_retry)
                 {
 
+                    yield return new WaitForFixedUpdate();
                     yield return PlayNextDialogue();
-                    var hidingSpot = m_hidingSpots.Random();
+                    m_hidingSpot = m_hidingSpots.Random();
 
-                    while (hidingSpot.transform.parent.GetComponent<BoxCollider>().bounds
+                    while (m_hidingSpot.transform.parent.GetComponent<BoxCollider>().bounds
                         .Intersects(m_player.transform.GetChild(0).GetComponent<Collider>().bounds))
                     {
-                        hidingSpot = m_hidingSpots.Random();
+                        m_hidingSpot = m_hidingSpots.Random();
                         yield return null;
                     }
 
-                    hidingSpot.transform.parent.GetComponent<BoxCollider>().enabled = false;
-                    hidingSpot.SetActive(true);
+                    m_hidingSpot.transform.parent.GetComponent<BoxCollider>().enabled = false;
+                    m_hidingSpot.SetActive(true);
 
                     Debug.Log("Why don't ya hide under that table");
 
-                    yield return new WaitUntil(() => hidingSpot.GetComponent<HidingSpot>().isUsed);
+                    yield return new WaitUntil(() => m_hidingSpot.GetComponent<HidingSpot>().isUsed);
 
                     yield return PlayNextDialogue();
 
                     yield return PlayNextDialogue();
 
 
-                    yield return new WaitWhile(() => hidingSpot.GetComponent<HidingSpot>().isUsed);
+                    yield return new WaitWhile(() => m_hidingSpot.GetComponent<HidingSpot>().isUsed);
                 }
 
                 m_enemy.SetActive(true);
@@ -213,7 +239,19 @@ namespace Himanshu
 
                 yield return PlayNextDialogue();
 
+                
+                m_player.transform.position = m_defaultPosition;
+                m_player.m_followCam.transform.rotation = m_defaultRotation;
+                m_player.m_followCam.ResetMouse();
+                m_player.m_followCam.m_mouseInput = true;
+                
+                m_player.m_enemies.Remove(m_enemy.GetComponent<EnemyController>());
                 Destroy(m_enemy);
+                
+                
+                m_player.Unhide();
+                m_hidingSpot.SetActive(false);
+
                 yield return null;
             
 
@@ -222,10 +260,65 @@ namespace Himanshu
             wallcolor = Color.black;
         }
 
+        public static void RunBookTutorial()
+        {
+            Debug.Log("Book Tutorial");
+
+            Tutorial tutorial = FindObjectOfType<Tutorial>();
+            
+            tutorial.m_narrator.Play(tutorial.m_tutorialBook);
+            gameManager.Instance.m_bookTutorialPlayed = true;
+        }
+
+        public static void RunObjTutorial(GameObject _objective)
+        {
+            IEnumerator ObjectiveCoroutine()
+            {
+
+                gameManager.Instance.isTutorialRunning = true;
+                Tutorial tutorial = FindObjectOfType<Tutorial>();
+
+                FindObjectOfType<PlayerMovement>().GetComponent<CharacterController>().enabled = false;
+
+                tutorial.m_narrator.Play(tutorial.m_tutorialObj[0]);
+
+                yield return new WaitWhile(() => tutorial.m_narrator.settingText);
+
+                FindObjectOfType<PlayerMovement>().GetComponent<CharacterController>().enabled = true;
+
+                yield return new WaitWhile(() => _objective.activeSelf);
+                
+                tutorial.m_narrator.Play(tutorial.m_tutorialObj[1]);
+
+                yield return new WaitWhile(() => tutorial.m_narrator.settingText);
+
+                gameManager.Instance.m_isSafeRoom = true;
+
+                
+                SceneManager.LoadScene("Path_face 3");
+                
+                gameManager.Instance.m_objTutorialPlayed = true;
+
+                gameManager.Instance.isTutorialRunning = false;
+
+                yield return null;
+                
+            }
+            
+            Debug.Log("Obj Tutorial");
+            Tutorial tutorial = FindObjectOfType<Tutorial>();
+
+            tutorial.StartCoroutine(ObjectiveCoroutine());
+            
+
+            
+        }
 
         public void Retry()
         {
             StopAllCoroutines();
+            
+            
             IEnumerator PlayNextDialogue()
             {
                 m_narrator.settingText = false;
@@ -242,16 +335,24 @@ namespace Himanshu
 
                 yield return new WaitWhile(() => m_narrator.settingText);
             }
-            
-            
             IEnumerator DeathDialogues()
             {
                 
                 yield return PlayNextDialogue();
                 yield return StartCoroutine(eTutorial(true));
             }
+            
+            
+            m_player.transform.position = m_defaultPosition;
+            m_player.m_followCam.transform.rotation = m_defaultRotation;
+            m_player.m_followCam.ResetMouse();
+            m_player.m_followCam.m_mouseInput = true;
+                
             m_player.m_enemies.Remove(m_enemy.GetComponent<EnemyController>());
             Destroy(m_enemy);
+                
+                
+            m_player.Unhide();
             
             m_enemy = GameObject.Instantiate(m_enemyDefault, transform, true);
             m_player.m_enemies.Add(m_enemy.GetComponent<EnemyController>());

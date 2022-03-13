@@ -12,13 +12,10 @@ namespace rachael
         // Start is called before the first frame update
         void Start()
         {
+        
             if(m_continueBlock != null)
             {
-                if (!PlayerPrefs.HasKey("SaveFile"))
-                {
-                    m_continueBlock.SetActive(false);
-
-                }
+                ButtonPresent();
 
             }
         }
@@ -33,15 +30,17 @@ namespace rachael
         {
             if (Directory.Exists(Application.persistentDataPath + "/player/"))
             {
-                m_continueBlock.SetActive(false);
+                m_continueBlock.SetActive(true);
             }
             else
             {
-                m_continueBlock.SetActive(true);
+                m_continueBlock.SetActive(false);
             }
         }
         public void MainScene()
         {
+            Cursor.visible = true;
+
             Cursor.lockState = CursorLockMode.None;
             SceneManager.LoadScene(0);
         }
@@ -67,13 +66,18 @@ namespace rachael
         public void Ending()
         {
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             SceneManager.LoadScene(2);
         }
         public void DeleteFile()
         {
-            PlayerPrefs.DeleteAll();
-            SaveSystem.SaveSystem.DeleteNarrator();
-            SaveSystem.SaveSystem.DeletePlayer();
+
+            if (Directory.Exists(Application.persistentDataPath + "/player/"))
+                SaveSystem.SaveSystem.DeletePlayer();
+            if (Directory.Exists(Application.persistentDataPath + "/narrator/"))
+                SaveSystem.SaveSystem.DeleteNarrator();
+
+            ButtonPresent();
             
         }
         //public void Continue()
@@ -90,6 +94,7 @@ namespace rachael
 
         public void LoseScreen()
         {
+            Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             SceneManager.LoadScene(3);
 
