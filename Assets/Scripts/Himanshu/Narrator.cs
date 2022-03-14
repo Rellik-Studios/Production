@@ -459,6 +459,16 @@ namespace Himanshu
         {
             switch (_command)
             {
+                case "disablePlayer":
+                {
+                    FindObjectOfType<PlayerMovement>().GetComponent<CharacterController>().enabled = false;
+                    return "";
+                }
+                case "enablePlayer":
+                {
+                    FindObjectOfType<PlayerMovement>().GetComponent<CharacterController>().enabled = true;
+                    return "";
+                }
                 case "userName":
                     return "%" + NarratorScript.UserName;
                 case "timeCategory":
