@@ -79,8 +79,8 @@ namespace Himanshu
         {
             StartCoroutine(eTutorial());
         }
-        
-        
+
+
         private IEnumerator eTutorial(bool _retry = false)
         {
             wallcolor = Color.white;
@@ -100,12 +100,12 @@ namespace Himanshu
                 m_player.m_followCam.transform.rotation = m_defaultRotation;
                 m_player.m_followCam.ResetMouse();
                 m_player.m_followCam.m_mouseInput = true;
-                
+
                 m_player.m_enemies.Remove(m_enemy.GetComponent<EnemyController>());
                 Destroy(m_enemy);
-                
+
                 m_hidingSpot?.SetActive(false);
-                
+
                 m_player.Unhide();
                 m_narrator.Play("Suit Yourself");
                 m_tutorialOver = true;
@@ -114,7 +114,7 @@ namespace Himanshu
                 StopAllCoroutines();
                 yield return new WaitWhile(() => m_narrator.settingText);
 
-                
+
                 yield return null;
             }
 
@@ -126,136 +126,141 @@ namespace Himanshu
                     if (timer > 0)
                     {
                         timer -= Time.deltaTime;
-                        if(m_player.playerDanger != EnemyController.eDanger.white)
+                        if (m_player.playerDanger != EnemyController.eDanger.white)
                             yield break;
                     }
                     else
                     {
-                        
+
                         m_narrator.settingText = false;
                         m_narrator.Play(m_noticedDialogues[0]);
 
-                        if(m_noticedDialogues.Count > 1)
+                        if (m_noticedDialogues.Count > 1)
                             m_noticedDialogues.RemoveAt(0);
                         timer = 20f;
 
                         yield return new WaitWhile(() => m_narrator.settingText);
                     }
-                    
+
                     yield return null;
                 }
             }
 
-            
-                StartCoroutine(SkipCheck());
-                IEnumerator PlayNextDialogue(int _index = 0)
+
+            StartCoroutine(SkipCheck());
+
+            IEnumerator PlayNextDialogue(int _index = 0)
+            {
+                index = _index != 0 ? _index : index;
+                m_narrator.settingText = false;
+                m_narrator.Play(m_tutorialDialogues[index]);
+
+                index++;
+
+                yield return new WaitWhile(() => m_narrator.settingText);
+            }
+
+
+            if (!_retry)
+            {
+
+                yield return new WaitForFixedUpdate();
+                yield return PlayNextDialogue();
+                m_hidingSpot = m_hidingSpots.Random();
+
+                while (m_hidingSpot.transform.parent.GetComponent<BoxCollider>().bounds
+                    .Intersects(m_player.transform.GetChild(0).GetComponent<Collider>().bounds))
                 {
-                    index = _index != 0 ? _index : index;
-                    m_narrator.settingText = false;
-                    m_narrator.Play(m_tutorialDialogues[index]);
-
-                    index++;
-
-                    yield return new WaitWhile(() => m_narrator.settingText);
-                }
-
-
-                if (!_retry)
-                {
-
-                    yield return new WaitForFixedUpdate();
-                    yield return PlayNextDialogue();
                     m_hidingSpot = m_hidingSpots.Random();
-
-                    while (m_hidingSpot.transform.parent.GetComponent<BoxCollider>().bounds
-                        .Intersects(m_player.transform.GetChild(0).GetComponent<Collider>().bounds))
-                    {
-                        m_hidingSpot = m_hidingSpots.Random();
-                        yield return null;
-                    }
-
-                    m_hidingSpot.transform.parent.GetComponent<BoxCollider>().enabled = false;
-                    m_hidingSpot.SetActive(true);
-
-                    Debug.Log("Why don't ya hide under that table");
-
-                    yield return new WaitUntil(() => m_hidingSpot.GetComponent<HidingSpot>().isUsed);
-
-                    yield return PlayNextDialogue();
-
-                    yield return PlayNextDialogue();
-
-
-                    yield return new WaitWhile(() => m_hidingSpot.GetComponent<HidingSpot>().isUsed);
-                }
-
-                m_enemy.SetActive(true);
-
-                Vector3 dir = m_enemy.transform.position - m_player.transform.position;
-                dir.y = 0; // keep the direction strictly horizontal
-                Quaternion rot = Quaternion.LookRotation(dir);
-                GameObject.FindObjectOfType<PlayerFollow>().m_mouseInput = false;
-
-                while (Mathf.Abs(GameObject.FindObjectOfType<PlayerFollow>().m_mouseX - rot.eulerAngles.y) > 5f)
-                {
-                    dir = m_enemy.transform.position - m_player.transform.position;
-                    dir.y = 0; // keep the direction strictly horizontal
-                    rot = Quaternion.LookRotation(dir);
-                    // slerp to the desired rotation over time
-                    GameObject.FindObjectOfType<PlayerFollow>().m_mouseX =
-                        Mathf.Lerp(GameObject.FindObjectOfType<PlayerFollow>().m_mouseX, rot.eulerAngles.y,
-                            Time.deltaTime * 2.75f);
-
-                    GameObject.FindObjectOfType<PlayerFollow>().m_mouseY =
-                        Mathf.Lerp(GameObject.FindObjectOfType<PlayerFollow>().m_mouseY, rot.eulerAngles.x,
-                            Time.deltaTime * 2.75f);
-
                     yield return null;
                 }
 
-                GameObject.FindObjectOfType<PlayerFollow>().m_mouseInput = true;
+                m_hidingSpot.transform.parent.GetComponent<BoxCollider>().enabled = false;
+                m_hidingSpot.SetActive(true);
 
+                Debug.Log("Why don't ya hide under that table");
 
-
-                yield return PlayNextDialogue(3);
-
-                m_enemy.GetComponent<StateMachine>().enabled = true;
-
-                yield return PlayNextDialogue();
-                
-
-                yield return new WaitForSeconds(2f);
-
-
-                yield return PleaseGetNoticed();
-
-                yield return new WaitUntil(() =>
-                    m_player.playerDanger == EnemyController.eDanger.red ||
-                    m_player.playerDanger == EnemyController.eDanger.yellow);
+                yield return new WaitUntil(() => m_hidingSpot.GetComponent<HidingSpot>().isUsed);
 
                 yield return PlayNextDialogue();
 
-                yield return new WaitUntil(() => m_player.playerDanger == EnemyController.eDanger.white);
-
                 yield return PlayNextDialogue();
 
-                
-                m_player.transform.position = m_defaultPosition;
-                m_player.m_followCam.transform.rotation = m_defaultRotation;
-                m_player.m_followCam.ResetMouse();
-                m_player.m_followCam.m_mouseInput = true;
-                
-                m_player.m_enemies.Remove(m_enemy.GetComponent<EnemyController>());
-                Destroy(m_enemy);
-                
-                
-                m_player.Unhide();
-                m_hidingSpot.SetActive(false);
 
+                yield return new WaitWhile(() => m_hidingSpot.GetComponent<HidingSpot>().isUsed);
+            }
+
+            m_enemy.SetActive(true);
+
+            Vector3 dir = m_enemy.transform.position - m_player.transform.position;
+            dir.y = 0; // keep the direction strictly horizontal
+            Quaternion rot = Quaternion.LookRotation(dir);
+            m_player.m_followCam.m_mouseInput = false;
+
+            while (Mathf.Abs(m_player.m_followCam.m_mouseX - rot.eulerAngles.y) > 5f)
+            {
+                dir = m_enemy.transform.position - m_player.transform.position;
+                dir.y = 0; // keep the direction strictly horizontal
+                rot = Quaternion.LookRotation(dir);
+                // slerp to the desired rotation over time
+                m_player.m_followCam.m_mouseX =
+                    Mathf.Lerp(m_player.m_followCam.m_mouseX, rot.eulerAngles.y,
+                        Time.deltaTime * 2.75f);
+
+                m_player.m_followCam.m_mouseY =
+                    Mathf.Lerp(m_player.m_followCam.m_mouseY, rot.eulerAngles.x,
+                        Time.deltaTime * 2.75f);
+
+                m_player.m_followCam.transform.rotation =
+                    Quaternion.Euler(m_player.m_followCam.m_mouseY, m_player.m_followCam.m_mouseX, 0f);
                 yield return null;
-            
+            }
 
-            m_tutorialOver = true; 
+            m_player.m_followCam.m_mouseInput = true;
+
+
+            m_player.m_invincible = false;
+
+            yield return PlayNextDialogue(3);
+
+            m_enemy.GetComponent<StateMachine>().enabled = true;
+
+            yield return PlayNextDialogue();
+
+
+            yield return new WaitForSeconds(2f);
+
+
+            yield return PleaseGetNoticed();
+
+            yield return new WaitUntil(() =>
+                m_player.playerDanger == EnemyController.eDanger.red ||
+                m_player.playerDanger == EnemyController.eDanger.yellow);
+
+            yield return PlayNextDialogue();
+
+            yield return new WaitUntil(() => m_player.playerDanger == EnemyController.eDanger.white);
+
+            yield return PlayNextDialogue();
+
+
+            m_player.transform.position = m_defaultPosition;
+            m_player.m_followCam.transform.rotation = m_defaultRotation;
+            m_player.m_followCam.ResetMouse();
+            m_player.m_followCam.m_mouseInput = true;
+
+            m_player.m_enemies.Remove(m_enemy.GetComponent<EnemyController>());
+            Destroy(m_enemy);
+
+
+            m_player.Unhide();
+            m_hidingSpot.SetActive(false);
+
+            yield return null;
+
+
+            m_player.m_invincible = true;
+            m_tutorialOver = true;
             StopAllCoroutines();
             wallcolor = Color.black;
         }
@@ -264,10 +269,19 @@ namespace Himanshu
         {
             Debug.Log("Book Tutorial");
 
-            Tutorial tutorial = FindObjectOfType<Tutorial>();
-            
-            tutorial.m_narrator.Play(tutorial.m_tutorialBook);
-            gameManager.Instance.m_bookTutorialPlayed = true;
+            Tutorial tutorial = FindObjectOfType<Tutorial>();   
+
+            IEnumerator BookCoroutine()
+            {
+                tutorial.m_player.GetComponent<CharacterController>().enabled = false;
+                tutorial.m_narrator.Play(tutorial.m_tutorialBook);
+                yield return new WaitWhile(() => tutorial.m_narrator.settingText);
+                tutorial.m_player.GetComponent<CharacterController>().enabled = true;
+                gameManager.Instance.m_bookTutorialPlayed = true;
+            }
+
+            tutorial.StartCoroutine(BookCoroutine());
+
         }
 
         public static void RunObjTutorial(GameObject _objective)
@@ -278,20 +292,23 @@ namespace Himanshu
                 gameManager.Instance.isTutorialRunning = true;
                 Tutorial tutorial = FindObjectOfType<Tutorial>();
 
-                FindObjectOfType<PlayerMovement>().GetComponent<CharacterController>().enabled = false;
+                tutorial.m_player.GetComponent<CharacterController>().enabled = false;
 
                 tutorial.m_narrator.Play(tutorial.m_tutorialObj[0]);
 
                 yield return new WaitWhile(() => tutorial.m_narrator.settingText);
 
-                FindObjectOfType<PlayerMovement>().GetComponent<CharacterController>().enabled = true;
+                
+                tutorial.m_player.GetComponent<CharacterController>().enabled = true;
 
                 yield return new WaitWhile(() => _objective.activeSelf);
-                
+
+                tutorial.m_player.GetComponent<CharacterController>().enabled = false;
                 tutorial.m_narrator.Play(tutorial.m_tutorialObj[1]);
 
                 yield return new WaitWhile(() => tutorial.m_narrator.settingText);
 
+                tutorial.m_player.GetComponent<CharacterController>().enabled = true;
                 gameManager.Instance.m_isSafeRoom = true;
 
                 
@@ -307,11 +324,7 @@ namespace Himanshu
             
             Debug.Log("Obj Tutorial");
             Tutorial tutorial = FindObjectOfType<Tutorial>();
-
             tutorial.StartCoroutine(ObjectiveCoroutine());
-            
-
-            
         }
 
         public void Retry()

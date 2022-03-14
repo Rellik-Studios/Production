@@ -43,11 +43,23 @@ namespace Himanshu
 
         public bool aOpen
         {
-            get => m_animator.GetBool("open");
-            set => m_animator.SetBool("open", value);
+            get
+            {
+                if(m_animator != null)
+                    return m_animator.GetBool("open");
+                else
+                    Debug.Log($"{name} does not have an animator attached");
+                return false;
+            }
+            set
+            {
+                if(m_animator != null)
+                    m_animator.SetBool("open", value);
+                else
+                    Debug.Log($"{name} does not have an animator attached");
+            }
         }
-       
- 
+
         #endregion
 
         public bool isUsed => m_player != null;
@@ -242,7 +254,10 @@ namespace Himanshu
                     break;
                 index++;
             }
-            hidingIndex = index;
+            if(m_cupboard)
+                this.Invoke(()=>hidingIndex = index, 1.1f);
+            else
+                hidingIndex = index;
         }
     }
 }
