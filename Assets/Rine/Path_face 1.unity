@@ -123,13 +123,13 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!43 &1435467336
+--- !u!43 &59304710
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-2447716
+  m_Name: pb_Mesh-944428
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -473,8 +473,8 @@ Camera:
   m_GameObject: {fileID: 1582745260}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -620,11 +620,11 @@ PrefabInstance:
     - target: {fileID: 315420703, guid: ae0e99c34c2bbd344bf74ea634952a19, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1435467336}
+      objectReference: {fileID: 59304710}
     - target: {fileID: 3521333064327165797, guid: ae0e99c34c2bbd344bf74ea634952a19, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1435467336}
+      objectReference: {fileID: 59304710}
     - target: {fileID: 6901885488042852386, guid: ae0e99c34c2bbd344bf74ea634952a19, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -676,6 +676,6 @@ PrefabInstance:
     - target: {fileID: 8065118591560601664, guid: ae0e99c34c2bbd344bf74ea634952a19, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1435467336}
+      objectReference: {fileID: 59304710}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae0e99c34c2bbd344bf74ea634952a19, type: 3}
