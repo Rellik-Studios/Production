@@ -39,6 +39,7 @@ namespace rachael.SaveSystem
             else if (Directory.Exists(Application.persistentDataPath + "/player/"))
             {
                 LoadPlayer(true);
+                FindObjectOfType<PlayerMovement>().m_stopWhileStarting = true;
                 gameManager.Instance.m_isSafeRoom = false;
             }
             else
