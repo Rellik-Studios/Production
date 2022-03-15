@@ -36,8 +36,12 @@ namespace Himanshu
 
         public eDanger dangerLevel {
             get => m_dangerLevel;
-            set 
+            set
             {
+                if (value != eDanger.white)
+                    aDanger = true;
+                else
+                    aDanger = false;
                 m_dangerLevel = value;
                 m_mask.dangerLevel = value;
             }
@@ -66,6 +70,17 @@ namespace Himanshu
         {
             get => m_animator.GetBool("kill");
             set => m_animator.SetBool("kill", value);
+        }
+
+        private bool aDanger
+        {
+            get => m_animator.GetBool("danger");
+            set
+            {
+                if(value)
+                    m_animator.SetTrigger("dangerT");
+                m_animator.SetBool("danger", value);
+            }
         }
 
         [SerializeField] private EnemyHeadTurn m_enemyHead;
@@ -205,48 +220,66 @@ namespace Himanshu
             return false;
         }
 
+        private bool m_killing = false;
         //Called through the Visual Script
         public void Attack()
         {
-            var playerInteract = m_player.GetComponent<PlayerInteract>();
-            if (playerInteract.m_invincible || playerInteract.m_debugInvincible)
-                return;
+
             
-            if (dangerLevel == eDanger.yellow)
+            IEnumerator KillRoutine()
             {
-                if (m_canBeRed)
-                    dangerLevel = eDanger.red;
-                else
-                    return;
-            }
-            if(m_frozen || m_coroutinePlaying) return;
-            var player = FindObjectOfType<PlayerInteract>();
-
-            if (player.m_isDying) return;
+                m_killing = true;
+                var playerInteract = m_player.GetComponent<PlayerInteract>();
+                if (playerInteract.m_invincible || playerInteract.m_debugInvincible)
+                    yield break;
             
-            Time.timeScale = 0.1f;
-
-            player.m_followCam.m_mouseInput = false;
-            // player.m_followCam.transform.LookAt(transform);
-            //player.m_followCam.transform.rotation = Quaternion.Euler(player.m_followCam.transform.rotation.eulerAngles.x, 0f, player.m_followCam.transform.rotation.eulerAngles.z);
+                if (dangerLevel == eDanger.yellow)
+                {
+                    if (m_canBeRed)
+                        dangerLevel = eDanger.red;
+                    else
+                        yield break;
+                }
             
-            Vector3 dir = transform.position - m_player.transform.position;
-            dir.y = 0; // keep the direction strictly horizontal
-            Quaternion rot = Quaternion.LookRotation(dir);
-            player.m_followCam.transform.rotation = rot;
-            player.m_followCam.ResetMouse();
+            
+                if(m_frozen || m_coroutinePlaying) yield break;
+                var player = FindObjectOfType<PlayerInteract>();
+
+                if (player.m_isDying) yield break;
+            
+                Time.timeScale = 0.1f;
+
+                player.m_followCam.m_mouseInput = false;
+                // player.m_followCam.transform.LookAt(transform);
+                //player.m_followCam.transform.rotation = Quaternion.Euler(player.m_followCam.transform.rotation.eulerAngles.x, 0f, player.m_followCam.transform.rotation.eulerAngles.z);
+            
+                
+                player.m_followCam.transform.LookAt(transform.position + new Vector3(0f, 4f, 0f));
+                player.m_followCam.ResetMouse();
 
          
-            aKill = true;
+                aKill = true;
+                GetComponent<NavMeshAgent>().enabled = false;
+                transform.position -= transform.forward * 3f;
+                transform.LookAt(player.transform);
 
-            player.m_isDying = true;
-            
-            this.Invoke(()=>player.Death(), 5f, true);
-            this.Invoke(()=>Time.timeScale = 1f, 5f, true);
+                player.m_isDying = true;
+
+                yield return new WaitForSecondsRealtime(1.2f);
+                
+                player.Death();
+                Time.timeScale = 1f;
 
             
             
-            m_spotted = true;
+                m_spotted = true;
+                yield return null;
+            }
+
+            if (!m_killing)
+                StartCoroutine(KillRoutine());
+
+
         }
 
         private void Update()

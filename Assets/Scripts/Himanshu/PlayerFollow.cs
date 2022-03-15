@@ -27,32 +27,32 @@ namespace Himanshu
         }
 
 
-        public IEnumerator eLookInDirection(Transform _target, bool _lookAway = false)
-        {
-            var dir = _target.position - transform.position;
-            
-            dir.y = 0; // keep the direction strictly horizontal
-            Quaternion rot = Quaternion.LookRotation(dir);
-            GameObject.FindObjectOfType<PlayerFollow>().m_mouseInput = false;
-
-            rot.eulerAngles += _lookAway ? new Vector3(0f, 180f, 0f) : Vector3.zero;
-            while (Mathf.Abs(GameObject.FindObjectOfType<PlayerFollow>().m_mouseX - rot.eulerAngles.y) > 5f)
-            {
-                dir = _target.position - transform.position;
-                dir.y = 0; // keep the direction strictly horizontal
-                rot = Quaternion.LookRotation(dir);
-                // slerp to the desired rotation over time
-                GameObject.FindObjectOfType<PlayerFollow>().m_mouseX =
-                    Mathf.Lerp(GameObject.FindObjectOfType<PlayerFollow>().m_mouseX, rot.eulerAngles.y,
-                        Time.deltaTime * 2.75f);
-
-                GameObject.FindObjectOfType<PlayerFollow>().m_mouseY =
-                    Mathf.Lerp(GameObject.FindObjectOfType<PlayerFollow>().m_mouseY, rot.eulerAngles.x,
-                        Time.deltaTime * 2.75f);
-
-                yield return null;
-            }
-        }
+        // public IEnumerator eLookInDirection(Transform _target, bool _lookAway = false)
+        // {
+        //     var dir = _target.position - transform.position;
+        //     
+        //     dir.y = 0; // keep the direction strictly horizontal
+        //     Quaternion rot = Quaternion.LookRotation(dir);
+        //     GameObject.FindObjectOfType<PlayerFollow>().m_mouseInput = false;
+        //
+        //     rot.eulerAngles += _lookAway ? new Vector3(0f, 180f, 0f) : Vector3.zero;
+        //     while (Mathf.Abs(GameObject.FindObjectOfType<PlayerFollow>().m_mouseX - rot.eulerAngles.y) > 5f)
+        //     {
+        //         dir = _target.position - transform.position;
+        //         dir.y = 0; // keep the direction strictly horizontal
+        //         rot = Quaternion.LookRotation(dir);
+        //         // slerp to the desired rotation over time
+        //         GameObject.FindObjectOfType<PlayerFollow>().m_mouseX =
+        //             Mathf.Lerp(GameObject.FindObjectOfType<PlayerFollow>().m_mouseX, rot.eulerAngles.y,
+        //                 Time.deltaTime * 2.75f);
+        //
+        //         GameObject.FindObjectOfType<PlayerFollow>().m_mouseY =
+        //             Mathf.Lerp(GameObject.FindObjectOfType<PlayerFollow>().m_mouseY, rot.eulerAngles.x,
+        //                 Time.deltaTime * 2.75f);
+        //
+        //         yield return null;
+        //     }
+        // }
         void Update()
         {
             if(Time.timeScale == 0 && !m_playerMovement.canMoveUnscaled) return;
