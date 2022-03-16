@@ -17,7 +17,7 @@ namespace Himanshu
     public class PlayerInteract : MonoBehaviour
     {
         private bool m_spotted;
-        public GameObject LoseScreen;
+        public GameObject PauseScreen;
         public SceneChanger m_sceneManager;
         public Animator SaveProcess;
 
@@ -250,15 +250,17 @@ namespace Himanshu
 
 #if UNITY_EDITOR
 
-            if(Input.GetKeyDown(KeyCode.Alpha4))
+            if(Input.GetKeyDown(KeyCode.Alpha4) && Time.timeScale != 0)
             {
-                m_sceneManager.MainScene();
+                PauseScreen.SetActive(true);
+                //m_sceneManager.MainScene();
             }
 
 #else
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Escape) && Time.timeScale != 0)
             {
-                m_sceneManager.MainScene();
+                PauseScreen.SetActive(true);
+                //m_sceneManager.MainScene();
             }
 
 #endif
