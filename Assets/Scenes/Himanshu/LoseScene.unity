@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0.99999905, b: 0.99999905, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -130,6 +130,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 608535169512125835, guid: 78e9dc9bfed756a44a8708b7390f0089, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 608535169512125835, guid: 78e9dc9bfed756a44a8708b7390f0089, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 608535169512125835, guid: 78e9dc9bfed756a44a8708b7390f0089, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 1720829424194499330, guid: 78e9dc9bfed756a44a8708b7390f0089, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f66e2ff1aaaa0874abbb47d7e2223d95, type: 3}
     - target: {fileID: 3134560032853012486, guid: 78e9dc9bfed756a44a8708b7390f0089, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -222,6 +238,22 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: b52c5bafb48b8bc4683c458aad1c18d2, type: 3}
+    - target: {fileID: 6479471583079121353, guid: 78e9dc9bfed756a44a8708b7390f0089, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 281
+      objectReference: {fileID: 0}
+    - target: {fileID: 6479471583079121353, guid: 78e9dc9bfed756a44a8708b7390f0089, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 93
+      objectReference: {fileID: 0}
+    - target: {fileID: 7005089455472014269, guid: 78e9dc9bfed756a44a8708b7390f0089, type: 3}
+      propertyPath: m_SpriteState.m_PressedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7088d98836fd2094a8a20064d571eaa2, type: 3}
+    - target: {fileID: 7005089455472014269, guid: 78e9dc9bfed756a44a8708b7390f0089, type: 3}
+      propertyPath: m_SpriteState.m_HighlightedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7088d98836fd2094a8a20064d571eaa2, type: 3}
     - target: {fileID: 7005089455472014269, guid: 78e9dc9bfed756a44a8708b7390f0089, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
