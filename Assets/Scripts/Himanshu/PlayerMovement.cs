@@ -20,7 +20,7 @@ namespace Himanshu
         [SerializeField] private float m_jumpHeight;
         [SerializeField] private float m_groundDistance = 0.1f;
         private bool m_isGrounded;
-        public bool canMoveUnscaled => FindObjectOfType<FavorSystem>().m_timeStop;
+        public bool canMoveUnscaled => FindObjectOfType<FavorSystem>().m_timeStop && FindObjectOfType<FavorSystem>().m_continueCounting;
         public bool crouching
         {
             get => m_playerInput.m_crouching;

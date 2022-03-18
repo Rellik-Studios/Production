@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Bolt;
 using rachael;
+using rachael.FavorSystem;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -250,9 +251,10 @@ namespace Himanshu
 
 #if UNITY_EDITOR
 
-            if(Input.GetKeyDown(KeyCode.Alpha4) && Time.timeScale != 0)
+            if(Input.GetKeyDown(KeyCode.Alpha4) && (Time.timeScale == 1 || FindObjectOfType<FavorSystem>().m_timeStop))
             {
                 PauseScreen.SetActive(true);
+                FindObjectOfType<FavorSystem>().m_continueCounting = false;
                 //m_sceneManager.MainScene();
             }
 
