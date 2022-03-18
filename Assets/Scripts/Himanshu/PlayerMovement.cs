@@ -115,7 +115,7 @@ namespace Himanshu
             if (m_playerInput.sprint && sprintTimer > 0f && m_playerInput.movement.magnitude > 0f)
             {
                 crouching = false;
-                sprintTimer -= calculatedDeltaTime;
+                sprintTimer -= calculatedDeltaTime / 2f;
             }
             else if (sprintTimer < m_maxSprintTimer)
             {
