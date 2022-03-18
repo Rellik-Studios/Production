@@ -221,11 +221,12 @@ namespace Himanshu
 
             m_player.m_invincible = false;
 
-            yield return PlayNextDialogue(3);
+            if (!_retry)
+                yield return PlayNextDialogue(3);
 
             m_enemy.GetComponent<StateMachine>().enabled = true;
 
-            yield return PlayNextDialogue();
+            yield return PlayNextDialogue(4);
 
 
             yield return new WaitForSeconds(2f);

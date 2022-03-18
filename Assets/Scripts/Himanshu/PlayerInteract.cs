@@ -250,7 +250,7 @@ namespace Himanshu
 
 #if UNITY_EDITOR
 
-            if(Input.GetKeyDown(KeyCode.Alpha4) && Time.timeScale != 0)
+            if(Input.GetKeyDown(KeyCode.Alpha0) && Time.timeScale != 0)
             {
                 PauseScreen.SetActive(true);
                 //m_sceneManager.MainScene();
