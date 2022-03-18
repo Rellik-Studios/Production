@@ -24,6 +24,8 @@ namespace rachael.FavorSystem
 
         public bool m_timeStop = false;
 
+        public bool m_continueCounting = true;
+
         public static bool m_grantSpecial = false; 
 
         private PlayerInteract m_playerInteract;
@@ -107,9 +109,12 @@ namespace rachael.FavorSystem
             {
                 CommandIcon.SetActive(true);
             }
+            if(CommandIcon.activeSelf && m_timeStop)
+            {
+                CommandIcon.SetActive(false);
+            }
 
-
-            if (Input.GetKeyDown(KeyCode.C) && !m_isOpen && (gameManager.Instance.m_objTutorialPlayed ?? false) && !pauseMenu.activeSelf)
+            if (Input.GetKeyDown(KeyCode.C) && !m_isOpen && (gameManager.Instance.m_objTutorialPlayed ?? false) && Time.timeScale == 1)
             {
                 m_inputField.text = "";
                 CommandPromptWindow();
@@ -118,6 +123,7 @@ namespace rachael.FavorSystem
             {
                 StartCoroutine(EKeyLeave());
             }
+
 
             aNotifEnabled = (m_playerInteract?.playerDanger != EnemyController.eDanger.white && m_grantSpecial);
 
@@ -197,7 +203,7 @@ namespace rachael.FavorSystem
 
         public IEnumerator EKeyLeave()
         {
-            yield return new WaitForEndOfFrame();
+            yield return new WaitUntil(() => Input.GetKeyUp(KeyCode.Alpha4));
             CloseCommandPrompt();
         }
 
@@ -254,7 +260,8 @@ namespace rachael.FavorSystem
                 float counter = 0f;
                 while (counter < 5f)
                 { 
-                    counter += Time.unscaledDeltaTime;
+                    if(m_continueCounting)
+                        counter += Time.unscaledDeltaTime;
                     yield return null;
                 }
 
