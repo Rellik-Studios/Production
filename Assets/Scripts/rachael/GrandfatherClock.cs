@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Himanshu;
@@ -14,6 +15,7 @@ namespace rachael
        public List<CollectableObject> m_depositedObjects;
 
         [SerializeField] private AudioClip m_pickUp;
+        [SerializeField] private GameObject m_glow;
 
         private void OnEnable()
         {
@@ -57,9 +59,15 @@ namespace rachael
 
         private void CheckVictory()
         {
+            IEnumerator WinRoutine()
+            {
+                yield return null;
+            }
             if (m_depositedObjects.Count == 4)
             {
-                SceneManager.LoadScene("WiningScreen");
+                //SceneManager.LoadScene("WiningScreen");
+                gameObject.SetActive(false);
+                m_glow.SetActive(true);
             }
         }
 

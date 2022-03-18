@@ -12,8 +12,12 @@ namespace Himanshu
 
         private void Start()
         {
-            SetBGVolume(0);
-            SetSFXVolume(0);
+            m_audioMixer.GetFloat("bgAudio", out float _bgVol);
+            m_audioMixer.GetFloat("sfxAudio", out float _sfxVol);
+            SetBGVolume(_bgVol);
+            m_bgSlider.value = _bgVol;
+            SetSFXVolume(_sfxVol);
+            m_sfxSlider.value = _sfxVol;
 
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
