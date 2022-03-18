@@ -7,10 +7,12 @@ namespace Himanshu
     public class Objective : MonoBehaviour, IInteract
     {
         [SerializeField] private GameObject m_dissapearingDoor;
+        [SerializeField] private GameObject m_unlockVFX;
         
         public void Execute(PlayerInteract _player)
         {
             FavorSystem.startTimer = false;
+            m_unlockVFX.SetActive(true);
             m_dissapearingDoor.SetActive(false);
             gameObject.SetActive(false);
         }
