@@ -227,11 +227,7 @@ namespace Himanshu
             {
                 m_idleTimer -= Time.deltaTime;
             }
-            
-            #if UNITY_EDITOR
-            if(Input.GetKeyDown(KeyCode.Alpha0))
-                SaveSystem.DeleteNarrator();
-            #endif
+           
 
             if (m_textBox.text != "" && !m_textBackdrop.activeSelf)
             {
