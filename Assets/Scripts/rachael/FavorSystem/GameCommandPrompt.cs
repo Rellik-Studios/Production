@@ -16,6 +16,8 @@ public class GameCommandPrompt : MonoBehaviour
     [SerializeField] FavorSystem favorSystem;
 
     [SerializeField] private TMP_InputField m_inputField;
+
+    public string[] CommandTalkText;
     //[SerializeField] private GameObject m_caretImage;
     private float m_defaultPosition;
 
@@ -73,6 +75,7 @@ public class GameCommandPrompt : MonoBehaviour
         m_inputField.enabled = true;
         enableTyping = true;
         favorName = "";
+        timeStop = false;
     }
     private void OnDisable()
     {
@@ -245,7 +248,8 @@ public class GameCommandPrompt : MonoBehaviour
 
     bool TalkCommand()
     {
-        favorSystem.m_commandText.text = "Hello world\n\nPress any key to continue";
+        int x = Random.Range(0, CommandTalkText.Length);
+        favorSystem.m_commandText.text = CommandTalkText[x] + "\n\nPress any key to continue";
         favorSystem.consoleDisplay = ConsoleDisplay.talkMenu;
         enableTyping = false;
         //favorSystem.DisplayScreen();
@@ -337,8 +341,8 @@ public class GameCommandPrompt : MonoBehaviour
         Debug.Log(favorSystem.m_favorPoints);
         Debug.Log(favorSystem.m_result);
 
-        //return true;
-        return favorSystem.m_result >= 0.5f;
+        return true;
+        //return favorSystem.m_result >= 0.5f;
     }
 
     string GrantTypeofFavor()
@@ -346,8 +350,8 @@ public class GameCommandPrompt : MonoBehaviour
         int x = Random.Range(0, 2);
         string[] ListOfAbilities = new string[] { "Rewind", "Stop" };
 
-        //return "Stop";
-        return ListOfAbilities[x];
+        return "Stop";
+        //return ListOfAbilities[x];
     }
 
     void FavorDecision()

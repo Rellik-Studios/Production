@@ -257,7 +257,7 @@ namespace Himanshu
                 
                 player.m_followCam.transform.LookAt(transform.position + new Vector3(0f, 4f, 0f));
                 player.m_followCam.ResetMouse();
-
+                player.GetComponent<CharacterController>().enabled = false;
          
                 aKill = true;
                 GetComponent<NavMeshAgent>().enabled = false;
@@ -267,15 +267,13 @@ namespace Himanshu
                 player.m_isDying = true;
 
                 yield return new WaitForSecondsRealtime(1.2f);
-                
+                player.GetComponent<CharacterController>().enabled = false;
+                m_killing = false;
                 player.Death();
                 Time.timeScale = 1f;
 
-                player.GetComponent<CharacterController>().enabled = false;
 
-                m_killing = false;
-            
-            
+
                 m_spotted = true;
                 yield return null;
             }

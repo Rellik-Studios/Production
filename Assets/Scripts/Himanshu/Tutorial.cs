@@ -221,7 +221,7 @@ namespace Himanshu
 
             m_player.m_invincible = false;
 
-            if (!_retry)
+            if(!_retry)
                 yield return PlayNextDialogue(3);
 
             m_enemy.GetComponent<StateMachine>().enabled = true;
