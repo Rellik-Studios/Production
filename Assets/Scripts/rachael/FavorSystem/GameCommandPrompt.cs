@@ -73,6 +73,7 @@ public class GameCommandPrompt : MonoBehaviour
         m_inputField.enabled = true;
         enableTyping = true;
         favorName = "";
+        timeStop = false;
     }
     private void OnDisable()
     {
@@ -84,8 +85,7 @@ public class GameCommandPrompt : MonoBehaviour
             favorSystem.ResetTime();
             //this.Invoke(()=>timeStop = false, 5, true);
         }
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        
     }
 
     // Update is called once per frame
@@ -338,8 +338,8 @@ public class GameCommandPrompt : MonoBehaviour
         Debug.Log(favorSystem.m_favorPoints);
         Debug.Log(favorSystem.m_result);
 
-        //return true;
-        return favorSystem.m_result >= 0.5f;
+        return true;
+        //return favorSystem.m_result >= 0.5f;
     }
 
     string GrantTypeofFavor()
@@ -347,8 +347,8 @@ public class GameCommandPrompt : MonoBehaviour
         int x = Random.Range(0, 2);
         string[] ListOfAbilities = new string[] { "Rewind", "Stop" };
 
-        //return "Stop";
-        return ListOfAbilities[x];
+        return "Stop";
+        //return ListOfAbilities[x];
     }
 
     void FavorDecision()
@@ -372,12 +372,6 @@ public class GameCommandPrompt : MonoBehaviour
     /// Grand Rewind favor
     /// NOTE: needs the rewind reference aka teleport and restarting from the last checkpoint
     /// </summary>
-    void GrantTeleport()
-    {
-        gameManager.Instance.m_isSafeRoom = true;
-        SceneManager.LoadScene("Path_face 3");
-        Debug.Log("Grant Teleport Time");
-    }
 
     void GrantRewind()
     {
@@ -493,22 +487,24 @@ public class GameCommandPrompt : MonoBehaviour
     }
     private IEnumerator ReturnToMenuCommandProcess()
     {
+        favorSystem.m_isProcessing = true;
         m_inputField.enabled = false;
         m_failedAttempts = 0;
         yield return new WaitForSecondsRealtime(3);
         m_inputField.enabled = true;
         favorSystem.DisplayingMainMenu();
-
+        favorSystem.m_isProcessing = false;
 
         yield return null;
     }
 
     private IEnumerator ShutDownCommandProcess()
     {
+        favorSystem.m_isProcessing = true;
         yield return new WaitForSecondsRealtime(3);
         m_inputField.enabled = true;
         favorSystem.CloseCommandPrompt();
-
+        favorSystem.m_isProcessing = false;
 
         yield return null;
     }
@@ -516,7 +512,7 @@ public class GameCommandPrompt : MonoBehaviour
 
     private IEnumerator HelpCommandProcess()
     {
-        
+        favorSystem.m_isProcessing = true;
         while (counter < 30)
         {
             favorSystem.m_commandText.text += ".";
@@ -546,6 +542,7 @@ public class GameCommandPrompt : MonoBehaviour
         m_inputField.enabled = true;
         favorSystem.m_commandText.resizeTextForBestFit = true;
         FavorSystem.m_grantSpecial = false;
+        favorSystem.m_isProcessing = false;
         //favorSystem.isDanger = false;
         favorSystem.CloseCommandPrompt();
 

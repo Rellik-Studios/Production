@@ -24,6 +24,8 @@ namespace rachael.FavorSystem
 
         public bool m_timeStop = false;
 
+        public bool m_continueCounting = true;
+
         public static bool m_grantSpecial = false; 
 
         private PlayerInteract m_playerInteract;
@@ -64,12 +66,16 @@ namespace rachael.FavorSystem
         private bool m_isDanger;
 
         private float m_waitTimer;
+
+        public bool m_isProcessing = false;
         public static bool startTimer = false;
 
 
 
         public GameObject CommandIcon;
         private Animator m_notifAnimator;
+
+        public GameObject pauseMenu;
         private bool aNotifEnabled {
             get => m_notifAnimator.GetBool("IsEnabled");
             set
@@ -103,12 +109,22 @@ namespace rachael.FavorSystem
             {
                 CommandIcon.SetActive(true);
             }
+            if(CommandIcon.activeSelf && m_timeStop)
+            {
+                CommandIcon.SetActive(false);
+            }
 
-            if (Input.GetKeyDown(KeyCode.C) && !m_isOpen && (gameManager.Instance.m_objTutorialPlayed ?? false))
+            if (Input.GetKeyDown(KeyCode.C) && !m_isOpen && (gameManager.Instance.m_objTutorialPlayed ?? false) && Time.timeScale == 1)
             {
                 m_inputField.text = "";
                 CommandPromptWindow();
             }
+            else if (Input.GetKeyDown(KeyCode.Alpha4) && m_isOpen && !pauseMenu.activeSelf && !m_isProcessing)
+            {
+                StartCoroutine(EKeyLeave());
+            }
+
+
             aNotifEnabled = (m_playerInteract?.playerDanger != EnemyController.eDanger.white && m_grantSpecial);
 
 
@@ -181,13 +197,14 @@ namespace rachael.FavorSystem
             Debug.Log("Command Prompt is close");
             m_isOpen = false;
             m_commandPrompt.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
 
-        private IEnumerator EKeyboardInput()
+        public IEnumerator EKeyLeave()
         {
-        
-        
-            yield return null;
+            yield return new WaitUntil(() => Input.GetKeyUp(KeyCode.Alpha4));
+            CloseCommandPrompt();
         }
 
         public void DisplayingMainMenu()
@@ -242,8 +259,9 @@ namespace rachael.FavorSystem
                 m_timeStop = true;
                 float counter = 0f;
                 while (counter < 5f)
-                {
-                    counter += Time.unscaledDeltaTime;
+                { 
+                    if(m_continueCounting)
+                        counter += Time.unscaledDeltaTime;
                     yield return null;
                 }
 
@@ -254,6 +272,10 @@ namespace rachael.FavorSystem
 
             StartCoroutine(Reset());
         }
+
+
     }
+
+    
 
 }

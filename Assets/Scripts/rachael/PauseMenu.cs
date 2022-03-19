@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.Audio;
 using UnityEngine;
 using UnityEngine.UI;
+using rachael.FavorSystem;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -26,9 +27,17 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
-    private void OnDisable()
+
+    public void Unpause()
     {
-        Time.timeScale = 1f;
+        if (FindObjectOfType<FavorSystem>().m_timeStop == false)
+        {
+            Time.timeScale = 1f;
+        }
+        else
+        {
+            FindObjectOfType<FavorSystem>().m_continueCounting = true;
+        }
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
