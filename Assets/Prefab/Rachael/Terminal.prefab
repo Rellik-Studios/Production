@@ -561,6 +561,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   favorSystem: {fileID: 3351539180860888740}
   m_inputField: {fileID: 3351539180959282875}
+  CommandTalkText:
+  - Hello World
+  - You can get help when you are in danger
+  - This is more than just a game
 --- !u!1 &3351539180860888763
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,6 +609,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_timeStop: 0
+  m_continueCounting: 1
   m_commandPrompt: {fileID: 3351539180786520093}
   m_commandFeatures:
   - {fileID: 3351539181895067815}
@@ -615,7 +620,14 @@ MonoBehaviour:
   - {fileID: 3928306722895430707}
   m_commandText: {fileID: 3351539181428162143}
   m_inputField: {fileID: 3351539180959282875}
+  m_defaultPoints: 0
+  m_favorPoints: 0
+  m_result: 0
   consoleDisplay: 0
+  m_isProcessing: 0
+  CommandIcon: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  NotifIcon: {fileID: 0}
 --- !u!1 &3351539180959282873
 GameObject:
   m_ObjectHideFlags: 0
