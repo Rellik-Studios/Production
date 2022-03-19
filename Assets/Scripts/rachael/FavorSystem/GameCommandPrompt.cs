@@ -16,6 +16,8 @@ public class GameCommandPrompt : MonoBehaviour
     [SerializeField] FavorSystem favorSystem;
 
     [SerializeField] private TMP_InputField m_inputField;
+
+    public string[] CommandTalkText;
     //[SerializeField] private GameObject m_caretImage;
     private float m_defaultPosition;
 
@@ -246,7 +248,8 @@ public class GameCommandPrompt : MonoBehaviour
 
     bool TalkCommand()
     {
-        favorSystem.m_commandText.text = "Hello world\n\nPress any key to continue";
+        int x = Random.Range(0, CommandTalkText.Length);
+        favorSystem.m_commandText.text = CommandTalkText[x] + "\n\nPress any key to continue";
         favorSystem.consoleDisplay = ConsoleDisplay.talkMenu;
         enableTyping = false;
         //favorSystem.DisplayScreen();
