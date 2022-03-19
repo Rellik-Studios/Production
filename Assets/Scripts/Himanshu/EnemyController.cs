@@ -267,11 +267,12 @@ namespace Himanshu
 
                 yield return new WaitForSecondsRealtime(1.2f);
                 
+                m_killing = false;
                 player.Death();
                 Time.timeScale = 1f;
 
-            
-            
+
+
                 m_spotted = true;
                 yield return null;
             }
@@ -436,7 +437,7 @@ namespace Himanshu
                 }
             }
 
-            var colliders = Physics.OverlapSphere(transform.position, m_hearingRadius * (m_player.crouching ? 1f : 3f));
+            var colliders = Physics.OverlapSphere(transform.position, m_hearingRadius * (m_player.crouching ? 0.1f : 3f));
             if (colliders.Any(t => t.CompareTag("Player") && !t.transform.parent.GetComponent<PlayerInteract>().m_hiding))
             {
                 return true;
