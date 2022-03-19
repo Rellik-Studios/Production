@@ -119,11 +119,17 @@ namespace rachael.FavorSystem
                 m_inputField.text = "";
                 CommandPromptWindow();
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha4) && m_isOpen && !pauseMenu.activeSelf && !m_isProcessing)
+#if UNITY_EDITOR
+            else if (Input.GetKeyDown(KeyCode.Alpha0) && m_isOpen && !pauseMenu.activeSelf && !m_isProcessing)
             {
                 StartCoroutine(EKeyLeave());
             }
-
+#else
+            else if (Input.GetKeyDown(KeyCode.Escape) && m_isOpen && !pauseMenu.activeSelf && !m_isProcessing)
+            {
+                StartCoroutine(EKeyLeave());
+            }
+#endif
 
             aNotifEnabled = (m_playerInteract?.playerDanger != EnemyController.eDanger.white && m_grantSpecial);
 
@@ -203,7 +209,11 @@ namespace rachael.FavorSystem
 
         public IEnumerator EKeyLeave()
         {
-            yield return new WaitUntil(() => Input.GetKeyUp(KeyCode.Alpha4));
+#if UNITY_EDITOR
+            yield return new WaitUntil(() => Input.GetKeyUp(KeyCode.Alpha0));
+#else
+            yield return new WaitUntil(() => Input.GetKeyUp(KeyCode.Escape));
+#endif
             CloseCommandPrompt();
         }
 
