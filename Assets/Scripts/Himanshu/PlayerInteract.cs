@@ -324,6 +324,7 @@ namespace Himanshu
             else
             {
                 GetComponent<CharacterController>().enabled = true;
+                GetComponent<PlayerMovement>().crouching = true;
                 //GetComponent<CharacterController>().Move(m_playerFollow.transform.forward * 3f);
                 m_playerFollow.ResetRotationLock();
                 m_hidingSpot.Disable();
@@ -476,7 +477,10 @@ namespace Himanshu
             if (!gameManager.Instance.isTutorialRunning)
                 m_sceneManager.LoseScreen();
             else
+            {
                 FindObjectOfType<Tutorial>().Retry();
+                m_isDying = false;
+            }
             gameManager.Instance.m_isSafeRoom = true;
             
             //MUST REDO

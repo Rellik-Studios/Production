@@ -267,11 +267,12 @@ namespace Himanshu
 
                 yield return new WaitForSecondsRealtime(1.2f);
                 
+                m_killing = false;
                 player.Death();
                 Time.timeScale = 1f;
 
-            
-            
+
+
                 m_spotted = true;
                 yield return null;
             }
