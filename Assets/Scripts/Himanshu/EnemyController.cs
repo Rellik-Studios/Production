@@ -252,11 +252,12 @@ namespace Himanshu
                 player.m_followCam.m_mouseInput = false;
                 // player.m_followCam.transform.LookAt(transform);
                 //player.m_followCam.transform.rotation = Quaternion.Euler(player.m_followCam.transform.rotation.eulerAngles.x, 0f, player.m_followCam.transform.rotation.eulerAngles.z);
-            
+
+                player.GetComponent<CharacterController>().enabled = false;
                 
                 player.m_followCam.transform.LookAt(transform.position + new Vector3(0f, 4f, 0f));
                 player.m_followCam.ResetMouse();
-
+                player.GetComponent<CharacterController>().enabled = false;
          
                 aKill = true;
                 GetComponent<NavMeshAgent>().enabled = false;
@@ -266,7 +267,7 @@ namespace Himanshu
                 player.m_isDying = true;
 
                 yield return new WaitForSecondsRealtime(1.2f);
-                
+                player.GetComponent<CharacterController>().enabled = false;
                 m_killing = false;
                 player.Death();
                 Time.timeScale = 1f;

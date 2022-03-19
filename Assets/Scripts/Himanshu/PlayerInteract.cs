@@ -251,7 +251,7 @@ namespace Himanshu
 
 #if UNITY_EDITOR
 
-            if(Input.GetKeyDown(KeyCode.Alpha4) && (Time.timeScale == 1 || FindObjectOfType<FavorSystem>().m_timeStop))
+            if(Input.GetKeyDown(KeyCode.Alpha0) && (Time.timeScale == 1 || FindObjectOfType<FavorSystem>().m_timeStop))
             {
                 PauseScreen.SetActive(true);
                 FindObjectOfType<FavorSystem>().m_continueCounting = false;
@@ -259,9 +259,10 @@ namespace Himanshu
             }
 
 #else
-            if (Input.GetKeyDown(KeyCode.Escape) && Time.timeScale != 0)
+            if (Input.GetKeyDown(KeyCode.Escape)  && (Time.timeScale == 1 || FindObjectOfType<FavorSystem>().m_timeStop))
             {
                 PauseScreen.SetActive(true);
+                FindObjectOfType<FavorSystem>().m_continueCounting = false;
                 //m_sceneManager.MainScene();
             }
 

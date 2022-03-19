@@ -88,13 +88,8 @@ namespace Himanshu
         private void Update()
         {
             m_isGrounded = Physics.Raycast(transform.position, -Vector3.up, m_groundDistance, m_groundMask, QueryTriggerInteraction.Ignore);
-
-            if (m_characterController.enabled)
-            {
-                Movement();
-                Jump();
-            }
-
+            Movement();
+            Jump();
             m_sprintNarratorTimer -= calculatedDeltaTime;
         }
 
@@ -110,7 +105,8 @@ namespace Himanshu
         private void Movement()
         {
             var movement = m_playerInput.movement.x * transform.right + m_playerInput.movement.z * transform.forward;
-            m_characterController.Move(movement * (m_speed * (crouching ? 0.5f : 1f) * ((m_playerInput.sprint && sprintTimer > 0f && !crouching) ? 1.75f : 1.0f)  * calculatedDeltaTime));
+            if (m_characterController.enabled)
+                m_characterController.Move(movement * (m_speed * (crouching ? 0.5f : 1f) * ((m_playerInput.sprint && sprintTimer > 0f && !crouching) ? 1.75f : 1.0f)  * calculatedDeltaTime));
 
             if (m_playerInput.sprint && sprintTimer > 0f && m_playerInput.movement.magnitude > 0f)
             {
