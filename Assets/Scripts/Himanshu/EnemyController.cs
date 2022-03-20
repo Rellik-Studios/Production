@@ -267,7 +267,7 @@ namespace Himanshu
                 player.m_isDying = true;
 
                 yield return new WaitForSecondsRealtime(1.2f);
-                player.GetComponent<CharacterController>().enabled = false;
+                player.GetComponent<CharacterController>().enabled = true;
                 m_killing = false;
                 player.Death();
                 Time.timeScale = 1f;
