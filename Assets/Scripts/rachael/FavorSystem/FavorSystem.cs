@@ -108,6 +108,7 @@ namespace rachael.FavorSystem
             if(!CommandIcon.activeSelf && (gameManager.Instance.m_objTutorialPlayed ?? false))
             {
                 CommandIcon.SetActive(true);
+                OneTimeText.SetText("press 'C' to access command prompt", ()=>Input.GetKeyDown(KeyCode.C));
             }
             if(CommandIcon.activeSelf && m_timeStop)
             {

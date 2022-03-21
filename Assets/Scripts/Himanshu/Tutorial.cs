@@ -226,10 +226,10 @@ namespace Himanshu
 
             m_enemy.GetComponent<StateMachine>().enabled = true;
 
-            yield return PlayNextDialogue(4);
+            StartCoroutine(PlayNextDialogue(4));
 
 
-            yield return new WaitForSeconds(2f);
+            //yield return new WaitForSeconds(2f);
 
 
             yield return PleaseGetNoticed();
@@ -238,7 +238,7 @@ namespace Himanshu
                 m_player.playerDanger == EnemyController.eDanger.red ||
                 m_player.playerDanger == EnemyController.eDanger.yellow);
 
-            yield return PlayNextDialogue();
+            StartCoroutine(PlayNextDialogue());
 
             yield return new WaitUntil(() => m_player.playerDanger == EnemyController.eDanger.white);
 
@@ -274,10 +274,10 @@ namespace Himanshu
 
             IEnumerator BookCoroutine()
             {
-                tutorial.m_player.GetComponent<CharacterController>().enabled = false;
+                // tutorial.m_player.GetComponent<CharacterController>().enabled = false;
                 tutorial.m_narrator.Play(tutorial.m_tutorialBook);
                 yield return new WaitWhile(() => tutorial.m_narrator.settingText);
-                tutorial.m_player.GetComponent<CharacterController>().enabled = true;
+                // tutorial.m_player.GetComponent<CharacterController>().enabled = true;
                 gameManager.Instance.m_bookTutorialPlayed = true;
             }
 
@@ -285,7 +285,7 @@ namespace Himanshu
 
         }
 
-        public static void RunObjTutorial(GameObject _objective)
+        public static void RunObjTutorial(Door _door)
         {
             IEnumerator ObjectiveCoroutine()
             {
@@ -293,28 +293,34 @@ namespace Himanshu
                 gameManager.Instance.isTutorialRunning = true;
                 Tutorial tutorial = FindObjectOfType<Tutorial>();
 
-                tutorial.m_player.GetComponent<CharacterController>().enabled = false;
+                var objs = FindObjectsOfType<Objective>();
 
+                foreach (var obj in objs)
+                {
+                    obj.m_locked = true;
+                }
+                
                 tutorial.m_narrator.Play(tutorial.m_tutorialObj[0]);
 
                 yield return new WaitWhile(() => tutorial.m_narrator.settingText);
-
                 
-                tutorial.m_player.GetComponent<CharacterController>().enabled = true;
-
-                yield return new WaitWhile(() => _objective.activeSelf);
-
-                tutorial.m_player.GetComponent<CharacterController>().enabled = false;
+                
                 tutorial.m_narrator.Play(tutorial.m_tutorialObj[1]);
 
                 yield return new WaitWhile(() => tutorial.m_narrator.settingText);
 
-                tutorial.m_player.GetComponent<CharacterController>().enabled = true;
-                gameManager.Instance.m_isSafeRoom = true;
+                foreach (var obj in objs)
+                {
+                    obj.m_locked = false;
+                }
+                
+                foreach (var enemy in _door.enemiesToEnable)
+                {
+                    enemy.GetComponent<StateMachine>().enabled = true;
+                    enemy.GetComponent<EnemyController>().enabled = true;
+                }
 
-                
-                SceneManager.LoadScene("Path_face 3");
-                
+
                 gameManager.Instance.m_objTutorialPlayed = true;
 
                 gameManager.Instance.isTutorialRunning = false;
