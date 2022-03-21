@@ -52,7 +52,7 @@ public class Fade : MonoBehaviour
 
         while (Math.Abs(Rend.material.color.a - 1f) > 0.0001f)
         {
-            var alpha = Mathf.Lerp(Rend.material.color.a, 1f, Time.deltaTime);
+            var alpha = Mathf.Lerp(Rend.material.color.a, 1f, Time.unscaledDeltaTime * (m_color == eColor.black ? 2f : 1f));
             Rend.material.color = new Color(Rend.material.color.r, Rend.material.color.g, Rend.material.color.b,alpha);
             yield return null;
         }

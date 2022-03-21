@@ -41,7 +41,7 @@ namespace rachael
         public void Execute(PlayerInteract _player)
         {
             var pieces = _player.m_inventory.Keys.Where(t => t.m_objectName.Contains("Clock_"));
-
+            
             foreach (var piece in pieces)
             {
                 if (!transform.parent.parent.Find(piece.m_objectName).gameObject.activeSelf)
@@ -55,19 +55,50 @@ namespace rachael
                     break;
                 }
             }
+            
+            //CheckVictory();
         }
 
         private void CheckVictory()
         {
             IEnumerator WinRoutine()
             {
+                m_glow.SetActive(true);
+                var player = FindObjectOfType<PlayerMovement>();
+                var playerCam = FindObjectOfType<PlayerFollow>();
+                player.GetComponent<CharacterController>().enabled = false;
+                player.transform.position -= player.transform.forward * 5f;
+                yield return new WaitForEndOfFrame();
+                player.GetComponent<CharacterController>().enabled = true;
+                
+                yield return new WaitUntil(() =>
+                    Physics.OverlapSphere(player.transform.position, 1f).Any((t) => t.gameObject.name == "GlowCyl"));
+
+                
+                player.GetComponent<CharacterController>().enabled = false;
+                float counter = 0f;
+                playerCam.enabled = false;
+                m_glow.SetActive(false);
+                player.transform.position -= player.transform.forward * 2f;
+                while(counter < 2f)
+                {
+                    counter += Time.deltaTime;
+                    playerCam.transform.LookAt(transform.position + new Vector3(0f, 2f, 0f));
+                    playerCam.transform.position += new Vector3(0f,Time.deltaTime * 2f, 0f);
+                    yield return null;
+                }
+
+                FindObjectOfType<Fade>().color = Fade.eColor.white;
+
+                yield return new WaitForSeconds(2f);
+                SceneManager.LoadScene("WiningScreen");
+
                 yield return null;
             }
             if (m_depositedObjects.Count == 4)
             {
-                //SceneManager.LoadScene("WiningScreen");
-                gameObject.SetActive(false);
-                m_glow.SetActive(true);
+
+                StartCoroutine(WinRoutine());
             }
         }
 

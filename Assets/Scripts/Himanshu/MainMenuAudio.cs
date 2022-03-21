@@ -27,7 +27,10 @@ namespace Himanshu
 
         public void SetBGVolume(float _value)
         {
-            m_audioMixer.SetFloat("bgAudio", m_bgSlider.value);
+            if (m_bgSlider.value > -25f)
+                m_audioMixer.SetFloat("bgAudio", m_bgSlider.value);
+            else
+                m_audioMixer.SetFloat("bgAudio", -80f);
         }
 
         public void SetSFXVolume(float _value)
