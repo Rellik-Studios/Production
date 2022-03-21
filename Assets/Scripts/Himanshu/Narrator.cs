@@ -287,6 +287,7 @@ namespace Himanshu
 
         IEnumerator SetText(string _text, TMP_Text _textBox, bool additive = false)
         {
+           
             if (_text.Length > 15 && m_audioClips.TryGetValue(_text.Substring(0, 15), out AudioClip clip))
             {
                 m_audioSource.PlayOneShot(clip);
@@ -306,6 +307,7 @@ namespace Himanshu
             string currentChoice = "";
             string currentCondition = "";
             bool skip = false;
+            bool unconditionalSkip = false;
             foreach (var letter in _text)
             {
                 pos++;
@@ -319,6 +321,12 @@ namespace Himanshu
                 if (letter == '%')
                 {
                     skip = true;
+                    continue;
+                }
+
+                if (letter == '~')
+                {
+                    unconditionalSkip = true;
                     continue;
                 }
 
@@ -413,7 +421,9 @@ namespace Himanshu
                 {
                     if (letter == ' ' || letter == '?' || letter == ',')
                     {
-                        yield return StartCoroutine(SetText(EvaluateCommand(command), _textBox, true));
+                        var t = EvaluateCommand(command);
+                        if(t != "")
+                            yield return StartCoroutine(SetText(t, _textBox, true));
                         m_settingText = true;
                         //_textBox.text += EvaluateCommand(command);
                         commandStart = false;
@@ -442,7 +452,7 @@ namespace Himanshu
                 }
             }
 
-            if(!skip)
+            if(!(skip || unconditionalSkip))
                 yield return new WaitForSeconds(3f);
             
             if(!skip)
@@ -455,14 +465,21 @@ namespace Himanshu
         {
             switch (_command)
             {
-                case "disablePlayer":
+                case "disableDoor":
                 {
-                    FindObjectOfType<PlayerMovement>().GetComponent<CharacterController>().enabled = false;
+                    foreach (var door in FindObjectsOfType<Door>())
+                    {
+                        door.m_locked = true;
+                    }
+
                     return "";
                 }
-                case "enablePlayer":
+                case "enableDoor":
                 {
-                    FindObjectOfType<PlayerMovement>().GetComponent<CharacterController>().enabled = true;
+                    foreach (var door in FindObjectsOfType<Door>())
+                    {
+                        door.m_locked = false;
+                    }
                     return "";
                 }
                 case "userName":

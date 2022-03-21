@@ -117,6 +117,7 @@ namespace rachael.SaveSystem
             {
                 Cursor.lockState = CursorLockMode.Locked;
                 GetComponent<CharacterController>().enabled = false;
+                OneTimeText.alreadyUsed = data.m_oneShotPlayed;
 
                 //m_inventory = data.m_inventory;
                 m_index = data.m_index;

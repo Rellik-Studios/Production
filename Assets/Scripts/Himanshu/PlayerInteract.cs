@@ -198,15 +198,18 @@ namespace Himanshu
 
         [SerializeField] private Image m_eye;
         private EnemyController.eDanger m_playerDanger = EnemyController.eDanger.white;
-
+        [SerializeField] private Sprite m_whiteEye;
+        [SerializeField] private Sprite m_yellowEye;
+        [SerializeField] private Sprite m_redEye;
+        
         public EnemyController.eDanger playerDanger
         {
             get => m_playerDanger;
             set
             {
                 m_playerDanger = value;
-                m_eye.color = value == EnemyController.eDanger.red ? Color.red :
-                              value == EnemyController.eDanger.yellow ? Color.yellow : Color.white;
+                m_eye.sprite = value == EnemyController.eDanger.red ? m_redEye :
+                    value == EnemyController.eDanger.yellow ? m_yellowEye : m_whiteEye;
             }
         }
         public List<CollectableObject> m_testInventory;

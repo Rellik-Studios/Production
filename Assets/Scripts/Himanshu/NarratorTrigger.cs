@@ -44,10 +44,7 @@ namespace Himanshu
 
         private void OnTriggerEnter(Collider _collider)
         {
-            if (m_objTutorial && (!gameManager.Instance.m_objTutorialPlayed ?? true) && !gameManager.Instance.isTutorialRunning)
-            {
-                Tutorial.RunObjTutorial(m_objective);
-            }
+            
             //m_waitTimer = Random.Range(25f, 40f);
             if(GetComponent<AudioSource>() != null)
                 GetComponent<AudioSource>()?.Play();
