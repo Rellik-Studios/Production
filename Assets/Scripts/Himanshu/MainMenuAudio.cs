@@ -21,6 +21,7 @@ namespace Himanshu
 
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+            Time.timeScale = 1f;
 
             gameManager.Instance?.ResetManager();
         }

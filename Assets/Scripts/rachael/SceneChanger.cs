@@ -42,6 +42,7 @@ namespace rachael
             Cursor.visible = true;
 
             Cursor.lockState = CursorLockMode.None;
+            Time.timeScale = 1f;
             SceneManager.LoadScene(0);
         }
         public void Quit()
