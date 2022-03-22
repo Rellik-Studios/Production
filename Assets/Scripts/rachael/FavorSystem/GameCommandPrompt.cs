@@ -341,8 +341,8 @@ public class GameCommandPrompt : MonoBehaviour
         Debug.Log(favorSystem.m_favorPoints);
         Debug.Log(favorSystem.m_result);
 
-        return true;
-        //return favorSystem.m_result >= 0.5f;
+        //return true;
+        return favorSystem.m_result >= 0.5f;
     }
 
     string GrantTypeofFavor()
@@ -350,8 +350,8 @@ public class GameCommandPrompt : MonoBehaviour
         int x = Random.Range(0, 2);
         string[] ListOfAbilities = new string[] { "Rewind", "Stop" };
 
-        return "Stop";
-        //return ListOfAbilities[x];
+        //return "Stop";
+        return ListOfAbilities[x];
     }
 
     void FavorDecision()
