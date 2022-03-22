@@ -40,34 +40,45 @@ namespace rachael
         
         public void Execute(PlayerInteract _player)
         {
-            var pieces = _player.m_inventory.Keys.Where(t => t.m_objectName.Contains("Clock_"));
+            // var pieces = _player.m_inventory.Keys.Where(t => t.m_objectName.Contains("Clock_"));
+            //
+            // foreach (var piece in pieces)
+            // {
+            //     if (!transform.parent.parent.Find(piece.m_objectName).gameObject.activeSelf)
+            //     {
+            //         transform.parent.parent.Find(piece.m_objectName).gameObject.SetActive(true);
+            //         m_depositedObjects.Add(piece);
+            //         _player.m_inventory.Remove(piece);
+            //         _player.m_testInventory = _player.m_inventory.Keys.ToList();
+            //         FindObjectOfType<PlayerSave>().SavePlayer();
+            //         CheckVictory();
+            //         break;
+            //     }
+            // }
             
-            foreach (var piece in pieces)
-            {
-                if (!transform.parent.parent.Find(piece.m_objectName).gameObject.activeSelf)
-                {
-                    transform.parent.parent.Find(piece.m_objectName).gameObject.SetActive(true);
-                    m_depositedObjects.Add(piece);
-                    _player.m_inventory.Remove(piece);
-                    _player.m_testInventory = _player.m_inventory.Keys.ToList();
-                    FindObjectOfType<PlayerSave>().SavePlayer();
-                    CheckVictory();
-                    break;
-                }
-            }
-            
-            //CheckVictory();
+            CheckVictory();
         }
 
         private void CheckVictory()
         {
             IEnumerator WinRoutine()
             {
+
                 m_glow.SetActive(true);
+                
                 var player = FindObjectOfType<PlayerMovement>();
                 var playerCam = FindObjectOfType<PlayerFollow>();
                 player.GetComponent<CharacterController>().enabled = false;
                 player.transform.position -= player.transform.forward * 5f;
+                while (Math.Abs(m_glow.GetComponent<Renderer>().material.color.a - 1f) > 0.1f)
+                {
+                    m_glow.GetComponent<Renderer>().material.color = new Color(
+                        m_glow.GetComponent<Renderer>().material.color.r,
+                        m_glow.GetComponent<Renderer>().material.color.g,
+                        m_glow.GetComponent<Renderer>().material.color.b,
+                        m_glow.GetComponent<Renderer>().material.color.a + Time.deltaTime * 2f);
+                    yield return null;
+                }
                 yield return new WaitForEndOfFrame();
                 player.GetComponent<CharacterController>().enabled = true;
                 
@@ -80,7 +91,7 @@ namespace rachael
                 playerCam.enabled = false;
                 m_glow.SetActive(false);
                 player.transform.position -= player.transform.forward * 2f;
-                while(counter < 2f)
+                while(counter < 3f)
                 {
                     counter += Time.deltaTime;
                     playerCam.transform.LookAt(transform.position + new Vector3(0f, 2f, 0f));
@@ -95,7 +106,7 @@ namespace rachael
 
                 yield return null;
             }
-            if (m_depositedObjects.Count == 4)
+            // if (m_depositedObjects.Count == 4)
             {
 
                 StartCoroutine(WinRoutine());
