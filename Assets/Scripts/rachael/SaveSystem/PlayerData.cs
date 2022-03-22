@@ -13,6 +13,8 @@ namespace rachael.SaveSystem
         public List<CollectableObjectWrapper> m_depositedToTheClock;
         public List<CollectableObjectWrapper> m_inventory;
 
+        public List<string> m_oneShotPlayed;
+
         public bool? m_bookTutorialPlayed = null;
         public bool? m_objTutorialPlayed = null;
         
@@ -36,7 +38,8 @@ namespace rachael.SaveSystem
             //Death = player.Death;
             m_userName = NarratorScript.UserName;
             m_depositedToTheClock = _player.m_depositedToTheClock.Select(t=>t.m_wrapper).ToList();
-            
+
+            m_oneShotPlayed = OneTimeText.alreadyUsed;
             m_inventory = _player.m_inventory.Keys.Select(t => t.m_wrapper).ToList();
             m_index = _player.m_index;
 
