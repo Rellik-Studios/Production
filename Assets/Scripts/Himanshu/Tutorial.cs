@@ -42,7 +42,10 @@ namespace Himanshu
         
         [TextArea(4, 6)]
         [SerializeField] private List<string> m_tutorialBook;
-        
+
+        [TextArea(4, 6)] 
+        [SerializeField] private List<string> m_tutorialEndRoom;
+
         [TextArea(4, 6)]
         [SerializeField] private List<string> m_tutorialObj;
         
@@ -285,6 +288,17 @@ namespace Himanshu
 
         }
 
+        public static void RunEndTutorial()
+        {
+            Tutorial tutorial = FindObjectOfType<Tutorial>();
+
+            IEnumerator EndRoutine()
+            {
+                
+                yield return null;
+            }
+        }
+
         public static void RunObjTutorial(Door _door)
         {
             IEnumerator ObjectiveCoroutine()
@@ -304,10 +318,6 @@ namespace Himanshu
 
                 yield return new WaitWhile(() => tutorial.m_narrator.settingText);
                 
-                
-                tutorial.m_narrator.Play(tutorial.m_tutorialObj[1]);
-
-                yield return new WaitWhile(() => tutorial.m_narrator.settingText);
 
                 foreach (var obj in objs)
                 {
