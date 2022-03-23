@@ -60,7 +60,7 @@ namespace rachael
         {
             doorOpen = true;
 
-            if (!gameManager.Instance.m_objTutorialPlayed ?? true && enemiesToEnable.Count > 0) 
+            if ((!gameManager.Instance.m_objTutorialPlayed ?? true) && enemiesToEnable.Count > 0) 
                 Tutorial.RunObjTutorial(this);
             else
             {
