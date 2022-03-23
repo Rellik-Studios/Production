@@ -21,7 +21,17 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'Base HumanSpine4' is inbetween humanoid
+      transforms and has rotation animation that will be discarded.\n\t'Base HumanRibcage'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Base
+      HumanRLeg2' is inbetween humanoid transforms and has rotation animation that
+      will be discarded.\n\t'Base HumanRLeg4' is inbetween humanoid transforms and
+      has rotation animation that will be discarded.\n\t'Base HumanLLeg2' is inbetween
+      humanoid transforms and has rotation animation that will be discarded.\n\t'Base
+      HumanLLeg4' is inbetween humanoid transforms and has rotation animation that
+      will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -400,7 +410,7 @@ ModelImporter:
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 3
+  animationType: 2
   humanoidOversampling: 1
   avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
