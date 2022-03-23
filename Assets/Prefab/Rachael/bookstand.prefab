@@ -13,12 +13,12 @@ GameObject:
   - component: {fileID: 5557916025141708720}
   - component: {fileID: 1178391464938823112}
   - component: {fileID: 693932084330112509}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bookstand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &6731337664942456031
 Transform:
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 595722fe559db0b4ebd2d029fb40d04b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eraChanging: {fileID: 0}
+  m_eraChanging: {fileID: 0}
 --- !u!64 &693932084330112509
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -118,6 +118,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6731337664942456031}
     m_Modifications:
+    - target: {fileID: 2486240240887950766, guid: 40ef00a148e61b844b55665f3336cb59, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486240241365538553, guid: 40ef00a148e61b844b55665f3336cb59, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 2486240241365538553, guid: 40ef00a148e61b844b55665f3336cb59, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -130,9 +138,17 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2486240242421563602, guid: 40ef00a148e61b844b55665f3336cb59, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4267689661170693813, guid: 40ef00a148e61b844b55665f3336cb59, type: 3}
       propertyPath: m_Name
       value: Save_Lighteffects
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267689661170693813, guid: 40ef00a148e61b844b55665f3336cb59, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4267689661170693813, guid: 40ef00a148e61b844b55665f3336cb59, type: 3}
       propertyPath: m_IsActive
@@ -182,9 +198,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6450873760234422331, guid: 40ef00a148e61b844b55665f3336cb59, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7003986662970953993, guid: 40ef00a148e61b844b55665f3336cb59, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7221854634747859567, guid: 40ef00a148e61b844b55665f3336cb59, type: 3}
       propertyPath: m_CastShadows
