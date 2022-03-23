@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1579780071603786285}
   - component: {fileID: 6527065572193030405}
   - component: {fileID: 7126801221660050887}
+  - component: {fileID: 8452786609900343856}
   m_Layer: 0
   m_Name: PRISM2
   m_TagString: Untagged
@@ -81,6 +82,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8452786609900343856
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907713934319704318}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3481246417136803896, guid: 008d5c8efdb913748b90d0d8a7c4af50, type: 3}
 --- !u!1 &2845305159827430237
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,6 +105,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3186117908349174247}
+  - component: {fileID: 5483896709255313955}
   m_Layer: 0
   m_Name: PRISM_All
   m_TagString: Untagged
@@ -114,6 +130,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
+--- !u!65 &5483896709255313955
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2845305159827430237}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.43540648, y: 0.79392815, z: 0.4662826}
+  m_Center: {x: 0.0009057522, y: 0.038781762, z: 0.004245132}
 --- !u!1 &3498572931731827296
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,6 +154,7 @@ GameObject:
   - component: {fileID: 1025539687161282703}
   - component: {fileID: 4717942884989616744}
   - component: {fileID: 1348528795315062734}
+  - component: {fileID: 909879370389233613}
   m_Layer: 0
   m_Name: PRISM1
   m_TagString: Untagged
@@ -195,6 +225,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &909879370389233613
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3498572931731827296}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2604331006856610252, guid: 008d5c8efdb913748b90d0d8a7c4af50, type: 3}
 --- !u!1 &5766646537524925151
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,6 +250,7 @@ GameObject:
   - component: {fileID: 3087363495824382900}
   - component: {fileID: 3758639364194942227}
   - component: {fileID: 8728137795994141557}
+  - component: {fileID: 6161504965479467584}
   m_Layer: 0
   m_Name: PRISM_mid
   m_TagString: Untagged
@@ -276,3 +321,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6161504965479467584
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5766646537524925151}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2346275798718200685, guid: 008d5c8efdb913748b90d0d8a7c4af50, type: 3}
