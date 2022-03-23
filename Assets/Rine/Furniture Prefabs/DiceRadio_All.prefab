@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6912091278976805916}
+  - component: {fileID: 3372808355815552374}
   m_Layer: 0
   m_Name: DiceRadio_All
   m_TagString: Untagged
@@ -33,6 +34,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3372808355815552374
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6099983625821664934}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7425786706209838782
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,6 +58,7 @@ GameObject:
   - component: {fileID: 817852567418313268}
   - component: {fileID: 3535416736956641700}
   - component: {fileID: 4153309514480648997}
+  - component: {fileID: 1361394657678559663}
   m_Layer: 0
   m_Name: DiceRadio_Base
   m_TagString: Untagged
@@ -114,6 +129,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1361394657678559663
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7425786706209838782}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1982311472968851758, guid: 4574c75229f0b43439e6a18384cf03d5, type: 3}
 --- !u!1 &7558048582530704558
 GameObject:
   m_ObjectHideFlags: 0
