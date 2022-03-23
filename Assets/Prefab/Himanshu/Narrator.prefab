@@ -61,25 +61,21 @@ MonoBehaviour:
   m_textBox: {fileID: 0}
   m_hidingLines:
   - 
-  - "What if I activate a sound right now and give you away? I can do that, you know.\r\r\n"
+  - "What if I activate a sound right now and give you away? I can do that, you know.\r\r"
   - "You can\u2019t hide from the world forever, @userName."
   - A deadly game of hide and seek.
   - Is it comfortable in there?
   - "\rHIDDEN\r"
   - "You can hide from the enemies but you can\u2019t hide from time.\r"
-  - "Aren\u2019t you glad you have me to keep you company in here?\r\n"
+  - "Aren\u2019t you glad you have me to keep you company in here?\r"
   - You have now entered HIDDEN STATE.
   m_spottedLines:
   - 
-  - 'Time to run!
-
-
-
-'
+  - Time to run!
   - How unfortunate.
   - I'll prepare your grave.
   - "Uh oh! You\u2019ve been spotted."
-  - "Yikes!\u201D (this one\u2019s my favourite)"
+  - Yikes!
   - Aaaaah!!
   - DETECTED
   - Eek!
@@ -99,15 +95,12 @@ MonoBehaviour:
   - 343 metres per second. The speed of sound. Are you trying to outrun it?
   m_corridor:
   - 
-  - "It seems like it\u2019s never going to end\u2026\r\n\r\n"
-  - "But it is. It\u2019s going to end.\n\r\n"
-  - 'Sooner than you think.
-
-'
+  - "It seems like it\u2019s never going to end\u2026\r"
+  - "But it is. It\u2019s going to end."
+  - Sooner than you think.
   m_breathing:
   - 
-  - 'Out of breath already? You must be really unfit @userName.
-
+  - 'Out of breath already? You must be really unfit @userName .
 
 '
   - What did I tell you about breathing? Stop it.
@@ -116,14 +109,14 @@ MonoBehaviour:
   - Imagine breathing.
   m_idleRoom:
   - Don't you have anything better to do.
-  - 'I see they refer to you as @userName '
+  - I see they refer to you as @userName .
   - Your account name is @userName right?
   - "@userName, how are you today? It\u2019s a lovely @timeCategory isn\u2019t it?"
-  - "Actually, it\u2019s @time, @activity "
-  - This is the {worst|best} @day, I've had in weeks
+  - "It\u2019s @time, @activity ."
+  - This is the {worst|best} @day, I've had in weeks.
   m_ballRoom:
   - 
-  - 'Lovely ballroom#
+  - 'Lovely ballroom.#
 
     @userName, Have you ever danced with anyone?'
   - Music trancends time.
@@ -154,7 +147,7 @@ MonoBehaviour:
   - May I interest you in an all-in-one miracle cure?
   m_hospitalIdle:
   - Don't you have anything better to do.
-  - "\rAre you here to see someone? :)"
+  - "\rAre you here to see someone?"
   - Are you feeling alright @userName? No fever or anything?
   - Why hello there! Do you have an appointment?
   m_hospital1870:
@@ -165,27 +158,26 @@ MonoBehaviour:
   m_hospitalFuturistic:
   - 
   - "Even with the advancements in technology, there\u2019s still a need for hospitals.\r#\nSome
-    things don\u2019t change.\n"
-  - "There\u2019ll always be a new disease ready to challenge humanity.\nHave you
-    considered how frail you are?\n"
+    things don\u2019t change."
+  - "There\u2019ll always be a new disease ready to challenge humanity.#\nHave you
+    considered how frail you are?"
   - "Technology slowly but surely takes over every part of human life.#\nEveryone
     soon will be unable to tear their eyes away from the screen\u2026#\njust like
     you, at this very moment."
-  - "I would tell you what happens in the future, but I don\u2019t wanna spoil it
-    ;)#\nOr cause unwanted butterfly effects.\n"
+  - "I would tell you what happens in the future, but I don\u2019t wanna spoil it.#\nOr
+    cause unwanted butterfly effects.\n"
   - "If you fear A.I. taking over in the future, you would be absolutely correct.#\nI
     suppose even I\u2019m an A.I. of sorts, in this form.\n"
   m_hospitalPresent:
   - 
-  - "2020 was a true test for humanity\u2019s progress"
+  - "2020 onwards was a true test for humanity\u2019s progress."
   - "There\u2019s still a lot about the human body that humanity does not know."
   m_hub1:
   - 
-  - "@disableDoor Oh good someone\u2019s here!#\nYou\u2019re gonna need to help me.
-    Your only other option is quitting, I suppose.#\n*tutorialSkipped |%|Surely you
-    can\u2019t refuse, not after I\u2019ve been so helpful!|$$ #\nLong story short,
-    I need you to fix that clock over there.\r#\nGo through any of those doors, we
-    can talk more inside.# ~@enableDoor "
+  - "@disableDoor You\u2019re gonna need to help me. Your only other option is quitting,
+    I suppose.#\n*tutorialSkipped |%|Surely you can\u2019t refuse, not after I\u2019ve
+    been so helpful!|$$ #\nLong story short, I need you to fix that clock over there.\r#\nGo
+    through any of those doors, we can talk more inside.# ~@enableDoor "
   m_hub2:
   - "Don\u2019t you wish this could be easier?#\nDon\u2019t you wish you could just
     go back in time?#\nWell, since I\u2019m feeling generous today\u2026 you can!#\nJust
@@ -460,7 +452,7 @@ MonoBehaviour:
   - {fileID: 0}
   m_deathDialogues:
   - "See, I warned you. You\u2019ll want to avoid this outcome or the game ends.#\r\nLuckily
-    for you, I have all the power here. Give hiding another go.#\r\r\n"
+    for you, I have all the power here. Give hiding another go.#\r\r"
   - Just keep a distance and hide under the table. Try again.
   - "Really, again? It\u2019s getting kind of pathetic."
   - "I may have all the time in the world, but that doesn\u2019t mean I\u2019m impervious
