@@ -43,10 +43,13 @@ namespace Himanshu
 
         private IEnumerator eYellowToRed()
         {
+            int index = 0;
             foreach (var texture in m_yellowToRed)
             {
+                m_renderer.material.SetTexture("_EmissionMap", m_emWhiteToYellow[index]);
                 m_renderer.material.mainTexture = texture;
                 //m_renderer.material.SetTexture("_EmmisionMap", );
+                index++;
                 yield return new WaitForSeconds(1f / 30f);
             }
         }
@@ -55,6 +58,7 @@ namespace Himanshu
         {
             for (int  i = 4; i >= 0; i--)
             {
+                m_renderer.material.SetTexture("_EmissionMap", m_emYellowToRed[i]);
                 m_renderer.material.mainTexture = m_yellowToRed[i];
                 yield return new WaitForSeconds(1f / 30f);
             }
@@ -65,6 +69,7 @@ namespace Himanshu
         {
             for (int  i = 5; i >= 0; i--)
             {
+                m_renderer.material.SetTexture("_EmissionMap", m_emWhiteToYellow[i]);
                 m_renderer.material.mainTexture = m_whiteToYellow[i];
                 yield return new WaitForSeconds(1f / 30f);
             }
@@ -72,9 +77,12 @@ namespace Himanshu
 
         private IEnumerator eWhiteToYellow()
         {
+            var index = 0;
             foreach (var texture in m_whiteToYellow)
             {
+                m_renderer.material.SetTexture("_EmissionMap", m_emWhiteToYellow[index]);
                 m_renderer.material.mainTexture = texture;
+                index++;
                 yield return new WaitForSeconds(1f / 30f);
             }
 
@@ -93,6 +101,8 @@ namespace Himanshu
         private void Start()
         {
             m_renderer = transform.GetChild(0).GetComponent<Renderer>();
+            m_renderer.material.EnableKeyword("_EMISSION");
+            DynamicGI.UpdateEnvironment();
         }
 
         private void Update()
