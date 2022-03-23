@@ -43,6 +43,7 @@ namespace Himanshu
             foreach (var texture in m_yellowToRed)
             {
                 m_renderer.material.mainTexture = texture;
+                //m_renderer.material.SetTexture("_EmmisionMap", );
                 yield return new WaitForSeconds(1f / 30f);
             }
         }
