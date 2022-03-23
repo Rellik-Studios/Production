@@ -168,6 +168,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_look: 0
   m_lookTarget: {fileID: 0}
+  m_neck1: {fileID: 3913606981454615451}
+  m_neck2: {fileID: 8296178529921322354}
+  m_head: {fileID: 3143951116246667855}
+  m_lAngle: 0
 --- !u!114 &3777368511172950705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1344,31 +1348,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2529800433611711040, guid: c1ca3b1bd2b746c4ca7b3d0f6dae6d40, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0021514846
+      value: -0.0022534537
       objectReference: {fileID: 0}
     - target: {fileID: 2529800433611711040, guid: c1ca3b1bd2b746c4ca7b3d0f6dae6d40, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.07251265
+      value: 0.07295223
       objectReference: {fileID: 0}
     - target: {fileID: 2529800433611711040, guid: c1ca3b1bd2b746c4ca7b3d0f6dae6d40, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.000000059604645
+      value: 0.0030392918
       objectReference: {fileID: 0}
     - target: {fileID: 2529800433611711040, guid: c1ca3b1bd2b746c4ca7b3d0f6dae6d40, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99901193
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2529800433611711040, guid: c1ca3b1bd2b746c4ca7b3d0f6dae6d40, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.00000008142576
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2529800433611711040, guid: c1ca3b1bd2b746c4ca7b3d0f6dae6d40, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000012512905
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2529800433611711040, guid: c1ca3b1bd2b746c4ca7b3d0f6dae6d40, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.044444494
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2721735382953580403, guid: c1ca3b1bd2b746c4ca7b3d0f6dae6d40, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1754,6 +1758,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.034693375
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: c1ca3b1bd2b746c4ca7b3d0f6dae6d40, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 168e20732ea713d4db4cdcd12117bbc1, type: 3}
     - target: {fileID: 5866666021909216657, guid: c1ca3b1bd2b746c4ca7b3d0f6dae6d40, type: 3}
       propertyPath: m_Controller
       value: 

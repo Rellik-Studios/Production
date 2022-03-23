@@ -68,6 +68,16 @@ namespace Himanshu
 
             return _this[rand];
         }
+        
+        public static float AngleInRad(this Vector3 vec1, Vector3 vec2) {
+            return Mathf.Atan2(vec2.y - vec1.y, vec2.x - vec1.x);
+        }
+ 
+        //This returns the angle in degrees
+        public static float AngleInDeg(this Vector3 vec1, Vector3 vec2) {
+            return AngleInRad(vec1, vec2) * 180 / Mathf.PI;
+        }
+
     }
     
     

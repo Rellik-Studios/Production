@@ -8,6 +8,9 @@ namespace Himanshu
         public Texture[] m_whiteToYellow;
         public Texture[] m_yellowToRed;
 
+        public Texture[] m_emWhiteToYellow;
+        public Texture[] m_emYellowToRed;
+
         private EnemyController.eDanger m_dangerLevel;
 
         private Renderer m_renderer;
