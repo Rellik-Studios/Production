@@ -80,7 +80,7 @@ namespace rachael.FavorSystem
             get => m_notifAnimator.GetBool("IsEnabled");
             set
             {
-                if(m_notifAnimator.GetBool("IsEnabled") != value)
+                if(m_notifAnimator.gameObject.activeSelf && m_notifAnimator.GetBool("IsEnabled") != value)
                     m_notifAnimator.SetBool("IsEnabled", value);
             }
         }

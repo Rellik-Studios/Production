@@ -110,6 +110,7 @@ namespace Himanshu
                 m_hidingSpot?.SetActive(false);
 
                 m_player.Unhide();
+                FindObjectOfType<ChangeFurniture>().CloseDoors();
                 m_narrator.Play("Suit Yourself");
                 m_tutorialOver = true;
                 // m_narrator.enabled = true;
