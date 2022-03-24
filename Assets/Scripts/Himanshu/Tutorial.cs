@@ -284,19 +284,60 @@ namespace Himanshu
                 gameManager.Instance.m_bookTutorialPlayed = true;
             }
 
-            tutorial.StartCoroutine(BookCoroutine());
+            if(!gameManager.Instance.m_bookTutorialPlayed ?? false)
+                tutorial.StartCoroutine(BookCoroutine());
 
         }
+
+        public static bool m_portalEntry = false; 
 
         public static void RunEndTutorial()
         {
             Tutorial tutorial = FindObjectOfType<Tutorial>();
 
+            IEnumerator PleaseGoIn()
+            {
+                float timer = 60f;
+                while (!m_portalEntry)
+                {
+                    if (timer > 0)
+                    {
+                        timer -= Time.deltaTime;
+                        if (m_portalEntry)
+                            yield break;
+                    }
+                    else
+                    {
+                        tutorial.m_narrator.settingText = false;
+                        tutorial.m_narrator.Play(tutorial.m_tutorialEndRoom[2]);
+
+                        timer = 60f;
+
+                        yield return new WaitWhile(() => tutorial.m_narrator.settingText);
+                    }
+
+                    yield return null;
+                }
+            }
+
             IEnumerator EndRoutine()
             {
+                gameManager.Instance.isTutorialRunning = true;
+                Tutorial tutorial = FindObjectOfType<Tutorial>();
+
+
                 
-                yield return null;
+                tutorial.m_narrator.Play(tutorial.m_tutorialEndRoom[0]);
+
+                
+                tutorial.m_narrator.Play(tutorial.m_tutorialEndRoom[1]);
+                yield return new WaitWhile(() => tutorial.m_narrator.settingText);
+
+                yield return PleaseGoIn();
+
             }
+
+            tutorial.StartCoroutine(EndRoutine());
         }
 
         public static void RunObjTutorial(Door _door)

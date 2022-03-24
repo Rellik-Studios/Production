@@ -45,6 +45,7 @@ namespace rachael
                 foreach (var choosingPath in FindObjectsOfType<ChoosingPath>())
                 {
                     choosingPath.CheckCollect();
+                    Tutorial.m_portalEntry = true;
                 }
 
                 m_changeFurniture.EndofTimeEra(_other);

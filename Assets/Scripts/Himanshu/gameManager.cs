@@ -18,6 +18,7 @@ namespace Himanshu
         
         public bool? m_objTutorialPlayed = null;
         public bool? m_bookTutorialPlayed = null;
+        public bool? m_endTutorialPlayed = null;
 
         [HideInInspector]public List<string> m_oneTimeTextAlreadyPlayed = null;
 
@@ -41,6 +42,7 @@ namespace Himanshu
         {
             m_objTutorialPlayed = null;
             m_bookTutorialPlayed = null;
+            m_endTutorialPlayed = null;
             isTutorialRunning = false;
             m_oneTimeTextAlreadyPlayed = new List<string>();
         }
@@ -50,7 +52,7 @@ namespace Himanshu
 
             m_objTut = m_objTutorialPlayed == true ? 1 : m_objTutorialPlayed == false ? 0 : 2;
             m_bookTut = m_bookTutorialPlayed == true ? 1 : m_objTutorialPlayed == false ? 0 : 2;
-
+            
         }
 
     }
