@@ -402,23 +402,31 @@ namespace Himanshu
 
         }
 
+        private bool m_waiting = false;
+
         IEnumerator SetDestination()
         {
 
-            yield return new WaitForSeconds(m_defaultPatrolWaitTime);
-            
-            if(m_patrolPoints.Count > 0 && !m_isRandomPatrol)
+            if(!m_waiting)
             {
-                if (m_agent.remainingDistance < 0.1f)
-                    m_agent.SetDestination(m_patrolPoints[index++].position);
-            }
-        
-        
-            else if(m_patrolPoints.Count >= 0)
+                m_waiting = true;
+                yield return new WaitForSeconds(m_defaultPatrolWaitTime);
+
+                
+                if (m_patrolPoints.Count > 0 && !m_isRandomPatrol)
+                {
+                    if (m_agent.remainingDistance < 0.1f)
+                        m_agent.SetDestination(m_patrolPoints[index++].position);
+                }
+
+
+                else if (m_patrolPoints.Count >= 0)
                     if (m_agent.remainingDistance < 0.1f)
                         m_agent.SetDestination(m_patrolPoints[Random.Range(0, m_patrolPoints.Count - 1)].position);
-            
-            //Debug.Log(index);
+
+                m_waiting = false;
+            }
+           
         }
 
         public bool PatrolToChaseTransition()

@@ -46,7 +46,7 @@ namespace Himanshu
             int index = 0;
             foreach (var texture in m_yellowToRed)
             {
-                m_renderer.material.SetTexture("_EmissionMap", m_emWhiteToYellow[index]);
+                m_renderer.material.SetTexture("_EmissionMap", m_emYellowToRed[index]);
                 m_renderer.material.mainTexture = texture;
                 //m_renderer.material.SetTexture("_EmmisionMap", );
                 index++;
@@ -101,7 +101,7 @@ namespace Himanshu
         private void Start()
         {
             m_renderer = transform.GetChild(0).GetComponent<Renderer>();
-            m_renderer.material.EnableKeyword("");
+            m_renderer.material.EnableKeyword("_EMISSION");
             DynamicGI.UpdateEnvironment();
         }
 
