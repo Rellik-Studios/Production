@@ -17721,7 +17721,7 @@ PrefabInstance:
     - target: {fileID: -9074154463053029285, guid: 9fc76b8e6e63fb4488fcb1f09771bd8a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 62ebaef47c554d64888bac84e8d19cd6, type: 2}
+      objectReference: {fileID: 2100000, guid: 241dc07e0b24d8047983b4aeb4e89341, type: 2}
     - target: {fileID: -8679921383154817045, guid: 9fc76b8e6e63fb4488fcb1f09771bd8a, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -23893,6 +23893,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 636e6ae20e4e3574b81a8697c9b3ce91, type: 2}
+    - target: {fileID: 1170160574250672114, guid: a99a0c80ec30fc64890805725d138b13, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5443076790530642225, guid: a99a0c80ec30fc64890805725d138b13, type: 3}
       propertyPath: m_RootOrder
       value: 53
@@ -25185,7 +25189,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 625c667d68d419447a3258fae088d59f, type: 2}
+  - {fileID: 2100000, guid: 34323f63b5e790b448d1848f7a2d49f8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -25437,9 +25441,13 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5253270964110113558, guid: f8074417803ce79419bbd2b619665ca1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 241dc07e0b24d8047983b4aeb4e89341, type: 2}
+    - target: {fileID: 5253270964110113558, guid: f8074417803ce79419bbd2b619665ca1, type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 2100000, guid: 1c68509c1e9aaa748bdc26e7ddb4e751, type: 2}
+      objectReference: {fileID: 2100000, guid: 241dc07e0b24d8047983b4aeb4e89341, type: 2}
     - target: {fileID: 6045979609139747523, guid: f8074417803ce79419bbd2b619665ca1, type: 3}
       propertyPath: m_Name
       value: SM_Hospital_Bed_1870
