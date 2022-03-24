@@ -129,7 +129,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-16879344
+  m_Name: pb_Mesh-17700436
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -428,7 +428,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 230056748}
   m_LocalRotation: {x: 0.84019226, y: -0, z: -0, w: 0.5422887}
-  m_LocalPosition: {x: 5.300001, y: 62, z: 128.3}
+  m_LocalPosition: {x: 5.300001, y: 12.3, z: 105.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7787086825796683569}
@@ -656,7 +656,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-16879378
+  m_Name: pb_Mesh-17700470
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1125,6 +1125,14 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 10000
       objectReference: {fileID: 0}
+    - target: {fileID: 7787086824442033356, guid: 6be28aef08e726b4e9c69f23a5b9d35c, type: 3}
+      propertyPath: m_SpotAngle
+      value: 99.22826
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787086824442033356, guid: 6be28aef08e726b4e9c69f23a5b9d35c, type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 64.20651
+      objectReference: {fileID: 0}
     - target: {fileID: 7787086824562250428, guid: 6be28aef08e726b4e9c69f23a5b9d35c, type: 3}
       propertyPath: m_Range
       value: 167.1
@@ -1152,6 +1160,14 @@ PrefabInstance:
     - target: {fileID: 7787086824866055584, guid: 6be28aef08e726b4e9c69f23a5b9d35c, type: 3}
       propertyPath: m_Intensity
       value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787086824866055584, guid: 6be28aef08e726b4e9c69f23a5b9d35c, type: 3}
+      propertyPath: m_SpotAngle
+      value: 54.478268
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787086824866055584, guid: 6be28aef08e726b4e9c69f23a5b9d35c, type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 50.586964
       objectReference: {fileID: 0}
     - target: {fileID: 7787086825273979445, guid: 6be28aef08e726b4e9c69f23a5b9d35c, type: 3}
       propertyPath: m_Name
