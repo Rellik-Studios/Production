@@ -31,7 +31,7 @@ namespace rachael
             get => m_doorOpen;
             set
             {
-                m_audioSource.Play();
+                m_audioSource?.Play();
                 m_doorOpen = value;
                 
                 if(value)

@@ -24,7 +24,6 @@ namespace Himanshu
             m_unlockVFX.SetActive(true);
             m_dissapearingDoor.SetActive(false);
             gameObject.SetActive(false);
-            m_audioSource.Play();
         }
 
         public void CanExecute(Raycast _raycast)
