@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 1569445609363519480}
   - component: {fileID: 685617699613538895}
   m_Layer: 0
-  m_Name: Point Light
+  m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -253,13 +253,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8819012488199149083}
-  m_LocalRotation: {x: 0.35032913, y: -0, z: 0.000000044703487, w: 0.9366267}
-  m_LocalPosition: {x: 0.04799999, y: 1.019, z: -0.46999615}
+  m_LocalRotation: {x: -0.02614858, y: 0.000000016750437, z: 0.000000041446672, w: 0.9996581}
+  m_LocalPosition: {x: 0.047999702, y: -0.232, z: -2.889}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3883243937744116052}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 41.015, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -2.997, y: 0, z: 0}
 --- !u!108 &685617699613538895
 Light:
   m_ObjectHideFlags: 0
@@ -273,9 +273,9 @@ Light:
   m_Shape: 0
   m_Color: {r: 0.7971698, g: 1, b: 0.979717, a: 1}
   m_Intensity: 7.1
-  m_Range: 150.9
-  m_SpotAngle: 108.093315
-  m_InnerSpotAngle: 83.3632
+  m_Range: 12.152477
+  m_SpotAngle: 52.83071
+  m_InnerSpotAngle: 37.121384
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -306,12 +306,12 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
