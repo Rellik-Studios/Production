@@ -73,7 +73,7 @@ namespace Himanshu
                 m_lookAtHelper.RotateAround(transform.position, transform.right, 90f);
                 var rot = Quaternion.LookRotation(dir);
 
-                lookAngle = m_lookAtHelper.localRotation.eulerAngles.x;
+                lookAngle = rot.eulerAngles.y + transform.parent.rotation.eulerAngles.y;
                 //Debug.Log(lookAngle +" " + rot.eulerAngles.y);
             }
         }

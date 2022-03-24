@@ -255,6 +255,8 @@ namespace Himanshu
 
                 player.GetComponent<CharacterController>().enabled = false;
                 
+                if(player.m_hiding)
+                    player.Unhide();
                 player.m_followCam.transform.LookAt(transform.position + new Vector3(0f, 4f, 0f));
                 player.m_followCam.ResetMouse();
                 player.GetComponent<CharacterController>().enabled = false;
