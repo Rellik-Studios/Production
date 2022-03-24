@@ -478,14 +478,17 @@ namespace Himanshu
             m_deathCount++;
             PlayerPrefs.SetInt("Death", m_deathCount);
 
+            
             if (!gameManager.Instance.isTutorialRunning)
             {
                 FindObjectOfType<Fade>().color = Fade.eColor.black;
+                
                 this.Invoke(() => m_sceneManager.LoseScreen(), 2f);
                 
             }
             else
             {
+                
                 FindObjectOfType<Tutorial>().Retry();
                 m_isDying = false;
             }

@@ -277,11 +277,12 @@ namespace Himanshu
 
             IEnumerator BookCoroutine()
             {
+                gameManager.Instance.m_bookTutorialPlayed = true;
                 // tutorial.m_player.GetComponent<CharacterController>().enabled = false;
                 tutorial.m_narrator.Play(tutorial.m_tutorialBook);
                 yield return new WaitWhile(() => tutorial.m_narrator.settingText);
                 // tutorial.m_player.GetComponent<CharacterController>().enabled = true;
-                gameManager.Instance.m_bookTutorialPlayed = true;
+                
             }
 
             if(!gameManager.Instance.m_bookTutorialPlayed ?? false)
