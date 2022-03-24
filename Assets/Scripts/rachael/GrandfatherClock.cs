@@ -40,23 +40,23 @@ namespace rachael
         
         public void Execute(PlayerInteract _player)
         {
-            // var pieces = _player.m_inventory.Keys.Where(t => t.m_objectName.Contains("Clock_"));
-            //
-            // foreach (var piece in pieces)
-            // {
-            //     if (!transform.parent.parent.Find(piece.m_objectName).gameObject.activeSelf)
-            //     {
-            //         transform.parent.parent.Find(piece.m_objectName).gameObject.SetActive(true);
-            //         m_depositedObjects.Add(piece);
-            //         _player.m_inventory.Remove(piece);
-            //         _player.m_testInventory = _player.m_inventory.Keys.ToList();
-            //         FindObjectOfType<PlayerSave>().SavePlayer();
-            //         CheckVictory();
-            //         break;
-            //     }
-            // }
-            //
-            CheckVictory();
+            var pieces = _player.m_inventory.Keys.Where(t => t.m_objectName.Contains("Clock_"));
+            
+            foreach (var piece in pieces)
+            {
+                if (!transform.parent.parent.Find(piece.m_objectName).gameObject.activeSelf)
+                {
+                    transform.parent.parent.Find(piece.m_objectName).gameObject.SetActive(true);
+                    m_depositedObjects.Add(piece);
+                    _player.m_inventory.Remove(piece);
+                    _player.m_testInventory = _player.m_inventory.Keys.ToList();
+                    FindObjectOfType<PlayerSave>().SavePlayer();
+                    CheckVictory();
+                    break;
+                }
+            }
+            
+            //CheckVictory();
         }
 
         private void CheckVictory()
@@ -106,7 +106,7 @@ namespace rachael
 
                 yield return null;
             }
-            //if (m_depositedObjects.Count == 4)
+            if (m_depositedObjects.Count == 4)
             {
 
                 StartCoroutine(WinRoutine());

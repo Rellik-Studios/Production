@@ -8,8 +8,8 @@ namespace Himanshu
         public Texture[] m_whiteToYellow;
         public Texture[] m_yellowToRed;
 
-        public Texture[] m_emWhiteToYellow;
-        public Texture[] m_emYellowToRed;
+        public Texture2D[] m_emWhiteToYellow;
+        public Texture2D[] m_emYellowToRed;
 
         private EnemyController.eDanger m_dangerLevel;
 
@@ -101,7 +101,7 @@ namespace Himanshu
         private void Start()
         {
             m_renderer = transform.GetChild(0).GetComponent<Renderer>();
-            m_renderer.material.EnableKeyword("_EMISSION");
+            m_renderer.material.EnableKeyword("");
             DynamicGI.UpdateEnvironment();
         }
 

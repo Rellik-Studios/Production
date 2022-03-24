@@ -9,6 +9,7 @@ namespace rachael
         // Start is called before the first frame update
         private Animator m_objectAnim;
 
+        private AudioSource m_audioSource;
         //private RaycastingTesting m_raycastingTesting;
 
         private bool m_objectOpen = false;
@@ -25,6 +26,11 @@ namespace rachael
             }
         }
 
+
+        private void Start()
+        {
+            m_audioSource = GetComponent<AudioSource>();
+        }
 
         private void Awake()
         {
@@ -57,6 +63,7 @@ namespace rachael
         public void Execute(PlayerInteract _player)
         {
             PlayAnimation();
+            m_audioSource.Play();
         }
 
         public void CanExecute(Raycast _raycast)
