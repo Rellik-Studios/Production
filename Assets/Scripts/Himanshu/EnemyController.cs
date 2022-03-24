@@ -532,7 +532,7 @@ namespace Himanshu
             m_agent.speed = 0f;
             m_agent.angularSpeed = 0f;
             
-            this.Invoke(() => m_enemyHead.m_look = false, 3f);
+            this.Invoke(() => m_enemyHead.m_look = false, 1f);
 
             
             this.Invoke(()=>

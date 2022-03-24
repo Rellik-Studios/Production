@@ -13,6 +13,7 @@ namespace Himanshu
         public Transform m_head;
         private Animator m_animator;
 
+        [SerializeField] private Transform m_lookAtHelper;
         private float m_lookAngle;
         [SerializeField] private float m_lAngle;
 
@@ -64,12 +65,16 @@ namespace Himanshu
         {
             if (m_look)
             {
-                var dir = m_lookTarget.transform.position - transform.transform.position;
+                
+                var dir = m_lookTarget.transform.position - transform.parent.position;
                 dir.y = 0; // keep the direction strictly horizontal
+                m_lookAtHelper.LookAt(m_lookTarget);
+                m_lookAtHelper.RotateAround(transform.position, transform.forward, -90f);
+                m_lookAtHelper.RotateAround(transform.position, transform.right, 90f);
                 var rot = Quaternion.LookRotation(dir);
 
-                lookAngle = -rot.eulerAngles.y;
-                Debug.Log(lookAngle +" " + rot.eulerAngles.y);
+                lookAngle = m_lookAtHelper.localRotation.eulerAngles.x;
+                //Debug.Log(lookAngle +" " + rot.eulerAngles.y);
             }
         }
     }
