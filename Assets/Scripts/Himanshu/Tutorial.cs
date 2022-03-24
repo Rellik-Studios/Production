@@ -327,9 +327,6 @@ namespace Himanshu
             {
                 gameManager.Instance.isTutorialRunning = true;
                 Tutorial tutorial = FindObjectOfType<Tutorial>();
-
-
-                
                 tutorial.m_narrator.Play(tutorial.m_tutorialEndRoom[0]);
 
                 yield return new WaitUntil(() => m_objectivePicked);
@@ -337,6 +334,10 @@ namespace Himanshu
                 
                 tutorial.m_narrator.Play(tutorial.m_tutorialEndRoom[1]);
                 yield return new WaitWhile(() => tutorial.m_narrator.settingText);
+
+                gameManager.Instance.m_endTutorialPlayed = true;
+
+                gameManager.Instance.isTutorialRunning = false;
 
                 yield return PleaseGoIn();
 
