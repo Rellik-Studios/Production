@@ -289,7 +289,8 @@ namespace Himanshu
 
         }
 
-        public static bool m_portalEntry = false; 
+        public static bool m_portalEntry = false;
+        public static bool m_objectivePicked = false;
 
         public static void RunEndTutorial()
         {
@@ -328,6 +329,8 @@ namespace Himanshu
 
                 
                 tutorial.m_narrator.Play(tutorial.m_tutorialEndRoom[0]);
+
+                yield return new WaitUntil(() => m_objectivePicked);
 
                 
                 tutorial.m_narrator.Play(tutorial.m_tutorialEndRoom[1]);
