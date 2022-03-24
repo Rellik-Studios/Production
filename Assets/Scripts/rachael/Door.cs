@@ -21,17 +21,29 @@ namespace rachael
 
         public List<GameObject> enemiesToEnable => m_enemiesToEnable;
         public bool isDoorOpen => m_doorOpen;
+
+        private AudioSource m_audioSource;
+        
+        [SerializeField] private AudioClip m_doorClip;
         
         public bool doorOpen
         {
             get => m_doorOpen;
             set
             {
+                m_audioSource.Play();
                 m_doorOpen = value;
-                m_doorAnim.SetBool("IsOpening", value);
+                
+                if(value)
+                    m_doorAnim.SetBool("IsOpening", value);
             }
         }
 
+
+        private void Start()
+        {
+            m_audioSource = GetComponent<AudioSource>();
+        }
 
         private void Awake()
         {
@@ -51,15 +63,19 @@ namespace rachael
             }
         }
 
-        public void CloseTheDoor()
+        public void CloseTheDoor(bool _silent = false)
         {
+            if(!_silent)
+                m_audioSource.Play();
             doorOpen = false;
         }
 
-        public void OpenTheDoor()
+        public void OpenTheDoor(bool _silent = false)
         {
             doorOpen = true;
 
+            
+            
             if ((!gameManager.Instance.m_objTutorialPlayed ?? true) && enemiesToEnable.Count > 0) 
                 Tutorial.RunObjTutorial(this);
             else

@@ -9,8 +9,8 @@ namespace Himanshu
         public Texture[] m_whiteToYellow;
         public Texture[] m_yellowToRed;
 
-        public Texture[] m_emWhiteToYellow;
-        public Texture[] m_emYellowToRed;
+        public Texture2D[] m_emWhiteToYellow;
+        public Texture2D[] m_emYellowToRed;
 
         public bool m_whiteToYellowTrigger;
         
@@ -53,7 +53,7 @@ namespace Himanshu
             int index = 0;
             foreach (var texture in m_yellowToRed)
             {
-                m_renderer.material.SetTexture("_EmissionMap", m_emWhiteToYellow[index]);
+                m_renderer.material.SetTexture("_EmissionMap", m_emYellowToRed[index]);
                 m_renderer.material.mainTexture = texture;
                 //m_renderer.material.SetTexture("_EmmisionMap", );
                 index++;
@@ -133,7 +133,12 @@ namespace Himanshu
 
         IEnumerator eWhiteToRed()
         {
+<<<<<<< HEAD
             yield return eWhiteToYellow();
+=======
+            eWhiteToYellow();
+            yield return new WaitForSeconds(6 / 30f);
+>>>>>>> default
             eYellowToRed();
         }
     }
