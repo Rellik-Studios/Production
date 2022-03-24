@@ -10,7 +10,7 @@ namespace rachael
         [FormerlySerializedAs("wall")] [SerializeField] GameObject m_wall;
         [FormerlySerializedAs("materialDoor")] [SerializeField] Material m_materialDoor;
         [FormerlySerializedAs("materialWall")] [SerializeField] Material m_materialWall;
-    
+        [SerializeField] private GameObject m_oldWall;
         private bool m_fadeOut = false;
         private bool m_fadeIn = false;
         [FormerlySerializedAs("fadeSpeed")] public float m_fadeSpeed = 1.0f;
@@ -56,6 +56,12 @@ namespace rachael
                     this.m_wall.GetComponent<Renderer>().material = m_materialWall;
                     m_fadeOut = false;
                     m_door.SetActive(false);
+                    if (m_oldWall != null)
+                    {
+                        m_wall.SetActive(false);
+                        m_oldWall.GetComponent<MeshFilter>().mesh = m_wall.GetComponent<MeshFilter>().mesh;
+                        m_oldWall.GetComponent<Renderer>().material = m_materialWall;
+                    }
                     Destroy(this);
                 }
             }
@@ -73,11 +79,10 @@ namespace rachael
                 this.m_doorframe.GetComponent<Renderer>().material = m_materialDoor;
                 this.m_door.GetComponent<Renderer>().material = m_materialDoor;
 
+                m_wall.SetActive(true);
 
                 FadeOutObject();
-                m_wall.SetActive(true);
-                if(GetComponent<SafeRoom>() != null)
-                    m_wall.tag = "EnemyBlocker";
+                
             }
         }
     }
