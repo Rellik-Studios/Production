@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Bolt;
 using UnityEngine;
 namespace Himanshu
 {
@@ -11,6 +12,11 @@ namespace Himanshu
         public Texture2D[] m_emWhiteToYellow;
         public Texture2D[] m_emYellowToRed;
 
+        public bool m_whiteToYellowTrigger;
+        
+        public bool m_yellowToRedTrigger;
+        public bool m_whiteToRedTrigger;
+        
         private EnemyController.eDanger m_dangerLevel;
 
         private Renderer m_renderer;
@@ -41,6 +47,7 @@ namespace Himanshu
             }
         }
 
+        
         private IEnumerator eYellowToRed()
         {
             int index = 0;
@@ -107,6 +114,27 @@ namespace Himanshu
 
         private void Update()
         {
+            if (m_whiteToYellowTrigger)
+            {
+                StartCoroutine(eWhiteToYellow());
+                m_whiteToYellowTrigger = false;
+            }
+            if (m_yellowToRedTrigger)
+            {
+                StartCoroutine(eYellowToRed());
+                m_yellowToRedTrigger = false;
+            }
+            if (m_whiteToRedTrigger)
+            {
+                StartCoroutine(eWhiteToYellow());
+                m_whiteToRedTrigger = false;
+            }
+        }
+
+        IEnumerator eWhiteToRed()
+        {
+            yield return eWhiteToYellow();
+            eYellowToRed();
         }
     }
 }
