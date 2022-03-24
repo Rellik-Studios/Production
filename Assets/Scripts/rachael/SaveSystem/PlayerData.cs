@@ -30,7 +30,7 @@ namespace rachael.SaveSystem
 
         [FormerlySerializedAs("rotation")] public float[] m_rotation;
 
-        private bool? m_endTutorialPlayed;
+        public bool? m_endTutorialPlayed;
         //public string[] Loopnames;
 
         public PlayerData(PlayerSave _player)
