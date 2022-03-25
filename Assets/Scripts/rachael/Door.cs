@@ -6,7 +6,8 @@ using UnityEngine.Serialization;
 
 namespace rachael
 {
-    public class Door : MonoBehaviour, IInteract
+    public class 
+        Door : MonoBehaviour, IInteract
     {
         private Animator m_doorAnim;
 
@@ -102,6 +103,10 @@ namespace rachael
             {
                 _raycast.m_indication.enabled = false;
                 return;
+            }
+            else
+            {
+                Debug.Log("door is Locked");
             }
             if(!_raycast.m_doOnce)
             {
