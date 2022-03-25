@@ -342,6 +342,7 @@ public class GameCommandPrompt : MonoBehaviour
         Debug.Log(favorSystem.m_result);
 
         return favorSystem.m_result >= 0.5f;
+        //return true;
     }
 
     string GrantTypeofFavor()
@@ -350,6 +351,7 @@ public class GameCommandPrompt : MonoBehaviour
         string[] ListOfAbilities = new string[] { "Rewind", "Stop" };
 
         return ListOfAbilities[x];
+        //return "Stop";
     }
 
     void FavorDecision()
@@ -532,8 +534,9 @@ public class GameCommandPrompt : MonoBehaviour
         {
             GrantRewind();
         }
-        else if (favorName == "Time")
+        else if (favorName == "Stop")
         {
+            Debug.Log("Time is stop");
             GrantStop();
         }
 
