@@ -340,8 +340,8 @@ namespace Himanshu
 
         void Update()
         {
-            // if (Input.GetKeyDown(KeyCode.V))
-            //     isMenuOpen = !isMenuOpen;
+            if (Input.GetKeyDown(KeyCode.V))
+                isMenuOpen = !isMenuOpen;
         }
     }
 }
