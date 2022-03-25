@@ -29,11 +29,14 @@ namespace rachael.SaveSystem
         [FormerlySerializedAs("position")] public float[] m_position;
 
         [FormerlySerializedAs("rotation")] public float[] m_rotation;
+
+        public bool? m_endTutorialPlayed;
         //public string[] Loopnames;
 
         public PlayerData(PlayerSave _player)
         {
             m_bookTutorialPlayed = gameManager.Instance.m_bookTutorialPlayed;
+            m_endTutorialPlayed = gameManager.Instance.m_endTutorialPlayed;
             m_objTutorialPlayed = gameManager.Instance.m_objTutorialPlayed;
             //Death = player.Death;
             m_userName = NarratorScript.UserName;

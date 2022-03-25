@@ -138,7 +138,8 @@ namespace rachael.SaveSystem
 
                 gameManager.Instance.m_bookTutorialPlayed ??= data.m_bookTutorialPlayed ?? false;
                 gameManager.Instance.m_objTutorialPlayed ??= data.m_objTutorialPlayed ?? false;
-            
+                gameManager.Instance.m_endTutorialPlayed ??= data.m_endTutorialPlayed ?? false;
+
                 Vector3 rotation = new Vector3(0, 0, 0);
                 rotation.x = data.m_rotation[0];
                 rotation.y = data.m_rotation[1];

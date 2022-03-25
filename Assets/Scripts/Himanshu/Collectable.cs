@@ -23,6 +23,7 @@ namespace Himanshu
             Debug.Log("Collect");
             GetComponent<AudioSource>()?.Play();
             _player.Collect(m_collectableObject);
+            Tutorial.m_objectivePicked = true;
             //GetComponent<MeshCollider>().enabled = false;
             
             this.Invoke(()=> { Destroy(this.gameObject); }, 0.1f);

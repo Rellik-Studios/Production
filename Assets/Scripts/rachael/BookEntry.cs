@@ -8,6 +8,8 @@ namespace rachael
     public class BookEntry : MonoBehaviour, IInteract
     {
         [FormerlySerializedAs("eraChanging")] public ChangeFurniture m_eraChanging;
+        
+        
         //public PlayerSave m_playerFile;
         // Start is called before the first frame update
         void Start()
