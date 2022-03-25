@@ -33,8 +33,7 @@ namespace rachael
             {
                 m_audioSource?.Play();
                 m_doorOpen = value;
-                
-                //if(value)
+
                 m_doorAnim.SetBool("IsOpening", value);
             }
         }
@@ -66,8 +65,8 @@ namespace rachael
         public void CloseTheDoor(bool _silent = false)
         {
             doorOpen = false;
-            // if(!_silent)
-            //     m_audioSource.Play();
+            if (!_silent)
+                m_audioSource.Play();
         }
 
         public void OpenTheDoor(bool _silent = false)
@@ -91,7 +90,7 @@ namespace rachael
 
         public void Execute(PlayerInteract _player)
         {
-            if(m_locked)
+            if (m_locked)
                 return;
             
             PlayAnimation();
