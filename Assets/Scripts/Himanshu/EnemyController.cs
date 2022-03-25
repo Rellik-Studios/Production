@@ -305,8 +305,11 @@ namespace Himanshu
 
         public void DistractionStart()
         {
-            
+            if (!m_agent.enabled && m_agent.gameObject.activeSelf)
+                return;
+
             m_agent.stoppingDistance = 4f;
+            
             m_agent.SetDestination(currentDistraction.transform.position);
 
             if ((m_agent.transform.position - currentDistraction.transform.position).magnitude < m_agent.stoppingDistance)
@@ -382,7 +385,7 @@ namespace Himanshu
             
             GetComponent<AudioSource>().Stop();
            
-            if(m_patrolPoints.Count > 0)
+            if(m_patrolPoints.Count > 0 && m_agent.enabled && m_agent.gameObject.activeSelf)
                 m_agent.SetDestination(m_patrolPoints[index].position);
 
         }
@@ -417,13 +420,13 @@ namespace Himanshu
                 
                 if (m_patrolPoints.Count > 0 && !m_isRandomPatrol)
                 {
-                    if (m_agent.remainingDistance < 0.1f)
+                    if (m_agent.remainingDistance < 0.1f && m_agent.enabled && m_agent.gameObject.activeSelf)
                         m_agent.SetDestination(m_patrolPoints[index++].position);
                 }
 
 
                 else if (m_patrolPoints.Count >= 0)
-                    if (m_agent.remainingDistance < 0.1f)
+                    if (m_agent.remainingDistance < 0.1f && m_agent.enabled && m_agent.gameObject.activeSelf)
                         m_agent.SetDestination(m_patrolPoints[Random.Range(0, m_patrolPoints.Count - 1)].position);
 
                 m_waiting = false;
@@ -572,7 +575,7 @@ namespace Himanshu
             // }
 
             yield return null;
-            //m_agent.enabled = true;
+            //m_agent.enabled && m_agent.gameObject.activeSelf = true;
 
 
         }
