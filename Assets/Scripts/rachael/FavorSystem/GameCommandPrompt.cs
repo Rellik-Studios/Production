@@ -527,18 +527,17 @@ public class GameCommandPrompt : MonoBehaviour
         FavorDecision();
         yield return new WaitForSecondsRealtime(3);
 
-        if (favorName != "")
+
+        if (favorName == "Rewind")
         {
-            
-            if(favorName == "Rewind")
-            {
-                GrantRewind();
-            }
-            else
-            {
-                GrantStop();
-            }
+            GrantRewind();
         }
+        else if (favorName == "Time")
+        {
+            GrantStop();
+        }
+
+       
 
         m_inputField.enabled = true;
         favorSystem.m_commandText.resizeTextForBestFit = true;
