@@ -276,6 +276,7 @@ namespace Himanshu
 
             Tutorial tutorial = FindObjectOfType<Tutorial>();   
 
+            
             IEnumerator BookCoroutine()
             {
                 gameManager.Instance.m_bookTutorialPlayed = true;
@@ -286,8 +287,11 @@ namespace Himanshu
                 
             }
 
-            if(!gameManager.Instance.m_bookTutorialPlayed ?? false)
+            if (!gameManager.Instance.m_bookTutorialPlayed ?? true)
+            {
+                tutorial.StopAllCoroutines();                
                 tutorial.StartCoroutine(BookCoroutine());
+            }
 
         }
 
@@ -342,8 +346,8 @@ namespace Himanshu
                 yield return PleaseGoIn();
 
             }
-
-            tutorial.StartCoroutine(EndRoutine());
+            if(gameManager.Instance.m_endTutorialPlayed == false || gameManager.Instance.m_endTutorialPlayed == null)
+                tutorial.StartCoroutine(EndRoutine());
         }
 
         public static void RunObjTutorial(Door _door)

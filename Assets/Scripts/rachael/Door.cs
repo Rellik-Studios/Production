@@ -65,9 +65,9 @@ namespace rachael
 
         public void CloseTheDoor(bool _silent = false)
         {
+            doorOpen = false;
             if(!_silent)
                 m_audioSource.Play();
-            doorOpen = false;
         }
 
         public void OpenTheDoor(bool _silent = false)
