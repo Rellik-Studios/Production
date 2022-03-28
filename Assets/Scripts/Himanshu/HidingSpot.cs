@@ -243,8 +243,8 @@ namespace Himanshu
         {
             if(m_hidingSpots.Count > 1)
                 OneTimeText.SetText("press 'A' and 'D' to move between hiding points", () => Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetMouseButtonDown(0));
-            Time.timeScale = 0.1f;
-            this.Invoke(()=>Time.timeScale  = 1f, 2, true);
+            // Time.timeScale = 0.1f;
+            // this.Invoke(()=>Time.timeScale  = 1f, 2, true);
             m_player = _player;
             m_player.Hide(this);
             m_player.m_followCam.m_mouseInput = false;
