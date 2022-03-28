@@ -341,8 +341,8 @@ public class GameCommandPrompt : MonoBehaviour
         Debug.Log(favorSystem.m_favorPoints);
         Debug.Log(favorSystem.m_result);
 
-        return true;
-        //return favorSystem.m_result >= 0.5f;
+        return favorSystem.m_result >= 0.5f;
+        //return true;
     }
 
     string GrantTypeofFavor()
@@ -350,8 +350,8 @@ public class GameCommandPrompt : MonoBehaviour
         int x = Random.Range(0, 2);
         string[] ListOfAbilities = new string[] { "Rewind", "Stop" };
 
-        return "Stop";
         return ListOfAbilities[x];
+        //return "Stop";
     }
 
     void FavorDecision()
@@ -529,18 +529,18 @@ public class GameCommandPrompt : MonoBehaviour
         FavorDecision();
         yield return new WaitForSecondsRealtime(3);
 
-        if (favorName != "")
+
+        if (favorName == "Rewind")
         {
-            
-            if(favorName == "Rewind")
-            {
-                GrantRewind();
-            }
-            else
-            {
-                GrantStop();
-            }
+            GrantRewind();
         }
+        else if (favorName == "Stop")
+        {
+            Debug.Log("Time is stop");
+            GrantStop();
+        }
+
+       
 
         m_inputField.enabled = true;
         favorSystem.m_commandText.resizeTextForBestFit = true;

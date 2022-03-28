@@ -12,7 +12,12 @@ namespace rachael
         // Start is called before the first frame update
         void Start()
         {
-        
+            if (SceneManager.GetActiveScene().name == "WiningScreen")
+            {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
+
             if(m_continueBlock != null)
             {
                 ButtonPresent();

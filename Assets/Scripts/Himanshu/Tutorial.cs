@@ -110,6 +110,7 @@ namespace Himanshu
                 m_hidingSpot?.SetActive(false);
 
                 m_player.Unhide();
+                FindObjectOfType<ChangeFurniture>().CloseDoors();
                 m_narrator.Play("Suit Yourself");
                 m_tutorialOver = true;
                 // m_narrator.enabled = true;
@@ -275,6 +276,7 @@ namespace Himanshu
 
             Tutorial tutorial = FindObjectOfType<Tutorial>();   
 
+            
             IEnumerator BookCoroutine()
             {
                 gameManager.Instance.m_bookTutorialPlayed = true;
@@ -285,8 +287,11 @@ namespace Himanshu
                 
             }
 
-            if(!gameManager.Instance.m_bookTutorialPlayed ?? false)
+            if (!gameManager.Instance.m_bookTutorialPlayed ?? true)
+            {
+                tutorial.StopAllCoroutines();                
                 tutorial.StartCoroutine(BookCoroutine());
+            }
 
         }
 
@@ -326,9 +331,6 @@ namespace Himanshu
             {
                 gameManager.Instance.isTutorialRunning = true;
                 Tutorial tutorial = FindObjectOfType<Tutorial>();
-
-
-                
                 tutorial.m_narrator.Play(tutorial.m_tutorialEndRoom[0]);
 
                 yield return new WaitUntil(() => m_objectivePicked);
@@ -337,11 +339,15 @@ namespace Himanshu
                 tutorial.m_narrator.Play(tutorial.m_tutorialEndRoom[1]);
                 yield return new WaitWhile(() => tutorial.m_narrator.settingText);
 
+                gameManager.Instance.m_endTutorialPlayed = true;
+
+                gameManager.Instance.isTutorialRunning = false;
+
                 yield return PleaseGoIn();
 
             }
-
-            tutorial.StartCoroutine(EndRoutine());
+            if(gameManager.Instance.m_endTutorialPlayed == false || gameManager.Instance.m_endTutorialPlayed == null)
+                tutorial.StartCoroutine(EndRoutine());
         }
 
         public static void RunObjTutorial(Door _door)
