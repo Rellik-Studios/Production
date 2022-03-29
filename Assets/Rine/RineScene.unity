@@ -14022,7 +14022,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 636510741}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.893, y: 2.351, z: -3.24}
+  m_LocalPosition: {x: -0.22, y: 4.83, z: -3.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1469240408}
@@ -17721,7 +17721,7 @@ PrefabInstance:
     - target: {fileID: -9074154463053029285, guid: 9fc76b8e6e63fb4488fcb1f09771bd8a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 62ebaef47c554d64888bac84e8d19cd6, type: 2}
+      objectReference: {fileID: 2100000, guid: 241dc07e0b24d8047983b4aeb4e89341, type: 2}
     - target: {fileID: -8679921383154817045, guid: 9fc76b8e6e63fb4488fcb1f09771bd8a, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -23893,6 +23893,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 636e6ae20e4e3574b81a8697c9b3ce91, type: 2}
+    - target: {fileID: 1170160574250672114, guid: a99a0c80ec30fc64890805725d138b13, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5443076790530642225, guid: a99a0c80ec30fc64890805725d138b13, type: 3}
       propertyPath: m_RootOrder
       value: 53
@@ -24518,43 +24522,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 29008d2286acb89428b24f2d9a98db33, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.8533428
+      value: 3.2241669
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 29008d2286acb89428b24f2d9a98db33, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -16.823076
+      value: -16.822496
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 29008d2286acb89428b24f2d9a98db33, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.8355227
+      value: -6.7688665
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 29008d2286acb89428b24f2d9a98db33, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.97679675
+      value: 0.998834
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 29008d2286acb89428b24f2d9a98db33, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.032730453
+      value: -0.032203574
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 29008d2286acb89428b24f2d9a98db33, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.21164356
+      value: 0.03543447
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 29008d2286acb89428b24f2d9a98db33, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0019539602
+      value: -0.0061668823
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 29008d2286acb89428b24f2d9a98db33, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -3.619
+      value: -3.663
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 29008d2286acb89428b24f2d9a98db33, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 2495.517
+      value: 2884.09
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 29008d2286acb89428b24f2d9a98db33, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 1.015
+      value: -0.838
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 29008d2286acb89428b24f2d9a98db33, type: 3}
       propertyPath: m_Name
@@ -25185,7 +25189,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 625c667d68d419447a3258fae088d59f, type: 2}
+  - {fileID: 2100000, guid: 34323f63b5e790b448d1848f7a2d49f8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -25437,9 +25441,13 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5253270964110113558, guid: f8074417803ce79419bbd2b619665ca1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 241dc07e0b24d8047983b4aeb4e89341, type: 2}
+    - target: {fileID: 5253270964110113558, guid: f8074417803ce79419bbd2b619665ca1, type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 2100000, guid: 1c68509c1e9aaa748bdc26e7ddb4e751, type: 2}
+      objectReference: {fileID: 2100000, guid: 241dc07e0b24d8047983b4aeb4e89341, type: 2}
     - target: {fileID: 6045979609139747523, guid: f8074417803ce79419bbd2b619665ca1, type: 3}
       propertyPath: m_Name
       value: SM_Hospital_Bed_1870

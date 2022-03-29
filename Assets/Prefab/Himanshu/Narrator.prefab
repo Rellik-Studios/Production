@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 655182173056029651}
   - component: {fileID: 655182173056029648}
   - component: {fileID: 655182173056029650}
+  - component: {fileID: 833936375}
+  - component: {fileID: 833936377}
   m_Layer: 0
   m_Name: Narrator
   m_TagString: Untagged
@@ -57,18 +59,66 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_textBox: {fileID: 0}
+  m_hidingLines:
+  - 
+  - "What if I activate a sound right now and give you away? I can do that, you know.\r\r"
+  - "You can\u2019t hide from the world forever, @userName."
+  - A deadly game of hide and seek.
+  - Is it comfortable in there?
+  - "\rHIDDEN\r"
+  - "You can hide from the enemies but you can\u2019t hide from time.\r"
+  - "Aren\u2019t you glad you have me to keep you company in here?\r"
+  - You have now entered HIDDEN STATE.
+  m_spottedLines:
+  - 
+  - Time to run!
+  - How unfortunate.
+  - I'll prepare your grave.
+  - "Uh oh! You\u2019ve been spotted."
+  - Yikes!
+  - Aaaaah!!
+  - DETECTED
+  - Eek!
+  - "It\u2019s got you in its sights, @userName."
+  m_madeSound:
+  - 
+  - "Shhh @userName, be quiet.\r"
+  - "You\u2019re making a ruckus, it\u2019s really disrupting my peace."
+  - Ah yes, silent as a grave.
+  - "You\u2019re the rowdy type, aren\u2019t you, @userName?"
+  - You come to my world uninvited and make a mess of things? How disrespectful.
+  - Stop that.
+  - They heard that.
+  - "Wow @userName ! You\u2019re as stealthy as a broken steam train!"
+  - Is this supposed to be a diversion?
+  - I hope being obnoxiously loud is part of your plan.
+  - 343 metres per second. The speed of sound. Are you trying to outrun it?
+  m_corridor:
+  - 
+  - "It seems like it\u2019s never going to end\u2026\r"
+  - "But it is. It\u2019s going to end."
+  - Sooner than you think.
+  m_breathing:
+  - 
+  - 'Out of breath already? You must be really unfit @userName .
+
+'
+  - What did I tell you about breathing? Stop it.
+  - "You\u2019re breathing again\u2026 how embarrassing for you."
+  - Respiration, awfully human trait.
+  - Imagine breathing.
   m_idleRoom:
   - Don't you have anything better to do.
-  - 'I see they refer to you as @userName '
+  - I see they refer to you as @userName .
   - Your account name is @userName right?
   - "@userName, how are you today? It\u2019s a lovely @timeCategory isn\u2019t it?"
-  - "Actually, it\u2019s @time, @activity "
-  - This is the {worst|best} @day, I've had in weeks
+  - "It\u2019s @time, @activity ."
+  - This is the {worst|best} @day, I've had in weeks.
   m_ballRoom:
   - 
-  - 'Lovely ballroom#
+  - 'Lovely ballroom.#
 
-    @userName,Have you ever danced with anyone?'
+    @userName, Have you ever danced with anyone?'
   - Music trancends time.
   - You know, I would say the speed of sound is actually pretty slow.
   m_cafeteria:
@@ -95,6 +145,11 @@ MonoBehaviour:
   - An apple a day keeps the doctor away!
   - Remember to take your happy pills.
   - May I interest you in an all-in-one miracle cure?
+  m_hospitalIdle:
+  - Don't you have anything better to do.
+  - "\rAre you here to see someone?"
+  - Are you feeling alright @userName? No fever or anything?
+  - Why hello there! Do you have an appointment?
   m_hospital1870:
   - 
   - The chainsaw was invented to be a medical instrument. Did you know that @userName?
@@ -103,28 +158,313 @@ MonoBehaviour:
   m_hospitalFuturistic:
   - 
   - "Even with the advancements in technology, there\u2019s still a need for hospitals.\r#\nSome
-    things don\u2019t change.\n"
-  - "There\u2019ll always be a new disease ready to challenge humanity.\nHave you
-    considered how frail you are?\n"
+    things don\u2019t change."
+  - "There\u2019ll always be a new disease ready to challenge humanity.#\nHave you
+    considered how frail you are?"
   - "Technology slowly but surely takes over every part of human life.#\nEveryone
     soon will be unable to tear their eyes away from the screen\u2026#\njust like
     you, at this very moment."
-  - "I would tell you what happens in the future, but I don\u2019t wanna spoil it
-    ;)#\nOr cause unwanted butterfly effects.\n"
+  - "I would tell you what happens in the future, but I don\u2019t wanna spoil it.#\nOr
+    cause unwanted butterfly effects.\n"
   - "If you fear A.I. taking over in the future, you would be absolutely correct.#\nI
     suppose even I\u2019m an A.I. of sorts, in this form.\n"
   m_hospitalPresent:
   - 
-  - "2020 was a true test for humanity\u2019s progress"
+  - "2020 onwards was a true test for humanity\u2019s progress."
   - "There\u2019s still a lot about the human body that humanity does not know."
   m_hub1:
-  - "Oh good someone\u2019s here!#\nYou\u2019re gonna need to help me. Your only
-    other option is quitting, I suppose.#\nLong story short, I need you to fix that
-    clock over there.\r#\nGo through any of those doors, we can talk more inside."
+  - 
+  - "@disableDoor You\u2019re gonna need to help me. Your only other option is quitting,
+    I suppose.#\n*tutorialSkipped |%|Surely you can\u2019t refuse, not after I\u2019ve
+    been so helpful!|$$ #\nLong story short, I need you to fix that clock over there.\r#\nGo
+    through any of those doors, we can talk more inside.# ~@enableDoor "
   m_hub2:
   - "Don\u2019t you wish this could be easier?#\nDon\u2019t you wish you could just
     go back in time?#\nWell, since I\u2019m feeling generous today\u2026 you can!#\nJust
-    press [REWIND TIME BUTTON]. You\u2019ll go back a few seconds, but your location
-    in the space won\u2019t change.#\nYou\u2019re welcome. I never want to hear you
-    say I\u2019m not a benevolent ruler.#"
+    press R. You\u2019ll go back a few seconds, but your location in the space won\u2019t
+    change.#\nYou\u2019re welcome. I never want to hear you say I\u2019m not a benevolent
+    ruler.#"
   m_finish1: []
+  m_idleTimer: 0
+  m_textBackdrop: {fileID: 0}
+--- !u!82 &833936375
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655182173056029649}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 489767467866829602, guid: 96e9b489fe2029544b8d9b60fe606bd9, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &833936377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655182173056029649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f94c58e5c13c4dd48f28b541fdc665a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_walls:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_hidingSpots:
+  - {fileID: 0}
+  - {fileID: 0}
+  m_tutorialDialogues:
+  - 'Hi! Welcome to the Game! #
+
+    You''re gonna need to hide if you want to survive
+    :) #
+
+    Just go up to that table and you''ll see what you need to do.'
+  - Good Job! You're very obedient.
+  - 'It won''t just be tables from here on out. Closets, things like that. #
+
+    You''ll
+    figure it out. #
+
+    You can come out now, don''t be shy.'
+  - 'Now you might ask "why hide"? #
+
+    I''ll give you a reason.'
+  - Meet your new best friend.
+  - 'I''d hide if I were you its idea of friendship is rather... violent. #
+
+    But
+    not to worry, I slowed this one down for you, as a gift. It won''t be this easy
+    where you''re going.'
+  - That concludes our tutorial.
+  m_tutorialBook:
+  - "@disableDoor That holy book over there\u2026 you can use it to keep a record
+    of your progress. # \nTo write your own history, if you will. # \nIt would be
+    a shame to have to repeat everything every time you died would it not? # \nConsider
+    it a blessing. #\n ~@enableDoor "
+  m_tutorialEndRoom: []
+  m_tutorialObj:
+  - "Hm, I sense a presence\u2026 it seems there\u2019s an anomaly somewhere in this
+    room.#\nSomething that shouldn\u2019t be here. Not now.#\nAn item from another
+    time.#\nFind it and collect it, and the system will deactivate the door\u2019s
+    barrier.#\nI have a feeling we'll be running into anomalies again. Know that
+    they won't always be in plain sight."
+  m_player: {fileID: 0}
+  m_enemyDefault: {fileID: 0}
+  m_doors:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_deathDialogues:
+  - "See, I warned you. You\u2019ll want to avoid this outcome or the game ends.#\r\nLuckily
+    for you, I have all the power here. Give hiding another go.#\r\r"
+  - Just keep a distance and hide under the table. Try again.
+  - "Really, again? It\u2019s getting kind of pathetic."
+  - "I may have all the time in the world, but that doesn\u2019t mean I\u2019m impervious
+    to getting annoyed."
+  - "No, I still believe in you. We\u2019re only on attempt 5."
+  m_noticedDialogues:
+  - Go on, say hi!
+  - "Come a bit closer, it\u2019s dying to meet you."
+  - "What\u2019s wrong? Not the social type?"
+  - Are you listening to me? Approach it.
+  - "You\u2019re not following my instructions\u2026 do you not trust me or are you
+    just a bit dumb?"
+  - "Fine, do what you like. I\u2019ll just wait here, I have time."
+  - Approach the enemy or walk out the door. Your choice.
