@@ -27,6 +27,7 @@ namespace Himanshu
             set => m_playerInput.m_crouching = value;
         }
 
+        public float m_currentSpeed;  
         [SerializeField] private AudioClip m_breathingClip;
         [SerializeField] private float m_maxSprintTimer;
         private float m_sprintTimer;
@@ -117,6 +118,8 @@ namespace Himanshu
             {
                 sprintTimer += calculatedDeltaTime / 4f;
             }
+            m_currentSpeed = m_characterController.velocity.magnitude;
+             //Debug.Log(m_characterController.velocity.magnitude);
         }
     }
 }

@@ -38,6 +38,15 @@ namespace Himanshu
             }
         }
 
+        private void Start()
+        {
+            var objs = GameObject.FindGameObjectsWithTag("EnemyBlocker");
+            foreach (var obj in objs)
+            {
+                obj.AddComponent<EnemyBlocker>();
+            }
+        }
+
         public void ResetManager()
         {
             m_objTutorialPlayed = null;
