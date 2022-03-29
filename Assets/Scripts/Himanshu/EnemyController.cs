@@ -21,6 +21,7 @@ namespace Himanshu
     /// </summary>
     public class EnemyController : MonoBehaviour, IEnemy
     {
+        private Coroutine m_yellowToRedRoutine;
 
         public enum eDanger
         {
@@ -142,7 +143,7 @@ namespace Himanshu
 
         
         
-        private RaycastHit[] m_hits = new RaycastHit[3];
+        private RaycastHit[] m_hits = new RaycastHit[13];
         private float m_lookAngle;
         private Animator m_animator;
         public bool m_isRandomPatrol;
@@ -177,6 +178,7 @@ namespace Himanshu
         }
         private void Start()
         {
+            m_yellowToRedRoutine = StartCoroutine(eEmptyRoutine());
             m_player = FindObjectOfType<PlayerMovement>();
             m_animator = transform.Find("GFX").GetComponent<Animator>();
             m_agent = GetComponent<NavMeshAgent>();
@@ -202,8 +204,12 @@ namespace Himanshu
             }
         }
 
+        private IEnumerator eEmptyRoutine()
+        {
+            yield return null;
+        }
 
-        
+
         private IEnumerator UnFreeze()
         {
             yield return new WaitForSeconds(6f);
@@ -235,10 +241,7 @@ namespace Himanshu
             
                 if (dangerLevel == eDanger.yellow)
                 {
-                    if (m_canBeRed)
-                        dangerLevel = eDanger.red;
-                    else
-                        yield break;
+                    yield break;
                 }
             
             
@@ -263,8 +266,9 @@ namespace Himanshu
          
                 aKill = true;
                 GetComponent<NavMeshAgent>().enabled = false;
-                transform.position -= transform.forward * 3f;
+
                 transform.LookAt(player.transform);
+                transform.position -= transform.forward * 3f;
 
                 player.m_isDying = true;
 
@@ -355,14 +359,27 @@ namespace Himanshu
 
         public void ChaseUpdate()
         {
-            if ((m_player.transform.position - transform.position).magnitude < gameManager.Instance.m_triggerDistance && m_canBeRed)
+            
+            
+            if (dangerLevel == eDanger.red)
             {
-                dangerLevel = eDanger.red;
+                m_agent.SetDestination(m_player.transform.position);
             }
-            else
+            
+            else if (dangerLevel == eDanger.yellow)
             {
-                dangerLevel = eDanger.yellow;
+                m_agent.SetDestination(transform.position);
+                   
             }
+
+            // if ((m_player.transform.position - transform.position).magnitude < gameManager.Instance.m_triggerDistance && m_canBeRed)
+            // {
+            //     dangerLevel = eDanger.red;
+            // }
+            // else
+            // {
+            //     dangerLevel = eDanger.yellow;
+            // }
             // Physics.Raycast(transform.position, Quaternion.AngleAxis(30f, transform.up) * transform.forward, out m_hits[0], 20f);
             // Physics.Raycast(transform.position, transform.forward, out m_hits[1], 20f);
             // Physics.Raycast(transform.position, Quaternion.AngleAxis(-30f, transform.up) * transform.forward, out m_hits[2], 20f);
@@ -396,13 +413,22 @@ namespace Himanshu
             {
                 StartCoroutine(SetDestination());
             }
-            
-            Physics.Raycast(transform.position, Quaternion.AngleAxis(30f, transform.up) * transform.forward, out m_hits[0], 20f);
-            Physics.Raycast(transform.position, transform.forward, out m_hits[1], 20f);
-            Physics.Raycast(transform.position, Quaternion.AngleAxis(-30f, transform.up) * transform.forward, out m_hits[2], 20f);
+
+            for (int i = -6; i < 7; i++)
+            {
+                Physics.Raycast(transform.position, Quaternion.AngleAxis(5f * i, transform.up) * transform.forward, out m_hits[i + 6], 20f);
+                Debug.DrawRay(transform.position, Quaternion.AngleAxis(5f * i, transform.up) * transform.forward * 20f);
+
+            }
+            // Physics.Raycast(transform.position, Quaternion.AngleAxis(30f, transform.up) * transform.forward, out m_hits[0], 20f);
+            // Physics.Raycast(transform.position, Quaternion.AngleAxis(30f, transform.up) * transform.forward, out m_hits[1], 20f);
+            // Physics.Raycast(transform.position, Quaternion.AngleAxis(30f, transform.up) * transform.forward, out m_hits[2], 20f);
+            // Physics.Raycast(transform.position, transform.forward, out m_hits[3], 20f);
+            // Physics.Raycast(transform.position, Quaternion.AngleAxis(-30f, transform.up) * transform.forward, out m_hits[4], 20f);
+            // Physics.Raycast(transform.position, Quaternion.AngleAxis(-30f, transform.up) * transform.forward, out m_hits[5], 20f);
+            // Physics.Raycast(transform.position, Quaternion.AngleAxis(-30f, transform.up) * transform.forward, out m_hits[6], 20f);
             
             Debug.DrawRay(transform.position, Quaternion.AngleAxis(30f, transform.up) * transform.forward * 18f);
-            Debug.DrawRay(transform.position, Quaternion.AngleAxis(0f, transform.up) * transform.forward * 20f);
             Debug.DrawRay(transform.position, Quaternion.AngleAxis(-30f, transform.up) * transform.forward * 18f);
 
         }
@@ -443,7 +469,7 @@ namespace Himanshu
                 return false;    
             
             
-            for (int i = 0; i <= 2; i++)
+            for (int i = 0; i < 13; i++)
             {
                 if (m_hits[i].collider != null && m_hits[i].collider.gameObject.CompareTag("Player") && m_hits[i].collider.GetComponentInParent<CharacterController>().enabled && !m_hits[i].collider.GetComponentInParent<PlayerInteract>().m_hiding)
                 {
@@ -451,9 +477,12 @@ namespace Himanshu
                 }
             }
 
-            var colliders = Physics.OverlapSphere(transform.position, m_hearingRadius * (m_player.crouching ? 0.1f : 3f));
+            Debug.Log(m_player.m_currentSpeed);
+            var colliders = Physics.OverlapSphere(transform.position, m_hearingRadius * 3f);
             if (colliders.Any(t => t.CompareTag("Player") && !t.transform.parent.GetComponent<PlayerInteract>().m_hiding))
             {
+                if (m_player.crouching || m_player.m_currentSpeed < 0.1f)
+                    return false;
                 return true;
             }
             return false;
@@ -473,29 +502,57 @@ namespace Himanshu
 
         public bool ChaseToPatrol()
         {
-            
             var playerInteract = m_player.GetComponent<PlayerInteract>();
             if (playerInteract.m_invincible || playerInteract.m_debugInvincible)
                 return true;    
-            Physics.Raycast(transform.position, Quaternion.AngleAxis(30f, transform.up) * transform.forward, out m_hits[0], 20f);
-            Physics.Raycast(transform.position, transform.forward, out m_hits[1], 20f);
-            Physics.Raycast(transform.position, Quaternion.AngleAxis(-30f, transform.up) * transform.forward, out m_hits[2], 20f);
+            for (int i = -6; i < 7; i++)
+            {
+                Physics.Raycast(transform.position, Quaternion.AngleAxis(5f * i, transform.up) * transform.forward, out m_hits[i + 6], 30f);
+                Debug.DrawRay(transform.position, Quaternion.AngleAxis(5f * i, transform.up) * transform.forward * 30f);
+            }
+            
+            // Physics.Raycast(transform.position, Quaternion.AngleAxis(30f, transform.up) * transform.forward, out m_hits[0], 20f);
+            // Physics.Raycast(transform.position, transform.forward, out m_hits[1], 20f);
+            // Physics.Raycast(transform.position, Quaternion.AngleAxis(-30f, transform.up) * transform.forward, out m_hits[2], 20f);
 
             if (m_player.GetComponent<PlayerInteract>().m_hiding && dangerLevel == eDanger.yellow)
             {
                 return true;
             }
-            
-            for (int i = 0; i <= 2; i++)
+
+            if (dangerLevel == eDanger.yellow)
             {
-                if (m_hits[i].collider != null && m_hits[i].collider.gameObject.CompareTag("Player"))
-                {
-                    return false;
-                }
-                if (m_hits[i].collider != null && m_hits[i].collider.gameObject.CompareTag("EnemyBlocker"))
-                {
+                bool? result = null;
+
+                if (m_player.GetComponent<PlayerInteract>().m_hiding)
                     return true;
+                
+                var colliders = Physics.OverlapSphere(transform.position, m_hearingRadius * 4f);
+                if (colliders.Any(t => t.CompareTag("Player")))
+                {
+                    if (m_player.crouching)
+                        result ??= true;
+                    else
+                        result = false;
                 }
+                for (int i = 0; i < 13; i++)
+                {
+                    if (m_hits[i].collider != null && m_hits[i].collider.gameObject.CompareTag("EnemyBlocker"))
+                    {
+                        result ??= true;
+                    }
+
+                    if (m_hits[i].collider != null && m_hits[i].collider.gameObject.CompareTag("Player"))
+                    {
+                        result = false;
+                    }
+                    else if (m_player.crouching)
+                    {
+                        result ??= true;
+                    }
+                }
+
+                return result ?? true;
             }
 
             return false;
@@ -503,9 +560,8 @@ namespace Himanshu
         public bool PatrolToInfectTransition()
         {
 
-            for (int i = 0; i <= 2; i++)
+            for (int i = 0; i < 13; i++)
             {
-                
                 if (m_hits[i].collider != null &&
                     m_hidingSpotsToInfect.Any(t => t.gameObject.transform == m_hits[i].collider.transform))
                 {
@@ -530,6 +586,16 @@ namespace Himanshu
 
         public void ChaseEnter()
         {
+            IEnumerator YellowToRed()
+            {
+                transform.LookAt(m_player.transform);
+                yield return new WaitForSeconds(3f);
+                dangerLevel = eDanger.red;
+                m_enemyHead.m_look = false;
+                yield return null;
+                
+            }
+            m_yellowToRedRoutine = StartCoroutine(YellowToRed());   
 
             m_canBeRed = false;
             this.Invoke(()=>m_canBeRed = true, 3f);
@@ -545,7 +611,7 @@ namespace Himanshu
             m_agent.speed = 0f;
             m_agent.angularSpeed = 0f;
             
-            this.Invoke(() => m_enemyHead.m_look = false, 1f);
+            //this.Invoke(() => m_enemyHead.m_look = false, 1f);
 
             
             this.Invoke(()=>
@@ -576,8 +642,12 @@ namespace Himanshu
 
             yield return null;
             //m_agent.enabled && m_agent.gameObject.activeSelf = true;
+        }
 
-
+        public void ChaseExit()
+        {
+            StopCoroutine(m_yellowToRedRoutine);
+            m_enemyHead.m_look = false;
         }
         public void InfectUpdate()
         {
@@ -628,10 +698,9 @@ namespace Himanshu
             }
             else
                 FindObjectOfType<PlayerInteract>().Death();
-
+            
             m_coroutinePlaying = false;
             yield return new WaitForSeconds(6f);
-                        
             FindObjectOfType<PlayerInteract>().m_canQTEHide = true;
         }
         
