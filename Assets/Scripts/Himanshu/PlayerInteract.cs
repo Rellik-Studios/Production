@@ -254,7 +254,7 @@ namespace Himanshu
 
 #if UNITY_EDITOR
 
-            if(Input.GetKeyDown(KeyCode.Alpha0) && (Math.Abs(Time.timeScale - 1) < 0.1f || FindObjectOfType<FavorSystem>().m_timeStop))
+            if(Input.GetKeyDown(KeyCode.Alpha0) && !m_isDying && (Math.Abs(Time.timeScale - 1) < 0.1f || FindObjectOfType<FavorSystem>().m_timeStop))
             {
                 PauseScreen.SetActive(true);
                 FindObjectOfType<FavorSystem>().m_continueCounting = false;

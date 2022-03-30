@@ -120,6 +120,8 @@ namespace rachael.FavorSystem
             {
                 m_inputField.text = "";
                 CommandPromptWindow();
+                FindObjectOfType<PlayerInteract>().enabled = false;
+
             }
 #if UNITY_EDITOR
             else if (Input.GetKeyDown(KeyCode.Alpha0) && m_isOpen && !pauseMenu.activeSelf && !m_isProcessing)
@@ -132,9 +134,7 @@ namespace rachael.FavorSystem
                 StartCoroutine(EKeyLeave());
             }
 #endif
-
             aNotifEnabled = (m_playerInteract?.playerDanger != EnemyController.eDanger.white && m_grantSpecial);
-
 
             //starting timer for how long will  the objective be completed
             if (startTimer)
@@ -207,6 +207,7 @@ namespace rachael.FavorSystem
             m_commandPrompt.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            FindObjectOfType<PlayerInteract>().enabled = true;
         }
 
         public IEnumerator EKeyLeave()

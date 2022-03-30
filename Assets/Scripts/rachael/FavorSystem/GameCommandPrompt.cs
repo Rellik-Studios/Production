@@ -81,9 +81,13 @@ public class GameCommandPrompt : MonoBehaviour
     {
         Debug.Log("closing");
         if (!timeStop)
+        {
+            Debug.Log("THERE IS NO TIMESTOP");
             Time.timeScale = 1f;
+        }
         else
         {
+            Debug.Log("THIS IS GOING THROUGH THE DISABLE");
             favorSystem.ResetTime();
             //this.Invoke(()=>timeStop = false, 5, true);
         }
