@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Bolt;
 using Cinemachine;
+using rachael.FavorSystem;
 using rachael.qte;
 using TMPro;
 using UnityEngine;
@@ -245,11 +246,17 @@ namespace Himanshu
                 var playerInteract = m_player.GetComponent<PlayerInteract>();
                 if (playerInteract.m_invincible || playerInteract.m_debugInvincible)
                     yield break;
-                
-                if(Time.timeScale == 0f)
-                    yield return null;
-                
-            
+
+                if(FindObjectOfType<GameCommandPrompt>(true).gameObject.activeSelf)
+                {
+                    FindObjectOfType<FavorSystem>(true).CloseCommandPrompt();
+                }
+                if (FindObjectOfType<PauseMenu>(true).gameObject.activeSelf)
+                {
+                    FindObjectOfType<PauseMenu>(true).Unpause();
+                }
+
+
                 if (dangerLevel == eDanger.yellow)
                 {
                     yield break;
