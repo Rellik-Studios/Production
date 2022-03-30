@@ -275,10 +275,10 @@ namespace Himanshu
                 yield return new WaitForSecondsRealtime(1.2f);
                 player.Death();
 
-                yield return new WaitForSecondsRealtime(3f);
+                //yield return new WaitForSecondsRealtime(3f);
 
                 m_killing = false;
-                Time.timeScale = 1f;
+                //Time.timeScale = 1f;
 
 
 
@@ -468,20 +468,24 @@ namespace Himanshu
 
             var playerInteract = m_player.GetComponent<PlayerInteract>();
             if (playerInteract.m_invincible || playerInteract.m_debugInvincible)
-                return false;    
-            
-            
+                return false;
+
+
+            bool? result = null;
             for (int i = 0; i < 13; i++)
             {
-                if (m_hits[i].collider != null && m_hits[i].collider.gameObject.CompareTag("Player"))
+                if (m_hits[i].collider != null && m_hits[i].collider.gameObject.CompareTag("EnemyBlocker"))
                 {
-                    
+                    result ??= false;
                 }
                 if (m_hits[i].collider != null && m_hits[i].collider.gameObject.CompareTag("Player") && m_hits[i].collider.GetComponentInParent<CharacterController>().enabled && !m_hits[i].collider.GetComponentInParent<PlayerInteract>().m_hiding)
                 {
-                    return true;
+                    result = true;
                 }
             }
+
+            if (result != null)
+                return result ?? false;
 
             var colliders = Physics.OverlapSphere(transform.position, m_hearingRadius * 3f);
             if (colliders.Any(t => t.CompareTag("Player") && !t.transform.parent.GetComponent<PlayerInteract>().m_hiding))
@@ -522,10 +526,21 @@ namespace Himanshu
 
             if (dangerLevel == eDanger.red)
             {
-                if (m_hits.Any((t) => t.collider.CompareTag("EnemyBlocker")))
+                bool? result = null;
+                for (int i = 0; i < 13; i++)
                 {
-                    return true;
+                    if (m_hits[i].collider != null && m_hits[i].collider.gameObject.CompareTag("EnemyBlocker"))
+                    {
+                        result ??= true;
+                    }
+                    if (m_hits[i].collider != null && m_hits[i].collider.gameObject.CompareTag("Player"))
+                    {
+                        result = false;
+                    }
+                    
                 }
+                
+                return result ?? false;
             }
             if (m_player.GetComponent<PlayerInteract>().m_hiding && dangerLevel == eDanger.yellow)
             {
