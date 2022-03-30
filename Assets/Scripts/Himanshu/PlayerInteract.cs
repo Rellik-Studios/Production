@@ -484,7 +484,11 @@ namespace Himanshu
             {
                 FindObjectOfType<Fade>().color = Fade.eColor.black;
                 
-                this.Invoke(() => m_sceneManager.LoseScreen(), 2f);
+                this.Invoke(() =>
+                {
+                    m_sceneManager.LoseScreen();
+                    Time.timeScale = 1f;
+                }, 2f, true);
                 
             }
             else

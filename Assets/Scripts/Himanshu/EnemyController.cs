@@ -275,10 +275,10 @@ namespace Himanshu
                 yield return new WaitForSecondsRealtime(1.2f);
                 player.Death();
 
-                yield return new WaitForSecondsRealtime(3f);
+                //yield return new WaitForSecondsRealtime(3f);
 
                 m_killing = false;
-                Time.timeScale = 1f;
+                //Time.timeScale = 1f;
 
 
 
