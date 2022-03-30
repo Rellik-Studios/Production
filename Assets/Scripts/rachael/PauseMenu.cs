@@ -4,6 +4,7 @@ using UnityEngine.Audio;
 using UnityEngine;
 using UnityEngine.UI;
 using rachael.FavorSystem;
+using Himanshu;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -26,6 +27,8 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        FindObjectOfType<PlayerInteract>().enabled = false;
+
     }
 
     public void Unpause()
@@ -40,6 +43,7 @@ public class PauseMenu : MonoBehaviour
         }
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        FindObjectOfType<PlayerInteract>().enabled = true;
     }
 
     public void SetBGVolume(float _value)
