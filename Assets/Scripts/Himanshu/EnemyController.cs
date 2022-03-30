@@ -477,7 +477,6 @@ namespace Himanshu
                 }
             }
 
-            Debug.Log(m_player.m_currentSpeed);
             var colliders = Physics.OverlapSphere(transform.position, m_hearingRadius * 3f);
             if (colliders.Any(t => t.CompareTag("Player") && !t.transform.parent.GetComponent<PlayerInteract>().m_hiding))
             {
