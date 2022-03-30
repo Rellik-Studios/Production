@@ -23,6 +23,8 @@ namespace Himanshu
 
         private TMP_Text m_textBox;
         
+        public static DevMenu Instance;
+        
         private TMP_InputField m_inputField;
         public bool inputSubmit { get; set; }
         
@@ -55,22 +57,66 @@ namespace Himanshu
             {
                 switch (value)
                 {
-                    case 1.1f: m_player.transform.position = m_loop1TeleportPoints[0].position + new Vector3(0f, .5f, 0f); break;
-                    case 1.2f: m_player.transform.position = m_loop1TeleportPoints[1].position + new Vector3(0f, .5f, 0f); break;
-                    case 1.3f: m_player.transform.position = m_loop1TeleportPoints[2].position + new Vector3(0f, .5f, 0f); break;
-                    case 1.4f: m_player.transform.position = m_loop1TeleportPoints[3].position + new Vector3(0f, .5f, 0f); break;
-                    case 2.1f: m_player.transform.position = m_loop2TeleportPoints[0].position + new Vector3(0f, .5f, 0f); break;
-                    case 2.2f: m_player.transform.position = m_loop2TeleportPoints[1].position + new Vector3(0f, .5f, 0f); break;
-                    case 2.3f: m_player.transform.position = m_loop2TeleportPoints[2].position + new Vector3(0f, .5f, 0f); break;
-                    case 2.4f: m_player.transform.position = m_loop2TeleportPoints[3].position + new Vector3(0f, .5f, 0f); break;
-                    case 3.1f: m_player.transform.position = m_loop3TeleportPoints[0].position + new Vector3(0f, .5f, 0f); break;
-                    case 3.2f: m_player.transform.position = m_loop3TeleportPoints[1].position + new Vector3(0f, .5f, 0f); break;
-                    case 3.3f: m_player.transform.position = m_loop3TeleportPoints[2].position + new Vector3(0f, .5f, 0f); break;
-                    case 3.4f: m_player.transform.position = m_loop3TeleportPoints[3].position + new Vector3(0f, .5f, 0f); break;
-                    case 4.1f: m_player.transform.position = m_loop4TeleportPoints[0].position + new Vector3(0f, .5f, 0f); break;
-                    case 4.2f: m_player.transform.position = m_loop4TeleportPoints[1].position + new Vector3(0f, .5f, 0f); break;
-                    case 4.3f: m_player.transform.position = m_loop4TeleportPoints[2].position + new Vector3(0f, .5f, 0f); break;
-                    case 4.4f: m_player.transform.position = m_loop4TeleportPoints[3].position + new Vector3(0f, .5f, 0f); break;
+                    case 1.0f:
+                        m_player.transform.position = m_loop1TeleportPoints[0].position;
+                        break;
+                    case 1.1f:
+                        m_player.transform.position = m_loop1TeleportPoints[1].position;
+                        break;
+                    case 1.2f:
+                        m_player.transform.position = m_loop1TeleportPoints[2].position;
+                        break;
+                    case 1.3f:
+                        m_player.transform.position = m_loop1TeleportPoints[3].position;
+                        break;
+                    case 1.4f:
+                        m_player.transform.position = m_loop1TeleportPoints[4].position;
+                        break;
+                    case 2.0f:
+                        m_player.transform.position = m_loop2TeleportPoints[0].position;
+                        break;
+                    case 2.1f:
+                        m_player.transform.position = m_loop2TeleportPoints[1].position;
+                        break;
+                    case 2.2f:
+                        m_player.transform.position = m_loop2TeleportPoints[2].position;
+                        break;
+                    case 2.3f:
+                        m_player.transform.position = m_loop2TeleportPoints[3].position;
+                        break;
+                    case 2.4f:
+                        m_player.transform.position = m_loop2TeleportPoints[4].position;
+                        break;
+                    case 3.0f:
+                        m_player.transform.position = m_loop3TeleportPoints[0].position;
+                        break;
+                    case 3.1f:
+                        m_player.transform.position = m_loop3TeleportPoints[1].position;
+                        break;
+                    case 3.2f:
+                        m_player.transform.position = m_loop3TeleportPoints[2].position;
+                        break;
+                    case 3.3f:
+                        m_player.transform.position = m_loop3TeleportPoints[3].position;
+                        break;
+                    case 3.4f:
+                        m_player.transform.position = m_loop3TeleportPoints[4].position;
+                        break;
+                    case 4.0f:
+                        m_player.transform.position = m_loop4TeleportPoints[0].position;
+                        break;
+                    case 4.1f:
+                        m_player.transform.position = m_loop4TeleportPoints[1].position;
+                        break;
+                    case 4.2f:
+                        m_player.transform.position = m_loop4TeleportPoints[2].position;
+                        break;
+                    case 4.3f:
+                        m_player.transform.position = m_loop4TeleportPoints[3].position;
+                        break;
+                    case 4.4f:
+                        m_player.transform.position = m_loop4TeleportPoints[4].position;
+                        break;
                 }
                 m_teleport = value;
             }
@@ -105,6 +151,7 @@ namespace Himanshu
 
         void Start()
         {
+            Instance = this;
             m_enemies = FindObjectsOfType<EnemyController>(true).Select((t)=>t.gameObject).ToArray();
             m_menuOptions = new List<string>();
             m_menuOptions.Add("Press 1 to change enemy speed.\n" +
@@ -340,8 +387,8 @@ namespace Himanshu
 
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.V))
-                isMenuOpen = !isMenuOpen;
+            // if (Input.GetKeyDown(KeyCode.V))
+            //     isMenuOpen = !isMenuOpen;
         }
     }
 }

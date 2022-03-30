@@ -17,6 +17,7 @@ namespace rachael.FavorSystem
         userMenu = 4,
         quitMenu = 5,
         helpMenu = 6,
+        customMenu = 7,
     }
 
     public class FavorSystem : MonoBehaviour
