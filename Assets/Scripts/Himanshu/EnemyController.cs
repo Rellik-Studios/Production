@@ -273,9 +273,11 @@ namespace Himanshu
                 player.m_isDying = true;
 
                 yield return new WaitForSecondsRealtime(1.2f);
-                player.GetComponent<CharacterController>().enabled = true;
-                m_killing = false;
                 player.Death();
+
+                yield return new WaitForSecondsRealtime(3f);
+
+                m_killing = false;
                 Time.timeScale = 1f;
 
 
@@ -471,6 +473,10 @@ namespace Himanshu
             
             for (int i = 0; i < 13; i++)
             {
+                if (m_hits[i].collider != null && m_hits[i].collider.gameObject.CompareTag("Player"))
+                {
+                    
+                }
                 if (m_hits[i].collider != null && m_hits[i].collider.gameObject.CompareTag("Player") && m_hits[i].collider.GetComponentInParent<CharacterController>().enabled && !m_hits[i].collider.GetComponentInParent<PlayerInteract>().m_hiding)
                 {
                     return true;
@@ -514,6 +520,13 @@ namespace Himanshu
             // Physics.Raycast(transform.position, transform.forward, out m_hits[1], 20f);
             // Physics.Raycast(transform.position, Quaternion.AngleAxis(-30f, transform.up) * transform.forward, out m_hits[2], 20f);
 
+            if (dangerLevel == eDanger.red)
+            {
+                if (m_hits.Any((t) => t.collider.CompareTag("EnemyBlocker")))
+                {
+                    return true;
+                }
+            }
             if (m_player.GetComponent<PlayerInteract>().m_hiding && dangerLevel == eDanger.yellow)
             {
                 return true;

@@ -393,11 +393,12 @@ namespace Himanshu
             m_hiding = true;
             _hidingSpot.aOpen = true;
             //_hidingSpot.aClose = false;
+            m_hidingSpot = _hidingSpot;
+
             yield return new WaitForSeconds(2.5f);
             _hidingSpot.aOpen = false;
             //_hidingSpot.aClose = true;
 
-            m_hidingSpot = _hidingSpot;
             GetComponent<CharacterController>().enabled = false;
             Debug.Log("Hiding now");
             
@@ -488,7 +489,7 @@ namespace Himanshu
             }
             else
             {
-                
+                GetComponent<CharacterController>().enabled = true;   
                 FindObjectOfType<Tutorial>().Retry();
                 m_isDying = false;
             }
