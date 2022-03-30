@@ -153,6 +153,7 @@ namespace Himanshu
         private bool m_canBeRed = false;
         private bool m_canChase = true;
         private eDanger m_dangerLevel = eDanger.white;
+        private eDetect? m_detectedThrough = null;
 
 
         private void Awake()
@@ -260,7 +261,7 @@ namespace Himanshu
                 
                 if(player.m_hiding)
                     player.Unhide();
-                player.m_followCam.transform.LookAt(transform.position + new Vector3(0f, 4f, 0f));
+                player.m_followCam.transform.LookAt(transform.position + new Vector3(0f, m_player.crouching ? 3f : 4f, 0f));
                 player.m_followCam.ResetMouse();
                 player.GetComponent<CharacterController>().enabled = false;
          
@@ -481,6 +482,7 @@ namespace Himanshu
                 if (m_hits[i].collider != null && m_hits[i].collider.gameObject.CompareTag("Player") && m_hits[i].collider.GetComponentInParent<CharacterController>().enabled && !m_hits[i].collider.GetComponentInParent<PlayerInteract>().m_hiding)
                 {
                     result = true;
+                    m_detectedThrough = eDetect.Vision;
                 }
             }
 
@@ -493,6 +495,7 @@ namespace Himanshu
                 if (m_player.crouching || m_player.m_currentSpeed < 0.1f)
                     return false;
                 return true;
+                m_detectedThrough = eDetect.Sound;
             }
             return false;
         }
@@ -616,11 +619,10 @@ namespace Himanshu
             IEnumerator YellowToRed()
             {
                 transform.LookAt(m_player.transform);
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(m_detectedThrough == eDetect.Vision ? 1.5f : 3f);
                 dangerLevel = eDanger.red;
                 m_enemyHead.m_look = false;
                 yield return null;
-                
             }
             m_yellowToRedRoutine = StartCoroutine(YellowToRed());   
 
@@ -733,4 +735,9 @@ namespace Himanshu
         
     }
 
+    internal enum eDetect
+    {
+        Vision,
+        Sound,
+    }
 }
