@@ -226,6 +226,12 @@ namespace Himanshu
 
             return false;
         }
+        
+    
+        
+        
+        
+        
 
         private bool m_killing = false;
         //Called through the Visual Script
@@ -239,6 +245,10 @@ namespace Himanshu
                 var playerInteract = m_player.GetComponent<PlayerInteract>();
                 if (playerInteract.m_invincible || playerInteract.m_debugInvincible)
                     yield break;
+                
+                if(Time.timeScale == 0f)
+                    yield return null;
+                
             
                 if (dangerLevel == eDanger.yellow)
                 {
@@ -740,4 +750,6 @@ namespace Himanshu
         Vision,
         Sound,
     }
+    
+    
 }
