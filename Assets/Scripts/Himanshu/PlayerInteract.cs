@@ -344,12 +344,12 @@ namespace Himanshu
 
         private IEnumerator eUnHide()
         {
+            if(m_hidingSpot == null) yield break;
             m_hidingSpot.aOpen = true;
-            //m_hidingSpot.aClose = false;
             yield return new WaitForSeconds(1f);
-            //transform.Translate(m_playerFollow.transform.forward * 3f);
+            if(m_hidingSpot == null) yield break;
+
             m_hidingSpot.aOpen = false;
-            //m_hidingSpot.aClose = true;
             GetComponent<CharacterController>().enabled = true;
             GetComponent<CharacterController>().Move(m_playerFollow.transform.forward * 3f);
 
