@@ -6,7 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="de8b67ab-e0b5-4d99-a633-e1ffe02f1d8c" name="Changes" comment="Changes">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Production/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Production/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Himanshu/PlayerInteract.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Himanshu/PlayerInteract.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Rachael/Path_face 3.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Rachael/Path_face 3.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Himanshu/DevMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Himanshu/DevMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/rachael/FavorSystem/FavorSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/rachael/FavorSystem/FavorSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/rachael/FavorSystem/GameCommandPrompt.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/rachael/FavorSystem/GameCommandPrompt.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Electronic Highway Sign SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Electronic Highway Sign SDF.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,9 +31,11 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_SelectionCaret.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/19391519-2608-4240-8FF9-93819E8AFDF3/71/8ecc7f58/CharacterController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Selectable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AD0A7939-8190-48A0-A161-F66558C98867/e6/b089f8b7/Animator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/351E49E2-A5BF-4FD6-BEAB-B458CE2255F3/7c/3a548426/Enumerable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Himanshu/Objective.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CFC1AD89-0650-411E-946C-FF2E6F276711/3d/a0cd6baa/SetupCoroutine.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_InputField.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -42,6 +48,9 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/Tutorial.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/EnemyController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/PlayerInteract.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/rachael/FavorSystem/FavorSystem.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Himanshu/DevMenu.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/rachael/FavorSystem/GameCommandPrompt.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="270OBMN4BlUaEiipVDgnAwgYmu0" />
@@ -80,10 +89,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="15716">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="15716" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -99,7 +108,7 @@
       <option name="presentableId" value="Default" />
       <updated>1648453404063</updated>
       <workItem from="1648453405050" duration="22965000" />
-      <workItem from="1648620930449" duration="3368000" />
+      <workItem from="1648620930449" duration="13920000" />
     </task>
     <servers />
   </component>
@@ -116,16 +125,42 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Himanshu/EnemyController.cs</url>
-          <line>531</line>
+          <line>538</line>
           <properties documentPath="D:\Repos\Production\Assets\Scripts\Himanshu\EnemyController.cs" initialLine="514" containingFunctionPresentation="method 'ChaseToPatrol'">
             <startOffsets>
-              <option value="17875" />
+              <option value="18154" />
             </startOffsets>
             <endOffsets>
-              <option value="17999" />
+              <option value="18278" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Himanshu/DevMenu.cs</url>
+          <line>57</line>
+          <properties documentPath="D:\Repos\Production\Assets\Scripts\Himanshu\DevMenu.cs" initialLine="57" containingFunctionPresentation="property 'teleport'">
+            <startOffsets>
+              <option value="1646" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1660" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/rachael/FavorSystem/GameCommandPrompt.cs</url>
+          <line>78</line>
+          <properties documentPath="D:\Repos\Production\Assets\Scripts\rachael\FavorSystem\GameCommandPrompt.cs" initialLine="78" containingFunctionPresentation="lambda expression inside method 'DevMenuOptions'">
+            <startOffsets>
+              <option value="2186" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2274" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
