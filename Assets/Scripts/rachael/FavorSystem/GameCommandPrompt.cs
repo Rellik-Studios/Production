@@ -86,6 +86,32 @@ public class GameCommandPrompt : MonoBehaviour
                 index++;
             }
             
+            m_commands.Add("ENEMY SPEED", () =>
+            {
+                StartCoroutine(ChangeEnemy());
+                return true;
+            });
+            
+            m_commands.Add("ENEMY HEARING RADIUS", () =>
+            {
+                StartCoroutine(ChangeEnemy(true));
+                return true;
+            });
+            
+            m_commands.Add("PLAYER INVINCIBLE TRUE", () =>
+            {
+                FindObjectOfType<PlayerInteract>().m_debugInvincible = true;
+                return true;
+            });
+            
+            m_commands.Add("PLAYER INVINCIBLE FALSE", () =>
+            {
+                FindObjectOfType<PlayerInteract>().m_debugInvincible = false;
+                return true;
+            });
+            
+            
+            
             Debug.Log(m_commands);
         }
         else
@@ -98,11 +124,37 @@ public class GameCommandPrompt : MonoBehaviour
                     if (m_commands.ContainsKey("TELEPORT " + loop + " " + (i + 1)))
                     {
                         m_commands.Remove("TELEPORT " + loop + " " + (i + 1));
+                        m_commands.Remove("ENEMY SPEED");
+                        m_commands.Remove("ENEMY HEARING RADIUS");
+                        m_commands.Remove("PLAYER INVINCIBLE TRUE");
+                        m_commands.Remove("PLAYER INVINCIBLE FALSE");
                     }
                 }
             }
         }
     }
+
+    private IEnumerator ChangeEnemy(bool _hearingRadius = false)
+    {
+        favorSystem.consoleDisplay = ConsoleDisplay.customMenu;
+        favorSystem.m_commandText.text = "Enter new " + (_hearingRadius ? "hearing radius" : "speed") + ":";
+        
+        selectInputField();
+        m_inputField.text = "";
+        yield return new WaitUntil(() => m_commandEntered != "");
+        Debug.Log(m_commandEntered);
+        
+        if(_hearingRadius)
+            DevMenu.EnemyTweaker(true, float.Parse(m_commandEntered));
+        else
+            DevMenu.EnemyTweaker(false, float.Parse(m_commandEntered));
+        
+        m_commandEntered = "";
+        favorSystem.consoleDisplay = ConsoleDisplay.defaultMenu;
+        m_inputField.text = "";
+        StartCoroutine(ReturnToMenuCommandProcess());
+    }
+
     private bool DeveloperCommand()
     {
         IEnumerator DeveloperCommandCoroutine()
@@ -130,7 +182,8 @@ public class GameCommandPrompt : MonoBehaviour
             }
             m_commandEntered = "";
             favorSystem.consoleDisplay = ConsoleDisplay.defaultMenu;
-             DevMenuOptions();
+            DevMenuOptions();
+            m_inputField.text = "";
             StartCoroutine(ReturnToMenuCommandProcess());
         }
 
@@ -596,6 +649,7 @@ public class GameCommandPrompt : MonoBehaviour
         m_failedAttempts = 0;
         yield return new WaitForSecondsRealtime(3);
         m_inputField.enabled = true;
+        selectInputField();
         favorSystem.DisplayingMainMenu();
         favorSystem.m_isProcessing = false;
 

@@ -53,7 +53,7 @@ namespace Himanshu
         
         public bool qteResult => m_QTE.GetComponent<QTE>().m_result;
 
-        [SerializeField] private float m_hearingRadius = 5f;
+        [SerializeField] public float m_hearingRadius = 5f;
         // private float distortionValue
         // {
         //     get => m_distortion.GetComponent<Renderer>().material.GetFloat("DistortionSpeed");
