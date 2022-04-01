@@ -104,10 +104,6 @@ namespace rachael
                 _raycast.m_indication.enabled = false;
                 return;
             }
-            else
-            {
-                Debug.Log("door is Locked");
-            }
             if(!_raycast.m_doOnce)
             {
                 _raycast.CrosshairChange(true);

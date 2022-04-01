@@ -46,8 +46,96 @@ public class GameCommandPrompt : MonoBehaviour
             {"TALK", TalkCommand},
             {"TIME", TimeCommand},
             {"USER", UserCommand},
-            {"QUIT", QuitCommand}
+            {"QUIT", QuitCommand},
+            {"Developer", DeveloperCommand},
+            
         };
+    }
+
+    private string m_commandEntered = "";
+    private bool m_developerMode = false;
+
+    private void DevMenuOptions()
+    {
+        if (m_developerMode)
+        {
+            //Array of strings
+            string[] loops = {"Hand", "Face", "Mouth", "Gear"};
+
+            int index = 1;
+            foreach (var loop in loops)
+            {
+                for(int i = 0; i < 5; i++)
+                {
+                    if ((!m_commands.ContainsKey("TELEPORT " + loop + " " + (i + 1))))
+                    {
+                        var indexCopy = index;
+                        var iCopy = i;
+                        m_commands.Add("TELEPORT " + loop + " " + (i + 1), () =>
+                        {
+                            Debug.Log(indexCopy.ToString() + "." + (iCopy + 1).ToString());
+                            QuitCommand();
+                            
+                            favorSystem.Invoke(()=>DevMenu.Instance.teleport = float.Parse(indexCopy.ToString() + "." + (iCopy).ToString()), 0.2f);
+                            Debug.Log(DevMenu.Instance.teleport);
+                            return true;
+                        });
+                    }
+                }
+
+                index++;
+            }
+            
+            Debug.Log(m_commands);
+        }
+        else
+        {
+            string[] loops = {"Hand", "Face", "Mouth", "Gear"};
+            foreach (var loop in loops)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    if (m_commands.ContainsKey("TELEPORT " + loop + " " + (i + 1)))
+                    {
+                        m_commands.Remove("TELEPORT " + loop + " " + (i + 1));
+                    }
+                }
+            }
+        }
+    }
+    private bool DeveloperCommand()
+    {
+        IEnumerator DeveloperCommandCoroutine()
+        {
+            favorSystem.consoleDisplay = ConsoleDisplay.customMenu;
+            favorSystem.m_commandText.text = m_developerMode? "Do You Want to Disable the Developer Mode" : "Do you want to Enable the Developer Mode";
+        
+            selectInputField();
+            m_inputField.text = "";
+            yield return new WaitUntil(() => m_commandEntered != "");
+            Debug.Log(m_commandEntered);
+            if(m_commandEntered.ToLower() == "yes" && !m_developerMode)
+            {
+                m_developerMode = true;
+                favorSystem.m_commandText.text = "Developer Mode Enabled";
+            }
+            else if(m_commandEntered.ToLower() == "yes" && m_developerMode)
+            {
+                m_developerMode = false;
+                favorSystem.m_commandText.text = "Developer Mode Disabled";
+            }
+            else
+            {
+                favorSystem.m_commandText.text = m_developerMode? "Developer Mode is still Enabled" : "Developer Mode is still Disabled";
+            }
+            m_commandEntered = "";
+            favorSystem.consoleDisplay = ConsoleDisplay.defaultMenu;
+             DevMenuOptions();
+            StartCoroutine(ReturnToMenuCommandProcess());
+        }
+
+        StartCoroutine(DeveloperCommandCoroutine());
+        return true;
     }
 
     void Start()
@@ -81,9 +169,13 @@ public class GameCommandPrompt : MonoBehaviour
     {
         Debug.Log("closing");
         if (!timeStop)
+        {
+            Debug.Log("THERE IS NO TIMESTOP");
             Time.timeScale = 1f;
+        }
         else
         {
+            Debug.Log("THIS IS GOING THROUGH THE DISABLE");
             favorSystem.ResetTime();
             //this.Invoke(()=>timeStop = false, 5, true);
         }
@@ -321,8 +413,12 @@ public class GameCommandPrompt : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-
-            CheckMenuForInput(textInput);
+            if(favorSystem.consoleDisplay != ConsoleDisplay.customMenu)
+                CheckMenuForInput(textInput);
+            else
+            {
+                m_commandEntered = textInput;
+            }
             //selectInputField();
             //CheckInput(textInput.ToUpper());
             //m_inputField.text = "";
@@ -481,6 +577,11 @@ public class GameCommandPrompt : MonoBehaviour
                     favorSystem.DisplayingMainMenu();
                     Debug.Log("CANAPLE");
                 }
+                break;
+            case ConsoleDisplay.customMenu:
+            {
+                
+            }
                 break;
             default:
                 Debug.Log("NOTHING");

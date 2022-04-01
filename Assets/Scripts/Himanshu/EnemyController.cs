@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Bolt;
 using Cinemachine;
+using rachael.FavorSystem;
 using rachael.qte;
 using TMPro;
 using UnityEngine;
@@ -153,6 +154,7 @@ namespace Himanshu
         private bool m_canBeRed = false;
         private bool m_canChase = true;
         private eDanger m_dangerLevel = eDanger.white;
+        private eDetect? m_detectedThrough = null;
 
 
         private void Awake()
@@ -225,6 +227,12 @@ namespace Himanshu
 
             return false;
         }
+        
+    
+        
+        
+        
+        
 
         private bool m_killing = false;
         //Called through the Visual Script
@@ -238,7 +246,17 @@ namespace Himanshu
                 var playerInteract = m_player.GetComponent<PlayerInteract>();
                 if (playerInteract.m_invincible || playerInteract.m_debugInvincible)
                     yield break;
-            
+
+                if(FindObjectOfType<GameCommandPrompt>(true).gameObject.activeSelf)
+                {
+                    FindObjectOfType<FavorSystem>(true).CloseCommandPrompt();
+                }
+                if (FindObjectOfType<PauseMenu>(true).gameObject.activeSelf)
+                {
+                    FindObjectOfType<PauseMenu>(true).Unpause();
+                }
+
+
                 if (dangerLevel == eDanger.yellow)
                 {
                     yield break;
@@ -260,7 +278,7 @@ namespace Himanshu
                 
                 if(player.m_hiding)
                     player.Unhide();
-                player.m_followCam.transform.LookAt(transform.position + new Vector3(0f, 4f, 0f));
+                player.m_followCam.transform.LookAt(transform.position + new Vector3(0f, m_player.crouching ? 3f : 4f, 0f));
                 player.m_followCam.ResetMouse();
                 player.GetComponent<CharacterController>().enabled = false;
          
@@ -273,10 +291,12 @@ namespace Himanshu
                 player.m_isDying = true;
 
                 yield return new WaitForSecondsRealtime(1.2f);
-                player.GetComponent<CharacterController>().enabled = true;
-                m_killing = false;
                 player.Death();
-                Time.timeScale = 1f;
+
+                //yield return new WaitForSecondsRealtime(3f);
+
+                m_killing = false;
+                //Time.timeScale = 1f;
 
 
 
@@ -466,24 +486,33 @@ namespace Himanshu
 
             var playerInteract = m_player.GetComponent<PlayerInteract>();
             if (playerInteract.m_invincible || playerInteract.m_debugInvincible)
-                return false;    
-            
-            
+                return false;
+
+
+            bool? result = null;
             for (int i = 0; i < 13; i++)
             {
+                if (m_hits[i].collider != null && m_hits[i].collider.gameObject.CompareTag("EnemyBlocker"))
+                {
+                    result ??= false;
+                }
                 if (m_hits[i].collider != null && m_hits[i].collider.gameObject.CompareTag("Player") && m_hits[i].collider.GetComponentInParent<CharacterController>().enabled && !m_hits[i].collider.GetComponentInParent<PlayerInteract>().m_hiding)
                 {
-                    return true;
+                    result = true;
+                    m_detectedThrough = eDetect.Vision;
                 }
             }
 
-            Debug.Log(m_player.m_currentSpeed);
+            if (result != null)
+                return result ?? false;
+
             var colliders = Physics.OverlapSphere(transform.position, m_hearingRadius * 3f);
             if (colliders.Any(t => t.CompareTag("Player") && !t.transform.parent.GetComponent<PlayerInteract>().m_hiding))
             {
                 if (m_player.crouching || m_player.m_currentSpeed < 0.1f)
                     return false;
                 return true;
+                m_detectedThrough = eDetect.Sound;
             }
             return false;
         }
@@ -515,6 +544,24 @@ namespace Himanshu
             // Physics.Raycast(transform.position, transform.forward, out m_hits[1], 20f);
             // Physics.Raycast(transform.position, Quaternion.AngleAxis(-30f, transform.up) * transform.forward, out m_hits[2], 20f);
 
+            if (dangerLevel == eDanger.red)
+            {
+                bool? result = null;
+                for (int i = 0; i < 13; i++)
+                {
+                    if (m_hits[i].collider != null && m_hits[i].collider.gameObject.CompareTag("EnemyBlocker"))
+                    {
+                        result ??= true;
+                    }
+                    if (m_hits[i].collider != null && m_hits[i].collider.gameObject.CompareTag("Player"))
+                    {
+                        result = false;
+                    }
+                    
+                }
+                
+                return result ?? false;
+            }
             if (m_player.GetComponent<PlayerInteract>().m_hiding && dangerLevel == eDanger.yellow)
             {
                 return true;
@@ -589,11 +636,10 @@ namespace Himanshu
             IEnumerator YellowToRed()
             {
                 transform.LookAt(m_player.transform);
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(m_detectedThrough == eDetect.Vision ? 1.5f : 3f);
                 dangerLevel = eDanger.red;
                 m_enemyHead.m_look = false;
                 yield return null;
-                
             }
             m_yellowToRedRoutine = StartCoroutine(YellowToRed());   
 
@@ -706,4 +752,11 @@ namespace Himanshu
         
     }
 
+    internal enum eDetect
+    {
+        Vision,
+        Sound,
+    }
+    
+    
 }
