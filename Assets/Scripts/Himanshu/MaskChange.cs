@@ -133,12 +133,9 @@ namespace Himanshu
 
         IEnumerator eWhiteToRed()
         {
-<<<<<<< HEAD
-            yield return eWhiteToYellow();
-=======
+
             eWhiteToYellow();
             yield return new WaitForSeconds(6 / 30f);
->>>>>>> default
             eYellowToRed();
         }
     }
