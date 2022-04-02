@@ -13,8 +13,8 @@ namespace Himanshu
     {
 
         private GameObject[] m_enemies;
-        private float m_enemySpeed;
-        private float m_enemyTriggerDistance;
+        private static float m_enemySpeed;
+        private static float m_enemyTriggerDistance;
 
         [SerializeField] private List<Transform> m_loop1TeleportPoints; //Hand
         [SerializeField] private List<Transform> m_loop2TeleportPoints; //Face
@@ -122,14 +122,14 @@ namespace Himanshu
             }
         }
 
-        public float enemySpeed
+        private static float enemySpeed
         {
             get => m_enemySpeed;
             set
             {
                 m_enemySpeed = value;
                 
-                m_enemies.All((t) =>
+                Instance.m_enemies.All((t) =>
                 {
                     t.GetComponent<NavMeshAgent>().speed = value;
                     return true;
@@ -137,13 +137,17 @@ namespace Himanshu
             }
         }
 
-        public float enemyTriggerDistance
+        public static float enemyTriggerDistance
         {
             get => m_enemyTriggerDistance;
             set
             {
                 m_enemyTriggerDistance = value;
-                gameManager.Instance.m_triggerDistance = value;
+                Instance.m_enemies.All((t) =>
+                {
+                    t.GetComponent<EnemyController>().m_hearingRadius = value / 3f;
+                    return true;
+                });
             }
         }
         
@@ -181,25 +185,25 @@ namespace Himanshu
                 
                 if(!isMenuOpen)
                     yield break;
-                if (Input.GetKeyDown(KeyCode.Alpha1))
-                {
-                    StartCoroutine(EnemyTweaker());
-                    yield break;
-                }
-
-                if (Input.GetKeyDown(KeyCode.Alpha2))
-                {
-                    StartCoroutine(EnemyTweaker(true));
-                    yield break;
-                }
-
-                if (Input.GetKeyDown(KeyCode.Alpha3))
-                {
-                    StartCoroutine(TeleportMenu());
-                    yield break;
-                }
-
-                yield return null;
+                // if (Input.GetKeyDown(KeyCode.Alpha1))
+                // {
+                //     StartCoroutine(EnemyTweaker());
+                //     yield break;
+                // }
+                //
+                // if (Input.GetKeyDown(KeyCode.Alpha2))
+                // {
+                //     StartCoroutine(EnemyTweaker(true));
+                //     yield break;
+                // }
+                //
+                // if (Input.GetKeyDown(KeyCode.Alpha3))
+                // {
+                //     StartCoroutine(TeleportMenu());
+                //     yield break;
+                // }
+                //
+                // yield return null;
             }
         }
 
@@ -322,67 +326,36 @@ namespace Himanshu
             yield return null;
         }
 
-        IEnumerator EnemyTweaker(bool _trigger = false)
+        public  static void EnemyTweaker(bool _trigger = false, float _value = 0.0f)
         {
-            while (true)
+
+            if (!_trigger)
             {
-                if(!isMenuOpen)
-                    yield break;
-                m_textBox.text = "Enter Enemy " + (_trigger ? "Trigger Distance" : "Speed");
-                m_inputField.Select();
-                m_inputField.ActivateInputField();
-
-                if (Input.GetKeyDown(KeyCode.Escape))
+                if (_value > 15f)
                 {
-                    StartCoroutine(MainMenu());
-                    yield break;
+                    _value = 15f;
+                }
+                else if (_value < 0.1f)
+                {
+                    _value = 0.1f;
                 }
 
-                if (float.TryParse(m_inputField.text, out float input) && inputSubmit)
+                enemySpeed = _value;
+            }
+            else
+            {
+                if (_value > 30f)
                 {
-                    if (!_trigger)
-                    {
-                        if(input > 15f)
-                        {
-                            m_textBox.text = "Enter Enemy Speed\n" +
-                                          "The Speed value needs to be between 0.1 and 15";
-                            input = 15f;
-                        }
-                        else if (input < 0.1f)
-                        {
-                            m_textBox.text = "Enter Enemy Speed\n" +
-                                             "The Speed value needs to be between 0.1 and 15";
-                            input = 0.1f;
-                        }
-                        this.enemySpeed = input;
-                    }
-                    else
-                    {   if(input > 50f)
-                        {
-                            m_textBox.text = "Enter Enemy Trigger Distance\n" +
-                                             "The Trigger Distance value needs to be between 0.1 and 50";
-                            input = 50f;
-                        }
-                        else if (input < 0.1f)
-                        {
-                            m_textBox.text = "Enter Enemy Speed\n" +
-                                             "The Speed value needs to be between 0.1 and 50";
-                            input = 0.1f;
-                        }
-                        this.enemyTriggerDistance = input;
-                    }
-                    inputSubmit = false;
-                    StartCoroutine(MainMenu());
-                    yield break;
+                    _value = 30f;
                 }
-                else
+                else if (_value < 0.1f)
                 {
-                    yield return null;
+                    _value = 0.1f;
                 }
-                yield return null;
+
+                enemyTriggerDistance = _value;
             }
 
-            yield return null;
         }
 
         void Update()
