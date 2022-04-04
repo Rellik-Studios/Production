@@ -26,7 +26,7 @@ namespace rachael
         {
             m_reqCollectable.RemoveAll(t => t == null);
             // if(m_player.m_numOfPieces != m_changeFurniture.index)
-            if(!(m_reqCollectable.Count > 0))
+            if(m_reqCollectable.Count > 0)
             {
                 GetComponent<BoxCollider>().enabled = false;
 
