@@ -20,6 +20,7 @@ namespace Himanshu
         public float m_mouseY;
 
 
+        
         public float m_defMouseX;
         public float m_defMouseY;
         private bool isActive => GetComponent<CinemachineVirtualCamera>()?.enabled ?? transform.GetChild(0).GetComponent<CinemachineVirtualCamera>()?.enabled ?? throw new Exception("Cannot Find cm vcam on" + gameObject);
@@ -30,7 +31,7 @@ namespace Himanshu
 
         void Update()
         {
-            if (isActive && !m_hidingSpot.m_cupboard)
+            if (isActive && !m_hidingSpot.m_cupboard  && !FindObjectOfType<CinemachineBrain>().IsBlending)
             {
                 m_mouseX += Input.GetAxis("Mouse X");
                 m_mouseY -= Input.GetAxis("Mouse Y");
