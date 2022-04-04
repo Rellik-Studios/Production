@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using Himanshu;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -10,18 +12,21 @@ namespace rachael
         [FormerlySerializedAs("changeFurniture")] public ChangeFurniture m_changeFurniture;
         [FormerlySerializedAs("portalObject")] public GameObject m_portalObject;
 
-        public GameObject m_requiredCollectable;
+        public GameObject[] m_requiredCollectable;
+
+        private List<GameObject> m_reqCollectable;
         // Start is called before the first frame update
         void Start()
         {
-        
+            m_reqCollectable = m_requiredCollectable.ToList();
         }
 
         // Update is called once per frame
         void Update()
         {
+            m_reqCollectable.RemoveAll(t => t == null);
             // if(m_player.m_numOfPieces != m_changeFurniture.index)
-            if(m_requiredCollectable != null && m_requiredCollectable.gameObject.activeSelf)
+            if(!(m_reqCollectable.Count > 0))
             {
                 GetComponent<BoxCollider>().enabled = false;
 
