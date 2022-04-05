@@ -23,7 +23,6 @@ namespace Himanshu
             Cursor.lockState = CursorLockMode.None;
             Time.timeScale = 1f;
 
-            gameManager.Instance?.ResetManager();
         }
 
         public void SetBGVolume(float _value)

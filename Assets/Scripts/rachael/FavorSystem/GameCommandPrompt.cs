@@ -374,6 +374,7 @@ public class GameCommandPrompt : MonoBehaviour
             favorSystem.m_commandText.text = "Old Username:\n" + NarratorScript.UserName + "\n\nNew Username:\n" + answer;
             Debug.Log("yes it does not contain white space");
             NarratorScript.UserName = answer;
+            gameManager.Instance.m_username = answer;
             changingName = false;
             StartCoroutine(ReturnToMenuCommandProcess());
 
