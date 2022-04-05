@@ -37,7 +37,10 @@ namespace rachael
         {
             //detecting all hits from raycast
             Debug.DrawRay(transform.position, transform.forward * m_raydist, Color.green, 0.1f);
-            RaycastHit[] hits = Physics.RaycastAll(transform.position, transform.forward, m_raydist);
+            int layer = 3;
+            int layerMask = 2 << layer;
+            layerMask = ~layerMask;
+            RaycastHit[] hits = Physics.RaycastAll(transform.position, transform.forward, m_raydist, layerMask, QueryTriggerInteraction.Ignore);
             
             if (hits.Length == 0)
             {

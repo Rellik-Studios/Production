@@ -6,7 +6,8 @@ using UnityEngine.Serialization;
 
 namespace rachael
 {
-    public class Door : MonoBehaviour, IInteract
+    public class 
+        Door : MonoBehaviour, IInteract
     {
         private Animator m_doorAnim;
 
@@ -31,11 +32,10 @@ namespace rachael
             get => m_doorOpen;
             set
             {
-                m_audioSource.Play();
+                m_audioSource?.Play();
                 m_doorOpen = value;
-                
-                if(value)
-                    m_doorAnim.SetBool("IsOpening", value);
+
+                m_doorAnim.SetBool("IsOpening", value);
             }
         }
 
@@ -65,9 +65,9 @@ namespace rachael
 
         public void CloseTheDoor(bool _silent = false)
         {
-            if(!_silent)
-                m_audioSource.Play();
             doorOpen = false;
+            if (!_silent)
+                m_audioSource.Play();
         }
 
         public void OpenTheDoor(bool _silent = false)
@@ -91,7 +91,7 @@ namespace rachael
 
         public void Execute(PlayerInteract _player)
         {
-            if(m_locked)
+            if (m_locked)
                 return;
             
             PlayAnimation();

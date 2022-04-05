@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Himanshu;
 using UnityEngine;
@@ -80,7 +81,7 @@ namespace rachael.FavorSystem
             get => m_notifAnimator.GetBool("IsEnabled");
             set
             {
-                if(m_notifAnimator.GetBool("IsEnabled") != value)
+                if(m_notifAnimator.gameObject.activeSelf && m_notifAnimator.GetBool("IsEnabled") != value)
                     m_notifAnimator.SetBool("IsEnabled", value);
             }
         }
@@ -115,7 +116,7 @@ namespace rachael.FavorSystem
                 CommandIcon.SetActive(false);
             }
 
-            if (Input.GetKeyDown(KeyCode.C) && !m_isOpen && (gameManager.Instance.m_objTutorialPlayed ?? false) && Time.timeScale == 1)
+            if (Input.GetKeyDown(KeyCode.C) && !m_isOpen && (gameManager.Instance.m_objTutorialPlayed ?? false) && Math.Abs(Time.timeScale - 1) < 0.1f)
             {
                 m_inputField.text = "";
                 CommandPromptWindow();

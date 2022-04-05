@@ -254,7 +254,7 @@ namespace Himanshu
 
 #if UNITY_EDITOR
 
-            if(Input.GetKeyDown(KeyCode.Alpha0) && (Time.timeScale == 1 || FindObjectOfType<FavorSystem>().m_timeStop))
+            if(Input.GetKeyDown(KeyCode.Alpha0) && (Math.Abs(Time.timeScale - 1) < 0.1f || FindObjectOfType<FavorSystem>().m_timeStop))
             {
                 PauseScreen.SetActive(true);
                 FindObjectOfType<FavorSystem>().m_continueCounting = false;
@@ -262,7 +262,7 @@ namespace Himanshu
             }
 
 #else
-            if (Input.GetKeyDown(KeyCode.Escape)  && (Time.timeScale == 1 || FindObjectOfType<FavorSystem>().m_timeStop))
+            if (Input.GetKeyDown(KeyCode.Escape)  && (Math.Abs(Time.timeScale - 1) < 0.1f || FindObjectOfType<FavorSystem>().m_timeStop))
             {
                 PauseScreen.SetActive(true);
                 FindObjectOfType<FavorSystem>().m_continueCounting = false;
@@ -393,11 +393,12 @@ namespace Himanshu
             m_hiding = true;
             _hidingSpot.aOpen = true;
             //_hidingSpot.aClose = false;
+            m_hidingSpot = _hidingSpot;
+
             yield return new WaitForSeconds(2.5f);
             _hidingSpot.aOpen = false;
             //_hidingSpot.aClose = true;
 
-            m_hidingSpot = _hidingSpot;
             GetComponent<CharacterController>().enabled = false;
             Debug.Log("Hiding now");
             
@@ -488,7 +489,7 @@ namespace Himanshu
             }
             else
             {
-                
+                GetComponent<CharacterController>().enabled = true;   
                 FindObjectOfType<Tutorial>().Retry();
                 m_isDying = false;
             }

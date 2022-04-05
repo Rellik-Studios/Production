@@ -63,12 +63,21 @@ namespace rachael
             foreach (GameObject door in m_hubDoors)
             {
 
-                door.GetComponent<Door>().CloseTheDoor(true);
+                door.GetComponent<Door>().CloseTheDoor(false);
             }
 
             Debug.Log("Player has finished this time era");
         }
 
+
+        public void CloseDoors()
+        {
+            // foreach (GameObject door in m_hubDoors)
+            // {
+            //
+            //     door.GetComponent<Door>().CloseTheDoor(true);
+            // }
+        }
         //to allow the saving of the rotation and position more properly in the
         IEnumerator SavingProgress(Collider _other)
         {
