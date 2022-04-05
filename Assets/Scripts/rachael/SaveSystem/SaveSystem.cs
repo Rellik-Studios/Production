@@ -20,7 +20,7 @@ namespace rachael.SaveSystem
             
             BinaryFormatter formatter = new BinaryFormatter();
             string path = "";
-            if (_safeRoom != null)
+            if (_safeRoom == null)
                 path = Application.persistentDataPath + "/player/player.default";
             else
                 path = Application.persistentDataPath + "/player/player.safeRoom";
