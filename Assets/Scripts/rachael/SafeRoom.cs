@@ -28,7 +28,7 @@ namespace rachael
                 if (_other.GetComponentInParent<PlayerSave>() != null)
                 {
                     //saves the player data into the system
-                    _other.GetComponentInParent<PlayerSave>().SavePlayer(true);
+                    _other.GetComponentInParent<PlayerSave>().SavePlayer(transform);
                 }
             }
         }
