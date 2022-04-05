@@ -1,4 +1,5 @@
 using System.IO;
+using Himanshu;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -66,6 +67,7 @@ namespace rachael
                     SaveSystem.SaveSystem.DeletePlayer();
                 if(Directory.Exists(Application.persistentDataPath + "/narrator/"))
                     SaveSystem.SaveSystem.DeleteNarrator();
+                gameManager.Instance?.ResetManager();
             }
             SceneManager.LoadScene(1);
         }

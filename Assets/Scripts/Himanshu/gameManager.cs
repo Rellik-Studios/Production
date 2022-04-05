@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace Himanshu
@@ -19,6 +20,7 @@ namespace Himanshu
         public bool? m_objTutorialPlayed = null;
         public bool? m_bookTutorialPlayed = null;
         public bool? m_endTutorialPlayed = null;
+        [CanBeNull] public string m_username = null;
 
         [HideInInspector]public List<string> m_oneTimeTextAlreadyPlayed = null;
 
@@ -54,6 +56,7 @@ namespace Himanshu
             m_endTutorialPlayed = null;
             isTutorialRunning = false;
             m_oneTimeTextAlreadyPlayed = new List<string>();
+            m_username = null;
         }
 
         private void Update()
