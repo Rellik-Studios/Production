@@ -1,3 +1,4 @@
+using Himanshu;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -64,7 +65,7 @@ namespace rachael
         }
         private void OnTriggerEnter(Collider _other)
         {
-            if (_other.CompareTag("Player"))
+            if (_other.GetComponent<PlayerInteract>() != null)
             {
                 m_door.SetActive(false);
                 m_wall.SetActive(true);
