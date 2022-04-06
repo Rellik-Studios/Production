@@ -76,11 +76,11 @@ namespace rachael.SaveSystem
 
         }
 
-        public void SavePlayer(bool _isSafeRoom = false)
+        public void SavePlayer(Transform _safeRoom = null)
         {
             //saveFile.SavePoint();
             SavingValues();
-            SaveSystem.SavePlayer(this, _isSafeRoom);
+            SaveSystem.SavePlayer(this, _safeRoom);
         }
 
 

@@ -76,6 +76,7 @@ namespace rachael.FavorSystem
 
         public GameObject CommandIcon;
         private Animator m_notifAnimator;
+        public  Animator Com_anim;
 
         public GameObject pauseMenu;
         private bool aNotifEnabled {
@@ -122,6 +123,8 @@ namespace rachael.FavorSystem
                 m_inputField.text = "";
                 CommandPromptWindow();
                 FindObjectOfType<PlayerInteract>().enabled = false;
+                Com_anim.SetBool("IsOpen", true);
+
 
             }
 #if UNITY_EDITOR
@@ -180,6 +183,8 @@ namespace rachael.FavorSystem
                 DisplayingMainMenu();
                 m_inputField.ActivateInputField();
                 m_inputField.Select();
+                
+
 
 
             }
@@ -199,16 +204,18 @@ namespace rachael.FavorSystem
             m_inputField.ActivateInputField();
             m_inputField.Select();
             m_isOpen = true;
+            Com_anim.SetBool("IsOpen", true);
         }
 
         public void CloseCommandPrompt()
         {
             Debug.Log("Command Prompt is close");
             m_isOpen = false;
-            m_commandPrompt.SetActive(false);
+            //m_commandPrompt.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             FindObjectOfType<PlayerInteract>().enabled = true;
+            Com_anim.SetBool("IsOpen", false);
         }
 
         public IEnumerator EKeyLeave()
@@ -235,7 +242,7 @@ namespace rachael.FavorSystem
                 //Opening normal commands
                 m_commandText.text = m_commandFeatures[0].text;
                 consoleDisplay = ConsoleDisplay.defaultMenu;
-            }
+             }
 
 
         }
