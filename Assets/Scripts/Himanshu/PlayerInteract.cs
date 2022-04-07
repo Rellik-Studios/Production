@@ -254,7 +254,7 @@ namespace Himanshu
 
 #if UNITY_EDITOR
 
-            if(Input.GetKeyDown(KeyCode.Alpha0) && (Time.timeScale == 1 || FindObjectOfType<FavorSystem>().m_timeStop))
+            if(Input.GetKeyDown(KeyCode.Alpha0) && !m_isDying && (Math.Abs(Time.timeScale - 1) < 0.1f || FindObjectOfType<FavorSystem>().m_timeStop))
             {
                 PauseScreen.SetActive(true);
                 FindObjectOfType<FavorSystem>().m_continueCounting = false;
@@ -262,7 +262,7 @@ namespace Himanshu
             }
 
 #else
-            if (Input.GetKeyDown(KeyCode.Escape)  && (Time.timeScale == 1 || FindObjectOfType<FavorSystem>().m_timeStop))
+            if (Input.GetKeyDown(KeyCode.Escape)  && !m_isDying && (Math.Abs(Time.timeScale - 1) < 0.1f || FindObjectOfType<FavorSystem>().m_timeStop))
             {
                 PauseScreen.SetActive(true);
                 FindObjectOfType<FavorSystem>().m_continueCounting = false;
@@ -344,12 +344,12 @@ namespace Himanshu
 
         private IEnumerator eUnHide()
         {
+            if(m_hidingSpot == null) yield break;
             m_hidingSpot.aOpen = true;
-            //m_hidingSpot.aClose = false;
             yield return new WaitForSeconds(1f);
-            //transform.Translate(m_playerFollow.transform.forward * 3f);
+            if(m_hidingSpot == null) yield break;
+
             m_hidingSpot.aOpen = false;
-            //m_hidingSpot.aClose = true;
             GetComponent<CharacterController>().enabled = true;
             GetComponent<CharacterController>().Move(m_playerFollow.transform.forward * 3f);
 
@@ -393,11 +393,12 @@ namespace Himanshu
             m_hiding = true;
             _hidingSpot.aOpen = true;
             //_hidingSpot.aClose = false;
+            m_hidingSpot = _hidingSpot;
+
             yield return new WaitForSeconds(2.5f);
             _hidingSpot.aOpen = false;
             //_hidingSpot.aClose = true;
 
-            m_hidingSpot = _hidingSpot;
             GetComponent<CharacterController>().enabled = false;
             Debug.Log("Hiding now");
             
@@ -478,14 +479,21 @@ namespace Himanshu
             m_deathCount++;
             PlayerPrefs.SetInt("Death", m_deathCount);
 
+            
             if (!gameManager.Instance.isTutorialRunning)
             {
                 FindObjectOfType<Fade>().color = Fade.eColor.black;
-                this.Invoke(() => m_sceneManager.LoseScreen(), 2f);
+                
+                this.Invoke(() =>
+                {
+                    m_sceneManager.LoseScreen();
+                    Time.timeScale = 1f;
+                }, 2f, true);
                 
             }
             else
             {
+                GetComponent<CharacterController>().enabled = true;   
                 FindObjectOfType<Tutorial>().Retry();
                 m_isDying = false;
             }

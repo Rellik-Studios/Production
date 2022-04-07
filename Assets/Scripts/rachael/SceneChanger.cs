@@ -1,4 +1,5 @@
 using System.IO;
+using Himanshu;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -12,7 +13,12 @@ namespace rachael
         // Start is called before the first frame update
         void Start()
         {
-        
+            if (SceneManager.GetActiveScene().name == "WiningScreen")
+            {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
+
             if(m_continueBlock != null)
             {
                 ButtonPresent();
@@ -61,6 +67,7 @@ namespace rachael
                     SaveSystem.SaveSystem.DeletePlayer();
                 if(Directory.Exists(Application.persistentDataPath + "/narrator/"))
                     SaveSystem.SaveSystem.DeleteNarrator();
+                gameManager.Instance?.ResetManager();
             }
             SceneManager.LoadScene(1);
         }

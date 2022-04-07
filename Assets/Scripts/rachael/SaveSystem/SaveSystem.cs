@@ -8,7 +8,7 @@ namespace rachael.SaveSystem
 {
     public static class SaveSystem
     {
-        public static void SavePlayer(PlayerSave _player, bool _isSafeRoom = false)
+        public static void SavePlayer(PlayerSave _player, Transform _safeRoom = null)
         {
             
             if(!Directory.Exists(Application.persistentDataPath + "/player/"))
@@ -20,14 +20,14 @@ namespace rachael.SaveSystem
             
             BinaryFormatter formatter = new BinaryFormatter();
             string path = "";
-            if (!_isSafeRoom)
+            if (_safeRoom == null)
                 path = Application.persistentDataPath + "/player/player.default";
             else
                 path = Application.persistentDataPath + "/player/player.safeRoom";
             FileStream stream = new FileStream(path, FileMode.Create);
 
             _player.m_inventory ??= new Dictionary<CollectableObject, Wrapper<int>>();
-            PlayerData data = new PlayerData(_player);
+            PlayerData data = new PlayerData(_player, _safeRoom);
 
             formatter.Serialize(stream, data);
             stream.Close();

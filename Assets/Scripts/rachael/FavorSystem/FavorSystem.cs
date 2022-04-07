@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Himanshu;
 using UnityEngine;
@@ -16,6 +17,7 @@ namespace rachael.FavorSystem
         userMenu = 4,
         quitMenu = 5,
         helpMenu = 6,
+        customMenu = 7,
     }
 
     public class FavorSystem : MonoBehaviour
@@ -74,13 +76,14 @@ namespace rachael.FavorSystem
 
         public GameObject CommandIcon;
         private Animator m_notifAnimator;
+        public  Animator Com_anim;
 
         public GameObject pauseMenu;
         private bool aNotifEnabled {
             get => m_notifAnimator.GetBool("IsEnabled");
             set
             {
-                if(m_notifAnimator.GetBool("IsEnabled") != value)
+                if(m_notifAnimator.gameObject.activeSelf && m_notifAnimator.GetBool("IsEnabled") != value)
                     m_notifAnimator.SetBool("IsEnabled", value);
             }
         }
@@ -115,10 +118,14 @@ namespace rachael.FavorSystem
                 CommandIcon.SetActive(false);
             }
 
-            if (Input.GetKeyDown(KeyCode.C) && !m_isOpen && (gameManager.Instance.m_objTutorialPlayed ?? false) && Time.timeScale == 1)
+            if (Input.GetKeyDown(KeyCode.C) && !m_isOpen && (gameManager.Instance.m_objTutorialPlayed ?? false) && Math.Abs(Time.timeScale - 1) < 0.1f)
             {
                 m_inputField.text = "";
                 CommandPromptWindow();
+                FindObjectOfType<PlayerInteract>().enabled = false;
+                Com_anim.SetBool("IsOpen", true);
+
+
             }
 #if UNITY_EDITOR
             else if (Input.GetKeyDown(KeyCode.Alpha0) && m_isOpen && !pauseMenu.activeSelf && !m_isProcessing)
@@ -131,9 +138,7 @@ namespace rachael.FavorSystem
                 StartCoroutine(EKeyLeave());
             }
 #endif
-
             aNotifEnabled = (m_playerInteract?.playerDanger != EnemyController.eDanger.white && m_grantSpecial);
-
 
             //starting timer for how long will  the objective be completed
             if (startTimer)
@@ -178,6 +183,8 @@ namespace rachael.FavorSystem
                 DisplayingMainMenu();
                 m_inputField.ActivateInputField();
                 m_inputField.Select();
+                
+
 
 
             }
@@ -197,15 +204,18 @@ namespace rachael.FavorSystem
             m_inputField.ActivateInputField();
             m_inputField.Select();
             m_isOpen = true;
+            Com_anim.SetBool("IsOpen", true);
         }
 
         public void CloseCommandPrompt()
         {
             Debug.Log("Command Prompt is close");
             m_isOpen = false;
-            m_commandPrompt.SetActive(false);
+            //m_commandPrompt.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            FindObjectOfType<PlayerInteract>().enabled = true;
+            Com_anim.SetBool("IsOpen", false);
         }
 
         public IEnumerator EKeyLeave()
@@ -232,7 +242,7 @@ namespace rachael.FavorSystem
                 //Opening normal commands
                 m_commandText.text = m_commandFeatures[0].text;
                 consoleDisplay = ConsoleDisplay.defaultMenu;
-            }
+             }
 
 
         }

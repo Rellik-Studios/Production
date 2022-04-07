@@ -1,4 +1,6 @@
+using Himanshu;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
 
 namespace rachael
@@ -14,6 +16,8 @@ namespace rachael
         private bool m_fadeOut = false;
         private bool m_fadeIn = false;
         [FormerlySerializedAs("fadeSpeed")] public float m_fadeSpeed = 1.0f;
+
+        public UnityEvent m_event;
 
         // Start is called before the first frame update
         void Start()
@@ -73,12 +77,13 @@ namespace rachael
 
         private void OnTriggerEnter(Collider _other)
         {
-            if (_other.CompareTag("Player"))
+            if (_other.GetComponent<PlayerInteract>() != null)
             {
                 //transforming the opaque material to transparent material
                 this.m_doorframe.GetComponent<Renderer>().material = m_materialDoor;
                 this.m_door.GetComponent<Renderer>().material = m_materialDoor;
 
+                m_event?.Invoke();
                 m_wall.SetActive(true);
 
                 FadeOutObject();

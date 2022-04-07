@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace Himanshu
@@ -18,12 +19,15 @@ namespace Himanshu
         
         public bool? m_objTutorialPlayed = null;
         public bool? m_bookTutorialPlayed = null;
+        public bool? m_endTutorialPlayed = null;
+        [CanBeNull] public string m_username = null;
 
         [HideInInspector]public List<string> m_oneTimeTextAlreadyPlayed = null;
 
         private int m_objTut;
         private int m_bookTut;
-        
+        private int m_mendTut;
+
         private void Awake()
         {
             if (m_instance == null)
@@ -37,12 +41,23 @@ namespace Himanshu
             }
         }
 
+        private void Start()
+        {
+            var objs = GameObject.FindGameObjectsWithTag("EnemyBlocker");
+            foreach (var obj in objs)
+            {
+                obj.AddComponent<EnemyBlocker>();
+            }
+        }
+
         public void ResetManager()
         {
             m_objTutorialPlayed = null;
             m_bookTutorialPlayed = null;
+            m_endTutorialPlayed = null;
             isTutorialRunning = false;
             m_oneTimeTextAlreadyPlayed = new List<string>();
+            m_username = null;
         }
 
         private void Update()
@@ -50,7 +65,9 @@ namespace Himanshu
 
             m_objTut = m_objTutorialPlayed == true ? 1 : m_objTutorialPlayed == false ? 0 : 2;
             m_bookTut = m_bookTutorialPlayed == true ? 1 : m_objTutorialPlayed == false ? 0 : 2;
-
+            
+            m_mendTut = m_endTutorialPlayed == true ? 1 : m_objTutorialPlayed == false ? 0 : 2;
+            
         }
 
     }

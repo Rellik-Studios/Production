@@ -46,8 +46,149 @@ public class GameCommandPrompt : MonoBehaviour
             {"TALK", TalkCommand},
             {"TIME", TimeCommand},
             {"USER", UserCommand},
-            {"QUIT", QuitCommand}
+            {"QUIT", QuitCommand},
+            {"Developer", DeveloperCommand},
+            
         };
+    }
+
+    private string m_commandEntered = "";
+    private bool m_developerMode = false;
+
+    private void DevMenuOptions()
+    {
+        if (m_developerMode)
+        {
+            //Array of strings
+            string[] loops = {"Hand", "Face", "Mouth", "Gear"};
+
+            int index = 1;
+            foreach (var loop in loops)
+            {
+                for(int i = 0; i < 5; i++)
+                {
+                    if ((!m_commands.ContainsKey("TELEPORT " + loop + " " + (i + 1))))
+                    {
+                        var indexCopy = index;
+                        var iCopy = i;
+                        m_commands.Add("TELEPORT " + loop + " " + (i + 1), () =>
+                        {
+                            Debug.Log(indexCopy.ToString() + "." + (iCopy + 1).ToString());
+                            QuitCommand();
+                            
+                            favorSystem.Invoke(()=>DevMenu.Instance.teleport = float.Parse(indexCopy.ToString() + "." + (iCopy).ToString()), 0.2f);
+                            Debug.Log(DevMenu.Instance.teleport);
+                            return true;
+                        });
+                    }
+                }
+
+                index++;
+            }
+            
+            m_commands.Add("ENEMY SPEED", () =>
+            {
+                StartCoroutine(ChangeEnemy());
+                return true;
+            });
+            
+            m_commands.Add("ENEMY HEARING RADIUS", () =>
+            {
+                StartCoroutine(ChangeEnemy(true));
+                return true;
+            });
+            
+            m_commands.Add("PLAYER INVINCIBLE TRUE", () =>
+            {
+                FindObjectOfType<PlayerInteract>().m_debugInvincible = true;
+                return true;
+            });
+            
+            m_commands.Add("PLAYER INVINCIBLE FALSE", () =>
+            {
+                FindObjectOfType<PlayerInteract>().m_debugInvincible = false;
+                return true;
+            });
+            
+            
+            
+            Debug.Log(m_commands);
+        }
+        else
+        {
+            string[] loops = {"Hand", "Face", "Mouth", "Gear"};
+            foreach (var loop in loops)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    if (m_commands.ContainsKey("TELEPORT " + loop + " " + (i + 1)))
+                    {
+                        m_commands.Remove("TELEPORT " + loop + " " + (i + 1));
+                        m_commands.Remove("ENEMY SPEED");
+                        m_commands.Remove("ENEMY HEARING RADIUS");
+                        m_commands.Remove("PLAYER INVINCIBLE TRUE");
+                        m_commands.Remove("PLAYER INVINCIBLE FALSE");
+                    }
+                }
+            }
+        }
+    }
+
+    private IEnumerator ChangeEnemy(bool _hearingRadius = false)
+    {
+        favorSystem.consoleDisplay = ConsoleDisplay.customMenu;
+        favorSystem.m_commandText.text = "Enter new " + (_hearingRadius ? "hearing radius" : "speed") + ":";
+        
+        selectInputField();
+        m_inputField.text = "";
+        yield return new WaitUntil(() => m_commandEntered != "");
+        Debug.Log(m_commandEntered);
+        
+        if(_hearingRadius)
+            DevMenu.EnemyTweaker(true, float.Parse(m_commandEntered));
+        else
+            DevMenu.EnemyTweaker(false, float.Parse(m_commandEntered));
+        
+        m_commandEntered = "";
+        favorSystem.consoleDisplay = ConsoleDisplay.defaultMenu;
+        m_inputField.text = "";
+        StartCoroutine(ReturnToMenuCommandProcess());
+    }
+
+    private bool DeveloperCommand()
+    {
+        IEnumerator DeveloperCommandCoroutine()
+        {
+            favorSystem.consoleDisplay = ConsoleDisplay.customMenu;
+            favorSystem.m_commandText.text = m_developerMode? "Do You Want to Disable the Developer Mode" : "Do you want to Enable the Developer Mode";
+        
+            selectInputField();
+            m_inputField.text = "";
+            yield return new WaitUntil(() => m_commandEntered != "");
+            Debug.Log(m_commandEntered);
+            if(m_commandEntered.ToLower() == "yes" && !m_developerMode)
+            {
+                m_developerMode = true;
+                favorSystem.m_commandText.text = "Developer Mode Enabled";
+            }
+            else if(m_commandEntered.ToLower() == "yes" && m_developerMode)
+            {
+                m_developerMode = false;
+                favorSystem.m_commandText.text = "Developer Mode Disabled";
+            }
+            else
+            {
+                favorSystem.m_commandText.text = m_developerMode? "Developer Mode is still Enabled" : "Developer Mode is still Disabled";
+            }
+            m_commandEntered = "";
+            favorSystem.consoleDisplay = ConsoleDisplay.defaultMenu;
+            DevMenuOptions();
+            m_inputField.text = "";
+            StartCoroutine(ReturnToMenuCommandProcess());
+        }
+
+        StartCoroutine(DeveloperCommandCoroutine());
+        return true;
     }
 
     void Start()
@@ -81,9 +222,13 @@ public class GameCommandPrompt : MonoBehaviour
     {
         Debug.Log("closing");
         if (!timeStop)
+        {
+            Debug.Log("THERE IS NO TIMESTOP");
             Time.timeScale = 1f;
+        }
         else
         {
+            Debug.Log("THIS IS GOING THROUGH THE DISABLE");
             favorSystem.ResetTime();
             //this.Invoke(()=>timeStop = false, 5, true);
         }
@@ -229,6 +374,7 @@ public class GameCommandPrompt : MonoBehaviour
             favorSystem.m_commandText.text = "Old Username:\n" + NarratorScript.UserName + "\n\nNew Username:\n" + answer;
             Debug.Log("yes it does not contain white space");
             NarratorScript.UserName = answer;
+            gameManager.Instance.m_username = answer;
             changingName = false;
             StartCoroutine(ReturnToMenuCommandProcess());
 
@@ -321,8 +467,12 @@ public class GameCommandPrompt : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-
-            CheckMenuForInput(textInput);
+            if(favorSystem.consoleDisplay != ConsoleDisplay.customMenu)
+                CheckMenuForInput(textInput);
+            else
+            {
+                m_commandEntered = textInput;
+            }
             //selectInputField();
             //CheckInput(textInput.ToUpper());
             //m_inputField.text = "";
@@ -341,8 +491,8 @@ public class GameCommandPrompt : MonoBehaviour
         Debug.Log(favorSystem.m_favorPoints);
         Debug.Log(favorSystem.m_result);
 
-        return true;
-        //return favorSystem.m_result >= 0.5f;
+        return favorSystem.m_result >= 0.5f;
+        //return true;
     }
 
     string GrantTypeofFavor()
@@ -350,8 +500,8 @@ public class GameCommandPrompt : MonoBehaviour
         int x = Random.Range(0, 2);
         string[] ListOfAbilities = new string[] { "Rewind", "Stop" };
 
-        return "Stop";
         return ListOfAbilities[x];
+        //return "Stop";
     }
 
     void FavorDecision()
@@ -482,6 +632,11 @@ public class GameCommandPrompt : MonoBehaviour
                     Debug.Log("CANAPLE");
                 }
                 break;
+            case ConsoleDisplay.customMenu:
+            {
+                
+            }
+                break;
             default:
                 Debug.Log("NOTHING");
                 CheckInput(textInput.ToUpper());
@@ -495,6 +650,7 @@ public class GameCommandPrompt : MonoBehaviour
         m_failedAttempts = 0;
         yield return new WaitForSecondsRealtime(3);
         m_inputField.enabled = true;
+        selectInputField();
         favorSystem.DisplayingMainMenu();
         favorSystem.m_isProcessing = false;
 
@@ -529,18 +685,18 @@ public class GameCommandPrompt : MonoBehaviour
         FavorDecision();
         yield return new WaitForSecondsRealtime(3);
 
-        if (favorName != "")
+
+        if (favorName == "Rewind")
         {
-            
-            if(favorName == "Rewind")
-            {
-                GrantRewind();
-            }
-            else
-            {
-                GrantStop();
-            }
+            GrantRewind();
         }
+        else if (favorName == "Stop")
+        {
+            Debug.Log("Time is stop");
+            GrantStop();
+        }
+
+       
 
         m_inputField.enabled = true;
         favorSystem.m_commandText.resizeTextForBestFit = true;

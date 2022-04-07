@@ -9,8 +9,14 @@ namespace Himanshu
         [SerializeField] private GameObject m_dissapearingDoor;
         [SerializeField] private GameObject m_unlockVFX;
 
+        private AudioSource m_audioSource;
         public bool m_locked = false;
-        
+
+        private void Start()
+        {
+            m_audioSource = GetComponent<AudioSource>();
+        }
+
         public void Execute(PlayerInteract _player)
         {
             if(m_locked)    return;

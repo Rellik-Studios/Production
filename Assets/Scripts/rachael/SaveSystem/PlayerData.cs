@@ -3,6 +3,8 @@ using System.Linq;
 using Himanshu;
 using JetBrains.Annotations;
 using UnityEngine.Serialization;
+using Unity;
+using UnityEngine;
 
 namespace rachael.SaveSystem
 {
@@ -29,11 +31,14 @@ namespace rachael.SaveSystem
         [FormerlySerializedAs("position")] public float[] m_position;
 
         [FormerlySerializedAs("rotation")] public float[] m_rotation;
+
+        public bool? m_endTutorialPlayed;
         //public string[] Loopnames;
 
-        public PlayerData(PlayerSave _player)
+        public PlayerData(PlayerSave _player, Transform _safeRoom= null)
         {
             m_bookTutorialPlayed = gameManager.Instance.m_bookTutorialPlayed;
+            m_endTutorialPlayed = gameManager.Instance.m_endTutorialPlayed;
             m_objTutorialPlayed = gameManager.Instance.m_objTutorialPlayed;
             //Death = player.Death;
             m_userName = NarratorScript.UserName;
@@ -46,14 +51,29 @@ namespace rachael.SaveSystem
             m_position = new float[3];
             m_rotation = new float[3];
 
-            m_position[0] = _player.transform.position.x;
-            m_position[1] = _player.transform.position.y;
-            m_position[2] = _player.transform.position.z;
+            if (_safeRoom == null)
+            {
+                m_position[0] = _player.transform.position.x;
+                m_position[1] = _player.transform.position.y;
+                m_position[2] = _player.transform.position.z;
 
 
-            m_rotation[0] = _player.transform.rotation.eulerAngles.x;
-            m_rotation[1] = _player.transform.rotation.eulerAngles.y;
-            m_rotation[2] = _player.transform.rotation.eulerAngles.z;
+                m_rotation[0] = _player.transform.rotation.eulerAngles.x;
+                m_rotation[1] = _player.transform.rotation.eulerAngles.y;
+                m_rotation[2] = _player.transform.rotation.eulerAngles.z;
+            }
+
+            else
+            {
+                m_position[0] = _safeRoom.transform.position.x;
+                m_position[1] = _safeRoom.transform.position.y;
+                m_position[2] = _safeRoom.transform.position.z;
+
+                m_rotation[0] = _safeRoom.transform.rotation.eulerAngles.x;
+                m_rotation[1] = _safeRoom.transform.rotation.eulerAngles.y;
+                m_rotation[2] = _safeRoom.transform.rotation.eulerAngles.z;
+            }
         }
+
     }
 }
