@@ -26,7 +26,7 @@ namespace Himanshu
 
         private int m_objTut;
         private int m_bookTut;
-        private int m_mendTut;
+        private int m_endTut;
 
         private void Awake()
         {
@@ -65,8 +65,7 @@ namespace Himanshu
 
             m_objTut = m_objTutorialPlayed == true ? 1 : m_objTutorialPlayed == false ? 0 : 2;
             m_bookTut = m_bookTutorialPlayed == true ? 1 : m_objTutorialPlayed == false ? 0 : 2;
-            
-            m_mendTut = m_endTutorialPlayed == true ? 1 : m_objTutorialPlayed == false ? 0 : 2;
+            m_endTut = m_endTutorialPlayed == true ? 1 : m_objTutorialPlayed == false ? 0 : 2;
             
         }
 
