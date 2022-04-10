@@ -2,8 +2,14 @@ using UnityEngine;
 namespace Himanshu.SmartObjective
 {
 
+
     public class Fire : MonoBehaviour
     {
+        private Animator m_animator;
+        private void Start()
+        {
+            m_animator = GetComponent<Animator>();
+        }
         private void OnTriggerEnter(Collider _collider)
         {
             if(_collider.TryGetComponent(out PlayerSmartObjectives _player) && !_player.m_hasFire && _player.m_hasCandle)
@@ -13,8 +19,8 @@ namespace Himanshu.SmartObjective
                 {
                     ItemHold.Instance.m_heldItemPlaceHolder.GetComponent<Candle>().isLit = true;
                     ItemHold.Instance.m_heldItem.GetComponent<Candle>().isLit = true;
-                }    
-                
+                    m_animator.SetBool("DisableFire", true);
+                }
             }
         }
     }

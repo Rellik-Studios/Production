@@ -11,6 +11,7 @@ namespace Himanshu
 
         private static gameManager m_instance;
 
+        public string m_currentRoom = "";
         public int m_deathCounter;
         public bool m_isSafeRoom;
 
