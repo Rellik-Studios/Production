@@ -5,6 +5,7 @@ using System.Linq;
 using rachael.FavorSystem;
 using rachael;
 using Himanshu;
+using Himanshu.SmartObjective;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,7 +14,7 @@ using Random = UnityEngine.Random;
 
 public class GameCommandPrompt : MonoBehaviour
 {
-    [SerializeField] FavorSystem favorSystem;
+    [SerializeField] public FavorSystem favorSystem;
 
     [SerializeField] private TMP_InputField m_inputField;
 
@@ -48,6 +49,7 @@ public class GameCommandPrompt : MonoBehaviour
             {"USER", UserCommand},
             {"QUIT", QuitCommand},
             {"Developer", DeveloperCommand},
+            {"RESET TRANSFORM", ResetTransform.ResetT},
             
         };
     }
@@ -382,6 +384,8 @@ public class GameCommandPrompt : MonoBehaviour
     }
 #region Commands
 
+    
+    
     bool FavorCommand()
     {
         favorSystem.m_commandText.text = "PROCESSING";
@@ -391,6 +395,8 @@ public class GameCommandPrompt : MonoBehaviour
         Debug.Log("help!");
         return true;
     }
+    
+    
 
     bool TalkCommand()
     {
@@ -668,11 +674,10 @@ public class GameCommandPrompt : MonoBehaviour
         yield return null;
     }
 
-
-    private IEnumerator HelpCommandProcess()
+    public IEnumerator eProcessing()
     {
         favorSystem.m_isProcessing = true;
-        while (counter < 30)
+        while (counter < 25)
         {
             favorSystem.m_commandText.text += ".";
             counter++;
@@ -680,6 +685,11 @@ public class GameCommandPrompt : MonoBehaviour
         }
         
         favorSystem.m_commandText.text = "Process done!";
+    }
+    
+    private IEnumerator HelpCommandProcess()
+    {
+        yield return eProcessing();
         
         counter = 0;
         FavorDecision();
