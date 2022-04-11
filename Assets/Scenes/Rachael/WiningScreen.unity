@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 298325605}
   - component: {fileID: 298325607}
   - component: {fileID: 298325606}
+  - component: {fileID: 298325608}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -180,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ed83ed279ff9b4542a93d6177bab15c2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: efe2a1f893c0cbc4bac85d00740b8f70, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -198,6 +199,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 298325604}
   m_CullTransparentMesh: 1
+--- !u!95 &298325608
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298325604}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 62ae2d0d5261b4843be98d061b76c605, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &404124138
 GameObject:
   m_ObjectHideFlags: 0
