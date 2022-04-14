@@ -41,5 +41,16 @@ namespace rachael
                 Debug.Log("You have exited the safe room");
             }
         }
+
+
+        public void TeleportTo()
+        {
+            var player = GameObject.FindObjectOfType<PlayerInteract>();
+            if (player != null) {
+                player.GetComponent<CharacterController>().enabled = false;
+                player.transform.position = this.transform.position;
+                this.Invoke(()=> player.GetComponent<CharacterController>().enabled = true, 0.1f);
+            }
+        }
     }
 }
