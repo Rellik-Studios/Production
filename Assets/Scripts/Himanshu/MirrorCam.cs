@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Himanshu
@@ -14,6 +15,21 @@ namespace Himanshu
 
         private Vector3 m_defPos;
         private Quaternion m_defRot;
+
+        public List<GameObject> m_objects;
+
+        public GameObject m_bathroomObjective;
+        public void EnableMirror()
+        {
+            m_objects.ForEach(t=>t.SetActive(false));
+            m_bathroomObjective.SetActive(true);
+        }
+        
+        public void DisableMirror()
+        {
+             m_objects.ForEach(t=>t.SetActive(true));
+            m_bathroomObjective.SetActive(false);
+        }
 
         public static bool beginTracking
         {
@@ -38,9 +54,9 @@ namespace Himanshu
 
         private void Update()
         {
-            if(m_beginTracking)
-            {
-                transform.position = m_defPos + (m_playerCam.transform.position - m_defPlayerPos);
+            if(m_beginTracking) {
+
+                transform.position = m_playerCam.transform.position;
                 transform.rotation = m_playerCam.transform.rotation;
             }
         }
