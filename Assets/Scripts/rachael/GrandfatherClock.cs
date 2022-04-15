@@ -40,7 +40,8 @@ namespace rachael
         
         public void Execute(PlayerInteract _player)
         {
-            var pieces = _player.m_inventory.Keys.Where(t => t.m_objectName.Contains("Clock_"));
+            var pieces = _player.m_inventory.Keys.
+                                                    Where(t => t.m_objectName.Contains("Clock_"));
             
             foreach (var piece in pieces)
             {
@@ -55,8 +56,6 @@ namespace rachael
                     break;
                 }
             }
-            
-            //CheckVictory();
         }
 
         private void CheckVictory()
