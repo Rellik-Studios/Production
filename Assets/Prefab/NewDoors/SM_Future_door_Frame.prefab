@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3883243937744116052}
   - component: {fileID: 165461502950790897}
   - component: {fileID: 2715425477919679035}
-  - component: {fileID: 3554644493655431378}
+  - component: {fileID: 6117092281457322071}
   m_Layer: 0
   m_Name: SM_Future_door_Frame
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3554644493655431378
+--- !u!64 &6117092281457322071
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,7 +97,7 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: -3907889292078546035, guid: ec4d03ba5ce204e4495481b97112d75c, type: 3}
+  m_Mesh: {fileID: 7420558922752152696, guid: ec4d03ba5ce204e4495481b97112d75c, type: 3}
 --- !u!1 &8580239618858064261
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,7 +195,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 9f9a2ec58d727bd4fac468ea72c3c15c, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 

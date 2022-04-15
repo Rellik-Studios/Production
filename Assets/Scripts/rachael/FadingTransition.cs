@@ -64,6 +64,7 @@ namespace rachael
                     {
                         m_wall.SetActive(false);
                         m_oldWall.GetComponent<MeshFilter>().mesh = m_wall.GetComponent<MeshFilter>().mesh;
+                        m_oldWall.GetComponent<MeshCollider>().sharedMesh = m_wall.GetComponent<MeshCollider>().sharedMesh;
                         m_oldWall.GetComponent<Renderer>().material = m_materialWall;
                     }
                     Destroy(this);

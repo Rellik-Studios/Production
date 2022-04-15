@@ -50,6 +50,7 @@ namespace Himanshu
                 GetComponent<AudioSource>()?.Play();
 
             m_player.m_invincible = false;
+            gameManager.Instance.m_currentRoom = gameObject.name;
 
             if (gameObject.name != "Hub" && _collider.CompareTag("Player")) 
             {
@@ -65,6 +66,7 @@ namespace Himanshu
             m_player.m_invincible = true;
             if(GetComponent<AudioSource>() != null)
                 GetComponent<AudioSource>()?.Stop();
+            gameManager.Instance.m_currentRoom = "";
         }
 
         private void OnTriggerStay(Collider _collider)

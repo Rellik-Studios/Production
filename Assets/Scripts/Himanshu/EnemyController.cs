@@ -68,10 +68,13 @@ namespace Himanshu
             set => m_animator.SetFloat("speed", value);
         }
 
-        private bool aKill
-        {
+        private bool aKill {
             get => m_animator.GetBool("kill");
-            set => m_animator.SetBool("kill", value);
+            set 
+            {
+                m_animator.SetBool("kill", value);
+                m_animator.updateMode = value == true ? AnimatorUpdateMode.UnscaledTime : AnimatorUpdateMode.AnimatePhysics;
+            }
         }
 
         private bool aDanger
@@ -757,6 +760,4 @@ namespace Himanshu
         Vision,
         Sound,
     }
-    
-    
 }
