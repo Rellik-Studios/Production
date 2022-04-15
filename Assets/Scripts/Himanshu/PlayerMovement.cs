@@ -21,10 +21,12 @@ namespace Himanshu
         [SerializeField] private float m_groundDistance = 0.1f;
         private bool m_isGrounded;
         public bool canMoveUnscaled => FindObjectOfType<FavorSystem>().m_timeStop && FindObjectOfType<FavorSystem>().m_continueCounting;
-        public bool crouching
-        {
+        public bool crouching {
             get => m_playerInput.m_crouching;
-            set => m_playerInput.m_crouching = value;
+            set {
+                GetComponent<CharacterController>().height = value ? 2f : 4f;
+                m_playerInput.m_crouching = value;
+            }
         }
 
         public float m_currentSpeed;  
@@ -65,7 +67,7 @@ namespace Himanshu
         
         public Vector3 calculatedPosition
         {
-            get => transform.position + (crouching ?  new Vector3(0f, 2f, 0f) : new Vector3(0f, 4f, 0f));
+            get => transform.position + (crouching ?  new Vector3(0f, 0f, 0f) : new Vector3(0f, 2f, 0f));
         }
 
         private IEnumerator Start()
