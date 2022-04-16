@@ -464,6 +464,7 @@ namespace Himanshu
             if(!m_waiting)
             {
                 m_waiting = true;
+                m_agent.transform.rotation = m_patrolPoints[index].rotation;
                 yield return new WaitForSeconds(m_defaultPatrolWaitTime);
 
                 
