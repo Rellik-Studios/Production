@@ -515,8 +515,9 @@ namespace Himanshu
             {
                 if (m_player.crouching || m_player.m_currentSpeed < 0.1f)
                     return false;
-                return true;
+
                 m_detectedThrough = eDetect.Sound;
+                return true;
             }
             return false;
         }
