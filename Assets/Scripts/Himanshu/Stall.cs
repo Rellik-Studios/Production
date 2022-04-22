@@ -12,15 +12,23 @@ namespace Himanshu
             Close,
         }
         public eStallState m_stallState;
-        private void Start()
+        public eStallState stallState {
+            get => m_stallState;
+            set {
+                if (value != m_stallState) {
+                    m_stallState = m_stallState == eStallState.Close ? eStallState.Open : eStallState.Close;
+                    m_animator.SetBool("open", m_stallState == eStallState.Open);        
+                }
+            }
+        }
+        private void Awake()
         {
             m_stallState = eStallState.Close;
             m_animator = GetComponentInParent<Animator>();
         }
         public void Execute(PlayerInteract _player)
         {
-            m_stallState = m_stallState == eStallState.Close ? eStallState.Open : eStallState.Close;
-            m_animator.SetBool("open", m_stallState == eStallState.Open);
+            stallState = stallState == eStallState.Close ? eStallState.Open : eStallState.Close;
         }
         public void CanExecute(Raycast _raycast)
         {
@@ -34,4 +42,5 @@ namespace Himanshu
             _raycast.m_doOnce = true;
         }
     }
+
 }

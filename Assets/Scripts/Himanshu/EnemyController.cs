@@ -464,14 +464,14 @@ namespace Himanshu
             if(!m_waiting)
             {
                 m_waiting = true;
-                m_agent.transform.rotation = m_patrolPoints[index].rotation;
+                transform.rotation = m_patrolPoints[index].rotation;
                 yield return new WaitForSeconds(m_defaultPatrolWaitTime);
-
+                index++;
                 
                 if (m_patrolPoints.Count > 0 && !m_isRandomPatrol)
                 {
                     if (m_agent.remainingDistance < 0.1f && m_agent.enabled && m_agent.gameObject.activeSelf)
-                        m_agent.SetDestination(m_patrolPoints[index++].position);
+                        m_agent.SetDestination(m_patrolPoints[index].position);
                 }
 
 
@@ -515,8 +515,9 @@ namespace Himanshu
             {
                 if (m_player.crouching || m_player.m_currentSpeed < 0.1f)
                     return false;
-                return true;
+
                 m_detectedThrough = eDetect.Sound;
+                return true;
             }
             return false;
         }

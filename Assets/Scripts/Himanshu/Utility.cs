@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +11,25 @@ namespace Himanshu
     public static class Utility
     {
 
+        public static bool IsEqual<T>(this IEnumerable<T> e1, IEnumerable<T> e2)
+        {
+
+            if(e1.Count() != e2.Count())
+            {
+                return false;
+            }
+            var e1List = e1.ToList();
+            var e2List = e2.ToList();
+            for(int i = 0; i < e1List.Count; i++)
+            {
+                if(!e1List[i].Equals(e2List[i]))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
         public static IEnumerator WaitForRealSeconds(float wait)
         {
             float counter = 0f;
