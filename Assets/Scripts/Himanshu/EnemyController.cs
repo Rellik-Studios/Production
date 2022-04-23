@@ -16,7 +16,7 @@ using Random = UnityEngine.Random;
 
 namespace Himanshu
 {
-    
+
     /// <summary>
     /// EnemyController : Works alongside the Visual State Machine to provide functionality and store variables
     /// </summary>
@@ -461,11 +461,29 @@ namespace Himanshu
         IEnumerator SetDestination()
         {
 
-            if(!m_waiting)
-            {
+            if(!m_waiting) {
+                var destinationMarker = m_patrolPoints[index].GetComponent<DestinationMarker>();
                 m_waiting = true;
-                transform.rotation = m_patrolPoints[index].rotation;
+                if(destinationMarker != null)
+                    destinationMarker.m_hasArrived = true;
+
+                while (transform.rotation != m_patrolPoints[index].rotation)
+                {
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, m_patrolPoints[index].rotation, Time.deltaTime * 100f);
+                    yield return null;
+                }
+                //transform.rotation = Quaternion.Lerp(m_patrolPoints[index].rotation, transform.rotation, Time.deltaTime); 
+                
+                if (destinationMarker != null) {
+                    yield return new WaitUntil(() => destinationMarker.m_hasArrived && destinationMarker.m_destinationMarker.m_hasArrived);
+                }
+                
                 yield return new WaitForSeconds(m_defaultPatrolWaitTime);
+                if (destinationMarker != null) {
+                    destinationMarker.m_hasArrived = false;
+                    destinationMarker.m_destinationMarker.m_hasArrived = false;
+                }
+
                 index++;
                 
                 if (m_patrolPoints.Count > 0 && !m_isRandomPatrol)
@@ -640,8 +658,23 @@ namespace Himanshu
         {
             IEnumerator YellowToRed()
             {
-                transform.LookAt(m_player.transform);
+                
+                //transform.LookAt(m_player.transform);
                 yield return new WaitForSeconds(m_detectedThrough == eDetect.Vision ? 1.5f : 3f);
+
+                //rotate gradually towards the player using rotate towards
+                
+                float counter = 0f;
+                while (counter < 1f)
+                {
+                    counter += Time.deltaTime;
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(m_player.transform.position - transform.position), Time.deltaTime);
+                    yield return null;
+                }
+
+
+
+
                 dangerLevel = eDanger.red;
                 m_enemyHead.m_look = false;
                 yield return null;
