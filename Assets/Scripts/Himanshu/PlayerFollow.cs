@@ -53,6 +53,7 @@ namespace Himanshu
         //         yield return null;
         //     }
         // }
+        
         void Update()
         {
             if(Time.timeScale == 0 && !m_playerMovement.canMoveUnscaled) return;

@@ -22,7 +22,10 @@ namespace Himanshu
         private bool m_isGrounded;
         public bool canMoveUnscaled => FindObjectOfType<FavorSystem>().m_timeStop && FindObjectOfType<FavorSystem>().m_continueCounting;
         public bool crouching {
-            get => m_playerInput.m_crouching;
+            get {
+                GetComponent<CharacterController>().height = m_playerInput.m_crouching ? 2f : 4f;
+                return m_playerInput.m_crouching;
+            }
             set {
                 GetComponent<CharacterController>().height = value ? 2f : 4f;
                 m_playerInput.m_crouching = value;
