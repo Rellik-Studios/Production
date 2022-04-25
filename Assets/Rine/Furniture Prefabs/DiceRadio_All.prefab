@@ -155,7 +155,6 @@ GameObject:
   - component: {fileID: 817852567418313268}
   - component: {fileID: 3535416736956641700}
   - component: {fileID: 4153309514480648997}
-  - component: {fileID: 1361394657678559663}
   - component: {fileID: 4712817020709375448}
   m_Layer: 9
   m_Name: DiceRadio_Base
@@ -227,20 +226,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1361394657678559663
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7425786706209838782}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1982311472968851758, guid: 4574c75229f0b43439e6a18384cf03d5, type: 3}
 --- !u!114 &4712817020709375448
 MonoBehaviour:
   m_ObjectHideFlags: 0
