@@ -6,5 +6,6 @@ namespace Himanshu.SmartObjective
         public bool m_hasFire = false;
         public bool m_hasCandle = false;
         public bool m_hasNotes;
+        public bool m_hasPaintBrush;
     }
 }
