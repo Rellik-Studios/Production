@@ -36,6 +36,10 @@ namespace Himanshu.SmartObjective
                 Destroy(m_heldItemPlaceHolder);
         }
 
-        
+
+        public void Paint()
+        {
+            m_heldItemPlaceHolder.GetComponent<Paintbrush>().Paint();
+        }
     }
 }
