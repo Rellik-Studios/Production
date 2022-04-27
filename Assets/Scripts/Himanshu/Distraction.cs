@@ -17,6 +17,8 @@ namespace Himanshu
         public bool m_DestroyAfterUse;
 
         public UnityEvent m_onExecute;
+
+        public bool m_canDistract = true;
         
         /// <summary>
         /// playing : Stores if the distraction is used.
@@ -32,7 +34,7 @@ namespace Himanshu
                     m_audioSource.Play();
                 else
                 {
-                    if(m_DestroyAfterUse)
+                    if(m_DestroyAfterUse) 
                         Destroy(this);
                     m_audioSource.Stop();
                 }
@@ -55,10 +57,12 @@ namespace Himanshu
         /// <param name="_player">Reference to PlayerInteract instance</param>
         public void Execute(PlayerInteract _player)
         {
+            
             if (!m_audioSource.isPlaying)
             {
                 //m_audioSource.Play();
                 m_onExecute?.Invoke();
+                if(!m_canDistract) return;
                 playing = true;
                 this.Invoke(() => playing = false, m_audioSource.clip.length);
             }
@@ -82,10 +86,11 @@ namespace Himanshu
         /// <param name="other"></param>
         private void OnTriggerEnter(Collider other)
         {
-            if (!m_audioSource.isPlaying && other.CompareTag("Player"))
+            if (!m_audioSource.isPlaying && other.GetComponent<PlayerInteract>() != null)
             {
                 m_onExecute?.Invoke();
                 //m_audioSource.Play();
+                if(!m_canDistract) return; 
                 playing = true;
                 //this.Invoke(() => playing = false, m_audioSource.clip.length);
                 
