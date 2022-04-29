@@ -7,5 +7,14 @@ namespace Himanshu.SmartObjective
         public bool m_hasCandle = false;
         public bool m_hasNotes;
         public bool m_hasPaintBrush;
+        public bool m_hasVRHeadset;
+        public void DropAll()
+        {
+            m_hasFire = false;
+            m_hasCandle = false;
+            m_hasNotes = false;
+            m_hasPaintBrush = false;
+            m_hasVRHeadset = false;
+        }
     }
 }

@@ -1,4 +1,5 @@
 using Himanshu;
+using Himanshu.SmartObjective;
 using rachael.SaveSystem;
 using UnityEngine;
 
@@ -14,6 +15,7 @@ namespace rachael
         {
             if (_other.CompareTag("Player"))
             {
+                ItemHold.Instance.DropItem();
                 if (!gameManager.Instance.m_bookTutorialPlayed ?? true)
                 {
                     Tutorial.RunBookTutorial();

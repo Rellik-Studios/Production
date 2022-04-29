@@ -12,7 +12,7 @@ namespace Himanshu.SmartObjective
 
         public enum eObjName
         {
-            Candle, PaintBrush, MusicNotes
+            Candle, PaintBrush, MusicNotes, VRHeadset,
         }
         private static Dictionary<eObjName, Action> m_actions;
 
@@ -26,6 +26,7 @@ namespace Himanshu.SmartObjective
             m_actions.Add(eObjName.MusicNotes, MusicNotes);
             m_actions.Add(eObjName.Candle, Candle);
             m_actions.Add(eObjName.PaintBrush, PaintBrush);
+            m_actions.Add(eObjName.VRHeadset, VRHeadset);
             
             m_animator = GetComponent<Animator>();
             m_defaultPosition = transform.position;
@@ -47,10 +48,34 @@ namespace Himanshu.SmartObjective
             m_player.m_hasNotes = true;
         }
 
+        void VRHeadset()
+        {
+            m_player.m_hasVRHeadset = true;
+        }
 
 
         public void Execute(PlayerInteract _player)
         {
+            bool wait = false;
+            if(!OneTimeText.alreadyUsed.Contains("Press RMB to drop the object"))
+            {
+                OneTimeText.SetText("Press RMB to drop the object", ()=>false);
+                wait = true;
+            }
+            this.Invoke(() => {
+                switch (m_objName) {
+                    case eObjName.Candle:
+                        OneTimeText.SetText("Find the misplaced Fire and put it back in the right place", () => false);
+                        break;
+                    case eObjName.PaintBrush:
+                        OneTimeText.SetText("Find the painting with the Anomaly", () => false);
+                        break;
+                    case eObjName.MusicNotes:
+                        break;
+                }
+            }, wait ? 3f : 0);
+            if(m_objName == eObjName.VRHeadset)
+                GetComponent<MeshRenderer>().enabled = false;
             ItemHold.Instance.HoldItem(this.gameObject);
             m_actions[m_objName]();
             _player.GetComponent<PlayerSmartObjectives>().m_hasNotes = true;
