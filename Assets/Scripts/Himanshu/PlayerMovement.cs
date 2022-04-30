@@ -22,10 +22,26 @@ namespace Himanshu
         private bool m_isGrounded;
         public bool canMoveUnscaled => FindObjectOfType<FavorSystem>().m_timeStop && FindObjectOfType<FavorSystem>().m_continueCounting;
         public bool crouching {
-            get => m_playerInput.m_crouching;
+            get {
+                float prevScale = transform.localScale.y;
+                transform.localScale = new Vector3(1f,  m_playerInput.m_crouching ? .5f : 1f, 1f);
+
+                IEnumerator revertSize()
+                {
+                    if (Math.Abs(prevScale - .5) < 0.01f && !m_playerInput.m_crouching && !(m_playerInput.movement.magnitude > 0f)) {
+                        yield return new WaitForEndOfFrame();
+                        transform.position += new Vector3(0f, 1f, 0f);
+                    }
+                }
+                StartCoroutine(revertSize());
+
+                return m_playerInput.m_crouching;
+            }
             set {
-                GetComponent<CharacterController>().height = value ? 2f : 4f;
-                m_playerInput.m_crouching = value;
+                //GetComponent<CharacterController>().height = value ? 2f : 4f;
+                if((value && !Physics.Raycast(m_eye.position, transform.up, 3f, Physics.AllLayers, QueryTriggerInteraction.Ignore)) || !value)
+                    m_playerInput.m_crouching = value;
+                    
             }
         }
 
@@ -34,7 +50,7 @@ namespace Himanshu
         [SerializeField] private float m_maxSprintTimer;
         private float m_sprintTimer;
         [SerializeField] private Image m_sprintImage;
-
+        private Transform m_eye;
         private float m_sprintNarratorTimer = 40f;
         private AudioSource m_audioSource;
         [SerializeField] private LayerMask m_groundMask;
@@ -65,9 +81,8 @@ namespace Himanshu
             }
         }
         
-        public Vector3 calculatedPosition
-        {
-            get => transform.position + (crouching ?  new Vector3(0f, 0f, 0f) : new Vector3(0f, 2f, 0f));
+        public Vector3 calculatedPosition {
+            get => m_eye.transform.position;
         }
 
         private IEnumerator Start()
@@ -78,6 +93,7 @@ namespace Himanshu
             m_rigidbody = transform.Find("GFX").gameObject.GetComponent<Rigidbody>();
             m_characterController = GetComponent<CharacterController>();
 
+            m_eye = transform.Find("Eye");
             if (m_stopWhileStarting)
             {
                 m_characterController.enabled = false;
@@ -105,15 +121,57 @@ namespace Himanshu
             m_characterController.Move(m_playerVelocity * calculatedDeltaTime);
         }
 
+        private bool m_isSliding;
+        private bool m_isSCorouting = false;
         private void Movement()
         {
+            IEnumerator Slide()
+            {
+                if (m_playerInput.sprint && sprintTimer > 0f) {
+                    
+                    if (!m_playerInput.m_crouching && !m_isSCorouting) {
+                        m_isSCorouting = true;
+                        yield return new WaitUntil(() => m_playerInput.m_crouching);
+
+                        if (!m_playerInput.sprint || sprintTimer <= 0.01f) {
+                            m_isSCorouting = false;
+                            yield break;
+                        }
+
+                        Debug.Log("Slide BABYY");
+                        m_isSliding = true;
+                        int counter = 0;
+                        while (counter < 25) {
+                            m_characterController.Move(transform.forward * 0.1f);
+                            yield return null;
+                            counter++;
+                        }
+                        m_isSliding = false;
+                        yield return new WaitUntil(() => !m_playerInput.sprint || sprintTimer <= 0.01f);
+                        
+                        m_isSCorouting = false;
+                    }
+                    
+                    else if (!m_isSCorouting) {
+                        //m_isSCorouting = true;
+                        crouching = false;
+                    }
+                    
+                }
+            }
+            
+            StartCoroutine(Slide());
+
+            
             var movement = m_playerInput.movement.x * transform.right + m_playerInput.movement.z * transform.forward;
             if (m_characterController.enabled)
                 m_characterController.Move(movement * (m_speed * (crouching ? 0.5f : 1f) * ((m_playerInput.sprint && sprintTimer > 0f && !crouching) ? 1.75f : 1.0f)  * calculatedDeltaTime));
 
-            if (m_playerInput.sprint && sprintTimer > 0f && m_playerInput.movement.magnitude > 0f)
+
+            
+            if (m_playerInput.sprint && sprintTimer > 0f && m_playerInput.movement.magnitude > 0f && !m_isSliding)
             {
-                crouching = false;
+                //crouching = false;
                 sprintTimer -= calculatedDeltaTime / 2f;
             }
             else if (sprintTimer < m_maxSprintTimer)
