@@ -12,7 +12,7 @@ namespace Himanshu.SmartObjective
 
         public enum eObjName
         {
-            Candle, PaintBrush, MusicNotes, VRHeadset,
+            Candle, PaintBrush, MusicNotes, VRHeadset,NewsPaper,
         }
         private static Dictionary<eObjName, Action> m_actions;
 
@@ -27,6 +27,7 @@ namespace Himanshu.SmartObjective
             m_actions.Add(eObjName.Candle, Candle);
             m_actions.Add(eObjName.PaintBrush, PaintBrush);
             m_actions.Add(eObjName.VRHeadset, VRHeadset);
+            m_actions.Add(eObjName.NewsPaper, NewsPaper);
             
             m_animator = GetComponent<Animator>();
             m_defaultPosition = transform.position;
@@ -53,6 +54,10 @@ namespace Himanshu.SmartObjective
             m_player.m_hasVRHeadset = true;
         }
 
+        void NewsPaper()
+        {
+            m_player.m_hasNewsPaper = true;
+        }
 
         public void Execute(PlayerInteract _player)
         {
@@ -71,6 +76,9 @@ namespace Himanshu.SmartObjective
                         OneTimeText.SetText("Find the painting with the Anomaly", () => false);
                         break;
                     case eObjName.MusicNotes:
+                        break;
+                    case eObjName.NewsPaper:
+                        OneTimeText.SetText("Return the NewsPaper, back to the Man", () => false);
                         break;
                 }
             }, wait ? 3f : 0);
