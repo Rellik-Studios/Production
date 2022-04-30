@@ -16,6 +16,7 @@ namespace Himanshu.SmartObjective
                 m_player = _player;
                 m_animator.SetBool("NewsPaper", true);
                 ItemHold.Instance.DropItem();
+                m_objective.Execute(_player.GetComponent<PlayerInteract>());
             }
         }
     }
