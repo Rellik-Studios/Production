@@ -8,6 +8,7 @@ namespace Himanshu.SmartObjective
         public bool m_hasNotes;
         public bool m_hasPaintBrush;
         public bool m_hasVRHeadset;
+        public bool m_hasNewsPaper;
         public void DropAll()
         {
             m_hasFire = false;
@@ -15,6 +16,7 @@ namespace Himanshu.SmartObjective
             m_hasNotes = false;
             m_hasPaintBrush = false;
             m_hasVRHeadset = false;
+            m_hasNewsPaper = false;
         }
     }
 }
