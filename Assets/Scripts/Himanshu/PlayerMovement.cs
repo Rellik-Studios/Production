@@ -24,13 +24,13 @@ namespace Himanshu
         public bool crouching {
             get {
                 float prevScale = transform.localScale.y;
-                transform.localScale = new Vector3(1f,  m_playerInput.m_crouching ? .5f : 1f, 1f);
+                transform.localScale = new Vector3(1f,  m_playerInput.m_crouching ? .5f : 1.2f, 1f);
 
                 IEnumerator revertSize()
                 {
-                    if (Math.Abs(prevScale - .5) < 0.01f && !m_playerInput.m_crouching && !(m_playerInput.movement.magnitude > 0f)) {
-                        yield return new WaitForEndOfFrame();
-                        transform.position += new Vector3(0f, 1f, 0f);
+                    yield return new WaitForEndOfFrame();
+                    if (Math.Abs(prevScale - 0.7f) < 0.01f && !m_playerInput.m_crouching && !(m_playerInput.movement.magnitude > 0f)) {
+                        transform.position += new Vector3(0f, 1.5f, 0f);
                     }
                 }
                 StartCoroutine(revertSize());
