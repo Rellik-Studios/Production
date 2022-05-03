@@ -4,6 +4,7 @@ using rachael;
 using UnityEngine;
 namespace Himanshu.SmartObjective
 {
+
     public class PickupObj : MonoBehaviour, IInteract, IPickup
     {
         protected Vector3 m_defaultPosition;
