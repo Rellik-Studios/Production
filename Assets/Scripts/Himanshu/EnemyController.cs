@@ -16,7 +16,6 @@ using Random = UnityEngine.Random;
 
 namespace Himanshu
 {
-
     /// <summary>
     /// EnemyController : Works alongside the Visual State Machine to provide functionality and store variables
     /// </summary>
@@ -309,8 +308,6 @@ namespace Himanshu
 
             if (!m_killing)
                 StartCoroutine(KillRoutine());
-
-
         }
 
         private void Update()
@@ -428,6 +425,7 @@ namespace Himanshu
             if(m_patrolPoints.Count > 0 && m_agent.enabled && m_agent.gameObject.activeSelf)
                 m_agent.SetDestination(m_patrolPoints[index].position);
 
+            m_agent.speed = 7f;
         }
 
         public void PatrolUpdate()
@@ -460,15 +458,27 @@ namespace Himanshu
 
         IEnumerator SetDestination()
         {
+            m_patrolPoints.RemoveAll(t=>t == null);
 
             if(!m_waiting) {
-                var destinationMarker = m_patrolPoints[index].GetComponent<DestinationMarker>();
                 m_waiting = true;
+                var destinationMarker = m_patrolPoints[index].GetComponent<DestinationMarker>();
+                var patrolPointTask = m_patrolPoints[index].GetComponent<PatrolPointTask>();
+                if(patrolPointTask != null && patrolPointTask.m_numOfTimesToSkip <= patrolPointTask.m_numOfTimesSkipped)
+                {
+                    patrolPointTask.m_onExecute?.Invoke();
+                }
+               
+                
                 if(destinationMarker != null)
                     destinationMarker.m_hasArrived = true;
 
-                while (transform.rotation != m_patrolPoints[index].rotation)
+                var counter =  (60 * Time.deltaTime);
+                
+                
+                while (transform.rotation != m_patrolPoints[index].rotation && counter > 0)
                 {
+                    counter -= Time.deltaTime;
                     transform.rotation = Quaternion.RotateTowards(transform.rotation, m_patrolPoints[index].rotation, Time.deltaTime * 100f);
                     yield return null;
                 }
@@ -489,13 +499,28 @@ namespace Himanshu
                 if (m_patrolPoints.Count > 0 && !m_isRandomPatrol)
                 {
                     if (m_agent.remainingDistance < 0.1f && m_agent.enabled && m_agent.gameObject.activeSelf)
-                        m_agent.SetDestination(m_patrolPoints[index].position);
+                    {
+                        var pPTask = m_patrolPoints[index].GetComponent<PatrolPointTask>();
+                        if (pPTask != null && pPTask.m_numOfTimesToSkip > pPTask.m_numOfTimesSkipped)
+                        {
+                            pPTask.m_numOfTimesSkipped++;
+                            index++;
+                            m_agent.SetDestination(m_patrolPoints[index].position);
+                            
+                        }
+                        else
+                        {
+                            m_agent.SetDestination(m_patrolPoints[index].position);
+                            //patrolPointTask?.OnComplete();
+                        }
+                    }
                 }
 
 
                 else if (m_patrolPoints.Count >= 0)
                     if (m_agent.remainingDistance < 0.1f && m_agent.enabled && m_agent.gameObject.activeSelf)
                         m_agent.SetDestination(m_patrolPoints[Random.Range(0, m_patrolPoints.Count - 1)].position);
+
 
                 m_waiting = false;
             }
@@ -656,6 +681,7 @@ namespace Himanshu
 
         public void ChaseEnter()
         {
+            m_agent.speed = 11f;
             IEnumerator YellowToRed()
             {
                 
