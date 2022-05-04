@@ -17,6 +17,7 @@ namespace rachael.FavorSystem
         userMenu = 4,
         quitMenu = 5,
         helpMenu = 6,
+        customMenu = 7,
     }
 
     public class FavorSystem : MonoBehaviour
@@ -31,6 +32,7 @@ namespace rachael.FavorSystem
 
         private PlayerInteract m_playerInteract;
 
+        private static bool m_canResetT = false;
 
         public bool isDanger
         {
@@ -75,6 +77,7 @@ namespace rachael.FavorSystem
 
         public GameObject CommandIcon;
         private Animator m_notifAnimator;
+        public  Animator Com_anim;
 
         public GameObject pauseMenu;
         private bool aNotifEnabled {
@@ -120,6 +123,10 @@ namespace rachael.FavorSystem
             {
                 m_inputField.text = "";
                 CommandPromptWindow();
+                FindObjectOfType<PlayerInteract>().enabled = false;
+                Com_anim.SetBool("IsOpen", true);
+
+
             }
 #if UNITY_EDITOR
             else if (Input.GetKeyDown(KeyCode.Alpha0) && m_isOpen && !pauseMenu.activeSelf && !m_isProcessing)
@@ -132,9 +139,7 @@ namespace rachael.FavorSystem
                 StartCoroutine(EKeyLeave());
             }
 #endif
-
             aNotifEnabled = (m_playerInteract?.playerDanger != EnemyController.eDanger.white && m_grantSpecial);
-
 
             //starting timer for how long will  the objective be completed
             if (startTimer)
@@ -169,18 +174,17 @@ namespace rachael.FavorSystem
             }
         }
 
-        void CommandPromptWindow()
+        public void CommandPromptWindow()
         {
             m_isOpen = !m_isOpen;
             if (m_isOpen)
             {
+                Com_anim.SetBool("IsOpen", true);
                 Debug.Log("Command Prompt is open");
                 m_commandPrompt.SetActive(true);
                 DisplayingMainMenu();
                 m_inputField.ActivateInputField();
                 m_inputField.Select();
-
-
             }
             else
             {
@@ -188,6 +192,24 @@ namespace rachael.FavorSystem
                 m_commandPrompt.SetActive(false);
 
             }
+        }
+        
+        public IEnumerator SetProcess(string _message)
+        {
+            Debug.Log(m_canResetT);
+            if (!m_canResetT)
+            {
+                Com_anim.SetBool("IsOpen", true);
+                m_commandPrompt.SetActive(true);
+                m_commandText.text = _message;
+                m_commandText.resizeTextForBestFit = false;
+                m_inputField.enabled = false;
+                m_playerInteract.enabled = false;
+                yield return m_commandPrompt.GetComponent<GameCommandPrompt>().eProcessing();
+                m_canResetT = true;
+                m_inputField.enabled = true;
+            }
+            CommandPromptWindow();
         }
 
         public void OpenCommandPrompt()
@@ -198,15 +220,18 @@ namespace rachael.FavorSystem
             m_inputField.ActivateInputField();
             m_inputField.Select();
             m_isOpen = true;
+            Com_anim.SetBool("IsOpen", true);
         }
 
         public void CloseCommandPrompt()
         {
             Debug.Log("Command Prompt is close");
             m_isOpen = false;
-            m_commandPrompt.SetActive(false);
+            //m_commandPrompt.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            FindObjectOfType<PlayerInteract>().enabled = true;
+            Com_anim.SetBool("IsOpen", false);
         }
 
         public IEnumerator EKeyLeave()
@@ -221,17 +246,22 @@ namespace rachael.FavorSystem
 
         public void DisplayingMainMenu()
         {
+            Debug.Log(m_canResetT);
             //Displaying different commands depending on the user
             if (isDanger)
             {
                 //Opening special commands
                 m_commandText.text = m_commandFeatures[1].text;
+                if(m_canResetT && gameManager.Instance.m_currentRoom == "Morden Bedroom")
+                    m_commandText.text += "\n\n" + "> RESET TRANSFORM";
                 consoleDisplay = ConsoleDisplay.SpecialMenu;
-            }
-            else
+            } 
+            else 
             {
                 //Opening normal commands
                 m_commandText.text = m_commandFeatures[0].text;
+                if (m_canResetT && gameManager.Instance.m_currentRoom == "Morden Bedroom")
+                    m_commandText.text += "\n\n" + "> RESET TRANSFORM";
                 consoleDisplay = ConsoleDisplay.defaultMenu;
             }
 

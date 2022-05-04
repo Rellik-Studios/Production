@@ -50,11 +50,14 @@ namespace Himanshu
                 GetComponent<AudioSource>()?.Play();
 
             m_player.m_invincible = false;
+            gameManager.Instance.m_currentRoom = gameObject.name;
 
-            if (gameObject.name != "Hub") 
+            if (gameObject.name != "Hub" && _collider.CompareTag("Player")) 
             {
+                Debug.Log("Player entered new room");
                 FavorSystem.startTimer = true;
-                FavorSystem.m_grantSpecial = true;
+                if(!m_player.m_isDying)
+                    FavorSystem.m_grantSpecial = true;
             }
         }
 
@@ -63,6 +66,7 @@ namespace Himanshu
             m_player.m_invincible = true;
             if(GetComponent<AudioSource>() != null)
                 GetComponent<AudioSource>()?.Stop();
+            gameManager.Instance.m_currentRoom = "";
         }
 
         private void OnTriggerStay(Collider _collider)

@@ -1,3 +1,4 @@
+using Himanshu;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -63,6 +64,7 @@ namespace rachael
                     {
                         m_wall.SetActive(false);
                         m_oldWall.GetComponent<MeshFilter>().mesh = m_wall.GetComponent<MeshFilter>().mesh;
+                        m_oldWall.GetComponent<MeshCollider>().sharedMesh = m_wall.GetComponent<MeshCollider>().sharedMesh;
                         m_oldWall.GetComponent<Renderer>().material = m_materialWall;
                     }
                     Destroy(this);
@@ -76,7 +78,7 @@ namespace rachael
 
         private void OnTriggerEnter(Collider _other)
         {
-            if (_other.CompareTag("Player"))
+            if (_other.GetComponent<PlayerInteract>() != null)
             {
                 //transforming the opaque material to transparent material
                 this.m_doorframe.GetComponent<Renderer>().material = m_materialDoor;

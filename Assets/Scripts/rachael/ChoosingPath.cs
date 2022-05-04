@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.Serialization;
-
+using Himanshu;
 namespace rachael
 {
     public class ChoosingPath : MonoBehaviour
@@ -36,7 +36,7 @@ namespace rachael
         private void OnTriggerEnter(Collider _other)
         {
             Debug.Log("Contact");
-            if (_other.CompareTag("Player"))
+            if (_other.GetComponent<PlayerInteract>() != null)
             {
                 m_assignDoor.GetComponent<DoorToWall>().FadeHubWall();
                     Destroy(this);

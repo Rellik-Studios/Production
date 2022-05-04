@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Bolt;
 using Cinemachine;
+using rachael.FavorSystem;
 using rachael.qte;
 using TMPro;
 using UnityEngine;
@@ -15,7 +16,7 @@ using Random = UnityEngine.Random;
 
 namespace Himanshu
 {
-    
+
     /// <summary>
     /// EnemyController : Works alongside the Visual State Machine to provide functionality and store variables
     /// </summary>
@@ -52,7 +53,7 @@ namespace Himanshu
         
         public bool qteResult => m_QTE.GetComponent<QTE>().m_result;
 
-        [SerializeField] private float m_hearingRadius = 5f;
+        [SerializeField] public float m_hearingRadius = 5f;
         // private float distortionValue
         // {
         //     get => m_distortion.GetComponent<Renderer>().material.GetFloat("DistortionSpeed");
@@ -67,10 +68,13 @@ namespace Himanshu
             set => m_animator.SetFloat("speed", value);
         }
 
-        private bool aKill
-        {
+        private bool aKill {
             get => m_animator.GetBool("kill");
-            set => m_animator.SetBool("kill", value);
+            set 
+            {
+                m_animator.SetBool("kill", value);
+                m_animator.updateMode = value == true ? AnimatorUpdateMode.UnscaledTime : AnimatorUpdateMode.AnimatePhysics;
+            }
         }
 
         private bool aDanger
@@ -153,6 +157,7 @@ namespace Himanshu
         private bool m_canBeRed = false;
         private bool m_canChase = true;
         private eDanger m_dangerLevel = eDanger.white;
+        private eDetect? m_detectedThrough = null;
 
 
         private void Awake()
@@ -225,6 +230,12 @@ namespace Himanshu
 
             return false;
         }
+        
+    
+        
+        
+        
+        
 
         private bool m_killing = false;
         //Called through the Visual Script
@@ -238,7 +249,17 @@ namespace Himanshu
                 var playerInteract = m_player.GetComponent<PlayerInteract>();
                 if (playerInteract.m_invincible || playerInteract.m_debugInvincible)
                     yield break;
-            
+
+                if(FindObjectOfType<GameCommandPrompt>(true).gameObject.activeSelf)
+                {
+                    FindObjectOfType<FavorSystem>(true).CloseCommandPrompt();
+                }
+                if (FindObjectOfType<PauseMenu>(true).gameObject.activeSelf)
+                {
+                    FindObjectOfType<PauseMenu>(true).Unpause();
+                }
+
+
                 if (dangerLevel == eDanger.yellow)
                 {
                     yield break;
@@ -260,7 +281,7 @@ namespace Himanshu
                 
                 if(player.m_hiding)
                     player.Unhide();
-                player.m_followCam.transform.LookAt(transform.position + new Vector3(0f, 4f, 0f));
+                player.m_followCam.transform.LookAt(transform.position + new Vector3(0f, m_player.crouching ? 1f : 2f, 0f));
                 player.m_followCam.ResetMouse();
                 player.GetComponent<CharacterController>().enabled = false;
          
@@ -275,10 +296,10 @@ namespace Himanshu
                 yield return new WaitForSecondsRealtime(1.2f);
                 player.Death();
 
-                yield return new WaitForSecondsRealtime(3f);
+                //yield return new WaitForSecondsRealtime(3f);
 
                 m_killing = false;
-                Time.timeScale = 1f;
+                //Time.timeScale = 1f;
 
 
 
@@ -440,16 +461,35 @@ namespace Himanshu
         IEnumerator SetDestination()
         {
 
-            if(!m_waiting)
-            {
+            if(!m_waiting) {
+                var destinationMarker = m_patrolPoints[index].GetComponent<DestinationMarker>();
                 m_waiting = true;
-                yield return new WaitForSeconds(m_defaultPatrolWaitTime);
+                if(destinationMarker != null)
+                    destinationMarker.m_hasArrived = true;
 
+                while (transform.rotation != m_patrolPoints[index].rotation)
+                {
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, m_patrolPoints[index].rotation, Time.deltaTime * 100f);
+                    yield return null;
+                }
+                //transform.rotation = Quaternion.Lerp(m_patrolPoints[index].rotation, transform.rotation, Time.deltaTime); 
+                
+                if (destinationMarker != null) {
+                    yield return new WaitUntil(() => destinationMarker.m_hasArrived && destinationMarker.m_destinationMarker.m_hasArrived);
+                }
+                
+                yield return new WaitForSeconds(m_defaultPatrolWaitTime);
+                if (destinationMarker != null) {
+                    destinationMarker.m_hasArrived = false;
+                    destinationMarker.m_destinationMarker.m_hasArrived = false;
+                }
+
+                index++;
                 
                 if (m_patrolPoints.Count > 0 && !m_isRandomPatrol)
                 {
                     if (m_agent.remainingDistance < 0.1f && m_agent.enabled && m_agent.gameObject.activeSelf)
-                        m_agent.SetDestination(m_patrolPoints[index++].position);
+                        m_agent.SetDestination(m_patrolPoints[index].position);
                 }
 
 
@@ -468,26 +508,33 @@ namespace Himanshu
 
             var playerInteract = m_player.GetComponent<PlayerInteract>();
             if (playerInteract.m_invincible || playerInteract.m_debugInvincible)
-                return false;    
-            
-            
+                return false;
+
+
+            bool? result = null;
             for (int i = 0; i < 13; i++)
             {
-                if (m_hits[i].collider != null && m_hits[i].collider.gameObject.CompareTag("Player"))
+                if (m_hits[i].collider != null && m_hits[i].collider.gameObject.CompareTag("EnemyBlocker"))
                 {
-                    
+                    result ??= false;
                 }
                 if (m_hits[i].collider != null && m_hits[i].collider.gameObject.CompareTag("Player") && m_hits[i].collider.GetComponentInParent<CharacterController>().enabled && !m_hits[i].collider.GetComponentInParent<PlayerInteract>().m_hiding)
                 {
-                    return true;
+                    result = true;
+                    m_detectedThrough = eDetect.Vision;
                 }
             }
+
+            if (result != null)
+                return result ?? false;
 
             var colliders = Physics.OverlapSphere(transform.position, m_hearingRadius * 3f);
             if (colliders.Any(t => t.CompareTag("Player") && !t.transform.parent.GetComponent<PlayerInteract>().m_hiding))
             {
                 if (m_player.crouching || m_player.m_currentSpeed < 0.1f)
                     return false;
+
+                m_detectedThrough = eDetect.Sound;
                 return true;
             }
             return false;
@@ -522,10 +569,21 @@ namespace Himanshu
 
             if (dangerLevel == eDanger.red)
             {
-                if (m_hits.Any((t) => t.collider.CompareTag("EnemyBlocker")))
+                bool? result = null;
+                for (int i = 0; i < 13; i++)
                 {
-                    return true;
+                    if (m_hits[i].collider != null && m_hits[i].collider.gameObject.CompareTag("EnemyBlocker"))
+                    {
+                        result ??= true;
+                    }
+                    if (m_hits[i].collider != null && m_hits[i].collider.gameObject.CompareTag("Player"))
+                    {
+                        result = false;
+                    }
+                    
                 }
+                
+                return result ?? false;
             }
             if (m_player.GetComponent<PlayerInteract>().m_hiding && dangerLevel == eDanger.yellow)
             {
@@ -600,12 +658,26 @@ namespace Himanshu
         {
             IEnumerator YellowToRed()
             {
-                transform.LookAt(m_player.transform);
-                yield return new WaitForSeconds(3f);
+                
+                //transform.LookAt(m_player.transform);
+                yield return new WaitForSeconds(m_detectedThrough == eDetect.Vision ? 1.5f : 3f);
+
+                //rotate gradually towards the player using rotate towards
+                
+                float counter = 0f;
+                while (counter < 1f)
+                {
+                    counter += Time.deltaTime;
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(m_player.transform.position - transform.position), Time.deltaTime);
+                    yield return null;
+                }
+
+
+
+
                 dangerLevel = eDanger.red;
                 m_enemyHead.m_look = false;
                 yield return null;
-                
             }
             m_yellowToRedRoutine = StartCoroutine(YellowToRed());   
 
@@ -718,4 +790,9 @@ namespace Himanshu
         
     }
 
+    internal enum eDetect
+    {
+        Vision,
+        Sound,
+    }
 }

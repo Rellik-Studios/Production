@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace Himanshu
@@ -10,6 +11,7 @@ namespace Himanshu
 
         private static gameManager m_instance;
 
+        public string m_currentRoom = "";
         public int m_deathCounter;
         public bool m_isSafeRoom;
 
@@ -19,12 +21,14 @@ namespace Himanshu
         public bool? m_objTutorialPlayed = null;
         public bool? m_bookTutorialPlayed = null;
         public bool? m_endTutorialPlayed = null;
+        [CanBeNull] public string m_username = null;
 
         [HideInInspector]public List<string> m_oneTimeTextAlreadyPlayed = null;
 
         private int m_objTut;
         private int m_bookTut;
-        
+        private int m_endTut;
+
         private void Awake()
         {
             if (m_instance == null)
@@ -54,6 +58,7 @@ namespace Himanshu
             m_endTutorialPlayed = null;
             isTutorialRunning = false;
             m_oneTimeTextAlreadyPlayed = new List<string>();
+            m_username = null;
         }
 
         private void Update()
@@ -61,6 +66,7 @@ namespace Himanshu
 
             m_objTut = m_objTutorialPlayed == true ? 1 : m_objTutorialPlayed == false ? 0 : 2;
             m_bookTut = m_bookTutorialPlayed == true ? 1 : m_objTutorialPlayed == false ? 0 : 2;
+            m_endTut = m_endTutorialPlayed == true ? 1 : m_objTutorialPlayed == false ? 0 : 2;
             
         }
 

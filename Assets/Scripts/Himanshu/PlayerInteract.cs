@@ -254,7 +254,7 @@ namespace Himanshu
 
 #if UNITY_EDITOR
 
-            if(Input.GetKeyDown(KeyCode.Alpha0) && (Math.Abs(Time.timeScale - 1) < 0.1f || FindObjectOfType<FavorSystem>().m_timeStop))
+            if(Input.GetKeyDown(KeyCode.Alpha0) && !m_isDying && (Math.Abs(Time.timeScale - 1) < 0.1f || FindObjectOfType<FavorSystem>().m_timeStop))
             {
                 PauseScreen.SetActive(true);
                 FindObjectOfType<FavorSystem>().m_continueCounting = false;
@@ -262,7 +262,7 @@ namespace Himanshu
             }
 
 #else
-            if (Input.GetKeyDown(KeyCode.Escape)  && (Math.Abs(Time.timeScale - 1) < 0.1f || FindObjectOfType<FavorSystem>().m_timeStop))
+            if (Input.GetKeyDown(KeyCode.Escape)  && !m_isDying && (Math.Abs(Time.timeScale - 1) < 0.1f || FindObjectOfType<FavorSystem>().m_timeStop))
             {
                 PauseScreen.SetActive(true);
                 FindObjectOfType<FavorSystem>().m_continueCounting = false;
@@ -344,12 +344,12 @@ namespace Himanshu
 
         private IEnumerator eUnHide()
         {
+            if(m_hidingSpot == null) yield break;
             m_hidingSpot.aOpen = true;
-            //m_hidingSpot.aClose = false;
             yield return new WaitForSeconds(1f);
-            //transform.Translate(m_playerFollow.transform.forward * 3f);
+            if(m_hidingSpot == null) yield break;
+
             m_hidingSpot.aOpen = false;
-            //m_hidingSpot.aClose = true;
             GetComponent<CharacterController>().enabled = true;
             GetComponent<CharacterController>().Move(m_playerFollow.transform.forward * 3f);
 
@@ -484,7 +484,11 @@ namespace Himanshu
             {
                 FindObjectOfType<Fade>().color = Fade.eColor.black;
                 
-                this.Invoke(() => m_sceneManager.LoseScreen(), 2f);
+                this.Invoke(() =>
+                {
+                    m_sceneManager.LoseScreen();
+                    Time.timeScale = 1f;
+                }, 2f, true);
                 
             }
             else

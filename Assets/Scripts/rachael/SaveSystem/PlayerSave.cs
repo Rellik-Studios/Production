@@ -76,11 +76,11 @@ namespace rachael.SaveSystem
 
         }
 
-        public void SavePlayer(bool _isSafeRoom = false)
+        public void SavePlayer(Transform _safeRoom = null)
         {
             //saveFile.SavePoint();
             SavingValues();
-            SaveSystem.SavePlayer(this, _isSafeRoom);
+            SaveSystem.SavePlayer(this, _safeRoom);
         }
 
 
@@ -152,8 +152,13 @@ namespace rachael.SaveSystem
                 GetComponent<RespawnManager>().SetPosition(playerTransform);
                 GetComponent<RespawnManager>().Respawn();
 
-                NarratorScript.UserName = data.m_userName ?? Environment.UserName;
-
+                if (gameManager.Instance.m_username == "")
+                {
+                    gameManager.Instance.m_username = data.m_userName ?? Environment.UserName;
+                    NarratorScript.UserName = data.m_userName ?? Environment.UserName;
+                }
+                else
+                    NarratorScript.UserName = gameManager.Instance.m_username;
 
 
                 GetComponent<CharacterController>().enabled = true;

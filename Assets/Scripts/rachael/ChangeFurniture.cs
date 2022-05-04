@@ -63,7 +63,7 @@ namespace rachael
             foreach (GameObject door in m_hubDoors)
             {
 
-                door.GetComponent<Door>().CloseTheDoor(false);
+                door.GetComponent<Door>().CloseTheDoor(true);
             }
 
             Debug.Log("Player has finished this time era");

@@ -434,7 +434,7 @@ namespace Himanshu
                 
                 
             m_player.Unhide();
-            
+            Time.timeScale = 1f;
             m_enemy = GameObject.Instantiate(m_enemyDefault, transform, true);
             m_player.m_enemies.Add(m_enemy.GetComponent<EnemyController>());
             
