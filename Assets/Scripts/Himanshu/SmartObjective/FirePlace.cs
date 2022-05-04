@@ -15,7 +15,7 @@ namespace Himanshu.SmartObjective
         {
             if (_collider.TryGetComponent(out PlayerSmartObjectives _player) && _player.m_hasFire)
             {
-                m_animator.SetBool("Fire", true);
+                transform.GetChild(0).GetComponent<ParticleSystem>().Play();
                 m_objective.Execute(_player.GetComponent<PlayerInteract>());
                 _player.m_hasFire = false;
                 _player.m_hasCandle = false;

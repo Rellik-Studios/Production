@@ -29,8 +29,8 @@ namespace Himanshu
                 IEnumerator revertSize()
                 {
                     yield return new WaitForEndOfFrame();
-                    if (Math.Abs(prevScale - 0.7f) < 0.01f && !m_playerInput.m_crouching && !(m_playerInput.movement.magnitude > 0f)) {
-                        transform.position += new Vector3(0f, 1.5f, 0f);
+                    if (Math.Abs(prevScale - 0.5f) < 0.01f && !m_playerInput.m_crouching && !(m_playerInput.movement.magnitude > 0f)) {
+                        transform.position += new Vector3(0f, 1.4f, 0f);
                     }
                 }
                 StartCoroutine(revertSize());
