@@ -26,6 +26,7 @@ namespace Himanshu.SmartObjective
                         .AddListener(() => TextEnter((i1 * 3 + (j1 + 1))));
                 }
             }
+            transform.GetChild(2).GetComponent<Button>().onClick.AddListener(() => TextEnter(0));
         }
 
         public void TextEnter(int _number)
@@ -47,8 +48,13 @@ namespace Himanshu.SmartObjective
                 {
                     m_isLocked = true;
                     m_text.text = "";
+                    StartCoroutine(eWrongPassword());
                 }
             }
+        }
+        private IEnumerator eWrongPassword()
+        {
+            yield return null;
         }
 
         private void OnEnable()
@@ -56,6 +62,15 @@ namespace Himanshu.SmartObjective
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             FindObjectOfType<PlayerFollow>().m_mouseInput = false;
+            var player = FindObjectOfType<PlayerInteract>();
+            player.enabled = false;
+            FindObjectOfType<Raycast>().m_indication.enabled = false;
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if(other.GetComponent<PlayerInteract>() == null)    return;
+            gameObject.SetActive(false);
         }
 
         private void OnDisable()
@@ -63,6 +78,8 @@ namespace Himanshu.SmartObjective
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             FindObjectOfType<PlayerFollow>().m_mouseInput = true;
+            var player = FindObjectOfType<PlayerInteract>();
+            player.enabled = true;
         }
     }
 }
