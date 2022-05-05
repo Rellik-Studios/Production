@@ -50,6 +50,7 @@ public class GameCommandPrompt : MonoBehaviour
             {"QUIT", QuitCommand},
             {"Developer", DeveloperCommand},
             {"RESET TRANSFORM", ResetTransform.ResetT},
+            {"UNLOCK Chest", UnlockChest}
             
         };
     }
@@ -384,7 +385,81 @@ public class GameCommandPrompt : MonoBehaviour
     }
 #region Commands
 
-    
+    bool UnlockChest()
+    {
+        var chest = FindObjectOfType<LockedChest>();
+        
+        IEnumerator UnlockChestRoutine()
+        {
+            favorSystem.consoleDisplay = ConsoleDisplay.customMenu;
+            string sh = (m_inputField.contentType == TMP_InputField.ContentType.Standard) ? "hide" : "show";
+            favorSystem.m_commandText.text = "Enter the passcode" +
+                                             "\n\n" +
+                                             "Press Tab to " + sh + " the passcode";
+        
+            selectInputField();
+            m_inputField.contentType = TMP_InputField.ContentType.Password;
+            m_inputField.text = "";
+            while (true)
+            {
+                if (Input.GetKeyDown(KeyCode.Tab))
+                {
+                    m_inputField.contentType = m_inputField.contentType == TMP_InputField.ContentType.Standard ? TMP_InputField.ContentType.Password : TMP_InputField.ContentType.Standard;
+                    m_inputField.text += " ";
+                    yield return null;
+                    m_inputField.text = m_inputField.text.Substring(0, m_inputField.text.Length - 1);
+                }
+
+                if (m_commandEntered != "")
+                {
+                    break;
+                }
+
+                yield return null;
+            }
+            
+            Debug.Log(m_commandEntered);
+            if (m_commandEntered == chest.m_passcode.ToString())
+            {
+                chest.m_locked = false;
+                favorSystem.m_commandText.text = "Chest Unlocked";
+                yield return new WaitForSecondsRealtime(0.5f);
+                
+                favorSystem.CloseCommandPrompt();
+                m_commandEntered = "";
+                yield return null;
+            }
+            else
+            {
+                favorSystem.m_commandText.text = "Incorrect passcode";
+                yield return new WaitForSecondsRealtime(2f);
+               
+                m_inputField.text = "";
+                //favorSystem.consoleDisplay = ConsoleDisplay.defaultMenu;
+                m_commandEntered = "";
+                yield return null;
+                StartCoroutine(UnlockChestRoutine());
+            }
+            m_inputField.contentType = TMP_InputField.ContentType.Standard;
+            //StartCoroutine(ReturnToMenuCommandProcess());
+        }
+
+        if(gameManager.Instance.m_currentRoom == "Future Living" && !chest.m_locked)
+        {
+            favorSystem.m_commandText.text = "The chest is already unlocked";
+            this.Invoke(()=> StartCoroutine(ReturnToMenuCommandProcess()), 2f, true);
+        }
+        else if(gameManager.Instance.m_currentRoom != "Future Living")
+        {
+            favorSystem.m_commandText.text = "No locked chest detected";
+            this.Invoke(()=> StartCoroutine(ReturnToMenuCommandProcess()), 2f, true);
+        }
+        else
+        {
+            StartCoroutine(UnlockChestRoutine());
+        }
+        return true;
+    }
     
     bool FavorCommand()
     {

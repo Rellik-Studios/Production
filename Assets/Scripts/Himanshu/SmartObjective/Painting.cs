@@ -19,24 +19,23 @@ namespace Himanshu.SmartObjective
         }
         public void Execute(PlayerInteract _player)
         {
-            if (true) {
+            if (m_hasAnomaly && m_player.m_hasPaintBrush)
+            {
                m_painting.SetActive(true);
                m_painting.GetComponent<Renderer>().material = GetComponent<Renderer>().material;
-               if (!m_hasAnomaly) {
-                   m_painting.transform.GetChild(0).gameObject.SetActive(false);
-                   this.Invoke(()=>m_painting.SetActive(false), 2f);
-               } 
-               else if(m_player.m_hasPaintBrush) {
+
+               {
                    m_painting.GetComponent<Animator>().SetTrigger("Painted");
                    m_animator.SetTrigger("Painted");
                    m_objective.Execute(m_player.GetComponent<PlayerInteract>());
-                   this.Invoke(()=>m_painting.SetActive(false), 2f);
+                   this.Invoke(() => m_painting.SetActive(false), 2f);
                    ItemHold.Instance.DropItem();
                }
             }
         }
         public void CanExecute(Raycast _raycast)
         {
+            if(!m_hasAnomaly)   return;
             if (_raycast.m_indication != null)
                 _raycast.m_indication.sprite = Resources.Load<Sprite>("Interact");
         }

@@ -21,20 +21,26 @@ namespace Himanshu.SmartObjective
         {
             IEnumerator ResetCoroutine()
             {
+                instance.m_favorSystem.consoleDisplay = ConsoleDisplay.customMenu;
+                instance.m_favorSystem.m_commandText.text = gameManager.Instance.m_currentRoom == "Morden Bedroom"
+                    ? instance.m_hasReset ? "No faulty transforms detected" : "Transforms Reset Complete"
+                    : "No faulty transforms detected";
+                yield return new WaitForSecondsRealtime(1f);
 
                 instance.m_favorSystem.CloseCommandPrompt();
                 yield return new WaitForSeconds(0.3f);
-                instance.m_animators.ForEach(animator => animator.SetTrigger("ResetT"));
-                instance.m_hasReset = true;
-                instance.m_objective.Execute(FindObjectOfType<PlayerInteract>());
+                if (gameManager.Instance.m_currentRoom != "Morden Bedroom" || instance.m_hasReset)
+                {
+                    instance.m_animators.ForEach(animator => animator.SetTrigger("ResetT"));
+                    instance.m_hasReset = true;
+                    instance.m_objective.Execute(FindObjectOfType<PlayerInteract>());
+                }
             }
+
             if (gameManager.Instance.m_currentRoom != "Morden Bedroom" || instance.m_hasReset)
                 return false;
             instance.StartCoroutine(ResetCoroutine());
-
-
             return true;
         }
-        
     }
 }
