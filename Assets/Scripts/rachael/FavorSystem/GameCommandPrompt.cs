@@ -398,6 +398,7 @@ public class GameCommandPrompt : MonoBehaviour
                                              "Press Tab to " + sh + " the passcode";
         
             selectInputField();
+            m_inputField.contentType = TMP_InputField.ContentType.Password;
             m_inputField.text = "";
             while (true)
             {
@@ -438,8 +439,8 @@ public class GameCommandPrompt : MonoBehaviour
                 m_commandEntered = "";
                 yield return null;
                 StartCoroutine(UnlockChestRoutine());
-                yield break;
             }
+            m_inputField.contentType = TMP_InputField.ContentType.Standard;
             //StartCoroutine(ReturnToMenuCommandProcess());
         }
 
