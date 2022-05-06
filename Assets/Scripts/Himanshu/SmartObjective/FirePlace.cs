@@ -15,6 +15,7 @@ namespace Himanshu.SmartObjective
         {
             if (_collider.TryGetComponent(out PlayerSmartObjectives _player) && _player.m_hasFire)
             {
+                PlayerInteract.PlaySound(Resources.Load<AudioClip>("SFX/CandleToFirePlace"));
                 transform.GetChild(0).GetComponent<ParticleSystem>().Play();
                 m_objective.Execute(_player.GetComponent<PlayerInteract>());
                 _player.m_hasFire = false;

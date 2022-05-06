@@ -2,8 +2,6 @@ using System;
 using UnityEngine;
 namespace Himanshu.SmartObjective
 {
-
-
     public class Fire : MonoBehaviour
     {
         private Animator m_animator;
@@ -20,7 +18,7 @@ namespace Himanshu.SmartObjective
                 _player.m_hasFire = true;
                 if (ItemHold.Instance.m_heldItemPlaceHolder.GetComponent<Candle>() != null) 
                 {
-                    
+                    PlayerInteract.PlaySound(Resources.Load<AudioClip>("SFX/FireToCandle"));
                     ItemHold.Instance.m_heldItemPlaceHolder.GetComponent<Candle>().isLit = true;
                     ItemHold.Instance.m_heldItem.GetComponent<Candle>().isLit = true;
                     m_animator.SetBool("DisableFire", true);

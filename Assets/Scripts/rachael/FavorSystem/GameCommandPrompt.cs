@@ -591,6 +591,7 @@ public class GameCommandPrompt : MonoBehaviour
         {
             favorName = GrantTypeofFavor();
             favorSystem.m_commandText.text += " Favor Accepted.";
+            PlayerInteract.PlaySound(Resources.Load<AudioClip>("SFX/FavorAccepted"));
             favorSystem.m_commandText.text += "\nGrant " + NarratorScript.UserName + " the ability of " + favorName;
             favorSystem.m_commandText.text += "\n\nCommence shut down process.";
 
@@ -598,7 +599,9 @@ public class GameCommandPrompt : MonoBehaviour
         else
         {
             favorName = "";
+            
             favorSystem.m_commandText.text += " Favor Denied.\n\nCommence shut down process";
+            PlayerInteract.PlaySound(Resources.Load<AudioClip>("SFX/FavorDenied"));
         }
     }
 

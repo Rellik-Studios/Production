@@ -16,6 +16,7 @@ namespace rachael
 
         [SerializeField] private AudioClip m_pickUp;
         [SerializeField] private GameObject m_glow;
+        private AudioSource m_audioSource;
 
         private void OnEnable()
         {
@@ -28,7 +29,7 @@ namespace rachael
 
         void Start()
         {
-
+            m_audioSource = GetComponent<AudioSource>();
            
         }
 
@@ -47,9 +48,12 @@ namespace rachael
             {
                 if (!transform.parent.parent.Find(piece.m_objectName).gameObject.activeSelf)
                 {
+                    if(m_depositedObjects.Count > 2 && !m_audioSource.isPlaying)
+                        m_audioSource.Play();
                     transform.parent.parent.Find(piece.m_objectName).gameObject.SetActive(true);
                     m_depositedObjects.Add(piece);
                     _player.m_inventory.Remove(piece);
+                    m_audioSource.PlayOneShot(m_pickUp);
                     _player.m_testInventory = _player.m_inventory.Keys.ToList();
                     FindObjectOfType<PlayerSave>().SavePlayer();
                     CheckVictory();

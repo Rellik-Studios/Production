@@ -68,26 +68,26 @@ namespace Himanshu.SmartObjective
                 OneTimeText.SetText("Press RMB to drop the object", ()=>false);
                 wait = true;
             }
-            this.Invoke(() => {
-                switch (m_objName) {
-                    case eObjName.Candle:
-                        OneTimeText.SetText("Find the misplaced Fire and put it back in the right place", () => false);
-                        break;
-                    case eObjName.PaintBrush:
-                        OneTimeText.SetText("Find the painting with the Anomaly", () => false);
-                        break;
-                    case eObjName.MusicNotes:
-                        break;
-                    case eObjName.NewsPaper:
-                        OneTimeText.SetText("Return the NewsPaper, back to the Man", () => false);
-                        break;
-                }
-            }, wait ? 3f : 0);
+            // this.Invoke(() => {
+            //     switch (m_objName) {
+            //         case eObjName.Candle:
+            //             OneTimeText.SetText("Find the misplaced Fire and put it back in the right place", () => false);
+            //             break;
+            //         case eObjName.PaintBrush:
+            //             OneTimeText.SetText("Find the painting with the Anomaly", () => false);
+            //             break;
+            //         case eObjName.MusicNotes:
+            //             break;
+            //         case eObjName.NewsPaper:
+            //             OneTimeText.SetText("Return the NewsPaper, back to the Man", () => false);
+            //             break;
+            //     }
+            // }, wait ? 3f : 0);
+            
             if(m_objName == eObjName.VRHeadset)
                 GetComponent<MeshRenderer>().enabled = false;
             ItemHold.Instance.HoldItem(this.gameObject);
             m_actions[m_objName]();
-            _player.GetComponent<PlayerSmartObjectives>().m_hasNotes = true;
         }
         public void CanExecute(Raycast _raycast)
         {
