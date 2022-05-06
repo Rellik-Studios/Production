@@ -22,6 +22,7 @@ namespace Himanshu
             if(m_locked)    return;
             FavorSystem.startTimer = false;
             m_unlockVFX.SetActive(true);
+            m_audioSource?.Play();
             m_dissapearingDoor.SetActive(false);
             gameObject.SetActive(false);
         }

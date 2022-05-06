@@ -35,7 +35,6 @@ namespace rachael
         // Update is called once per frame
         void Update()
         {
-
             if(m_fadeOut)
             {
                 Color outDoorColor = this.m_doorframe.GetComponent<Renderer>().material.color;
@@ -80,9 +79,8 @@ namespace rachael
         {
             if (_other.GetComponent<PlayerInteract>() != null)
             {
-                //transforming the opaque material to transparent material
-                this.m_doorframe.GetComponent<Renderer>().material = m_materialDoor;
-                this.m_door.GetComponent<Renderer>().material = m_materialDoor;
+                m_doorframe.GetComponent<Renderer>().material = m_materialDoor;
+                m_door.GetComponent<Renderer>().material = m_materialDoor;
 
                 m_event?.Invoke();
                 m_wall.SetActive(true);

@@ -29,6 +29,8 @@ namespace Himanshu
         public void Execute(PlayerInteract _player)
         {
             stallState = stallState == eStallState.Close ? eStallState.Open : eStallState.Close;
+            
+            GetComponent<AudioSource>()?.Play();
         }
         public void CanExecute(Raycast _raycast)
         {

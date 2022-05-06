@@ -210,7 +210,7 @@ namespace Himanshu
 
             m_narratorDialogue = tempNarr ?? new NarratorDialogue();
             
-            m_waitPlay = StartCoroutine(SetText("", m_textBox));
+            m_waitPlay = StartCoroutine(eSetText("", m_textBox));
             m_idleTimer = Random.Range(90f, 120f);
             
         }
@@ -252,7 +252,7 @@ namespace Himanshu
             m_textBox.text = "";
             // if (!m_settingText)
             {
-                StartCoroutine(SetText(_toPlay, m_textBox)); 
+                StartCoroutine(eSetText(_toPlay, m_textBox)); 
             }
         }
         public void Play(List<string> _toPlay, bool _isRandom = true)
@@ -262,12 +262,13 @@ namespace Himanshu
             if (_toPlay.Count > 1 && !m_settingText)
             {
                 int rand = Random.Range(1, _toPlay.Count);
-                StartCoroutine(SetText(_toPlay[_isRandom ? rand : 1], m_textBox));
+                StartCoroutine(eSetText(_toPlay[_isRandom ? rand : 1], m_textBox));
                 _toPlay.RemoveAt(_isRandom ? rand : 1);
             }
+            
             else if (!m_settingText)
             {
-                StartCoroutine(SetText(_toPlay[0], m_textBox));
+                StartCoroutine(eSetText(_toPlay[0], m_textBox));
             }
 
             else
@@ -285,7 +286,7 @@ namespace Himanshu
             Play(_toPlay);
         }
 
-        IEnumerator SetText(string _text, TMP_Text _textBox, bool additive = false)
+        IEnumerator eSetText(string _text, TMP_Text _textBox, bool additive = false)
         {
            
             if (_text.Length > 15 && m_audioClips.TryGetValue(_text.Substring(0, 15), out AudioClip clip))
@@ -314,7 +315,7 @@ namespace Himanshu
                 if (letter == '#')
                 {
                     yield return new WaitForSeconds(2f);
-                    yield return StartCoroutine(SetText(_text.Substring(pos + 1), _textBox));
+                    yield return StartCoroutine(eSetText(_text.Substring(pos + 1), _textBox));
                     yield break;
                 }
 
@@ -358,7 +359,7 @@ namespace Himanshu
                     {
                         if (letter == '$')
                         {
-                            yield return StartCoroutine(SetText(conditions[ConditionCheck(condition).Result], _textBox, true));
+                            yield return StartCoroutine(eSetText(conditions[ConditionCheck(condition).Result], _textBox, true));
                             conditionStart = false;
                             conditionEnd = false;
                             continue;
@@ -399,7 +400,7 @@ namespace Himanshu
 
                 if (choiceEnd)
                 {
-                    yield return StartCoroutine(SetText("%" + choices.Random(), _textBox, true));
+                    yield return StartCoroutine(eSetText("%" + choices.Random(), _textBox, true));
                     m_settingText = true;
                     choiceEnd = false;
                     continue;
@@ -423,7 +424,7 @@ namespace Himanshu
                     {
                         var t = EvaluateCommand(command);
                         if(t != "")
-                            yield return StartCoroutine(SetText(t, _textBox, true));
+                            yield return StartCoroutine(eSetText(t, _textBox, true));
                         m_settingText = true;
                         //_textBox.text += EvaluateCommand(command);
                         commandStart = false;

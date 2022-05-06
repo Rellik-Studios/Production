@@ -36,6 +36,7 @@ namespace Himanshu.SmartObjective
         private void OnTriggerEnter(Collider other)
         {
             if(other.GetComponent<PlayerInteract>() == null)    return;
+            PlayerInteract.PlaySound(Resources.Load<AudioClip>("SFX/KitchenTilesChange"));
             m_tileType = m_tileType == eKitchenTile.Diamond ? eKitchenTile.Star : eKitchenTile.Diamond;
             GetComponent<MeshRenderer>().material = m_tileType == eKitchenTile.Diamond ? m_diamondMat : m_starMat;
             m_manager.CheckUpdate();
