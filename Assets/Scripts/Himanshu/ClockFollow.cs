@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Himanshu
 {
+
     public class ClockFollow : MonoBehaviour
     {
         private GameObject m_secondsHand;

@@ -1,7 +1,8 @@
+using rachael;
 using UnityEngine;
 namespace Himanshu.SmartObjective
 {
-    public class SilhouetteMan : MonoBehaviour
+    public class SilhouetteMan : MonoBehaviour, IInteract
     {
         private Animator m_animator;
         private PlayerSmartObjectives m_player;
@@ -13,11 +14,22 @@ namespace Himanshu.SmartObjective
         private void OnTriggerEnter(Collider _collider)
         {
             if(_collider.TryGetComponent(out PlayerSmartObjectives _player) && _player.m_hasNewsPaper) {
-                m_player = _player;
-                m_animator.SetBool("NewsPaper", true);
-                ItemHold.Instance.DropItem();
-                m_objective.Execute(_player.GetComponent<PlayerInteract>());
+                
             }
+        }
+        public void Execute(PlayerInteract _player)
+        {
+            m_player = _player.GetComponent<PlayerSmartObjectives>();
+            if(!m_player.m_hasNewsPaper) return;
+            m_animator.SetBool("NewsPaper", true);
+            PlayerInteract.PlaySound(Resources.Load<AudioClip>("SFX/NewsPaperDelivery"));
+            ItemHold.Instance.DropItem();
+            m_objective.Execute(_player);
+        }
+        public void CanExecute(Raycast _raycast)
+        {
+            if (_raycast.m_indication != null)
+                _raycast.m_indication.sprite = Resources.Load<Sprite>("Interact");
         }
     }
 }
