@@ -11,6 +11,7 @@ namespace Himanshu
         private void Start()
         {
             m_animator = GetComponent<Animator>();
+            m_objective.m_locked = !aIsHandOpen;
         }
 
         private bool aIsHandOpen {
@@ -25,7 +26,8 @@ namespace Himanshu
         }
         public void CanExecute(Raycast _raycast)
         {
-            throw new System.NotImplementedException();
+            if (_raycast.m_indication != null)
+                _raycast.m_indication.sprite = Resources.Load<Sprite>("Interact");
         }
     }
 }
