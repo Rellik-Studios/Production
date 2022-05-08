@@ -28,8 +28,8 @@ namespace Himanshu.SmartObjective
                 yield return new WaitForSecondsRealtime(1f);
 
                 instance.m_favorSystem.CloseCommandPrompt();
-                yield return new WaitForSeconds(0.3f);
-                if (gameManager.Instance.m_currentRoom != "Morden Bedroom" || instance.m_hasReset)
+                yield return new WaitForSeconds(0.9f);
+                if (gameManager.Instance.m_currentRoom == "Morden Bedroom" && !instance.m_hasReset)
                 {
                     instance.m_animators.ForEach(animator => animator.SetTrigger("ResetT"));
                     instance.m_hasReset = true;
@@ -37,8 +37,8 @@ namespace Himanshu.SmartObjective
                 }
             }
 
-            if (gameManager.Instance.m_currentRoom != "Morden Bedroom" || instance.m_hasReset)
-                return false;
+            // if (gameManager.Instance.m_currentRoom != "Morden Bedroom" || instance.m_hasReset)
+            //     return false;
             instance.StartCoroutine(ResetCoroutine());
             return true;
         }
