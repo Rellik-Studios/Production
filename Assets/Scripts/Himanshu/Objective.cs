@@ -1,9 +1,12 @@
+using System;
 using rachael;
 using rachael.FavorSystem;
 using UnityEngine;
 
 namespace Himanshu
 {
+
+
     public class Objective : MonoBehaviour, IInteract
     {
         [SerializeField] private GameObject m_dissapearingDoor;
