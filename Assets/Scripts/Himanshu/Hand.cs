@@ -7,12 +7,13 @@ namespace Himanshu
         public bool HandOpen;
         private Animator m_animator;
 
-        [SerializeField] private Objective m_objective;
+        [SerializeField] private MeshCollider m_objective;
         private void Start()
         {
             m_animator = GetComponent<Animator>();
             aIsHandOpen = HandOpen;
-            m_objective.m_locked = aIsHandOpen;
+            if(m_objective != null )
+                m_objective.enabled = aIsHandOpen;
             
         }
 
@@ -24,7 +25,8 @@ namespace Himanshu
         public void Execute(PlayerInteract _player)
         {
             aIsHandOpen = !aIsHandOpen;
-            m_objective.m_locked = aIsHandOpen;
+            if (m_objective != null)
+                m_objective.enabled = aIsHandOpen;
         }
         public void CanExecute(Raycast _raycast)
         {
