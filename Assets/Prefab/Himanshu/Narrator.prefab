@@ -68,28 +68,29 @@ MonoBehaviour:
   - "\rHIDDEN\r"
   - "You can hide from the enemies but you can\u2019t hide from time.\r"
   - "Aren\u2019t you glad you have me to keep you company in here?\r"
-  - You have now entered HIDDEN STATE.
+  - You have now entered HIDDEN STATE. Or something.
   m_spottedLines:
   - 
   - Time to run!
-  - How unfortunate.
+  - "It\u2019s such a shame, to lose @userName when they were so young..."
   - I'll prepare your grave.
   - "Uh oh! You\u2019ve been spotted."
   - Yikes!
-  - Aaaaah!!
+  - Aaaaah!
   - DETECTED
   - Eek!
-  - "It\u2019s got you in its sights, @userName."
+  - "It\u2019s got you in its sights, @userName ."
+  - I'll start preparing my eulogy.
   m_madeSound:
   - 
   - "Shhh @userName, be quiet.\r"
   - "You\u2019re making a ruckus, it\u2019s really disrupting my peace."
-  - Ah yes, silent as a grave.
+  - Ah yes, silent as a circus.
   - "You\u2019re the rowdy type, aren\u2019t you, @userName?"
-  - You come to my world uninvited and make a mess of things? How disrespectful.
+  - You come to my world uninvited and make such a ruckus? How disrespectful.
   - Stop that.
   - They heard that.
-  - "Wow @userName ! You\u2019re as stealthy as a broken steam train!"
+  - "Wow @userName ! You\u2019re as stealthy as a steam train!"
   - Is this supposed to be a diversion?
   - I hope being obnoxiously loud is part of your plan.
   - 343 metres per second. The speed of sound. Are you trying to outrun it?
@@ -119,7 +120,7 @@ MonoBehaviour:
   - 'Lovely ballroom.#
 
     @userName, Have you ever danced with anyone?'
-  - Music trancends time.
+  - Music transcends time.
   - You know, I would say the speed of sound is actually pretty slow.
   m_cafeteria:
   - 
@@ -128,12 +129,13 @@ MonoBehaviour:
   - "Doesn\u2019t this remind you of school days?"
   m_maze:
   - 
-  - "Isn\u2019t human existence similar to a maze? A confusing journey to the end."
-  - "Now you have to complete a maze! Just like a lab rat. Let\u2019s test your intelligence!"
+  - Traverse the maze of life.
+  - "You must complete this maze, just like a lab rat. Let\u2019s test your intelligence!"
+  - "Careful, there might be an enemy just around the corner\u2026"
   m_bathroom:
   - 
   - "So many mirrors. How much of the self lies in one\u2019s appearance?"
-  - Many people lead their lives like Narcissus.
+  - Many people lead their lives like Narcissus. Truly the happiest way to be.
   m_mirrorShatter:
   - 
   - Have fun with the next 7 years!
@@ -153,7 +155,7 @@ MonoBehaviour:
   m_hospital1870:
   - 
   - The chainsaw was invented to be a medical instrument. Did you know that @userName?
-  - "Ah, yes, the 19th century\u2026 when heroin was prescribed to kids."
+  - "The good old days\u2026 when heroin was prescribed to kids."
   - "Doctors back then would recommend a \u201Cchange of air\u201D for your flu."
   m_hospitalFuturistic:
   - 
@@ -161,23 +163,22 @@ MonoBehaviour:
     things don\u2019t change."
   - "There\u2019ll always be a new disease ready to challenge humanity.#\nHave you
     considered how frail you are?"
-  - "Technology slowly but surely takes over every part of human life.#\nEveryone
-    soon will be unable to tear their eyes away from the screen\u2026#\njust like
-    you, at this very moment."
+  - Technology slowly but surely takes over every part of human life.
   - "I would tell you what happens in the future, but I don\u2019t wanna spoil it.#\nOr
-    cause unwanted butterfly effects.\n"
+    cause unwanted butterfly effects. The cleanup would be too bothersome."
   - "If you fear A.I. taking over in the future, you would be absolutely correct.#\nI
-    suppose even I\u2019m an A.I. of sorts, in this form.\n"
+    suppose even I\u2019m an A.I. of sorts, in this form. Do I scare you?\n"
   m_hospitalPresent:
   - 
-  - "2020 onwards was a true test for humanity\u2019s progress."
+  - "The pandemic was a true test for humanity\u2019s progress."
   - "There\u2019s still a lot about the human body that humanity does not know."
+  - The human brain is still a enigma.
   m_hub1:
   - 
   - "@disableDoor You\u2019re gonna need to help me. Your only other option is quitting,
     I suppose.#\n*tutorialSkipped |%|Surely you can\u2019t refuse, not after I\u2019ve
     been so helpful!|$$ #\nLong story short, I need you to fix that clock over there.\r#\nGo
-    through any of those doors, we can talk more inside.# ~@enableDoor "
+    through any of these doors, we'll talk more inside. @enableDoor "
   m_hub2:
   - "Don\u2019t you wish this could be easier?#\nDon\u2019t you wish you could just
     go back in time?#\nWell, since I\u2019m feeling generous today\u2026 you can!#\nJust
@@ -422,11 +423,11 @@ MonoBehaviour:
     figure it out. #
 
     You can come out now, don''t be shy.'
-  - 'Now you might ask "why hide"? #
+  - 'Now you might ask "why hide"?#
 
     I''ll give you a reason.'
   - Meet your new best friend.
-  - 'I''d hide if I were you its idea of friendship is rather... violent. #
+  - 'I''d hide if I were you, its idea of friendship is rather... violent. #
 
     But
     not to worry, I slowed this one down for you, as a gift. It won''t be this easy
@@ -434,10 +435,16 @@ MonoBehaviour:
   - That concludes our tutorial.
   m_tutorialBook:
   - "@disableDoor That holy book over there\u2026 you can use it to keep a record
-    of your progress. # \nTo write your own history, if you will. # \nIt would be
-    a shame to have to repeat everything every time you died would it not? # \nConsider
-    it a blessing. #\n ~@enableDoor "
-  m_tutorialEndRoom: []
+    of your progress. #\nTo write your own history, if you will. #\nIt would be a
+    shame to have to repeat everything every time you died would it not?#\nConsider
+    it a blessing. @enableDoor "
+  m_tutorialEndRoom:
+  - "Oh my! It seems we\u2019ve made it to the end of this continuum.#\nI commend
+    you for making it this far.#\r\nHave a look around, one of the clock pieces I
+    need is somewhere in this space."
+  - "Wonderful job! Let\u2019s press on shall we?\r#\n\rJust step into the rift."
+  - "\rCome on in, don\u2019t worry. I can assure you, your safety is pretty much
+    guaranteed!"
   m_tutorialObj:
   - "Hm, I sense a presence\u2026 it seems there\u2019s an anomaly somewhere in this
     room.#\nSomething that shouldn\u2019t be here. Not now.#\nAn item from another
