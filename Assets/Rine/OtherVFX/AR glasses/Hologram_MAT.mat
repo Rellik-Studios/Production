@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_DissolveShader
-  m_Shader: {fileID: -6465566751694194690, guid: 314b52f7624a2df4aa08808ade1eb276, type: 3}
+  m_Name: Hologram_MAT
+  m_Shader: {fileID: -6465566751694194690, guid: 72b75337a4ea83740b9078779a999d2c, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,12 +19,8 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_ee986ed2d0ce4cab9a5220afd73cc9cd:
-        m_Texture: {fileID: 2800000, guid: f4207ed5153a4f849ad6a02bd474c3a5, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_dafd0ba7497548289719ae5e574aabbb_Texture_1:
-        m_Texture: {fileID: 2800000, guid: e8bf39a4de26e48488ad457ab1a2717a, type: 3}
+    - _SampleTexture2D_ace97bdf24514928a0da9593a2542c3e_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 196ee736914f0ca49b8b7f4b932e09c4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -39,9 +35,7 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_185877bb4f394e679dee6e7cb8de8f03: 0.03
-    - Vector1_621df8c658744cedbb5175406c3abfd2: 0.5
-    - Vector1_e464c8b30e0f472bbf8c25ece2c7cf73: 0
-    m_Colors: []
+    m_Floats: []
+    m_Colors:
+    - Color_b9efba7db51b476cab36b9515deef82e: {r: 1, g: 0.52973664, b: 0.18301877, a: 0}
   m_BuildTextureStacks: []
