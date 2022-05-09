@@ -420,6 +420,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2259837333907047028}
   - component: {fileID: 1789678823556762817}
+  - component: {fileID: 2869697468329620457}
+  - component: {fileID: 882038942}
   m_Layer: 0
   m_Name: handAnimation
   m_TagString: Untagged
@@ -465,6 +467,33 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &2869697468329620457
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447729956485486798}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.33, y: 0.41, z: 0.08933115}
+  m_Center: {x: 0, y: 0.2, z: -0.015312433}
+--- !u!114 &882038942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447729956485486798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e0a389fe9634e13a4b246443135014b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HandOpen: 0
+  m_objective: {fileID: 0}
 --- !u!1 &1466089318105631339
 GameObject:
   m_ObjectHideFlags: 0
