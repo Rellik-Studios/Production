@@ -4,25 +4,29 @@ namespace Himanshu
 {
     public class Hand : MonoBehaviour, IInteract
     {
-
+        public bool HandOpen;
         private Animator m_animator;
 
-        [SerializeField] private Objective m_objective;
+        [SerializeField] private MeshCollider m_objective;
         private void Start()
         {
             m_animator = GetComponent<Animator>();
-            m_objective.m_locked = !aIsHandOpen;
+            aIsHandOpen = HandOpen;
+            if(m_objective != null )
+                m_objective.enabled = aIsHandOpen;
+            
         }
 
         private bool aIsHandOpen {
-            get => m_animator.GetBool("IsOpen");
-            set => m_animator.SetBool("IsOpen", value);
+            get => m_animator.GetBool("IsOpening");
+            set => m_animator.SetBool("IsOpening", value);
         }
         
         public void Execute(PlayerInteract _player)
         {
             aIsHandOpen = !aIsHandOpen;
-            m_objective.m_locked = !aIsHandOpen;
+            if (m_objective != null)
+                m_objective.enabled = aIsHandOpen;
         }
         public void CanExecute(Raycast _raycast)
         {
