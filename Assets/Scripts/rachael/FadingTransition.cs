@@ -75,6 +75,10 @@ namespace rachael
             m_fadeOut = true;
         }
 
+        public void SetTimeEra(string _era)
+        {
+            gameManager.Instance.m_timeEra = _era;
+        }
         private void OnTriggerEnter(Collider _other)
         {
             if (_other.GetComponent<PlayerInteract>() != null)

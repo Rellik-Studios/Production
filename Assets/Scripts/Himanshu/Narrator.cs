@@ -28,7 +28,7 @@ namespace Himanshu
         
         public bool hidingLines
         {
-            set => Play(m_hidingLines);
+            set => Play(m_hidingLines, true, gameManager.Instance.m_timeEra);
         }
         
         
@@ -37,7 +37,7 @@ namespace Himanshu
         
         public bool spottedLines
         {
-            set => Play(m_spottedLines);
+            set => Play(m_spottedLines, true, gameManager.Instance.m_timeEra);
         }
         
         [TextArea(4, 6)]
@@ -45,7 +45,7 @@ namespace Himanshu
         
         public bool madeSound
         {
-            set => Play(m_madeSound);
+            set => Play(m_madeSound, true, gameManager.Instance.m_timeEra);
         }
         
         [TextArea(4, 6)]
@@ -61,14 +61,14 @@ namespace Himanshu
         
         public bool breathing
         {
-            set => Play(m_breathing);
+            set => Play(m_breathing, true, gameManager.Instance.m_timeEra);
         }
         [TextArea(4, 6)]
         [SerializeField] public List<string> m_idleRoom;
         
         public bool idleRoom
         {
-            set => Play(m_idleRoom);
+            set => Play(m_idleRoom, true, gameManager.Instance.m_timeEra);
         }
 
         [TextArea(4, 6)]
@@ -203,6 +203,10 @@ namespace Himanshu
             var clips = Resources.LoadAll<AudioClip>("Dialogues/");
             foreach (var clip in clips)
             {
+                if (clip.name.Length <= 15) {
+                    m_audioClips.Add(clip.name, clip);
+                    continue;
+                }
                 m_audioClips.Add(clip.name.Substring(0, 15), clip);
                 Debug.Log(clip.name);
             }
@@ -255,14 +259,17 @@ namespace Himanshu
                 StartCoroutine(eSetText(_toPlay, m_textBox)); 
             }
         }
-        public void Play(List<string> _toPlay, bool _isRandom = true)
+        public void Play(List<string> _toPlay, bool _isRandom = true, string _timePeriod = "")
         {
             if (gameManager.Instance.isTutorialRunning) return;
                 
             if (_toPlay.Count > 1 && !m_settingText)
             {
                 int rand = Random.Range(1, _toPlay.Count);
-                StartCoroutine(eSetText(_toPlay[_isRandom ? rand : 1], m_textBox));
+                if (_timePeriod != "")
+                    StartCoroutine(eSetText(_timePeriod + _toPlay[_isRandom ? rand : 1], m_textBox));
+                else
+                    StartCoroutine(eSetText(_toPlay[_isRandom ? rand : 1], m_textBox));
                 _toPlay.RemoveAt(_isRandom ? rand : 1);
             }
             
@@ -292,6 +299,10 @@ namespace Himanshu
             if (_text.Length > 15 && m_audioClips.TryGetValue(_text.Substring(0, 15), out AudioClip clip))
             {
                 m_audioSource.PlayOneShot(clip);
+            }
+            else if (_text.Length <= 15 && m_audioClips.TryGetValue(_text, out AudioClip clip2))
+            {
+                m_audioSource.PlayOneShot(clip2);
             }
             m_settingText = true;
             if(!additive) _textBox.text = "";
@@ -466,6 +477,14 @@ namespace Himanshu
         {
             switch (_command)
             {
+                case "8":
+                    return "";
+                case "9":
+                    return "";
+                case "p":
+                    return "";
+                case "f":
+                    return "";
                 case "disableDoor":
                 {
                     foreach (var door in FindObjectsOfType<Door>())
