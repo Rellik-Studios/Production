@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using rachael;
 using rachael.SaveSystem;
@@ -203,11 +204,10 @@ namespace Himanshu
             var clips = Resources.LoadAll<AudioClip>("Dialogues/");
             foreach (var clip in clips)
             {
-                if (clip.name.Length <= 15) {
-                    m_audioClips.Add(clip.name, clip);
-                    continue;
-                }
-                m_audioClips.Add(clip.name.Substring(0, 15), clip);
+                var clipName = Regex.Replace(clip.name, "[^a-zA-Z0-9]+", "", RegexOptions.Compiled);
+                clipName = clipName.Replace(" ", "");
+                if(m_audioClips.ContainsKey(clipName))  continue;
+                m_audioClips.Add(clipName, clip);
                 Debug.Log(clip.name);
             }
             var tempNarr = SaveSystem.LoadNarrator();
@@ -295,8 +295,11 @@ namespace Himanshu
 
         IEnumerator eSetText(string _text, TMP_Text _textBox, bool additive = false)
         {
-           
-            if (_text.Length > 15 && m_audioClips.TryGetValue(_text.Substring(0, 15), out AudioClip clip))
+            var fileName = _text.Contains("#") ? _text.Substring(0, _text.LastIndexOf("#", StringComparison.Ordinal) - 1) : _text;
+                fileName = Regex.Replace(fileName, "[^a-zA-Z0-9]+", "", RegexOptions.Compiled);
+                fileName = fileName.Replace(".", "");
+                fileName = fileName.Replace(" ", "");
+            if (m_audioClips.TryGetValue(fileName, out AudioClip clip))
             {
                 m_audioSource.PlayOneShot(clip);
             }
