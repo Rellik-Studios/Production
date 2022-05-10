@@ -28,6 +28,7 @@ namespace Himanshu
         private int m_objTut;
         private int m_bookTut;
         private int m_endTut;
+        public string m_timeEra = "";
 
         private void Awake()
         {
