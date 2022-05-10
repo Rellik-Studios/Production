@@ -178,7 +178,7 @@ MonoBehaviour:
   - "@disableDoor You\u2019re gonna need to help me. Your only other option is quitting,
     I suppose.#\n*tutorialSkipped |%|Surely you can\u2019t refuse, not after I\u2019ve
     been so helpful!|$$ #\nLong story short, I need you to fix that clock over there.\r#\nGo
-    through any of these doors, we'll talk more inside. @enableDoor "
+    through any of those doors, we can talk more inside. @enableDoor "
   m_hub2:
   - "Don\u2019t you wish this could be easier?#\nDon\u2019t you wish you could just
     go back in time?#\nWell, since I\u2019m feeling generous today\u2026 you can!#\nJust
@@ -199,7 +199,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 489767467866829602, guid: 96e9b489fe2029544b8d9b60fe606bd9, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -434,7 +434,7 @@ MonoBehaviour:
     where you''re going.'
   - That concludes our tutorial.
   m_tutorialBook:
-  - "@disableDoor That holy book over there\u2026 you can use it to keep a record
+  - "@disableDoor That blessed book over there\u2026 you can use it to keep a record
     of your progress. #\nTo write your own history, if you will. #\nIt would be a
     shame to have to repeat everything every time you died would it not?#\nConsider
     it a blessing. @enableDoor "
