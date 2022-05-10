@@ -208,7 +208,7 @@ namespace Himanshu
                 clipName = clipName.Replace(" ", "");
                 if(m_audioClips.ContainsKey(clipName))  continue;
                 m_audioClips.Add(clipName, clip);
-                Debug.Log(clip.name);
+                Debug.Log(clipName);
             }
             var tempNarr = SaveSystem.LoadNarrator();
 
@@ -275,27 +275,27 @@ namespace Himanshu
             
             else if (!m_settingText)
             {
-                StartCoroutine(eSetText(_toPlay[0], m_textBox));
+                StartCoroutine(eSetText(_timePeriod + _toPlay[0], m_textBox));
             }
 
             else
             {
-                //StopCoroutine(m_waitPlay);
-                m_waitPlay = StartCoroutine(WaitAndPlay(_toPlay));
+                StopCoroutine(m_waitPlay);
+                m_waitPlay = StartCoroutine(WaitAndPlay(_toPlay, _isRandom, _timePeriod));
             }
             
             SaveSystem.SaveNarrator();
         }
 
-        private IEnumerator WaitAndPlay(List<string> _toPlay)
+        private IEnumerator WaitAndPlay(List<string> _toPlay, bool _isRandom, string _timePeriod)
         {
             yield return new WaitWhile(() => m_settingText);
-            Play(_toPlay);
+            Play(_toPlay, _isRandom, _timePeriod);
         }
 
         IEnumerator eSetText(string _text, TMP_Text _textBox, bool additive = false)
         {
-            var fileName = _text.Contains("#") ? _text.Substring(0, _text.LastIndexOf("#", StringComparison.Ordinal) - 1) : _text;
+            var fileName = _text.Contains("#") ? _text.Substring(0, _text.IndexOf("#", StringComparison.Ordinal) - 1) : _text;
                 fileName = Regex.Replace(fileName, "[^a-zA-Z0-9]+", "", RegexOptions.Compiled);
                 fileName = fileName.Replace(".", "");
                 fileName = fileName.Replace(" ", "");
