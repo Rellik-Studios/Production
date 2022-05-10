@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="de8b67ab-e0b5-4d99-a633-e1ffe02f1d8c" name="Changes" comment="Changes">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Production/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Production/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Piano.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Piano.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Himanshu/Narrator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Himanshu/Narrator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Himanshu/gameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Himanshu/gameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,10 +88,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="2347">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="2347" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -134,7 +133,8 @@
       <workItem from="1651758528072" duration="299000" />
       <workItem from="1651759423102" duration="13696000" />
       <workItem from="1652009883333" duration="3451000" />
-      <workItem from="1652180140097" duration="1492000" />
+      <workItem from="1652180140097" duration="2263000" />
+      <workItem from="1652194865777" duration="3722000" />
     </task>
     <servers />
   </component>
@@ -158,12 +158,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Himanshu/EnemyController.cs</url>
-          <line>609</line>
-          <properties documentPath="D:\Repos\Production\Assets\Scripts\Himanshu\EnemyController.cs" initialLine="514" containingFunctionPresentation="method 'ChaseToPatrol'" />
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/rachael/SafeRoom.cs</url>
           <line>49</line>
@@ -202,6 +196,32 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Himanshu/Narrator.cs</url>
+          <line>303</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/Himanshu/Narrator.cs" initialLine="297" containingFunctionPresentation="method 'eSetText'">
+            <startOffsets>
+              <option value="8386" />
+            </startOffsets>
+            <endOffsets>
+              <option value="8418" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Himanshu/Narrator.cs</url>
+          <line>301</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/Himanshu/Narrator.cs" initialLine="299" containingFunctionPresentation="method 'eSetText'">
+            <startOffsets>
+              <option value="8296" />
+            </startOffsets>
+            <endOffsets>
+              <option value="8355" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

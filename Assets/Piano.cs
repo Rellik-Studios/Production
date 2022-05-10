@@ -31,15 +31,15 @@ public class Piano : MonoBehaviour
 
             if (m_dir) {
                 //Interpolate between the two materials
-                m_futureMat.SetFloat("_FillPercent", Mathf.Lerp(m_futureMat.GetFloat("_FillPercent"), 1f, Time.deltaTime * 2f));
-                m_1870Mat.SetFloat("_FillPercent", Mathf.Lerp(m_1870Mat.GetFloat("_FillPercent"), 1f, Time.deltaTime * 2f));
+                m_futureMat.SetFloat("_FillPercent", Mathf.Lerp(m_futureMat.GetFloat("_FillPercent"), 1f, Time.deltaTime / 3f));
+                m_1870Mat.SetFloat("_FillPercent", Mathf.Lerp(m_1870Mat.GetFloat("_FillPercent"), 1f, Time.deltaTime / 3f));
                 if(m_futureMat.GetFloat("_FillPercent") >= 0.8f) {
                     m_dir = false;
                 }
             } 
             else {
-                m_futureMat.SetFloat("_FillPercent", Mathf.Lerp(m_futureMat.GetFloat("_FillPercent"), 0f, Time.deltaTime * 2f));
-                m_1870Mat.SetFloat("_FillPercent", Mathf.Lerp(m_1870Mat.GetFloat("_FillPercent"), 0f, Time.deltaTime * 2f));
+                m_futureMat.SetFloat("_FillPercent", Mathf.Lerp(m_futureMat.GetFloat("_FillPercent"), 0f, Time.deltaTime / 2f));
+                m_1870Mat.SetFloat("_FillPercent", Mathf.Lerp(m_1870Mat.GetFloat("_FillPercent"), 0f, Time.deltaTime / 2f));
                 if (m_futureMat.GetFloat("_FillPercent") <= 0.2f) {
                     m_dir = true;
                 }
