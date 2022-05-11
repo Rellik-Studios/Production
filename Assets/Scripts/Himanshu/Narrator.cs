@@ -36,11 +36,18 @@ namespace Himanshu
         [TextArea(4, 6)]
         [SerializeField] public List<string> m_spottedLines;
         
-        public bool spottedLines
-        {
-            set => Play(m_spottedLines, true, gameManager.Instance.m_timeEra);
+        private bool m_spottedTrigger = false;
+        public bool spottedLines {
+            set {
+                if (!m_spottedTrigger) {
+                    Play(m_spottedLines, true, gameManager.Instance.m_timeEra);
+                    m_spottedTrigger = true;
+                    this.Invoke(()=>m_spottedTrigger = false, 5f);
+                }
+                
+            }
         }
-        
+
         [TextArea(4, 6)]
         [SerializeField] public List<string> m_madeSound;
         
