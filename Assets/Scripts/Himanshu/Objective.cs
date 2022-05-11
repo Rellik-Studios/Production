@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using rachael;
 using rachael.FavorSystem;
 using UnityEngine;
@@ -11,12 +12,18 @@ namespace Himanshu
     {
         [SerializeField] private GameObject m_dissapearingDoor;
         [SerializeField] private GameObject m_unlockVFX;
+        [SerializeField] private List<Transform> m_possibleLocations;
 
         private AudioSource m_audioSource;
         public bool m_locked = false;
 
         private void Start()
         {
+            if (m_possibleLocations.Count > 0) {
+                var t = m_possibleLocations.Random();
+                transform.position = t.position;
+                transform.rotation = t.rotation;
+            }
             m_audioSource = GetComponent<AudioSource>();
         }
 
