@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
+using Himanshu.SmartObjective;
 using rachael;
 using rachael.FavorSystem;
+using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Himanshu
 {
@@ -13,18 +16,25 @@ namespace Himanshu
         [SerializeField] private GameObject m_dissapearingDoor;
         [SerializeField] private GameObject m_unlockVFX;
         [SerializeField] private List<Transform> m_possibleLocations;
-
+        [SerializeField] private List<GameObject> m_glitchedCubes;
+        [SerializeField] private List<TMP_Text> m_heartRateTexts;
         private AudioSource m_audioSource;
+        [SerializeField] private Padlock m_padlock;
         public bool m_locked = false;
 
         private void Start()
         {
+            m_heartRateTexts.ForEach(t=>t.text = Random.Range(66, 99).ToString());
+            
             if (m_possibleLocations.Count > 0) {
-                var t = m_possibleLocations.Random();
-                transform.position = t.position;
-                transform.rotation = t.rotation;
+                var t = Random.Range(0, 6);
+                transform.position = m_possibleLocations[t].position;
+                transform.rotation = m_possibleLocations[t].rotation;
+                m_glitchedCubes[t].GetComponent<Renderer>().material.SetInt("_UseFillPercent", 0);
+                m_audioSource = GetComponent<AudioSource>();
+                m_padlock.m_lockCode = "0" + (t + 1).ToString() + m_heartRateTexts[t].text;
             }
-            m_audioSource = GetComponent<AudioSource>();
+            
         }
 
         public void Execute(PlayerInteract _player)
@@ -33,6 +43,7 @@ namespace Himanshu
             FavorSystem.startTimer = false;
             m_unlockVFX.SetActive(true);
             m_audioSource?.Play();
+            m_glitchedCubes.ForEach(t=>t.GetComponent<Renderer>().material.SetInt("_UseFillPercent", 1));
             m_dissapearingDoor.SetActive(false);
             gameObject.SetActive(false);
         }

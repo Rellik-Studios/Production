@@ -35,7 +35,10 @@ namespace Himanshu
 
         public void SetSFXVolume(float _value)
         {
-            m_audioMixer.SetFloat("sfxAudio", m_sfxSlider.value);
+            if(m_sfxSlider.value > -25f)
+                m_audioMixer.SetFloat("sfxAudio", m_sfxSlider.value);
+            else 
+                m_audioMixer.SetFloat("sfxAudio", -80f);
         }
     }
 }

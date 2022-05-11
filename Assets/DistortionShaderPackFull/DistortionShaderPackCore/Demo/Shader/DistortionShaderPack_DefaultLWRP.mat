@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: DistortionShaderPack_DefaultLWRP
+  m_Shader: {fileID: 4800000, guid: d7a6c858ee5f805448d9a935f026e553, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 2450
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _NormalTexture:
+        m_Texture: {fileID: 2800000, guid: 7b69a7c13f9b40242aa10c5fc9455a79, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _DistortionCircle: 0.86
+    - _DistortionStrength: 2
+    - _NormalTexFrameless: 0.5
+    - _NormalTexStrength: 0.5
+    - _StrengthAlpha: 0.5
+    - _StrengthBlend: 5
+    - _StrengthColor: -7.26
+    m_Colors:
+    - _MainColor: {r: 0, g: 0, b: 0, a: 1}
+    - _UVOffset: {r: -0.06, g: 0.01, b: 0, a: 0}
+  m_BuildTextureStacks: []

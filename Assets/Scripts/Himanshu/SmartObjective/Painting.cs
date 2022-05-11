@@ -25,12 +25,17 @@ namespace Himanshu.SmartObjective
                m_painting.GetComponent<Renderer>().material = GetComponent<Renderer>().material;
 
                {
+                   FindObjectOfType<Narrator>().Play("You’re an up and coming talent, a star on the rise.#" +
+                                                     "Leonardo Da Vinci, Raphael, Caravaggio, @userName …");
                    m_painting.GetComponent<Animator>().SetTrigger("Painted");
                    m_animator.SetTrigger("Painted");
                    m_objective.Execute(m_player.GetComponent<PlayerInteract>());
                    this.Invoke(() => m_painting.SetActive(false), 2f);
                    ItemHold.Instance.DropItem();
                }
+            }
+            else if (m_player.m_hasPaintBrush) {
+                FindObjectOfType<Narrator>().Play("There's nothing abnormal here.");
             }
         }
         public void CanExecute(Raycast _raycast)
