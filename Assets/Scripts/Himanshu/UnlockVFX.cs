@@ -4,10 +4,9 @@ namespace Himanshu
 {
     public class UnlockVFX : MonoBehaviour
     {
-        private IEnumerator OnEnable()
+        private void OnEnable()
         {
-            yield return new WaitForSeconds(4f);
-            this.gameObject.SetActive(false);
+            this.Invoke(()=>gameObject.SetActive(false), 4f);
         }
     }
 }
