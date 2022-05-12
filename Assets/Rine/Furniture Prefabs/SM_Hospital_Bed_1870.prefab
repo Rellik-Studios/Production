@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6389608172247040121}
   - component: {fileID: 7999423533710626780}
   - component: {fileID: 5253270964110113558}
+  - component: {fileID: 1944778075106956713}
   m_Layer: 0
   m_Name: SM_Hospital_Bed_1870
   m_TagString: Untagged
@@ -60,7 +61,6 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 56f003196729df340acf11255bf82417, type: 2}
   - {fileID: 2100000, guid: 1c68509c1e9aaa748bdc26e7ddb4e751, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -83,6 +83,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1944778075106956713
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6045979609139747523}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2873792313387077967, guid: e32e0fc4a69dd084697f560f1ba0eaa5, type: 3}
 --- !u!1 &8191548441688374439
 GameObject:
   m_ObjectHideFlags: 0
