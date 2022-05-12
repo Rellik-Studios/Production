@@ -240,8 +240,6 @@ namespace Himanshu
         //Called through the Visual Script
         public void Attack()
         {
-
-            
             IEnumerator KillRoutine()
             {
                 m_killing = true;
@@ -280,14 +278,14 @@ namespace Himanshu
                 
                 if(player.m_hiding)
                     player.Unhide();
-                player.m_followCam.transform.LookAt(transform.position + new Vector3(0f, m_player.crouching ? 1f : 2f, 0f));
+                player.m_followCam.transform.LookAt(transform.position + new Vector3(0f, m_player.crouching ? 2f : 3f, 0f));
                 player.m_followCam.ResetMouse();
                 player.GetComponent<CharacterController>().enabled = false;
          
                 aKill = true;
                 GetComponent<NavMeshAgent>().enabled = false;
 
-                transform.LookAt(player.transform);
+                transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
                 transform.position -= transform.forward * 3f;
 
                 player.m_isDying = true;

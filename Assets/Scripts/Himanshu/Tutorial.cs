@@ -46,8 +46,18 @@ namespace Himanshu
         [TextArea(4, 6)] 
         [SerializeField] private List<string> m_tutorialEndRoom;
 
+        [FormerlySerializedAs("m_tutorialObj")]
         [TextArea(4, 6)]
-        [SerializeField] private List<string> m_tutorialObj;
+        [SerializeField] private List<string> m_tutorialObj1;
+
+        [TextArea(4, 6)]
+        [SerializeField] private List<string> m_tutorialObj2;
+        
+        [TextArea(4, 6)]
+        [SerializeField] private List<string> m_tutorialSmartObj1;
+        
+        [TextArea(4, 6)]
+        [SerializeField] private List<string> m_tutorialSmartObj2;
         
         [SerializeField] private PlayerInteract m_player;
         [FormerlySerializedAs("m_enemy")] [SerializeField] private GameObject m_enemyDefault;
@@ -350,7 +360,7 @@ namespace Himanshu
                 tutorial.StartCoroutine(EndRoutine());
         }
 
-        public static void RunObjTutorial(Door _door)
+        public static void RunObjTutorial(Door _door, Door.eTutToPlay _tutToPlay)
         {
             IEnumerator ObjectiveCoroutine()
             {
@@ -364,9 +374,25 @@ namespace Himanshu
                 {
                     obj.m_locked = true;
                 }
-                
-                tutorial.m_narrator.Play(tutorial.m_tutorialObj[0]);
 
+                switch (_tutToPlay) {
+                    case Door.eTutToPlay.Obj1:
+                        if(!gameManager.Instance.m_firstObjTutorialPlayed)
+                            tutorial.m_narrator.Play(tutorial.m_tutorialObj1[0]);
+                        break;
+                    case Door.eTutToPlay.Obj2:
+                        if(!gameManager.Instance.m_objTutorialPlayed ?? true)
+                            tutorial.m_narrator.Play(tutorial.m_tutorialObj2[0]);
+                        break;
+                    case Door.eTutToPlay.SObj1:
+                        if(!gameManager.Instance.m_firstObjTutorialPlayed)
+                            tutorial.m_narrator.Play(tutorial.m_tutorialSmartObj1[0]);
+                        break;
+                    case Door.eTutToPlay.SObj2:
+                        if(!gameManager.Instance.m_objTutorialPlayed ?? true)
+                            tutorial.m_narrator.Play(tutorial.m_tutorialSmartObj2[0]);
+                        break;                        
+                }
                 yield return new WaitWhile(() => tutorial.m_narrator.settingText);
                 
 
@@ -381,8 +407,10 @@ namespace Himanshu
                     enemy.GetComponent<EnemyController>().enabled = true;
                 }
 
-
-                gameManager.Instance.m_objTutorialPlayed = true;
+                if(_tutToPlay == Door.eTutToPlay.Obj1 || _tutToPlay == Door.eTutToPlay.SObj1)
+                    gameManager.Instance.m_firstObjTutorialPlayed = true;
+                else
+                    gameManager.Instance.m_objTutorialPlayed = true;
 
                 gameManager.Instance.isTutorialRunning = false;
 

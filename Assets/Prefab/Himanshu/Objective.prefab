@@ -110,6 +110,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_dissapearingDoor: {fileID: 577964983901456964}
   m_unlockVFX: {fileID: 7091472928343371865}
+  m_possibleLocations: []
+  m_glitchedCubes: []
+  m_heartRateTexts: []
+  m_padlock: {fileID: 0}
   m_locked: 0
 --- !u!1 &577964983901456964
 GameObject:
@@ -1157,6 +1161,18 @@ Transform:
   m_Father: {fileID: 577964984929894707}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4554363007214931434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7091472928343371865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a9e867581ad4470b2f95d8adf379faa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1519050328881938897
 PrefabInstance:
   m_ObjectHideFlags: 0

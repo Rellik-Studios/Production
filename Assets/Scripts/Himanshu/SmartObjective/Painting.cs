@@ -26,7 +26,7 @@ namespace Himanshu.SmartObjective
 
                {
                    FindObjectOfType<Narrator>().Play("You’re an up and coming talent, a star on the rise.#" +
-                                                     "Leonardo Da Vinci, Raphael, Caravaggio, @userName …");
+                                                     " Leonardo Da Vinci, Raphael, Caravaggio, @userName …");
                    m_painting.GetComponent<Animator>().SetTrigger("Painted");
                    m_animator.SetTrigger("Painted");
                    m_objective.Execute(m_player.GetComponent<PlayerInteract>());
@@ -40,7 +40,8 @@ namespace Himanshu.SmartObjective
         }
         public void CanExecute(Raycast _raycast)
         {
-            if(!m_hasAnomaly)   return;
+            if(!m_player.m_hasPaintBrush)   return;
+            
             if (_raycast.m_indication != null)
                 _raycast.m_indication.sprite = Resources.Load<Sprite>("Interact");
         }

@@ -10,6 +10,7 @@ namespace Himanshu.SmartObjective
         private void Start()
         {
             m_animator = GetComponent<Animator>();
+            m_player = FindObjectOfType<PlayerSmartObjectives>();
         }
         private void OnTriggerEnter(Collider _collider)
         {
@@ -28,8 +29,12 @@ namespace Himanshu.SmartObjective
         }
         public void CanExecute(Raycast _raycast)
         {
-            if (_raycast.m_indication != null)
+            if (_raycast.m_indication != null && m_player.m_hasNewsPaper)
                 _raycast.m_indication.sprite = Resources.Load<Sprite>("Interact");
+            else {
+                if(_raycast.m_indication != null)
+                    _raycast.m_indication.enabled = false;
+            }
         }
     }
 }

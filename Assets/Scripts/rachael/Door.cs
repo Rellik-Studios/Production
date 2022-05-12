@@ -9,8 +9,13 @@ namespace rachael
     public class 
         Door : MonoBehaviour, IInteract
     {
+        public enum eTutToPlay
+        {
+            None, Obj1, Obj2, SObj1, SObj2
+        }
         private Animator m_doorAnim;
 
+        [SerializeField] private eTutToPlay m_tutToPlay;
         public bool m_locked = false;
 
         //private RaycastingTesting m_raycastingTesting;
@@ -40,6 +45,11 @@ namespace rachael
         }
 
 
+        public void LockDoor()
+        {
+            m_locked = true;
+        }
+        
         private void Start()
         {
             m_audioSource = GetComponent<AudioSource>();
@@ -76,8 +86,8 @@ namespace rachael
 
             
             
-            if ((!gameManager.Instance.m_objTutorialPlayed ?? true) && enemiesToEnable.Count > 0) 
-                Tutorial.RunObjTutorial(this);
+            if ((!gameManager.Instance.m_objTutorialPlayed ?? true) && enemiesToEnable.Count > 0 && m_tutToPlay != eTutToPlay.None) 
+                Tutorial.RunObjTutorial(this, m_tutToPlay);
             else
             {
                 foreach (var enemy in m_enemiesToEnable)

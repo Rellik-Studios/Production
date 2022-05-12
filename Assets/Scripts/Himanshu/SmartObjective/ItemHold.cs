@@ -40,8 +40,6 @@ namespace Himanshu.SmartObjective
             m_isHolding = false;
             if (m_heldItem ==null) return;
             m_heldItem.SetActive(true);
-            if(m_heldItem.GetComponent<MeshRenderer>() != null)
-                m_heldItem.GetComponent<MeshRenderer>().enabled = true;
             m_heldItem = null;
             if(m_heldItemPlaceHolder != null)
                 Destroy(m_heldItemPlaceHolder);
