@@ -83,9 +83,20 @@ namespace Himanshu.SmartObjective
             //             break;
             //     }
             // }, wait ? 3f : 0);
-            
-            if(m_objName == eObjName.VRHeadset)
+
+            switch (m_objName) {
+                case eObjName.VRHeadset:
+                    GetComponent<MeshRenderer>().enabled = false;
+                    FindObjectOfType<Narrator>().Play("Ah, the wonders of augmented reality.#" +
+                                                      " I’m rather curious, let’s look around!");
+                    break;
+                case eObjName.PaintBrush:
+                    FindObjectOfType<Narrator>().Play("Watch out Monet, Van Gogh, Klimt!");
+                break;
+            }
+            if (m_objName == eObjName.VRHeadset) {
                 GetComponent<MeshRenderer>().enabled = false;
+            }
             ItemHold.Instance.HoldItem(this.gameObject);
             m_actions[m_objName]();
         }
@@ -105,5 +116,7 @@ namespace Himanshu.SmartObjective
             transform.rotation = _transform.rotation;
             transform.localScale = _transform.localScale;
         }
+
+
     }
 }

@@ -16,10 +16,7 @@ namespace Himanshu.SmartObjective
 
         private void Update()
         {
-            if (m_followMouse) {
-                Vector3 mousePos = ItemHold.Instance.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition);
-                transform.position = Input.mousePosition;
-            }
+            
         }
 
 

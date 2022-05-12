@@ -13,6 +13,7 @@ namespace Himanshu.SmartObjective
         public bool m_isLocked = true;
         [SerializeField] private Door m_door;
         [SerializeField] private TMP_Text m_text;
+        public string m_lockCode;
 
         private void Start()
         {
@@ -38,7 +39,7 @@ namespace Himanshu.SmartObjective
         {
             if (m_text.text.Length == 4)
             {
-                if (m_text.text == "1969")
+                if (m_text.text == m_lockCode)
                 {
                     m_isLocked = false;
                     m_door.OpenTheDoor();
