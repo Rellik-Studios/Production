@@ -14,7 +14,9 @@ namespace Himanshu.SmartObjective
         [SerializeField] private Door m_door;
         [SerializeField] private TMP_Text m_text;
         public string m_lockCode;
+        
 
+        
         private void Start()
         {
             for (int i = 0; i < 3; i++)
@@ -27,15 +29,26 @@ namespace Himanshu.SmartObjective
                         .AddListener(() => TextEnter((i1 * 3 + (j1 + 1))));
                 }
             }
-            transform.GetChild(2).GetComponent<Button>().onClick.AddListener(() => TextEnter(0));
+            transform.GetChild(1).GetChild(3).GetChild(0).GetComponent<Button>().onClick.AddListener(BackSpace);
+            transform.GetChild(1).GetChild(3).GetChild(1).GetComponent<Button>().onClick.AddListener(() => TextEnter(0));
+            transform.GetChild(1).GetChild(3).GetChild(2).GetComponent<Button>().onClick.AddListener(Confirm);
         }
 
         public void TextEnter(int _number)
         {
+            if(m_text.text.Length >= 4)
+                return;
+            
             m_text.text += _number.ToString();
         }
+        public void BackSpace()
+        {
+            if (m_text.text.Length > 0) {
+                m_text.text = m_text.text.Substring(0, m_text.text.Length - 1);
+            }
+        }
 
-        private void Update()
+        public void Confirm()
         {
             if (m_text.text.Length == 4)
             {
@@ -48,13 +61,33 @@ namespace Himanshu.SmartObjective
                 else
                 {
                     m_isLocked = true;
-                    m_text.text = "";
+                    //m_text.text = "";
                     StartCoroutine(eWrongPassword());
                 }
+            } 
+            else {
+                m_isLocked = true;
+                //m_text.text = "";
+                StartCoroutine(eWrongPassword());
             }
+        }
+
+        private void Update()
+        {
+            #if UNITY_EDITOR
+            if(Input.GetKeyDown(0))
+                gameObject.SetActive(false);
+            #else
+                if(Input.GetKeyDown(KeyCode.Escape))
+                    gameObject.SetActive(false);
+            #endif
+            
         }
         private IEnumerator eWrongPassword()
         {
+            GetComponent<Animator>().SetTrigger("WrongPassword");
+            yield return new WaitForSeconds(1f);
+            m_text.text = "";
             yield return null;
         }
 
@@ -63,6 +96,7 @@ namespace Himanshu.SmartObjective
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             FindObjectOfType<PlayerFollow>().m_mouseInput = false;
+            m_text.text = "";
             var player = FindObjectOfType<PlayerInteract>();
             player.enabled = false;
             FindObjectOfType<Raycast>().m_indication.enabled = false;

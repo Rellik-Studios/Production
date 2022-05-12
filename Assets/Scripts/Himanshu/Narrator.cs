@@ -308,7 +308,9 @@ namespace Himanshu
                 fileName = fileName.Replace(" ", "");
             if (m_audioClips.TryGetValue(fileName, out AudioClip clip))
             {
-                m_audioSource.PlayOneShot(clip);
+                m_audioSource.Stop();
+                m_audioSource.clip = clip;
+                m_audioSource.Play();
             }
             else if (_text.Length <= 15 && m_audioClips.TryGetValue(_text, out AudioClip clip2))
             {

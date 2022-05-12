@@ -109,7 +109,7 @@ namespace rachael.FavorSystem
         // Update is called once per frame
         void Update()
         {
-            if(!CommandIcon.activeSelf && (gameManager.Instance.m_objTutorialPlayed ?? false))
+            if(!CommandIcon.activeSelf && (gameManager.Instance.m_bookTutorialPlayed ?? false))
             {
                 CommandIcon.SetActive(true);
                 OneTimeText.SetText("press 'C' to access command prompt", ()=>Input.GetKeyDown(KeyCode.C));
@@ -118,8 +118,11 @@ namespace rachael.FavorSystem
             {
                 CommandIcon.SetActive(false);
             }
+            
+            if(gameManager.Instance.isTutorialRunning)
+                CommandIcon.SetActive(false);
 
-            if (Input.GetKeyDown(KeyCode.C) && !m_isOpen && (gameManager.Instance.m_objTutorialPlayed ?? false) && Math.Abs(Time.timeScale - 1) < 0.1f)
+            if (Input.GetKeyDown(KeyCode.C) && !m_isOpen && (gameManager.Instance.m_bookTutorialPlayed ?? false) && !gameManager.Instance.isTutorialRunning && Math.Abs(Time.timeScale - 1) < 0.1f)
             {
                 m_inputField.text = "";
                 PlayerInteract.PlaySound(Resources.Load<AudioClip>("SFX/CommandPromptOpen"));
