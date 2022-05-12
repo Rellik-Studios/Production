@@ -17,7 +17,8 @@ namespace Himanshu
 
         public bool isTutorialRunning = false;
         public float m_triggerDistance = 10f;
-        
+
+        public bool m_firstObjTutorialPlayed = false;
         public bool? m_objTutorialPlayed = null;
         public bool? m_bookTutorialPlayed = null;
         public bool? m_endTutorialPlayed = null;

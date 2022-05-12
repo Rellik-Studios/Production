@@ -52,7 +52,7 @@ namespace Himanshu.SmartObjective
 
         void VRHeadset()
         {
-            m_player.m_hasVRHeadset = true;
+            m_player.hasVRHeadset = true;
         }
 
         void NewsPaper()
@@ -93,9 +93,6 @@ namespace Himanshu.SmartObjective
                 case eObjName.PaintBrush:
                     FindObjectOfType<Narrator>().Play("Watch out Monet, Van Gogh, Klimt!");
                 break;
-            }
-            if (m_objName == eObjName.VRHeadset) {
-                GetComponent<MeshRenderer>().enabled = false;
             }
             ItemHold.Instance.HoldItem(this.gameObject);
             m_actions[m_objName]();

@@ -46,7 +46,7 @@ public class Piano : MonoBehaviour
             }
         } 
         else {
-            if(m_futureMat.GetFloat("_FillPercent") < 0.99f) {
+            if(m_futureMat.GetFloat("_FillPercent") < 1f) {
                 m_futureMat.SetFloat("_FillPercent", Mathf.Lerp(m_futureMat.GetFloat("_FillPercent"), 1f, Time.deltaTime / 2f));
                 m_1870Mat.SetFloat("_FillPercent", Mathf.Lerp(m_1870Mat.GetFloat("_FillPercent"), 1f, Time.deltaTime / 2f));
             }    
@@ -56,8 +56,9 @@ public class Piano : MonoBehaviour
 
     public void PlaceNote()
     {
-        FindObjectOfType<Narrator>().madeSound = true;
         if (m_playerSmartObjectives.m_hasNotes) {
+            FindObjectOfType<Narrator>().madeSound = true;
+            transform.GetChild(1).gameObject.SetActive(true);
             m_morphing = false;
             this.Invoke(() => m_distraction.m_canDistract = true, .5f);
             m_objective.Execute(m_playerSmartObjectives.GetComponent<PlayerInteract>());
