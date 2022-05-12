@@ -73,7 +73,7 @@ namespace Himanshu
             else if (transform.childCount > 0 && transform.GetChild(0).GetComponent<CinemachineVirtualCamera>() != null)
                 transform.GetChild(0).GetComponent<CinemachineVirtualCamera>().enabled = true;
         
-            this.Invoke(()=> FindObjectOfType<PlayerFollow>().transform.rotation = transform.rotation, 2f);
+            FindObjectOfType<PlayerFollow>().transform.rotation = transform.rotation;
 
         }
 

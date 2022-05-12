@@ -40,6 +40,11 @@ namespace rachael
         }
 
 
+        public void LockDoor()
+        {
+            m_locked = true;
+        }
+        
         private void Start()
         {
             m_audioSource = GetComponent<AudioSource>();
