@@ -240,8 +240,6 @@ namespace Himanshu
         //Called through the Visual Script
         public void Attack()
         {
-
-            
             IEnumerator KillRoutine()
             {
                 m_killing = true;
@@ -287,7 +285,7 @@ namespace Himanshu
                 aKill = true;
                 GetComponent<NavMeshAgent>().enabled = false;
 
-                transform.LookAt(player.transform);
+                transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
                 transform.position -= transform.forward * 3f;
 
                 player.m_isDying = true;
