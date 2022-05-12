@@ -14,7 +14,7 @@ public class HidingOutline : MonoBehaviour
 
         myNewOutline.name = "Outline";
         myNewOutline.AddComponent<MeshFilter>();
-        myNewOutline.GetComponent<MeshFilter>().mesh = GetComponent<MeshFilter>().mesh;
+        myNewOutline.GetComponent<MeshFilter>().sharedMesh = GetComponent<MeshFilter>().sharedMesh;
         myNewOutline.AddComponent<MeshRenderer>();
         myNewOutline.GetComponent<MeshRenderer>().materials = new Material[0];
         myNewOutline.AddComponent<Outline>();
