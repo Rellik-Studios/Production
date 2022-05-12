@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,6 +21,7 @@ namespace Himanshu
 
         private Vector2 m_xRange;
         private Vector2 m_yRange = new Vector2(-45f, 45f);
+        [SerializeField] private CinemachineVirtualCamera m_crouchCam;
         void Start()
         {
             m_playerMovement = m_playerTransform.GetComponent<PlayerMovement>();
@@ -57,8 +60,7 @@ namespace Himanshu
         void Update()
         {
             if(Time.timeScale == 0 && !m_playerMovement.canMoveUnscaled) return;
-            transform.position = m_playerMovement.calculatedPosition;
-
+            transform.position = new Vector3(m_playerMovement.calculatedPosition.x, transform.position.y, m_playerMovement.calculatedPosition.z);
             if (m_mouseInput)
             {
                 if (!m_playerMovement.canMoveUnscaled)
@@ -79,6 +81,16 @@ namespace Himanshu
                 transform.rotation = Quaternion.Euler(m_mouseY, m_mouseX, 0f);
             }
 
+            if (m_playerMovement.crouching && Math.Abs(transform.position.y - m_playerMovement.crouchPosition.y) > 0.01f) {
+                //Interpolate between 2 floats without using Lerp
+                
+                
+                transform.position = new Vector3(transform.position.x, Mathf.MoveTowards(transform.position.y, m_playerMovement.crouchPosition.y, Time.deltaTime * 4f), transform.position.z);
+            }
+            else if (!m_playerMovement.crouching && Math.Abs(transform.position.y - m_playerMovement.calculatedPosition.y) > 0.01f) {
+                transform.position = new Vector3(transform.position.x, Mathf.MoveTowards(transform.position.y, m_playerMovement.calculatedPosition.y, Time.deltaTime * 4f), transform.position.z);                
+                
+            }
             m_playerTransform.forward = new Vector3(transform.forward.x, 0f, transform.forward.z);
 
         }
