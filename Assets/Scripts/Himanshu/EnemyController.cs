@@ -468,9 +468,8 @@ namespace Himanshu
                 }
                
                 
-                if(destinationMarker != null)
-                    destinationMarker.m_hasArrived = true;
-
+                
+                
                 var counter =  (60 * Time.deltaTime);
                 
                 
