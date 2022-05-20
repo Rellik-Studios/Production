@@ -23,18 +23,15 @@ namespace Himanshu
         public bool canMoveUnscaled => FindObjectOfType<FavorSystem>().m_timeStop && FindObjectOfType<FavorSystem>().m_continueCounting;
         public bool crouching {
             get {
-                float prevScale = transform.localScale.y;
-                transform.localScale = new Vector3(1f,  m_playerInput.m_crouching ? .5f : 1f, 1f);
-
-                IEnumerator revertSize()
-                {
-                    if (Math.Abs(prevScale - .5) < 0.01f && !m_playerInput.m_crouching && !(m_playerInput.movement.magnitude > 0f)) {
-                        yield return new WaitForEndOfFrame();
-                        transform.position += new Vector3(0f, 1f, 0f);
-                    }
+                if (m_playerInput.m_crouching) {
+                    m_characterController.height = 2f;
+                    m_characterController.center = new Vector3(0, -1f, 0);
+                } 
+                else {
+                    m_characterController.height = 4.5f;
+                    m_characterController.center = new Vector3(0, 0.25f, 0);
                 }
-                StartCoroutine(revertSize());
-
+                
                 return m_playerInput.m_crouching;
             }
             set {
@@ -83,6 +80,10 @@ namespace Himanshu
         
         public Vector3 calculatedPosition {
             get => m_eye.transform.position;
+        }
+
+        public Vector3 crouchPosition {
+            get => m_eye.transform.GetChild(0).position;
         }
 
         private IEnumerator Start()
@@ -182,4 +183,5 @@ namespace Himanshu
              //Debug.Log(m_characterController.velocity.magnitude);
         }
     }
+
 }

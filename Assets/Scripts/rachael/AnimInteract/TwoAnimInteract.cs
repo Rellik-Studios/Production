@@ -50,15 +50,9 @@ namespace rachael
             }
         }
 
-        public void CloseObject()
-        {
-            objectOpen = false;
-        }
+        public void CloseObject() => objectOpen = false;
 
-        public void OpenObject()
-        {
-            objectOpen = true;
-        }
+        public void OpenObject() => objectOpen = true;
 
         public void Execute(PlayerInteract _player)
         {

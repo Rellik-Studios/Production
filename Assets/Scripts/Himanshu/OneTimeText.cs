@@ -34,6 +34,18 @@ namespace Himanshu
             inst.StartCoroutine(StopText());
         }
 
+        public static void SetTextRepeated(string _text, Func<bool> _turnOff)
+        {
+            var inst = FindObjectOfType<OneTimeText>();
+                
+            m_tmpText.text = _text;
+            m_turnOff = _turnOff;
+            if(!alreadyUsed.Contains(_text))
+                alreadyUsed.Add(_text);
+            inst.StopAllCoroutines();
+            inst.StartCoroutine(StopText());
+        }
+
         private void Start()
         {
             alreadyUsed ??= new List<string>();

@@ -1,4 +1,5 @@
 ﻿using System;
+using Himanshu.SmartObjective;
 using rachael;
 using UnityEngine;
 using UnityEngine.Events;
@@ -19,7 +20,7 @@ namespace Himanshu
         public UnityEvent m_onExecute;
 
         public bool m_canDistract = true;
-        
+
         /// <summary>
         /// playing : Stores if the distraction is used.
         /// Plays the audiocue when trigerred
@@ -58,6 +59,7 @@ namespace Himanshu
         public void Execute(PlayerInteract _player)
         {
             
+            
             if (!m_audioSource.isPlaying)
             {
                 //m_audioSource.Play();
@@ -74,6 +76,13 @@ namespace Himanshu
         /// <param name="_raycast">Reference to Raycast script from the MainCamera</param>
         public void CanExecute(Raycast _raycast)
         {
+            if (!m_canDistract && !FindObjectOfType<PlayerSmartObjectives>().m_hasNotes) {
+                if (_raycast.m_indication != null)
+                    _raycast.m_indication.enabled = false;
+                return;
+            }
+            
+            
             if (_raycast.m_indication != null)
                 _raycast.m_indication.sprite = Resources.Load<Sprite>("Interact");        
             
@@ -88,6 +97,8 @@ namespace Himanshu
         {
             if (!m_audioSource.isPlaying && other.GetComponent<PlayerInteract>() != null)
             {
+                if(!m_canDistract)    
+                    return;
                 m_onExecute?.Invoke();
                 //m_audioSource.Play();
                 if(!m_canDistract) return; 

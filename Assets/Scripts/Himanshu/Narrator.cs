@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using rachael;
 using rachael.SaveSystem;
@@ -28,24 +29,31 @@ namespace Himanshu
         
         public bool hidingLines
         {
-            set => Play(m_hidingLines);
+            set => Play(m_hidingLines, true, gameManager.Instance.m_timeEra);
         }
         
         
         [TextArea(4, 6)]
         [SerializeField] public List<string> m_spottedLines;
         
-        public bool spottedLines
-        {
-            set => Play(m_spottedLines);
+        private bool m_spottedTrigger = false;
+        public bool spottedLines {
+            set {
+                if (!m_spottedTrigger) {
+                    Play(m_spottedLines, true, gameManager.Instance.m_timeEra);
+                    m_spottedTrigger = true;
+                    this.Invoke(()=>m_spottedTrigger = false, 5f);
+                }
+                
+            }
         }
-        
+
         [TextArea(4, 6)]
         [SerializeField] public List<string> m_madeSound;
         
         public bool madeSound
         {
-            set => Play(m_madeSound);
+            set => Play(m_madeSound, true, gameManager.Instance.m_timeEra);
         }
         
         [TextArea(4, 6)]
@@ -61,14 +69,14 @@ namespace Himanshu
         
         public bool breathing
         {
-            set => Play(m_breathing);
+            set => Play(m_breathing, true, gameManager.Instance.m_timeEra);
         }
         [TextArea(4, 6)]
         [SerializeField] public List<string> m_idleRoom;
         
         public bool idleRoom
         {
-            set => Play(m_idleRoom);
+            set => Play(m_idleRoom, true, gameManager.Instance.m_timeEra);
         }
 
         [TextArea(4, 6)]
@@ -203,14 +211,17 @@ namespace Himanshu
             var clips = Resources.LoadAll<AudioClip>("Dialogues/");
             foreach (var clip in clips)
             {
-                m_audioClips.Add(clip.name.Substring(0, 15), clip);
-                Debug.Log(clip.name);
+                var clipName = Regex.Replace(clip.name, "[^a-zA-Z0-9]+", "", RegexOptions.Compiled);
+                clipName = clipName.Replace(" ", "");
+                if(m_audioClips.ContainsKey(clipName))  continue;
+                m_audioClips.Add(clipName, clip);
+                Debug.Log(clipName);
             }
             var tempNarr = SaveSystem.LoadNarrator();
 
             m_narratorDialogue = tempNarr ?? new NarratorDialogue();
             
-            m_waitPlay = StartCoroutine(SetText("", m_textBox));
+            m_waitPlay = StartCoroutine(eSetText("", m_textBox));
             m_idleTimer = Random.Range(90f, 120f);
             
         }
@@ -252,45 +263,58 @@ namespace Himanshu
             m_textBox.text = "";
             // if (!m_settingText)
             {
-                StartCoroutine(SetText(_toPlay, m_textBox)); 
+                StartCoroutine(eSetText(_toPlay, m_textBox)); 
             }
         }
-        public void Play(List<string> _toPlay, bool _isRandom = true)
+        public void Play(List<string> _toPlay, bool _isRandom = true, string _timePeriod = "")
         {
             if (gameManager.Instance.isTutorialRunning) return;
                 
             if (_toPlay.Count > 1 && !m_settingText)
             {
                 int rand = Random.Range(1, _toPlay.Count);
-                StartCoroutine(SetText(_toPlay[_isRandom ? rand : 1], m_textBox));
+                if (_timePeriod != "")
+                    StartCoroutine(eSetText(_timePeriod + _toPlay[_isRandom ? rand : 1], m_textBox));
+                else
+                    StartCoroutine(eSetText(_toPlay[_isRandom ? rand : 1], m_textBox));
                 _toPlay.RemoveAt(_isRandom ? rand : 1);
             }
+            
             else if (!m_settingText)
             {
-                StartCoroutine(SetText(_toPlay[0], m_textBox));
+                StartCoroutine(eSetText(_timePeriod + _toPlay[0], m_textBox));
             }
 
             else
             {
-                //StopCoroutine(m_waitPlay);
-                m_waitPlay = StartCoroutine(WaitAndPlay(_toPlay));
+                StopCoroutine(m_waitPlay);
+                m_waitPlay = StartCoroutine(WaitAndPlay(_toPlay, _isRandom, _timePeriod));
             }
             
             SaveSystem.SaveNarrator();
         }
 
-        private IEnumerator WaitAndPlay(List<string> _toPlay)
+        private IEnumerator WaitAndPlay(List<string> _toPlay, bool _isRandom, string _timePeriod)
         {
             yield return new WaitWhile(() => m_settingText);
-            Play(_toPlay);
+            Play(_toPlay, _isRandom, _timePeriod);
         }
 
-        IEnumerator SetText(string _text, TMP_Text _textBox, bool additive = false)
+        IEnumerator eSetText(string _text, TMP_Text _textBox, bool additive = false)
         {
-           
-            if (_text.Length > 15 && m_audioClips.TryGetValue(_text.Substring(0, 15), out AudioClip clip))
+            var fileName = _text.Contains("#") ? _text.Substring(0, _text.IndexOf("#", StringComparison.Ordinal) - 1) : _text;
+                fileName = Regex.Replace(fileName, "[^a-zA-Z0-9]+", "", RegexOptions.Compiled);
+                fileName = fileName.Replace(".", "");
+                fileName = fileName.Replace(" ", "");
+            if (m_audioClips.TryGetValue(fileName, out AudioClip clip))
             {
-                m_audioSource.PlayOneShot(clip);
+                m_audioSource.Stop();
+                m_audioSource.clip = clip;
+                m_audioSource.Play();
+            }
+            else if (_text.Length <= 15 && m_audioClips.TryGetValue(_text, out AudioClip clip2))
+            {
+                m_audioSource.PlayOneShot(clip2);
             }
             m_settingText = true;
             if(!additive) _textBox.text = "";
@@ -314,7 +338,7 @@ namespace Himanshu
                 if (letter == '#')
                 {
                     yield return new WaitForSeconds(2f);
-                    yield return StartCoroutine(SetText(_text.Substring(pos + 1), _textBox));
+                    yield return StartCoroutine(eSetText(_text.Substring(pos + 1), _textBox));
                     yield break;
                 }
 
@@ -358,7 +382,7 @@ namespace Himanshu
                     {
                         if (letter == '$')
                         {
-                            yield return StartCoroutine(SetText(conditions[ConditionCheck(condition).Result], _textBox, true));
+                            yield return StartCoroutine(eSetText(conditions[ConditionCheck(condition).Result], _textBox, true));
                             conditionStart = false;
                             conditionEnd = false;
                             continue;
@@ -399,7 +423,7 @@ namespace Himanshu
 
                 if (choiceEnd)
                 {
-                    yield return StartCoroutine(SetText("%" + choices.Random(), _textBox, true));
+                    yield return StartCoroutine(eSetText("%" + choices.Random(), _textBox, true));
                     m_settingText = true;
                     choiceEnd = false;
                     continue;
@@ -423,7 +447,7 @@ namespace Himanshu
                     {
                         var t = EvaluateCommand(command);
                         if(t != "")
-                            yield return StartCoroutine(SetText(t, _textBox, true));
+                            yield return StartCoroutine(eSetText(t, _textBox, true));
                         m_settingText = true;
                         //_textBox.text += EvaluateCommand(command);
                         commandStart = false;
@@ -465,6 +489,14 @@ namespace Himanshu
         {
             switch (_command)
             {
+                case "8":
+                    return "";
+                case "9":
+                    return "";
+                case "p":
+                    return "";
+                case "f":
+                    return "";
                 case "disableDoor":
                 {
                     foreach (var door in FindObjectsOfType<Door>())

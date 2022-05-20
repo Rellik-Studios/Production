@@ -27,6 +27,8 @@ namespace Himanshu
         public PlayerFollow m_followCam;
         private Narrator m_narrator;
         public List<EnemyController> m_enemies;
+
+        private static PlayerInteract m_instance;
         public  IEnumerator FillBar(Image _fillImage, float _time, int _dir = 1, float _waitTime = 0f)
         {
             yield return new WaitForSeconds(_waitTime);
@@ -226,6 +228,7 @@ namespace Himanshu
         {
             //m_testInventory = new List<CollectableObject>();
             //
+            m_instance = this;
             m_narrator = FindObjectOfType<Narrator>();
             m_kickRoutine = StartCoroutine(temp());
             m_fillRoutine = StartCoroutine(temp());
@@ -233,7 +236,12 @@ namespace Himanshu
             m_raycast = FindObjectOfType<Raycast>();
             m_playerInput = GetComponent<PlayerInput>();
             timeReverse = true;
+        }
 
+
+        public static void PlaySound(AudioClip _clip)
+        {
+            m_instance.GetComponent<AudioSource>().PlayOneShot(_clip);
         }
 
         private void Update()

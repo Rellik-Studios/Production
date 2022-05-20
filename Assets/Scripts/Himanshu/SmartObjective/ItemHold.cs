@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 namespace Himanshu.SmartObjective
 {
@@ -9,10 +10,18 @@ namespace Himanshu.SmartObjective
         public Transform m_heldItemPosition;
         
         public static ItemHold Instance;
+        private PlayerSmartObjectives m_player;
 
         private void Start()
         {
             Instance = this;
+            m_player = FindObjectOfType<PlayerSmartObjectives>();
+        }
+
+        private void Update()
+        {
+            if(Input.GetKeyDown(KeyCode.Mouse1))
+                DropItem();
         }
 
         public void HoldItem(GameObject _item)
@@ -34,8 +43,13 @@ namespace Himanshu.SmartObjective
             m_heldItem = null;
             if(m_heldItemPlaceHolder != null)
                 Destroy(m_heldItemPlaceHolder);
+            m_player.DropAll();
         }
 
-        
+
+        public void Paint()
+        {
+            m_heldItemPlaceHolder.GetComponent<Paintbrush>().Paint();
+        }
     }
 }
