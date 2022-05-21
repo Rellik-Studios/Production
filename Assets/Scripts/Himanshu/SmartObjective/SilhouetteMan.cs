@@ -12,12 +12,7 @@ namespace Himanshu.SmartObjective
             m_animator = GetComponent<Animator>();
             m_player = FindObjectOfType<PlayerSmartObjectives>();
         }
-        private void OnTriggerEnter(Collider _collider)
-        {
-            if(_collider.TryGetComponent(out PlayerSmartObjectives _player) && _player.m_hasNewsPaper) {
-                
-            }
-        }
+        
         public void Execute(PlayerInteract _player)
         {
             m_player = _player.GetComponent<PlayerSmartObjectives>();

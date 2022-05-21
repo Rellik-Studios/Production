@@ -37,7 +37,7 @@ namespace rachael
             get => m_doorOpen;
             set
             {
-                m_audioSource?.Play();
+                // m_audioSource?.Play();
                 m_doorOpen = value;
 
                 m_doorAnim.SetBool("IsOpening", value);
@@ -84,7 +84,8 @@ namespace rachael
         {
             doorOpen = true;
 
-            
+            if (!_silent)
+                m_audioSource.Play();
             
             if ((!gameManager.Instance.m_objTutorialPlayed ?? true) && enemiesToEnable.Count > 0 && m_tutToPlay != eTutToPlay.None) 
                 Tutorial.RunObjTutorial(this, m_tutToPlay);
