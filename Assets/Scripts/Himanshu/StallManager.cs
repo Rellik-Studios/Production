@@ -52,10 +52,13 @@ namespace Himanshu
             if (m_lookupStallManager != null && stallStates.IsEqual(m_lookupStallManager.stallStates)) {
                 m_stallCompleted = true;
                 if (m_stallID == 1) {
-                    if (m_otherStallManager.m_stallCompleted) {
+                    if (m_otherStallManager.m_stallCompleted && m_objective.gameObject.activeSelf) {
                         m_objective.Execute(FindObjectOfType<PlayerInteract>());
                     }
                 }
+            }
+            else {
+                m_stallCompleted = false;
             }
         }
     }
