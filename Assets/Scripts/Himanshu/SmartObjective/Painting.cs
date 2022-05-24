@@ -40,7 +40,12 @@ namespace Himanshu.SmartObjective
         }
         public void CanExecute(Raycast _raycast)
         {
-            if(!m_player.m_hasPaintBrush)   return;
+            if (!m_player.m_hasPaintBrush)
+            {
+                if (_raycast.m_indication != null)
+                    _raycast.m_indication.enabled = false;
+                return;
+            }
             
             if (_raycast.m_indication != null)
                 _raycast.m_indication.sprite = Resources.Load<Sprite>("Interact");

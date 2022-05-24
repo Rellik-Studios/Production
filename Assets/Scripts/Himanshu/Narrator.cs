@@ -240,12 +240,12 @@ namespace Himanshu
             }
            
 
-            if (m_textBox.text != "" && !m_textBackdrop.activeSelf)
+            if (m_textBox.text.Replace(" ", "") != "" && !m_textBackdrop.activeSelf)
             {
                 m_textBackdrop.SetActive(true);
             }
             
-            else if (m_textBox.text == "" && m_textBackdrop.activeSelf)
+            else if (m_textBox.text.Replace(" ", "") == "" && m_textBackdrop.activeSelf)
             {
                 m_textBackdrop.SetActive(false);
             }

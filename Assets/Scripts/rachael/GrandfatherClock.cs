@@ -106,6 +106,7 @@ namespace rachael
 
                 yield return new WaitForSeconds(2f);
                 SceneManager.LoadScene("WiningScreen");
+                SaveSystem.SaveSystem.DeletePlayer();
 
                 yield return null;
             }
