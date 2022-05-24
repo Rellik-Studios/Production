@@ -541,11 +541,11 @@ namespace Himanshu
             
             foreach (var piece in _inventory)
             {
-                    var objToAdd = collectables.FirstOrDefault(t => t.m_collectableObject.m_objectName.Equals(piece.m_objectName));
-                    if (objToAdd == null) throw new Exception("object cannot be located");
+                    var objToAdd = collectables.Where(t => t.m_collectableObject.m_objectName.Equals(piece.m_objectName)).ToList();
+                    if (objToAdd.Count == 0) throw new Exception("object cannot be located");
                     
-                    m_inventory.Add(objToAdd.m_collectableObject, new Wrapper<int>(1));
-                    objToAdd.gameObject.SetActive(false);
+                    m_inventory.Add(objToAdd[0].m_collectableObject, new Wrapper<int>(1));
+                    objToAdd.ForEach(t=>t.gameObject.SetActive(false));
                 
             }
             
