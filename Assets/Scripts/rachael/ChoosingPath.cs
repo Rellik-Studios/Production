@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Himanshu;
@@ -16,9 +17,10 @@ namespace rachael
         [SerializeField] private GameObject m_assignedObject;
 
         // Start is called before the first frame update
-        void Start()
+        IEnumerator Start()
         {
-      
+
+            yield return null;
             if (!m_assignedObject.activeSelf)
             {
                 m_assignDoor.GetComponent<DoorToWall>().TransformDoorToWall();
