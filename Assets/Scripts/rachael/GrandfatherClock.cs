@@ -142,12 +142,12 @@ namespace rachael
                 if (!transform.parent.parent.Find(piece.m_objectName).gameObject.activeSelf)
                 {
                     transform.parent.parent.Find(piece.m_objectName).gameObject.SetActive(true);
-                    var objToAdd = collectables.FirstOrDefault(t => t.m_collectableObject.m_objectName.Equals(piece.m_objectName));
+                    var objToAdd = collectables.Where(t => t.m_collectableObject.m_objectName.Equals(piece.m_objectName)).ToList();
                     
-                    if (objToAdd == null) throw new Exception("object cannot be located");
+                    if (objToAdd.Count == 0) throw new Exception("object cannot be located");
                     
-                    m_depositedObjects.Add(objToAdd.m_collectableObject);
-                    objToAdd.gameObject.SetActive(false);
+                    m_depositedObjects.Add(objToAdd[0].m_collectableObject);
+                    objToAdd.ForEach(t=>t.gameObject.SetActive(false));
                 }
             }
         }
