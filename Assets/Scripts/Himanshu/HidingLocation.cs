@@ -31,7 +31,7 @@ namespace Himanshu
 
         void Update()
         {
-            if (isActive && !m_hidingSpot.m_cupboard  && !FindObjectOfType<CinemachineBrain>().IsBlending)
+            if (isActive && (!m_hidingSpot.m_cupboard || m_futuristic)  && !FindObjectOfType<CinemachineBrain>().IsBlending)
             {
                 m_mouseX += Input.GetAxis("Mouse X");
                 m_mouseY -= Input.GetAxis("Mouse Y");

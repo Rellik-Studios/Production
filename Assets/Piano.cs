@@ -57,7 +57,7 @@ public class Piano : MonoBehaviour
     public void PlaceNote()
     {
         if (m_playerSmartObjectives.m_hasNotes) {
-            FindObjectOfType<Narrator>().madeSound = true;
+            // FindObjectOfType<Narrator>().madeSound = true;
             transform.GetChild(1).gameObject.SetActive(true);
             m_morphing = false;
             this.Invoke(() => m_distraction.m_canDistract = true, .5f);

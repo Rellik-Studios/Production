@@ -482,6 +482,7 @@ namespace Himanshu
                 //transform.rotation = Quaternion.Lerp(m_patrolPoints[index].rotation, transform.rotation, Time.deltaTime); 
                 
                 if (destinationMarker != null) {
+                    destinationMarker.m_hasArrived = true;
                     yield return new WaitUntil(() => destinationMarker.m_hasArrived && destinationMarker.m_destinationMarker.m_hasArrived);
                 }
                 
@@ -678,11 +679,13 @@ namespace Himanshu
 
         public void ChaseEnter()
         {
+            StopAllCoroutines();
+            m_waiting = false;
             m_agent.speed = 11f;
             IEnumerator YellowToRed()
             {
                 
-                //transform.LookAt(m_player.transform);
+                transform.LookAt(m_player.transform);
                 yield return new WaitForSeconds(m_detectedThrough == eDetect.Vision ? 1.5f : 3f);
 
                 //rotate gradually towards the player using rotate towards
