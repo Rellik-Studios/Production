@@ -5,11 +5,11 @@ using rachael;
 using rachael.FavorSystem;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 namespace Himanshu
 {
-
 
     public class Objective : MonoBehaviour, IInteract
     {
@@ -21,6 +21,7 @@ namespace Himanshu
         private AudioSource m_audioSource;
         [SerializeField] private Padlock m_padlock;
         public bool m_locked = false;
+        [SerializeField] private UnityEvent m_onComplete;
 
         private void Start()
         {
@@ -43,6 +44,7 @@ namespace Himanshu
             FavorSystem.startTimer = false;
             m_unlockVFX.SetActive(true);
             m_audioSource?.Play();
+            m_onComplete?.Invoke();
             m_glitchedCubes.ForEach(t=>t.GetComponent<Renderer>().material.SetInt("_UseFillPercent", 1));
             m_dissapearingDoor.SetActive(false);
             gameObject.SetActive(false);
