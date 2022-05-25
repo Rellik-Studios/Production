@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using rachael;
 using UnityEngine;
+using UnityEngine.Events;
 namespace Himanshu.SmartObjective
 {
 
@@ -19,6 +20,10 @@ namespace Himanshu.SmartObjective
 
         public eObjName m_objName;
         private PlayerSmartObjectives m_player;
+
+        public Vector3 m_position = new Vector3(0f, 0f, 1.39f);
+        public Vector3 m_rotation =new Vector3(16.723f, 0f, 0f);
+        public UnityEvent m_onPickup;
 
         private void Start()
         {
@@ -96,6 +101,7 @@ namespace Himanshu.SmartObjective
             }
             ItemHold.Instance.HoldItem(this.gameObject);
             m_actions[m_objName]();
+            m_onPickup?.Invoke();
         }
         public void CanExecute(Raycast _raycast)
         {
@@ -104,8 +110,8 @@ namespace Himanshu.SmartObjective
         }
         public virtual void SetTransform()
         {
-            transform.localPosition = new Vector3(0f, 0f, 1.39f);
-            transform.localRotation = Quaternion.Euler(16.723f, 0f, 0f);
+            transform.localPosition = m_position;
+            transform.localRotation = Quaternion.Euler(m_rotation);
         }
         public virtual void SetTransform(Transform _transform)
         {

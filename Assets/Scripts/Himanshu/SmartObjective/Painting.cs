@@ -21,8 +21,8 @@ namespace Himanshu.SmartObjective
         {
             if (m_hasAnomaly && m_player.m_hasPaintBrush)
             {
-               m_painting.SetActive(true);
-               m_painting.GetComponent<Renderer>().material = GetComponent<Renderer>().material;
+               m_painting.transform.GetChild(0).gameObject.SetActive(true);
+               m_painting.transform.GetChild(0).GetChild(0).GetComponent<Renderer>().material = transform.GetChild(0).GetChild(0).GetComponent<Renderer>().material;
 
                {
                    FindObjectOfType<Narrator>().Play("You’re an up and coming talent, a star on the rise.#" +
@@ -30,7 +30,7 @@ namespace Himanshu.SmartObjective
                    m_painting.GetComponent<Animator>().SetTrigger("Painted");
                    m_animator.SetTrigger("Painted");
                    m_objective.Execute(m_player.GetComponent<PlayerInteract>());
-                   this.Invoke(() => m_painting.SetActive(false), 2f);
+                   this.Invoke(() => m_painting.transform.GetChild(0).gameObject.SetActive(false), 2f);
                    ItemHold.Instance.DropItem();
                }
             }

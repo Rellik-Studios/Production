@@ -44,6 +44,7 @@ namespace Himanshu.SmartObjective
             if(m_heldItemPlaceHolder != null)
                 Destroy(m_heldItemPlaceHolder);
             m_player.DropAll();
+            transform.Find("Point Light").gameObject.SetActive(false);
         }
 
 

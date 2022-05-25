@@ -65,6 +65,7 @@ namespace Himanshu
                 //m_audioSource.Play();
                 m_onExecute?.Invoke();
                 if(!m_canDistract) return;
+                FindObjectOfType<Narrator>().madeSound = true;
                 playing = true;
                 this.Invoke(() => playing = false, m_audioSource.clip.length);
             }
@@ -100,6 +101,8 @@ namespace Himanshu
                 if(!m_canDistract)    
                     return;
                 m_onExecute?.Invoke();
+                FindObjectOfType<Narrator>().madeSound = true;
+
                 //m_audioSource.Play();
                 if(!m_canDistract) return; 
                 playing = true;
