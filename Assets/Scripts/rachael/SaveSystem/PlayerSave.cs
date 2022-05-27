@@ -32,16 +32,19 @@ namespace rachael.SaveSystem
             m_depositedToTheClock = new List<CollectableObject>();
             m_inventory = new Dictionary<CollectableObject, Wrapper<int>>();
             Debug.Log(Application.persistentDataPath);
-            if (!gameManager.Instance.m_isSafeRoom && Directory.Exists(Application.persistentDataPath + "/player/"))
-            {
-                LoadPlayer();
-            }
-            else if (Directory.Exists(Application.persistentDataPath + "/player/"))
+            
+            if (gameManager.Instance != null && gameManager.Instance.m_isSafeRoom && Directory.Exists(Application.persistentDataPath + "/player/"))
             {
                 LoadPlayer(true);
                 FindObjectOfType<PlayerMovement>().m_stopWhileStarting = true;
                 gameManager.Instance.m_isSafeRoom = false;
             }
+            
+            
+            else if (Directory.Exists(Application.persistentDataPath + "/player/"))
+            {
+                LoadPlayer();
+            } 
             else
             {
                 FindObjectOfType<Himanshu.Tutorial>().RunTutorial();
