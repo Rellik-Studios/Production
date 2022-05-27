@@ -35,15 +35,9 @@ namespace Himanshu
         private  static void GMInit()
         {
             var inst = new GameObject("GameManager").AddComponent<gameManager>();
-            if (m_instance == null)
-            {
-                DontDestroyOnLoad(inst);
-                m_instance = inst;
-            }
-            else
-            {
-                Destroy(inst.gameObject);
-            }
+            
+            DontDestroyOnLoad(inst);
+            m_instance = inst;
         }
 
         private void Start()
