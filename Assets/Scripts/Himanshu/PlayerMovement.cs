@@ -20,7 +20,13 @@ namespace Himanshu
         [SerializeField] private float m_jumpHeight;
         [SerializeField] private float m_groundDistance = 0.1f;
         private bool m_isGrounded;
-        public bool canMoveUnscaled => FindObjectOfType<FavorSystem>().m_timeStop && FindObjectOfType<FavorSystem>().m_continueCounting;
+        public bool canMoveUnscaled {
+            get {
+                if (FindObjectOfType<FavorSystem>() != null)
+                    return FindObjectOfType<FavorSystem>().m_timeStop && FindObjectOfType<FavorSystem>().m_continueCounting;
+                return false;
+            }
+        }
         public bool crouching {
             get {
                 if (m_playerInput.m_crouching) {
@@ -65,7 +71,8 @@ namespace Himanshu
                     if (m_sprintNarratorTimer < 0f)
                     {
                         m_sprintNarratorTimer = 40f;
-                        FindObjectOfType<Narrator>().breathing = true;
+                        if(FindObjectOfType<Narrator>()!=null)
+                            FindObjectOfType<Narrator>().breathing = true;
                     }
 
                     //m_audioSource.volume = 0.5f;
@@ -74,7 +81,8 @@ namespace Himanshu
                     
                 }
                 m_sprintTimer = value;
-                m_sprintImage.fillAmount = m_sprintTimer / m_maxSprintTimer;
+                if (m_sprintImage != null)
+                    m_sprintImage.fillAmount = m_sprintTimer / m_maxSprintTimer;
             }
         }
         
