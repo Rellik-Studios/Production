@@ -40,6 +40,14 @@ namespace Himanshu
             m_instance = inst;
         }
 
+        private void Awake()
+        {
+            if (m_instance != this)
+            {
+                Destroy(gameObject);
+            }
+        }
+
         private void Start()
         {
             var objs = GameObject.FindGameObjectsWithTag("EnemyBlocker");
