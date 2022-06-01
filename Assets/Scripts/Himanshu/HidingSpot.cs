@@ -257,7 +257,7 @@ namespace Himanshu
                 index++;
             }
             if(m_cupboard)
-                this.Invoke(()=>hidingIndex = index, 1.1f);
+                this.Invoke(()=>hidingIndex = index, 0.5f);
             else
                 hidingIndex = index;
         }
