@@ -5,12 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
 {
-    public Animator LoadTransition;
+    Animator LoadTransition;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        LoadTransition = GetComponent<Animator>();
     }
 
     // Update is called once per frame

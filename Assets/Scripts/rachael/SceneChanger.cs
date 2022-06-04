@@ -10,6 +10,8 @@ namespace rachael
     {
         //public GameObject m_player;
         [FormerlySerializedAs("ContinueBlock")] public GameObject m_continueBlock;
+        public LevelLoader m_levelLoader;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -49,7 +51,15 @@ namespace rachael
 
             Cursor.lockState = CursorLockMode.None;
             Time.timeScale = 1f;
-            SceneManager.LoadScene(0);
+            if(m_levelLoader != null)
+            {
+                m_levelLoader.LoadLevel(0);
+            }
+            else
+            {
+                SceneManager.LoadScene(0);
+            }
+            
         }
         public void Quit()
         {
@@ -69,7 +79,15 @@ namespace rachael
                     SaveSystem.SaveSystem.DeleteNarrator();
                 gameManager.Instance?.ResetManager();
             }
-            SceneManager.LoadScene(1);
+
+            if (m_levelLoader != null)
+            {
+                m_levelLoader.LoadLevel(1);
+            }
+            else
+            {
+                SceneManager.LoadScene(1);
+            }
         }
         public void Ending()
         {
