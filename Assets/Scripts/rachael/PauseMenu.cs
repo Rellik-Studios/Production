@@ -11,16 +11,20 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private AudioMixer m_audioMixer;
     [SerializeField] private Slider m_bgSlider;
     [SerializeField] private Slider m_sfxSlider;
+    [SerializeField] private Slider m_dSlider;
 
     // Start is called before the first frame update
     void Start()
     {
         float sfxValue = 0;
         float bgValue = 0;
+        float dValue = 0;
         m_audioMixer.GetFloat("sfxAudio", out sfxValue);
         m_audioMixer.GetFloat("bgAudio", out bgValue);
+        m_audioMixer.GetFloat("dialogueAudio", out dValue);
         m_sfxSlider.value = sfxValue;
         m_bgSlider.value = bgValue;
+        m_dSlider.value = dValue;
     }
     private void OnEnable()
     {
@@ -54,5 +58,10 @@ public class PauseMenu : MonoBehaviour
     public void SetSFXVolume(float _value)
     {
         m_audioMixer.SetFloat("sfxAudio", m_sfxSlider.value);
+    }
+    
+    public void SetDVolume(float _value)
+    {
+        m_audioMixer.SetFloat("dialogueAudio", m_dSlider.value);
     }
 }

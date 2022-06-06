@@ -8,6 +8,7 @@ using Random = UnityEngine.Random;
 
 namespace Himanshu
 {
+
     public class NarratorTrigger : MonoBehaviour
     {
         public UnityEvent m_event;
