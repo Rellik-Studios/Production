@@ -5,12 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de8b67ab-e0b5-4d99-a633-e1ffe02f1d8c" name="Changes" comment="Changes">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Himanshu/CryoChamber.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Himanshu/CryoChamber.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Himanshu/ReplaceWithPrefab.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Himanshu/ReplaceWithPrefab.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Production/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Production/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Himanshu/LoseScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Himanshu/LoseScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Rachael/Baker v4.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Rachael/Baker v4.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Rachael/Baker v4/NavMesh.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Rachael/Baker v4/NavMesh.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Electronic Highway Sign SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Electronic Highway Sign SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Master.mixer" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Master.mixer" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NewNick/Room_Prefab/SM_Labyrinth_test.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/NewNick/Room_Prefab/SM_Labyrinth_test.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Rachael/Path_face 3.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Rachael/Path_face 3.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Himanshu/NarratorTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Himanshu/NarratorTrigger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/rachael/PauseMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/rachael/PauseMenu.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +39,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Selectable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2c24f0c1857d4078b6d453f88e061a29dba00/1e/cf9be923/DayOfWeek.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_InputField.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Himanshu/ReplaceWithPrefab.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Himanshu/SmartObjective/PickupObj.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -66,6 +71,7 @@
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="rider.run.widget.enabled.cache" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
@@ -95,10 +101,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="1160">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="1160" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -152,7 +158,8 @@
       <workItem from="1653457037363" duration="4472000" />
       <workItem from="1653625542799" duration="2298000" />
       <workItem from="1653643976935" duration="2373000" />
-      <workItem from="1653807149508" duration="595000" />
+      <workItem from="1653807149508" duration="596000" />
+      <workItem from="1654043239988" duration="10336000" />
     </task>
     <servers />
   </component>
@@ -216,30 +223,17 @@
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Himanshu/Narrator.cs</url>
-          <line>308</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/Himanshu/Narrator.cs" initialLine="299" containingFunctionPresentation="method 'eSetText'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Himanshu/CryoChamber.cs</url>
+          <line>21</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/Himanshu/CryoChamber.cs" initialLine="28" containingFunctionPresentation="method 'OnTriggerEnter'">
             <startOffsets>
-              <option value="8639" />
+              <option value="736" />
             </startOffsets>
             <endOffsets>
-              <option value="8698" />
+              <option value="789" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/rachael/SaveSystem/PlayerSave.cs</url>
-          <line>120</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/rachael/SaveSystem/PlayerSave.cs" initialLine="120" containingFunctionPresentation="method 'LoadPlayer'">
-            <startOffsets>
-              <option value="3960" />
-            </startOffsets>
-            <endOffsets>
-              <option value="4001" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="20" />
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
