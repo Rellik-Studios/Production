@@ -313,6 +313,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8883835356402233018}
+  - component: {fileID: 929345210385177779}
+  - component: {fileID: 7189141905181142644}
+  - component: {fileID: 7817520147697248371}
   m_Layer: 0
   m_Name: Robotarm_animation
   m_TagString: Untagged
@@ -337,3 +340,47 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -176.316, z: 0}
+--- !u!65 &929345210385177779
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8071129604155864064}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.07222, y: 14.796199, z: 10.4495}
+  m_Center: {x: 0.57023805, y: 6.8981004, z: -0.31013894}
+--- !u!95 &7189141905181142644
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8071129604155864064}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c4900f0e78e6dfe47a9b226769eca74f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7817520147697248371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8071129604155864064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ab05566b6a48c14aad4a7a0428de059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

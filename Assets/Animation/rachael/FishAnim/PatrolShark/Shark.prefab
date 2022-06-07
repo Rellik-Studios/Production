@@ -1,0 +1,163 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3665215171472357419
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6261720678059356671}
+  - component: {fileID: 276993622207434315}
+  m_Layer: 0
+  m_Name: Shark
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6261720678059356671
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3665215171472357419}
+  m_LocalRotation: {x: -0, y: -0.00000008940696, z: -0, w: 1}
+  m_LocalPosition: {x: -407.96, y: 3.9, z: 171.04}
+  m_LocalScale: {x: 3.1062458, y: 3.1062458, z: 3.1062458}
+  m_Children:
+  - {fileID: 3696893356708757547}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &276993622207434315
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3665215171472357419}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d2abab0b2796b934ba47186c65ff54e8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &7074138955966179629
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935061176454313899}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.04904974, y: 0.021922257, z: 0.02118224}
+  m_Center: {x: -0.0048298426, y: 0.005817954, z: -0.000030942763}
+--- !u!114 &7074138955966179666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935061176454313899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87c8ea1af3a5cf24296000bc98db1e45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharkAnim: {fileID: 3802368042485016514}
+--- !u!1001 &7074138956131982391
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6261720678059356671}
+    m_Modifications:
+    - target: {fileID: 5864358575242959900, guid: ce0ce08e0835c814484c7349b9e0136c, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5864358575242959900, guid: ce0ce08e0835c814484c7349b9e0136c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5864358575242959900, guid: ce0ce08e0835c814484c7349b9e0136c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5864358575242959900, guid: ce0ce08e0835c814484c7349b9e0136c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5864358575242959900, guid: ce0ce08e0835c814484c7349b9e0136c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5864358575242959900, guid: ce0ce08e0835c814484c7349b9e0136c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5864358575242959900, guid: ce0ce08e0835c814484c7349b9e0136c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.4067287
+      objectReference: {fileID: 0}
+    - target: {fileID: 5864358575242959900, guid: ce0ce08e0835c814484c7349b9e0136c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5864358575242959900, guid: ce0ce08e0835c814484c7349b9e0136c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5864358575242959900, guid: ce0ce08e0835c814484c7349b9e0136c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5864358575242959900, guid: ce0ce08e0835c814484c7349b9e0136c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5864358575242959900, guid: ce0ce08e0835c814484c7349b9e0136c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5864358575242959900, guid: ce0ce08e0835c814484c7349b9e0136c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5864358575242959900, guid: ce0ce08e0835c814484c7349b9e0136c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6496921442241676966, guid: ce0ce08e0835c814484c7349b9e0136c, type: 3}
+      propertyPath: m_Name
+      value: shark_animation
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ce0ce08e0835c814484c7349b9e0136c, type: 3}
+--- !u!4 &3696893356708757547 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5864358575242959900, guid: ce0ce08e0835c814484c7349b9e0136c, type: 3}
+  m_PrefabInstance: {fileID: 7074138956131982391}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3802368042485016514 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6262495459892411381, guid: ce0ce08e0835c814484c7349b9e0136c, type: 3}
+  m_PrefabInstance: {fileID: 7074138956131982391}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &935061176454313899 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7986679608410811292, guid: ce0ce08e0835c814484c7349b9e0136c, type: 3}
+  m_PrefabInstance: {fileID: 7074138956131982391}
+  m_PrefabAsset: {fileID: 0}
