@@ -34,17 +34,15 @@ namespace Himanshu
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private  static void GMInit()
         {
+            print("Loading the game manager");
             var inst = new GameObject("GameManager").AddComponent<gameManager>();
-            
-            DontDestroyOnLoad(inst);
-            m_instance = inst;
-        }
-
-        private void Awake()
-        {
-            if (m_instance != this)
-            {
-                Destroy(gameObject);
+            if (m_instance == null) {
+                m_instance = inst;
+                DontDestroyOnLoad(inst);
+            } 
+            else {
+                print("Destroying gm`");
+                Destroy(inst);    
             }
         }
 
