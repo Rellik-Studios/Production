@@ -6,8 +6,11 @@ namespace Himanshu
         [SerializeField] private Material m_cryoOnlineLit;
         [SerializeField] private Material m_cryoOnlineUnlit;
         [SerializeField] private Material m_cryoOffline;
+        [SerializeField] private Material m_screenLit;
         private bool m_broken = false;
         private MeshRenderer m_cryoRenderer;
+        private MeshRenderer m_screenRenderer;
+        
 
         private void Start()
         {
