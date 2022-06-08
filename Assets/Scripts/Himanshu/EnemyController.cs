@@ -331,11 +331,17 @@ namespace Himanshu
                 return;
 
             m_agent.stoppingDistance = 4f;
-            
-            m_agent.SetDestination(currentDistraction.transform.position);
+            if(m_agent.destination != currentDistraction.transform.position)
+                m_agent.SetDestination(currentDistraction.transform.position);
 
-            if ((m_agent.transform.position - currentDistraction.transform.position).magnitude < m_agent.stoppingDistance)
+            if (!currentDistraction.playing) 
             {
+                currentDistraction = null;
+                m_agent.stoppingDistance = 0f;
+            }
+            if ((m_agent.transform.position - currentDistraction.transform.position).magnitude < m_agent.stoppingDistance && currentDistraction.gameObject.name != "TV")
+            {
+                print($"{currentDistraction.gameObject.name} is being stopped");
                 currentDistraction.playing = false;
                 m_agent.stoppingDistance = 0f;
                 currentDistraction = null;
