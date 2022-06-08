@@ -1995,6 +1995,7 @@ MonoBehaviour:
   m_audioMixer: {fileID: 24100000, guid: 96e9b489fe2029544b8d9b60fe606bd9, type: 2}
   m_bgSlider: {fileID: 2135251281}
   m_sfxSlider: {fileID: 188544035}
+  m_dSlider: {fileID: 480400917}
 --- !u!1 &480400915
 GameObject:
   m_ObjectHideFlags: 0
@@ -2085,8 +2086,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+      - m_Target: {fileID: 404124145}
+        m_TargetAssemblyTypeName: Himanshu.MainMenuAudio, Assembly-CSharp
         m_MethodName: SetDVolume
         m_Mode: 4
         m_Arguments:
