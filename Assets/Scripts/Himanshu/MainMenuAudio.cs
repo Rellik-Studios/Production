@@ -9,11 +9,15 @@ namespace Himanshu
         [SerializeField] private AudioMixer m_audioMixer;
         [SerializeField] private Slider m_bgSlider;
         [SerializeField] private Slider m_sfxSlider;
+        [SerializeField] private Slider m_dSlider;
 
         private void Start()
         {
             m_audioMixer.GetFloat("bgAudio", out float _bgVol);
             m_audioMixer.GetFloat("sfxAudio", out float _sfxVol);
+            m_audioMixer.GetFloat("dialogueAudio", out float _dValue);
+            SetDVolume(_dValue);
+            m_dSlider.value = _dValue;
             SetBGVolume(_bgVol);
             m_bgSlider.value = _bgVol;
             SetSFXVolume(_sfxVol);
@@ -40,5 +44,14 @@ namespace Himanshu
             else 
                 m_audioMixer.SetFloat("sfxAudio", -80f);
         }
+
+        public void SetDVolume(float _value)
+        {
+            if(m_dSlider.value > -25f)
+                m_audioMixer.SetFloat("dialogueAudio", m_dSlider.value);
+            else 
+                m_audioMixer.SetFloat("dialogueAudio", -80f);
+        }
     }
+
 }

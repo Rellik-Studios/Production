@@ -16,6 +16,8 @@ namespace Himanshu.SmartObjective
 
         private void Update()
         {
+            if(gameManager.Instance.isTutorialRunning)
+                return;
             //Check sphere collision for all layers
             var colliders = Physics.OverlapSphere(transform.position, m_radius, ~0);
             if (colliders.Any(t => t.TryGetComponent<PlayerInteract>(out PlayerInteract _playerInteract))) {
