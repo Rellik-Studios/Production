@@ -54,6 +54,8 @@ namespace rachael
             if(m_levelLoader != null)
             {
                 m_levelLoader.LoadLevel(0);
+                // SceneManager.LoadScene(0);
+
             }
             else
             {
@@ -83,9 +85,12 @@ namespace rachael
             if (m_levelLoader != null)
             {
                 m_levelLoader.LoadLevel(1);
+                // SceneManager.LoadScene(1);
+
             }
-            else
-            {
+            else {
+                if (gameManager.Instance != null)
+                    gameManager.Instance.m_isSafeRoom = true;
                 SceneManager.LoadScene(1);
             }
         }
