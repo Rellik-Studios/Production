@@ -23,11 +23,13 @@ namespace Himanshu
                 {
                     m_distraction.Execute(m_playerInteract);
                     m_meshRenderer.material = m_onMat;
+                    m_tvMeshRenderer.enabled = true;
                 }
                 else
                 {
                     m_meshRenderer.material = m_offMat; 
-                    m_tvMeshRenderer.material = m_tvOffMat;
+                    // m_tvMeshRenderer.material = m_tvOffMat;
+                    m_tvMeshRenderer.enabled = false;
                     m_distraction.m_playing = false;
                 }
                 m_state = value;

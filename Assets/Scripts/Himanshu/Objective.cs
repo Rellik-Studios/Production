@@ -35,7 +35,8 @@ namespace Himanshu
                 m_audioSource = GetComponent<AudioSource>();
                 m_padlock.m_lockCode = "0" + (t + 1).ToString() + m_heartRateTexts[t].text;
             }
-            
+            m_audioSource = GetComponent<AudioSource>();
+
         }
 
         public void Execute(PlayerInteract _player)
