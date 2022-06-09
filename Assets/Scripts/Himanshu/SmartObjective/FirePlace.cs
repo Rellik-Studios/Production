@@ -20,6 +20,7 @@ namespace Himanshu.SmartObjective
                 m_objective.Execute(_player.GetComponent<PlayerInteract>());
                 _player.m_hasFire = false;
                 _player.m_hasCandle = false;
+                GetComponent<AudioSource>()?.Play();
                 ItemHold.Instance.DropItem();
             }
         }
