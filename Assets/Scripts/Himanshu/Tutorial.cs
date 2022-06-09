@@ -195,7 +195,7 @@ namespace Himanshu
                 m_hidingSpot.transform.parent.GetComponent<BoxCollider>().enabled = false;
                 m_hidingSpot.SetActive(true);
 
-                Debug.Log("Why don't ya hide under that table");
+                // Debug.Log("Why don't ya hide under that table");
 
                 yield return new WaitUntil(() => m_hidingSpot.GetComponent<HidingSpot>().isUsed);
 
@@ -285,7 +285,7 @@ namespace Himanshu
 
         public static void RunBookTutorial()
         {
-            Debug.Log("Book Tutorial");
+            // Debug.Log("Book Tutorial");
 
             Tutorial tutorial = FindObjectOfType<Tutorial>();   
 
@@ -421,7 +421,7 @@ namespace Himanshu
                 
             }
             
-            Debug.Log("Obj Tutorial");
+            // Debug.Log("Obj Tutorial");
             Tutorial tutorial = FindObjectOfType<Tutorial>();
             tutorial.StartCoroutine(ObjectiveCoroutine());
         }

@@ -37,7 +37,7 @@ namespace rachael
         }
         private void OnTriggerEnter(Collider _other)
         {
-            Debug.Log("Contact");
+            // Debug.Log("Contact");
             if (_other.GetComponent<PlayerInteract>() != null)
             {
                 m_assignDoor.GetComponent<DoorToWall>().FadeHubWall();
@@ -47,7 +47,7 @@ namespace rachael
 
         public void CheckCollect()
         {
-            Debug.Log(m_assignedObject);
+            // Debug.Log(m_assignedObject);
 
             if (m_assignedObject == null)
             {

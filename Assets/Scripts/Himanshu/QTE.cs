@@ -83,7 +83,7 @@ namespace Himanshu
         {
             if (m_passCounter == m_maxPass)
             {
-                Debug.Log("QTE Successful");
+                // Debug.Log("QTE Successful");
                 m_result = true;
                 Time.timeScale = 1f;
                 Cursor.lockState = CursorLockMode.Locked;
@@ -94,7 +94,7 @@ namespace Himanshu
             if (m_failCounter >= m_maxFail)
             {
                 m_result = false;
-                Debug.Log("QTE Fail");
+                // Debug.Log("QTE Fail");
                 Cursor.lockState = CursorLockMode.Locked;
                 Time.timeScale = 1f;
                 gameObject.SetActive(false);

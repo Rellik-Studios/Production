@@ -76,7 +76,7 @@ namespace Himanshu
         public static T Random<T>(this List<T> _this)
         {
             int rand = UnityEngine.Random.Range(0, _this.Count);
-            Debug.Log(_this.Count);
+            // Debug.Log(_this.Count);
 
             return _this[rand];
         }

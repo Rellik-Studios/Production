@@ -76,11 +76,11 @@ public class GameCommandPrompt : MonoBehaviour
                         var iCopy = i;
                         m_commands.Add("TELEPORT " + loop + " " + (i + 1), () =>
                         {
-                            Debug.Log(indexCopy.ToString() + "." + (iCopy + 1).ToString());
+                            // // Debug.Log(indexCopy.ToString() + "." + (iCopy + 1).ToString());
                             QuitCommand();
                             
                             favorSystem.Invoke(()=>DevMenu.Instance.teleport = float.Parse(indexCopy.ToString() + "." + (iCopy).ToString()), 0.2f);
-                            Debug.Log(DevMenu.Instance.teleport);
+                            // // Debug.Log(DevMenu.Instance.teleport);
                             return true;
                         });
                     }
@@ -115,7 +115,7 @@ public class GameCommandPrompt : MonoBehaviour
             
             
             
-            Debug.Log(m_commands);
+            // // Debug.Log(m_commands);
         }
         else
         {
@@ -145,7 +145,7 @@ public class GameCommandPrompt : MonoBehaviour
         selectInputField();
         m_inputField.text = "";
         yield return new WaitUntil(() => m_commandEntered != "");
-        Debug.Log(m_commandEntered);
+        // // Debug.Log(m_commandEntered);
         
         if(_hearingRadius)
             DevMenu.EnemyTweaker(true, float.Parse(m_commandEntered));
@@ -168,7 +168,7 @@ public class GameCommandPrompt : MonoBehaviour
             selectInputField();
             m_inputField.text = "";
             yield return new WaitUntil(() => m_commandEntered != "");
-            Debug.Log(m_commandEntered);
+            // // Debug.Log(m_commandEntered);
             if(m_commandEntered.ToLower() == "yes" && !m_developerMode)
             {
                 m_developerMode = true;
@@ -212,7 +212,7 @@ public class GameCommandPrompt : MonoBehaviour
         Cursor.visible = true;
 
         selectInputField();
-        Debug.Log("opening");
+        // // Debug.Log("opening");
         m_failedAttempts = 0;
         counter = 0;
         changingName = false;
@@ -223,15 +223,15 @@ public class GameCommandPrompt : MonoBehaviour
     }
     private void OnDisable()
     {
-        Debug.Log("closing");
+        // Debug.Log("closing");
         if (!timeStop)
         {
-            Debug.Log("THERE IS NO TIMESTOP");
+            // // Debug.Log("THERE IS NO TIMESTOP");
             Time.timeScale = 1f;
         }
         else
         {
-            Debug.Log("THIS IS GOING THROUGH THE DISABLE");
+            // // Debug.Log("THIS IS GOING THROUGH THE DISABLE");
             favorSystem.ResetTime();
             //this.Invoke(()=>timeStop = false, 5, true);
         }
@@ -241,7 +241,7 @@ public class GameCommandPrompt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(Random.Range(1, 3));
+        //// Debug.Log(Random.Range(1, 3));
     }
 
 
@@ -249,19 +249,19 @@ public class GameCommandPrompt : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            Debug.Log("Talk");
+            // Debug.Log("Talk");
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            Debug.Log("Time");
+            // Debug.Log("Time");
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            Debug.Log("User");
+            // Debug.Log("User");
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            Debug.Log("Quit");
+            // Debug.Log("Quit");
         }
     }
 
@@ -269,23 +269,23 @@ public class GameCommandPrompt : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            Debug.Log("Talk");
+            // Debug.Log("Talk");
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            Debug.Log("Time");
+            // Debug.Log("Time");
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            Debug.Log("User");
+            // Debug.Log("User");
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            Debug.Log("Help");
+            // Debug.Log("Help");
         }
         else if (Input.GetKeyDown(KeyCode.Alpha5))
         {
-            Debug.Log("Quit");
+            // Debug.Log("Quit");
         }
     }
     public void DisableTypingForPlayer()
@@ -370,12 +370,12 @@ public class GameCommandPrompt : MonoBehaviour
         if (string.IsNullOrWhiteSpace(answer))
         {
             InvalidInput();
-            Debug.Log("yes it does contain white space");
+            // Debug.Log("yes it does contain white space");
         }
         else
         {
             favorSystem.m_commandText.text = "Old Username:\n" + NarratorScript.UserName + "\n\nNew Username:\n" + answer;
-            Debug.Log("yes it does not contain white space");
+            // Debug.Log("yes it does not contain white space");
             NarratorScript.UserName = answer;
             gameManager.Instance.m_username = answer;
             changingName = false;
@@ -418,7 +418,7 @@ public class GameCommandPrompt : MonoBehaviour
                 yield return null;
             }
             
-            Debug.Log(m_commandEntered);
+            // Debug.Log(m_commandEntered);
             if (m_commandEntered == chest.m_passcode.ToString())
             {
                 chest.m_locked = false;
@@ -467,7 +467,7 @@ public class GameCommandPrompt : MonoBehaviour
         favorSystem.m_commandText.resizeTextForBestFit = false;
         m_inputField.enabled = false;
         StartCoroutine(HelpCommandProcess());
-        Debug.Log("help!");
+        // Debug.Log("help!");
         return true;
     }
     
@@ -480,7 +480,7 @@ public class GameCommandPrompt : MonoBehaviour
         favorSystem.consoleDisplay = ConsoleDisplay.talkMenu;
         enableTyping = false;
         //favorSystem.DisplayScreen();
-        Debug.Log("Talk!");
+        // Debug.Log("Talk!");
         return true;
     }
 
@@ -490,7 +490,7 @@ public class GameCommandPrompt : MonoBehaviour
         favorSystem.consoleDisplay = ConsoleDisplay.timeMenu;
         enableTyping = false;
         //favorSystem.DisplayScreen();
-        Debug.Log("Time!");
+        // Debug.Log("Time!");
         return true;
     }
 
@@ -500,14 +500,14 @@ public class GameCommandPrompt : MonoBehaviour
         favorSystem.consoleDisplay = ConsoleDisplay.userMenu;
         favorSystem.m_commandFeatures[favorSystem.getEnumConsoleNum()].text = favorSystem.m_commandText.text;
         //favorSystem.DisplayScreen();
-        Debug.Log("User!");
+        // Debug.Log("User!");
         return true;
     }
 
     bool QuitCommand()
     {
         favorSystem.CloseCommandPrompt();
-        Debug.Log("Quit!");
+        // Debug.Log("Quit!");
         return true;
     }
 
@@ -516,7 +516,7 @@ public class GameCommandPrompt : MonoBehaviour
 
     void InvalidInput()
     {
-        Debug.Log("INVALID INPUT! TRY AGAIN");
+        // Debug.Log("INVALID INPUT! TRY AGAIN");
 
         m_failedAttempts++;
 
@@ -524,7 +524,7 @@ public class GameCommandPrompt : MonoBehaviour
         if (m_failedAttempts > 3)
         {
             favorSystem.m_commandText.text = "TOO MANY FAILED ATTEMPTS\n\n SHUTTING DOWN COMMAND PROMPT";
-            Debug.Log("TOO MANY FAILED ATTEMPTS, COMMENCE COMMAND PROMPT CLOSE DOWN");
+            // Debug.Log("TOO MANY FAILED ATTEMPTS, COMMENCE COMMAND PROMPT CLOSE DOWN");
             m_inputField.enabled = false;
             StartCoroutine(ShutDownCommandProcess());
             
@@ -567,10 +567,10 @@ public class GameCommandPrompt : MonoBehaviour
         int x = Random.Range(0, 2);
         favorSystem.m_defaultPoints = x / 2.0f;
         favorSystem.m_result = favorSystem.m_defaultPoints + favorSystem.m_favorPoints;
-        Debug.Log(x);
-        Debug.Log(favorSystem.m_defaultPoints);
-        Debug.Log(favorSystem.m_favorPoints);
-        Debug.Log(favorSystem.m_result);
+        // Debug.Log(x);
+        // Debug.Log(favorSystem.m_defaultPoints);
+        // Debug.Log(favorSystem.m_favorPoints);
+        // Debug.Log(favorSystem.m_result);
 
         return favorSystem.m_result >= 0.5f;
         //return true;
@@ -617,14 +617,14 @@ public class GameCommandPrompt : MonoBehaviour
             t.isRewinding = true;
             return true;
         });
-        Debug.Log("Grant Rewind Time");
+        // Debug.Log("Grant Rewind Time");
     }
 
     void GrantStop()
     {
         Time.timeScale = 0;
         timeStop = true;
-        Debug.Log("Grant Stop Time");
+        // Debug.Log("Grant Stop Time");
     }
 
     public bool timeStop
@@ -641,7 +641,7 @@ public class GameCommandPrompt : MonoBehaviour
     {
         if(answer == "YES" || answer == "Y")
         {
-            Debug.Log("it works");
+            // Debug.Log("it works");
             favorSystem.m_commandText.text = "Current Username:\n" + NarratorScript.UserName + "\n\nInput New Username";
             changingName = true;
             favorSystem.m_commandFeatures[favorSystem.getEnumConsoleNum()].text = favorSystem.m_commandText.text;
@@ -671,7 +671,7 @@ public class GameCommandPrompt : MonoBehaviour
                     selectInputField();
                     CheckInput(textInput.ToUpper());
                     m_inputField.text = "";
-                    Debug.Log("APPLE");
+                    // Debug.Log("APPLE");
                 }
                 break;
             case ConsoleDisplay.SpecialMenu:
@@ -679,7 +679,7 @@ public class GameCommandPrompt : MonoBehaviour
                     selectInputField();
                     CheckInput(textInput.ToUpper());
                     m_inputField.text = "";
-                    Debug.Log("BANANA");
+                    // Debug.Log("BANANA");
                 }
                 break;
             case ConsoleDisplay.userMenu:
@@ -697,7 +697,7 @@ public class GameCommandPrompt : MonoBehaviour
                         AskToChangeName(textInput.ToUpper());
                     }
                     m_inputField.text = "";
-                    Debug.Log("CANAPLE");
+                    // Debug.Log("CANAPLE");
                 }
                 break;
             case ConsoleDisplay.talkMenu:
@@ -705,7 +705,7 @@ public class GameCommandPrompt : MonoBehaviour
                     enableTyping = true;
                     selectInputField();
                     favorSystem.DisplayingMainMenu();
-                    Debug.Log("CANAPLE");
+                    // Debug.Log("CANAPLE");
                 }
                 break;
             case ConsoleDisplay.timeMenu:
@@ -713,7 +713,7 @@ public class GameCommandPrompt : MonoBehaviour
                     enableTyping = true;
                     selectInputField();
                     favorSystem.DisplayingMainMenu();
-                    Debug.Log("CANAPLE");
+                    // Debug.Log("CANAPLE");
                 }
                 break;
             case ConsoleDisplay.customMenu:
@@ -722,7 +722,7 @@ public class GameCommandPrompt : MonoBehaviour
             }
                 break;
             default:
-                Debug.Log("NOTHING");
+                // Debug.Log("NOTHING");
                 CheckInput(textInput.ToUpper());
                 break;
         }
@@ -780,7 +780,7 @@ public class GameCommandPrompt : MonoBehaviour
         }
         else if (favorName == "Stop")
         {
-            Debug.Log("Time is stop");
+            // Debug.Log("Time is stop");
             GrantStop();
         }
 

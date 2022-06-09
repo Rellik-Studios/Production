@@ -38,7 +38,7 @@ namespace Himanshu
  
             m_hourHand.transform.rotation =  Quaternion.Euler(0f,0f,angle + 90f);
             m_minuteHand.transform.rotation = Quaternion.Euler(0f, 0f, minuteRotation);
-//            Debug.Log(minuteRotation);
+//            // // Debug.Log(minuteRotation);
             
         }
  

@@ -46,7 +46,7 @@ namespace rachael
 
         private void OnTriggerEnter(Collider _other)
         {
-            Debug.Log("Contact");
+            // Debug.Log("Contact");
             if (_other.CompareTag("Player"))
             {
                 PlayerInteract.PlaySound(m_audioClip);
