@@ -148,7 +148,7 @@ namespace Himanshu
                             yield break;
                         }
 
-                        Debug.Log("Slide BABYY");
+                        // // Debug.Log("Slide BABYY");
                         m_isSliding = true;
                         int counter = 0;
                         while (counter < 25) {
@@ -170,8 +170,9 @@ namespace Himanshu
                 }
             }
             
-            StartCoroutine(Slide());
+            //StartCoroutine(Slide());
 
+            
             
             var movement = m_playerInput.movement.x * transform.right + m_playerInput.movement.z * transform.forward;
             if (m_characterController.enabled)
@@ -199,7 +200,7 @@ namespace Himanshu
                 sprintTimer += calculatedDeltaTime / 4f;
             }
             m_currentSpeed = m_characterController.velocity.magnitude;
-             //Debug.Log(m_characterController.velocity.magnitude);
+             //// // Debug.Log(m_characterController.velocity.magnitude);
         }
     }
 

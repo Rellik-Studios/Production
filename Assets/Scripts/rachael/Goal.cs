@@ -17,7 +17,7 @@ namespace rachael
         }
         private void OnTriggerEnter(Collider _other)
         {
-            Debug.Log("This is the end of the game!!");
+            // Debug.Log("This is the end of the game!!");
         }
     }
 }

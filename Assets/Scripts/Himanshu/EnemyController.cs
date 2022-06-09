@@ -751,7 +751,7 @@ namespace Himanshu
             //     //m_agent.SetDestination(transform.position);    
             //     // dir = transform.position - FindObjectOfType<PlayerMovement>().transform.position;
             //     // angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            //     Debug.Log(Mathf.Abs(lookAngle - angle));
+            //     // Debug.Log(Mathf.Abs(lookAngle - angle));
             //     lookAngle = Mathf.Lerp(lookAngle, angle, Time.deltaTime * 3);
             //     yield return null;
             // }

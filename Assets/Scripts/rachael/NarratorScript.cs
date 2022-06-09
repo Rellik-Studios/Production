@@ -49,9 +49,8 @@ namespace rachael
             DeviceName = SystemInfo.deviceName;
             WeekDay = System.DateTime.Now.DayOfWeek.ToString();
         
-            if(UserName != null)
-                Debug.Log("You are defined as " + UserName);
-            Debug.Log("Your device name is: " + SystemInfo.deviceName);
+                // Debug.Log("You are defined as " + UserName);
+            // Debug.Log("Your device name is: " + SystemInfo.deviceName);
         }
 
         // Update is called once per frame

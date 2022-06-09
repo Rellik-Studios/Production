@@ -45,7 +45,7 @@ namespace rachael
                 _other.GetComponentInParent<RespawnManager>().Teleport(m_locationPosition.transform);
 
 
-                Debug.Log("You have moved to a new location");
+                // Debug.Log("You have moved to a new location");
             }
             if (index <= (m_loopObjects.Length - 2))
             {
@@ -66,7 +66,7 @@ namespace rachael
                 door.GetComponent<Door>().CloseTheDoor(true);
             }
 
-            Debug.Log("Player has finished this time era");
+            // Debug.Log("Player has finished this time era");
         }
 
 
@@ -98,14 +98,14 @@ namespace rachael
         }
         private void OnTriggerEnter(Collider _other)
         {
-            Debug.Log("Contact");
+            // Debug.Log("Contact");
             if (_other.CompareTag("Player"))
             {
                 if (_other.GetComponentInParent<RespawnManager>() != null)
                 {
                     _other.GetComponentInParent<RespawnManager>().Teleport(m_locationPosition.transform);
                 
-                    Debug.Log("You have moved to a new location");
+                    // Debug.Log("You have moved to a new location");
                 }
                 if (index <= (m_loopObjects.Length - 2))
                 {
@@ -130,7 +130,7 @@ namespace rachael
                     //other.GetComponentInParent<PlayerSave>().SavePlayer();
                 }
 
-                Debug.Log("Time Era has changed");
+                // Debug.Log("Time Era has changed");
             }
         }
         public void MakeDoorAppear()

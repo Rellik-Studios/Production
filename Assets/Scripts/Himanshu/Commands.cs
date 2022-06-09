@@ -30,7 +30,7 @@ namespace Himanshu
             while (agent.remainingDistance > agent.stoppingDistance)
                 yield return null;
             
-            Debug.Log(agent.remainingDistance);
+            // Debug.Log(agent.remainingDistance);
             //m_room1Table.Infect();
             yield return new WaitForSeconds(3.5f);
             
