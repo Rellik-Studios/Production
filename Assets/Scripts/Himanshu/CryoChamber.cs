@@ -27,8 +27,8 @@ namespace Himanshu
                 if (m_cryoRenderer.material.name == m_cryoOnlineUnlit.name + " (Instance)")
                 {
                     m_cryoRenderer.material = m_cryoOnlineLit; 
-                    this.Invoke(()=>m_cryoRenderer.material = m_cryoOffline, 5f);
-                    this.Invoke(()=>m_cryoRenderer.material = m_cryoOnlineUnlit, 10f);
+                    // this.Invoke(()=>m_cryoRenderer.material = m_cryoOffline, 5f);
+                    // this.Invoke(()=>m_cryoRenderer.material = m_cryoOnlineUnlit, 10f);
                 } 
                 
                 m_screenRenderer.material = m_screenLit;
