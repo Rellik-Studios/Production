@@ -132,6 +132,7 @@ namespace Himanshu
 
         private bool m_isSliding;
         private bool m_isSCorouting = false;
+        [SerializeField] private AudioSource m_footstepSound;
         private void Movement()
         {
             IEnumerator Slide()
@@ -176,12 +177,22 @@ namespace Himanshu
             if (m_characterController.enabled)
                 m_characterController.Move(movement * (m_speed * (crouching ? 0.5f : 1f) * ((m_playerInput.sprint && sprintTimer > 0f && !crouching) ? 1.75f : 1.0f)  * calculatedDeltaTime));
 
+            if (m_footstepSound != null && m_footstepSound.pitch > 1.3f)
+                m_footstepSound.pitch = 1.2f;
+            if (movement.magnitude > 0.01f && !crouching && !m_footstepSound.isPlaying) {
+                m_footstepSound?.Play();
+                
+            }
+            else if(movement.magnitude < 0.01f && !crouching && m_footstepSound.isPlaying)
+                m_footstepSound?.Stop();
+           
 
             
-            if (m_playerInput.sprint && sprintTimer > 0f && m_playerInput.movement.magnitude > 0f && !m_isSliding)
-            {
+            if (m_playerInput.sprint && sprintTimer > 0f && m_playerInput.movement.magnitude > 0f && !m_isSliding) {
                 //crouching = false;
                 sprintTimer -= calculatedDeltaTime / 2f;
+                if (m_footstepSound != null && m_footstepSound.pitch < 1.4f)
+                    m_footstepSound.pitch = 1.5f;
             }
             else if (sprintTimer < m_maxSprintTimer)
             {
