@@ -11,6 +11,7 @@ namespace rachael
         public PlayerInteract m_player;
         [FormerlySerializedAs("changeFurniture")] public ChangeFurniture m_changeFurniture;
         [FormerlySerializedAs("portalObject")] public GameObject m_portalObject;
+        private AudioClip m_audioClip;
 
         public GameObject[] m_requiredCollectable;
 
@@ -18,6 +19,7 @@ namespace rachael
         // Start is called before the first frame update
         void Start()
         {
+            m_audioClip = Resources.Load<AudioClip>("SFX/TimeRift");
             m_reqCollectable = m_requiredCollectable.ToList();
         }
 
@@ -47,6 +49,7 @@ namespace rachael
             Debug.Log("Contact");
             if (_other.CompareTag("Player"))
             {
+                PlayerInteract.PlaySound(m_audioClip);
                 foreach (var choosingPath in FindObjectsOfType<ChoosingPath>())
                 {
                     choosingPath.CheckCollect();
