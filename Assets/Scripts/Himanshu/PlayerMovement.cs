@@ -180,17 +180,18 @@ namespace Himanshu
 
             if (m_footstepSound != null && m_footstepSound.pitch > 1.3f)
                 m_footstepSound.pitch = 1.2f;
-            if (movement.magnitude > 0.01f && !crouching && !m_footstepSound.isPlaying) {
+            if (movement.magnitude > 0.01f && m_characterController.velocity.magnitude > 0.5f && !crouching && !m_footstepSound.isPlaying) {
                 m_footstepSound?.Play();
                 
             }
-            else if(movement.magnitude < 0.01f && !crouching && m_footstepSound.isPlaying)
+            
+            if(movement.magnitude < 0.01f && m_footstepSound.isPlaying)
                 m_footstepSound?.Stop();
            
 
             
             if (m_playerInput.sprint && sprintTimer > 0f && m_playerInput.movement.magnitude > 0f && !m_isSliding) {
-                //crouching = false;
+                crouching = false;
                 sprintTimer -= calculatedDeltaTime / 2f;
                 if (m_footstepSound != null && m_footstepSound.pitch < 1.4f)
                     m_footstepSound.pitch = 1.5f;
