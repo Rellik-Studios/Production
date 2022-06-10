@@ -47,7 +47,7 @@ namespace Himanshu
 
         private void OnAnimatorIK(int layerIndex)
         {
-           // Debug.Log("Here");
+           // // Debug.Log("Here");
             if (m_look)
             {
                 m_animator.SetLookAtWeight(1f, 0f, 1f, .5f, 0.1f);
@@ -58,7 +58,7 @@ namespace Himanshu
         private void Update()
         {
             lookAngle = m_lAngle;
-//            Debug.Log(lookAngle);
+//            // Debug.Log(lookAngle);
         }
 
         private void LateUpdate()
@@ -74,7 +74,7 @@ namespace Himanshu
                 var rot = Quaternion.LookRotation(dir);
 
                 lookAngle = -rot.eulerAngles.y + transform.parent.rotation.eulerAngles.y;
-                //Debug.Log(lookAngle +" " + rot.eulerAngles.y);
+                //// Debug.Log(lookAngle +" " + rot.eulerAngles.y);
             }
         }
     }

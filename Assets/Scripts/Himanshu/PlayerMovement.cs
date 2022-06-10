@@ -148,7 +148,7 @@ namespace Himanshu
                             yield break;
                         }
 
-                        Debug.Log("Slide BABYY");
+                        // // Debug.Log("Slide BABYY");
                         m_isSliding = true;
                         int counter = 0;
                         while (counter < 25) {
@@ -170,8 +170,9 @@ namespace Himanshu
                 }
             }
             
-            StartCoroutine(Slide());
+            //StartCoroutine(Slide());
 
+            
             
             var movement = m_playerInput.movement.x * transform.right + m_playerInput.movement.z * transform.forward;
             if (m_characterController.enabled)
@@ -179,17 +180,18 @@ namespace Himanshu
 
             if (m_footstepSound != null && m_footstepSound.pitch > 1.3f)
                 m_footstepSound.pitch = 1.2f;
-            if (movement.magnitude > 0.01f && !crouching && !m_footstepSound.isPlaying) {
+            if (movement.magnitude > 0.01f && m_characterController.velocity.magnitude > 0.5f && !crouching && !m_footstepSound.isPlaying) {
                 m_footstepSound?.Play();
                 
             }
-            else if(movement.magnitude < 0.01f && !crouching && m_footstepSound.isPlaying)
+            
+            if(movement.magnitude < 0.01f && m_footstepSound.isPlaying)
                 m_footstepSound?.Stop();
            
 
             
             if (m_playerInput.sprint && sprintTimer > 0f && m_playerInput.movement.magnitude > 0f && !m_isSliding) {
-                //crouching = false;
+                crouching = false;
                 sprintTimer -= calculatedDeltaTime / 2f;
                 if (m_footstepSound != null && m_footstepSound.pitch < 1.4f)
                     m_footstepSound.pitch = 1.5f;
@@ -199,7 +201,7 @@ namespace Himanshu
                 sprintTimer += calculatedDeltaTime / 4f;
             }
             m_currentSpeed = m_characterController.velocity.magnitude;
-             //Debug.Log(m_characterController.velocity.magnitude);
+             //// // Debug.Log(m_characterController.velocity.magnitude);
         }
     }
 

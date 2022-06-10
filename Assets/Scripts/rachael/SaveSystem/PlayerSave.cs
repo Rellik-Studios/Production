@@ -31,7 +31,7 @@ namespace rachael.SaveSystem
         {
             m_depositedToTheClock = new List<CollectableObject>();
             m_inventory = new Dictionary<CollectableObject, Wrapper<int>>();
-            Debug.Log(Application.persistentDataPath);
+            // Debug.Log(Application.persistentDataPath);
             
             if (gameManager.Instance != null && gameManager.Instance.m_isSafeRoom && Directory.Exists(Application.persistentDataPath + "/player/"))
             {
@@ -91,7 +91,7 @@ namespace rachael.SaveSystem
         {
             m_index = m_eraChanging.index;
             m_inventory = m_player.m_inventory;
-            Debug.Log(m_depositedToTheClock);
+            // Debug.Log(m_depositedToTheClock);
             m_depositedToTheClock = m_grandfatherClock.m_depositedObjects;
 
 

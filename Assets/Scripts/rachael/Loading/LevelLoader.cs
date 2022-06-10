@@ -31,7 +31,7 @@ public class LevelLoader : MonoBehaviour
     
         while(!operation.isDone)
         {
-            Debug.Log(operation.progress);
+            // Debug.Log(operation.progress);
             yield return null;
         }
     

@@ -32,7 +32,7 @@ namespace Himanshu
                     }
                     else
                     {
-                        Debug.Log($"{gameObject.name} does not have a EnemyController");
+                        // Debug.Log($"{gameObject.name} does not have a EnemyController");
                     }
                    
                 }

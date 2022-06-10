@@ -24,7 +24,7 @@ namespace rachael
                 if (_other.GetComponentInParent<RespawnManager>() != null)
                 {
                     _other.GetComponentInParent<RespawnManager>().SetPosition(this.transform);
-                    Debug.Log("You have entered the safe room");
+                    // Debug.Log("You have entered the safe room");
 
                 }
                 if (_other.GetComponentInParent<PlayerSave>() != null)
@@ -40,7 +40,7 @@ namespace rachael
             if (_other.CompareTag("Player"))
             {
                 m_isSafe = false;
-                Debug.Log("You have exited the safe room");
+                // Debug.Log("You have exited the safe room");
             }
         }
 

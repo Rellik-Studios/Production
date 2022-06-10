@@ -26,14 +26,14 @@ namespace rachael
 
         public void Execute(PlayerInteract _player)
         {
-            Debug.Log("Save Entry Point completed");
+            // Debug.Log("Save Entry Point completed");
             GameObject tempPlayer = _player.gameObject;
             if (tempPlayer.GetComponent<PlayerSave>() != null)
             {
                 // saves the player data into the system
                 tempPlayer.GetComponent<PlayerSave>().SavePlayer();
                 _player.SaveProcess.SetTrigger("Save");
-                //Debug.Log(eraChanging.Rooms[eraChanging.Index].name);
+                //// Debug.Log(eraChanging.Rooms[eraChanging.Index].name);
                 //
                 //DefineRoom(m_eraChanging.m_rooms[m_eraChanging.index].name);
             }
@@ -46,14 +46,14 @@ namespace rachael
 
         //private void OnTriggerEnter(Collider other)
         //{
-        //    Debug.Log("Contact");
+        //    // Debug.Log("Contact");
         //    if (other.CompareTag("Player"))
         //    {
         //        if (other.GetComponentInParent<PlayerSave>() != null)
         //        {
         //            //saves the player data into the system
         //            other.GetComponentInParent<PlayerSave>().SavePlayer();
-        //            //Debug.Log(eraChanging.Rooms[eraChanging.Index].name);
+        //            //// Debug.Log(eraChanging.Rooms[eraChanging.Index].name);
         //            DefineRoom(eraChanging.Rooms[eraChanging.Index].name);
 
         //        }

@@ -35,13 +35,13 @@ namespace rachael
         }
         private void OnTriggerEnter(Collider _other)
         {
-            Debug.Log("Contact");
+            // Debug.Log("Contact");
             if (_other.CompareTag("Player"))
             {
                 if (_other.GetComponentInParent<RespawnManager>() != null)
                 {
                     _other.GetComponentInParent<RespawnManager>().Teleport(m_locationObject[index].transform);
-                    Debug.Log("You have moved to a new location");
+                    // Debug.Log("You have moved to a new location");
                 }
                 if (index <= (m_envirObject.Length - 2))
                 {
@@ -63,7 +63,7 @@ namespace rachael
                     m_envirObject[index].SetActive(true);
                 }
 
-                Debug.Log("Environment has changed");
+                // Debug.Log("Environment has changed");
             }
         }
     }

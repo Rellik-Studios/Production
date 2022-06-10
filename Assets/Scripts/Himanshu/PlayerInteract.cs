@@ -221,7 +221,7 @@ namespace Himanshu
         {
             m_enemies = GameObject.FindObjectsOfType<EnemyController>(true).ToList();
             m_inventory ??= new Dictionary<CollectableObject, Wrapper<int>>();
-            Debug.Log(m_enemies.Count);
+            // Debug.Log(m_enemies.Count);
         }
 
         private void Start()
@@ -314,8 +314,8 @@ namespace Himanshu
             //    //SceneManager.LoadScene(1);
             //}
             enemySpotNum = m_enemies.Count(_enemy => _enemy.m_spotted && _enemy.GetComponent<StateMachine>().enabled);
-            //Debug.Log($"{enemySpotNum} enemies spotted you");
-//            Debug.Log(m_enemySpotNum);
+            //// Debug.Log($"{enemySpotNum} enemies spotted you");
+//            // Debug.Log(m_enemySpotNum);
 
             
             
@@ -391,7 +391,7 @@ namespace Himanshu
             {
                 m_hidingSpot = _hidingSpot;
                 GetComponent<CharacterController>().enabled = false;
-                Debug.Log("Hiding now");
+                // Debug.Log("Hiding now");
                 m_hiding = true;
             }
         }
@@ -408,7 +408,7 @@ namespace Himanshu
             //_hidingSpot.aClose = true;
 
             GetComponent<CharacterController>().enabled = false;
-            Debug.Log("Hiding now");
+            // Debug.Log("Hiding now");
             
         }
 
@@ -438,7 +438,7 @@ namespace Himanshu
 
         public void Collect(CollectableObject _collectableObject)
         {
-            Debug.Log("Object Collected?");
+            // Debug.Log("Object Collected?");
             if (m_inventory.TryGetValue(_collectableObject, out Wrapper<int> _count))
             {
                 _count.value++;
