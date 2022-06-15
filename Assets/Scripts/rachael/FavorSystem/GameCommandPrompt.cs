@@ -6,6 +6,7 @@ using rachael.FavorSystem;
 using rachael;
 using Himanshu;
 using Himanshu.SmartObjective;
+using MiscUtil.Collections.Extensions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -113,6 +114,17 @@ public class GameCommandPrompt : MonoBehaviour
                 return true;
             });
             
+            m_commands.Add("REMOVE OUTLINE", () => {
+                var outlines = FindObjectsOfType<Outline>().ToList();
+                outlines.ForEach(t=>t.RemoveOutline());
+                return true;
+            });
+            
+            m_commands.Add("ADD OUTLINE", () => {
+                var outlines = FindObjectsOfType<Outline>().ToList();
+                outlines.ForEach(t=>t.AddOutline());
+                return true;
+            });
             
             
             // // Debug.Log(m_commands);

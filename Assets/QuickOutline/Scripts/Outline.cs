@@ -79,6 +79,7 @@ public class Outline : MonoBehaviour {
   private Material outlineFillMaterial;
 
   private bool needsUpdate;
+  private float m_defaultOutlineWidth;
 
   void Awake() {
 
@@ -92,6 +93,8 @@ public class Outline : MonoBehaviour {
     outlineMaskMaterial.name = "OutlineMask (Instance)";
     outlineFillMaterial.name = "OutlineFill (Instance)";
 
+    m_defaultOutlineWidth = outlineWidth;
+    
     // Retrieve or generate smooth normals
     LoadSmoothNormals();
 
@@ -305,5 +308,13 @@ public class Outline : MonoBehaviour {
         outlineFillMaterial.SetFloat("_OutlineWidth", 0f);
         break;
     }
+  }
+  public void AddOutline()
+  {
+    OutlineWidth = m_defaultOutlineWidth;
+  }
+  public void RemoveOutline()
+  {
+    OutlineWidth = 0f;
   }
 }
