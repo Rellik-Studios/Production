@@ -20,7 +20,13 @@ namespace Himanshu
         [SerializeField] private float m_jumpHeight;
         [SerializeField] private float m_groundDistance = 0.1f;
         private bool m_isGrounded;
-        public bool canMoveUnscaled => FindObjectOfType<FavorSystem>().m_timeStop && FindObjectOfType<FavorSystem>().m_continueCounting;
+        public bool canMoveUnscaled {
+            get {
+                if (FindObjectOfType<FavorSystem>() != null)
+                    return FindObjectOfType<FavorSystem>().m_timeStop && FindObjectOfType<FavorSystem>().m_continueCounting;
+                return false;
+            }
+        }
         public bool crouching {
             get {
                 if (m_playerInput.m_crouching) {
@@ -65,7 +71,8 @@ namespace Himanshu
                     if (m_sprintNarratorTimer < 0f)
                     {
                         m_sprintNarratorTimer = 40f;
-                        FindObjectOfType<Narrator>().breathing = true;
+                        if(FindObjectOfType<Narrator>()!=null)
+                            FindObjectOfType<Narrator>().breathing = true;
                     }
 
                     //m_audioSource.volume = 0.5f;
@@ -74,7 +81,8 @@ namespace Himanshu
                     
                 }
                 m_sprintTimer = value;
-                m_sprintImage.fillAmount = m_sprintTimer / m_maxSprintTimer;
+                if (m_sprintImage != null)
+                    m_sprintImage.fillAmount = m_sprintTimer / m_maxSprintTimer;
             }
         }
         
@@ -124,6 +132,7 @@ namespace Himanshu
 
         private bool m_isSliding;
         private bool m_isSCorouting = false;
+        [SerializeField] private AudioSource m_footstepSound;
         private void Movement()
         {
             IEnumerator Slide()
@@ -139,7 +148,7 @@ namespace Himanshu
                             yield break;
                         }
 
-                        Debug.Log("Slide BABYY");
+                        // // Debug.Log("Slide BABYY");
                         m_isSliding = true;
                         int counter = 0;
                         while (counter < 25) {
@@ -161,26 +170,38 @@ namespace Himanshu
                 }
             }
             
-            StartCoroutine(Slide());
+            //StartCoroutine(Slide());
 
+            
             
             var movement = m_playerInput.movement.x * transform.right + m_playerInput.movement.z * transform.forward;
             if (m_characterController.enabled)
                 m_characterController.Move(movement * (m_speed * (crouching ? 0.5f : 1f) * ((m_playerInput.sprint && sprintTimer > 0f && !crouching) ? 1.75f : 1.0f)  * calculatedDeltaTime));
 
+            if (m_footstepSound != null && m_footstepSound.pitch > 1.3f)
+                m_footstepSound.pitch = 1.2f;
+            if (movement.magnitude > 0.01f && m_characterController.velocity.magnitude > 0.5f && !crouching && !m_footstepSound.isPlaying) {
+                m_footstepSound?.Play();
+                
+            }
+            
+            if(movement.magnitude < 0.01f && m_footstepSound.isPlaying)
+                m_footstepSound?.Stop();
+           
 
             
-            if (m_playerInput.sprint && sprintTimer > 0f && m_playerInput.movement.magnitude > 0f && !m_isSliding)
-            {
-                //crouching = false;
+            if (m_playerInput.sprint && sprintTimer > 0f && m_playerInput.movement.magnitude > 0f && !m_isSliding) {
+                crouching = false;
                 sprintTimer -= calculatedDeltaTime / 2f;
+                if (m_footstepSound != null && m_footstepSound.pitch < 1.4f)
+                    m_footstepSound.pitch = 1.5f;
             }
             else if (sprintTimer < m_maxSprintTimer)
             {
                 sprintTimer += calculatedDeltaTime / 4f;
             }
             m_currentSpeed = m_characterController.velocity.magnitude;
-             //Debug.Log(m_characterController.velocity.magnitude);
+             //// // Debug.Log(m_characterController.velocity.magnitude);
         }
     }
 

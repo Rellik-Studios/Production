@@ -75,8 +75,8 @@ namespace Himanshu.SmartObjective
         private void Update()
         {
             #if UNITY_EDITOR
-            if(Input.GetKeyDown(0))
-                gameObject.SetActive(false);
+                if(Input.GetKeyDown(KeyCode.Alpha0))
+                    gameObject.SetActive(false);
             #else
                 if(Input.GetKeyDown(KeyCode.Escape))
                     gameObject.SetActive(false);

@@ -31,16 +31,18 @@ namespace Himanshu
         private int m_endTut;
         public string m_timeEra = "";
 
-        private void Awake()
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        private  static void GMInit()
         {
-            if (m_instance == null)
-            {
-                DontDestroyOnLoad(this);
-                m_instance = this;
-            }
-            else
-            {
-                Destroy(this.gameObject);
+            print("Loading the game manager");
+            var inst = new GameObject("GameManager").AddComponent<gameManager>();
+            if (m_instance == null) {
+                m_instance = inst;
+                DontDestroyOnLoad(inst);
+            } 
+            else {
+                print("Destroying gm`");
+                Destroy(inst);    
             }
         }
 

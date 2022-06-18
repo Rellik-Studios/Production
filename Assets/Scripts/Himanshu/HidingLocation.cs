@@ -31,7 +31,7 @@ namespace Himanshu
 
         void Update()
         {
-            if (isActive && !m_hidingSpot.m_cupboard  && !FindObjectOfType<CinemachineBrain>().IsBlending)
+            if (isActive && (!m_hidingSpot.m_cupboard || m_futuristic)  && !FindObjectOfType<CinemachineBrain>().IsBlending)
             {
                 m_mouseX += Input.GetAxis("Mouse X");
                 m_mouseY -= Input.GetAxis("Mouse Y");
@@ -48,7 +48,7 @@ namespace Himanshu
         public void Execute(PlayerInteract _player)
         {
             m_hidingSpot.BeginHide(this, _player);
-            Debug.Log("Hiding is begining");
+            // // Debug.Log("Hiding is begining");
         }
 
         public void CanExecute(Raycast _raycast)
@@ -64,7 +64,7 @@ namespace Himanshu
             m_mouseY = 0f;
             m_defMouseX = transform.rotation.eulerAngles.y;
             m_defMouseY = transform.rotation.eulerAngles.x;
-            Debug.Log($"X: {m_defMouseY} Y: {m_defMouseX}");
+            // Debug.Log($"X: {m_defMouseY} Y: {m_defMouseX}");
         
 
 

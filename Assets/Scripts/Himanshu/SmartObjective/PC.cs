@@ -27,7 +27,8 @@ namespace Himanshu.SmartObjective
         }
         public void CanExecute(Raycast _raycast)
         {
-            
+            if (_raycast.m_indication != null)
+                _raycast.m_indication.sprite = Resources.Load<Sprite>("Interact");
         }
 
         private void OnTriggerEnter(Collider _collider)

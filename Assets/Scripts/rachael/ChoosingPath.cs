@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Himanshu;
@@ -16,9 +17,10 @@ namespace rachael
         [SerializeField] private GameObject m_assignedObject;
 
         // Start is called before the first frame update
-        void Start()
+        IEnumerator Start()
         {
-      
+
+            yield return null;
             if (!m_assignedObject.activeSelf)
             {
                 m_assignDoor.GetComponent<DoorToWall>().TransformDoorToWall();
@@ -35,7 +37,7 @@ namespace rachael
         }
         private void OnTriggerEnter(Collider _other)
         {
-            Debug.Log("Contact");
+            // Debug.Log("Contact");
             if (_other.GetComponent<PlayerInteract>() != null)
             {
                 m_assignDoor.GetComponent<DoorToWall>().FadeHubWall();
@@ -45,7 +47,7 @@ namespace rachael
 
         public void CheckCollect()
         {
-            Debug.Log(m_assignedObject);
+            // Debug.Log(m_assignedObject);
 
             if (m_assignedObject == null)
             {

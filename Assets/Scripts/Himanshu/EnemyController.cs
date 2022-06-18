@@ -331,11 +331,17 @@ namespace Himanshu
                 return;
 
             m_agent.stoppingDistance = 4f;
-            
-            m_agent.SetDestination(currentDistraction.transform.position);
+            if(m_agent.destination != currentDistraction.transform.position)
+                m_agent.SetDestination(currentDistraction.transform.position);
 
-            if ((m_agent.transform.position - currentDistraction.transform.position).magnitude < m_agent.stoppingDistance)
+            if (!currentDistraction.playing) 
             {
+                currentDistraction = null;
+                m_agent.stoppingDistance = 0f;
+            }
+            if ((m_agent.transform.position - currentDistraction.transform.position).magnitude < m_agent.stoppingDistance && currentDistraction.gameObject.name != "TV")
+            {
+                print($"{currentDistraction.gameObject.name} is being stopped");
                 currentDistraction.playing = false;
                 m_agent.stoppingDistance = 0f;
                 currentDistraction = null;
@@ -482,6 +488,7 @@ namespace Himanshu
                 //transform.rotation = Quaternion.Lerp(m_patrolPoints[index].rotation, transform.rotation, Time.deltaTime); 
                 
                 if (destinationMarker != null) {
+                    destinationMarker.m_hasArrived = true;
                     yield return new WaitUntil(() => destinationMarker.m_hasArrived && destinationMarker.m_destinationMarker.m_hasArrived);
                 }
                 
@@ -678,11 +685,13 @@ namespace Himanshu
 
         public void ChaseEnter()
         {
+            StopAllCoroutines();
+            m_waiting = false;
             m_agent.speed = 11f;
             IEnumerator YellowToRed()
             {
                 
-                //transform.LookAt(m_player.transform);
+                transform.LookAt(m_player.transform);
                 yield return new WaitForSeconds(m_detectedThrough == eDetect.Vision ? 1.5f : 3f);
 
                 //rotate gradually towards the player using rotate towards
@@ -742,7 +751,7 @@ namespace Himanshu
             //     //m_agent.SetDestination(transform.position);    
             //     // dir = transform.position - FindObjectOfType<PlayerMovement>().transform.position;
             //     // angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            //     Debug.Log(Mathf.Abs(lookAngle - angle));
+            //     // Debug.Log(Mathf.Abs(lookAngle - angle));
             //     lookAngle = Mathf.Lerp(lookAngle, angle, Time.deltaTime * 3);
             //     yield return null;
             // }

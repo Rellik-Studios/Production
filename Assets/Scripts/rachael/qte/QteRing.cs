@@ -75,7 +75,7 @@ namespace rachael.qte
             {
                 if(m_numOfPass >= 1)
                 {
-                    Debug.Log("You get second chance");
+                    // Debug.Log("You get second chance");
                     Time.timeScale = 1f;
                     m_result = true;
                     m_canvas.SetActive(false);
@@ -83,7 +83,7 @@ namespace rachael.qte
                 else if(m_numOfFail >= 1)
                 {
                     m_result = false;
-                    Debug.Log("You dont get second chance");
+                    // Debug.Log("You dont get second chance");
                     Time.timeScale = 1f;
                     m_canvas.SetActive(false);
                 }
@@ -100,7 +100,7 @@ namespace rachael.qte
             //playerRing.rectTransform.sizeDelta = new Vector2(playerRing.rectTransform.sizeDelta.x  + (speed), playerRing.rectTransform.sizeDelta.y + (speed));
             //if(OuterRing() && InnerRing())
             //{
-            //    Debug.Log("yes");
+            //    // Debug.Log("yes");
             //}
         }
 

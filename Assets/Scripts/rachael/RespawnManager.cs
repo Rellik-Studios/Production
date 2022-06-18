@@ -34,7 +34,7 @@ namespace rachael
             //    if (cam != null)
             //    {
             //        cam.transform.rotation = rotation;
-            //        Debug.Log("Here");
+            //        // Debug.Log("Here");
             //        cam.GetComponent<PlayerFollow>()?.ResetMouse(rotation.eulerAngles.y, rotation.eulerAngles.x);
 
             //    }
@@ -49,7 +49,7 @@ namespace rachael
             if (m_cam != null)
             {
                 m_cam.transform.rotation = m_rotation;
-                Debug.Log("Here");
+                // Debug.Log("Here");
                 m_cam.GetComponent<PlayerFollow>()?.ResetMouse();
 
             }
@@ -64,7 +64,7 @@ namespace rachael
             if (m_cam != null)
             {
                 m_cam.transform.rotation = m_rotation;
-                Debug.Log("Here");
+                // Debug.Log("Here");
                 m_cam.GetComponent<PlayerFollow>()?.ResetMouse(m_rotation.eulerAngles.y, m_rotation.eulerAngles.x);
 
             }

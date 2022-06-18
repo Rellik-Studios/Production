@@ -23,7 +23,7 @@ namespace Himanshu
         /// <param name="_player">Reference to player's PlayerInteract script</param>
         public void Execute(PlayerInteract _player)
         {
-            Debug.Log("Collect");
+            // // Debug.Log("Collect");
             GetComponent<AudioSource>()?.Play();
             if (m_secondaryPieces.Count == 0)
             {

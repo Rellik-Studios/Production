@@ -15,7 +15,7 @@ namespace rachael
         public void isIDLE()
         {
             m_objectAnim.SetBool("OneShot", false);
-            //Debug.Log("stop playing");
+            //// Debug.Log("stop playing");
             isPlaying = false;
         }
 
@@ -44,7 +44,7 @@ namespace rachael
             {
                 m_objectAnim.SetBool("OneShot", true);
                 isPlaying = true;
-                //Debug.Log("start playing");
+                //// Debug.Log("start playing");
             }
         }
 

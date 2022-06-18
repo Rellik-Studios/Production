@@ -19,6 +19,8 @@ namespace Himanshu
         }
 
         [SerializeField] private GameObject[] m_walls;
+        [SerializeField] private Material m_wallMaterialWhite;
+        [SerializeField] private Material m_wallMaterialBlack;
 
         public static bool m_tutorialSkipped = false;
         private int m_deathCounter;
@@ -28,7 +30,8 @@ namespace Himanshu
             get => m_walls[0].GetComponent<Renderer>().material.color;
             set => m_walls.All((t) =>
             {
-                t.GetComponent<Renderer>().material.color = value;
+                
+                t.GetComponent<Renderer>().material = value == Color.black ? m_wallMaterialBlack : m_wallMaterialWhite; 
                 return true;
             });
         }
@@ -192,7 +195,7 @@ namespace Himanshu
                 m_hidingSpot.transform.parent.GetComponent<BoxCollider>().enabled = false;
                 m_hidingSpot.SetActive(true);
 
-                Debug.Log("Why don't ya hide under that table");
+                // Debug.Log("Why don't ya hide under that table");
 
                 yield return new WaitUntil(() => m_hidingSpot.GetComponent<HidingSpot>().isUsed);
 
@@ -282,7 +285,7 @@ namespace Himanshu
 
         public static void RunBookTutorial()
         {
-            Debug.Log("Book Tutorial");
+            // Debug.Log("Book Tutorial");
 
             Tutorial tutorial = FindObjectOfType<Tutorial>();   
 
@@ -418,7 +421,7 @@ namespace Himanshu
                 
             }
             
-            Debug.Log("Obj Tutorial");
+            // Debug.Log("Obj Tutorial");
             Tutorial tutorial = FindObjectOfType<Tutorial>();
             tutorial.StartCoroutine(ObjectiveCoroutine());
         }

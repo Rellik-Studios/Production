@@ -102,7 +102,7 @@ namespace rachael.FavorSystem
             if (!m_isOpen)
             {
                 m_commandPrompt.SetActive(false);
-                //Debug.Log(m_isDanger);
+                //// Debug.Log(m_isDanger);
             }
         }
 
@@ -160,8 +160,8 @@ namespace rachael.FavorSystem
 
         void ConvertingToFavorPoints()
         {
-            Debug.Log(m_waitTimer);
-            Debug.Log(Time.deltaTime);
+            // Debug.Log(m_waitTimer);
+            // Debug.Log(Time.deltaTime);
             if(m_waitTimer <= 10 )
             {
                 m_favorPoints = 0.0f;
@@ -182,7 +182,7 @@ namespace rachael.FavorSystem
             if (m_isOpen)
             {
                 Com_anim.SetBool("IsOpen", true);
-                Debug.Log("Command Prompt is open");
+                // Debug.Log("Command Prompt is open");
                 m_commandPrompt.SetActive(true);
                 DisplayingMainMenu();
                 m_inputField.ActivateInputField();
@@ -190,7 +190,7 @@ namespace rachael.FavorSystem
             }
             else
             {
-                Debug.Log("Command Prompt is close");
+                // Debug.Log("Command Prompt is close");
                 m_commandPrompt.SetActive(false);
 
             }
@@ -198,7 +198,7 @@ namespace rachael.FavorSystem
         
         public IEnumerator SetProcess(string _message)
         {
-            Debug.Log(m_canResetT);
+            // Debug.Log(m_canResetT);
             if (!m_canResetT)
             {
                 Com_anim.SetBool("IsOpen", true);
@@ -216,7 +216,7 @@ namespace rachael.FavorSystem
 
         public void OpenCommandPrompt()
         {
-            Debug.Log("Command Prompt is open");
+            // Debug.Log("Command Prompt is open");
             m_commandPrompt.SetActive(true);
             DisplayingMainMenu();
             m_inputField.ActivateInputField();
@@ -227,7 +227,7 @@ namespace rachael.FavorSystem
 
         public void CloseCommandPrompt()
         {
-            Debug.Log("Command Prompt is close");
+            // Debug.Log("Command Prompt is close");
             m_isOpen = false;
             //m_commandPrompt.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
@@ -248,7 +248,7 @@ namespace rachael.FavorSystem
 
         public void DisplayingMainMenu()
         {
-            Debug.Log(m_canResetT);
+            // Debug.Log(m_canResetT);
             //Displaying different commands depending on the user
             if (isDanger)
             {

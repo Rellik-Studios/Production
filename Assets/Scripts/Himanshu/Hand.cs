@@ -1,11 +1,13 @@
 using rachael;
 using UnityEngine;
+using UnityEngine.Events;
 namespace Himanshu
 {
     public class Hand : MonoBehaviour, IInteract
     {
         public bool HandOpen;
         private Animator m_animator;
+        [SerializeField] private UnityEvent m_onExecute;
 
         [SerializeField] private MeshCollider m_objective;
         private void Start()
@@ -27,6 +29,7 @@ namespace Himanshu
             aIsHandOpen = !aIsHandOpen;
             if (m_objective != null)
                 m_objective.enabled = aIsHandOpen;
+            m_onExecute?.Invoke();
         }
         public void CanExecute(Raycast _raycast)
         {

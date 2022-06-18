@@ -8,6 +8,7 @@ using Random = UnityEngine.Random;
 
 namespace Himanshu
 {
+
     public class NarratorTrigger : MonoBehaviour
     {
         public UnityEvent m_event;
@@ -54,7 +55,7 @@ namespace Himanshu
 
             if (gameObject.name != "Hub" && _collider.CompareTag("Player")) 
             {
-                Debug.Log("Player entered new room");
+                // Debug.Log("Player entered new room");
                 FavorSystem.startTimer = true;
                 if(!m_player.m_isDying)
                     FavorSystem.m_grantSpecial = true;
@@ -90,7 +91,7 @@ namespace Himanshu
                     else
                     {
                         var rand = Random.Range(1, 11);
-                        Debug.Log(rand);
+                        // Debug.Log(rand);
                         if  (rand < 6) m_hospitalIdle?.Invoke(); else m_idleEvent?.Invoke();
                     }
                 }

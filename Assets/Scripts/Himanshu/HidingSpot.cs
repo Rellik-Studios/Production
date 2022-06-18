@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -48,7 +49,7 @@ namespace Himanshu
                 if(m_animator != null)
                     return m_animator.GetBool("open");
                 else
-                    Debug.Log($"{name} does not have an animator attached");
+                    throw new Exception($"{name} does not have an animator attached");
                 return false;
             }
             set
@@ -56,7 +57,7 @@ namespace Himanshu
                 if(m_animator != null)
                     m_animator.SetBool("open", value);
                 else
-                    Debug.Log($"{name} does not have an animator attached");
+                     throw new Exception($"{name} does not have an animator attached");
             }
         }
 
@@ -111,7 +112,7 @@ namespace Himanshu
 
                 if (m_player != null)
                 {
-                    Debug.Log("Hide");
+                    // Debug.Log("Hide");
                     //m_player.SetPositionAndRotation(m_hidingSpots[m_hidingIndex]);
                     m_player.transform.position = new Vector3((m_hidingIndex.transform.position + m_hidingIndex.actualForward * 3f).x, m_player.transform.position.y, (m_hidingIndex.transform.position + m_hidingIndex.actualForward * 3f).z);
                     //m_player.transform.rotation = m_hidingIndex.transform.rotation;
@@ -226,7 +227,7 @@ namespace Himanshu
             {
                 distortionValue = Mathf.Lerp(distortionValue,_state ? -0.001f : 0.021f, Time.deltaTime * _time);
                 counter += Time.deltaTime / _time;
-                Debug.Log(distortionValue);
+                // Debug.Log(distortionValue);
                 yield return null;
             }
             isActive = _state;
@@ -257,7 +258,7 @@ namespace Himanshu
                 index++;
             }
             if(m_cupboard)
-                this.Invoke(()=>hidingIndex = index, 1.1f);
+                this.Invoke(()=>hidingIndex = index, 0.5f);
             else
                 hidingIndex = index;
         }
