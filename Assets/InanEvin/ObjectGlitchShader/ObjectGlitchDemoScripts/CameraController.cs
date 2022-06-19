@@ -38,7 +38,7 @@ namespace IE.ObjectGlitchShader
 
         void Update()
         {
-            if (Input.GetMouseButton(1))
+            if (true)
             {
                 // Get mouse inputs & multiply them with sensitivity, and then store them.
                 mouseInputs.x += Input.GetAxis("Mouse X") * sensitivity.x;
