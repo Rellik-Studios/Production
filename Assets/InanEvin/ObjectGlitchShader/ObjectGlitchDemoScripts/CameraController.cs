@@ -45,6 +45,11 @@ namespace IE.ObjectGlitchShader
                 mouseInputs.y -= Input.GetAxis("Mouse Y") * sensitivity.y;
             }
 
+            if (Input.GetKeyDown(KeyCode.Equals))
+                speed += 1f;
+            if(Input.GetKeyDown(KeyCode.Minus))
+                speed -= 1f;
+
 
             // Clamp vertical mouse input.
             mouseInputs.y = Mathf.Clamp(mouseInputs.y, minY, maxY);
